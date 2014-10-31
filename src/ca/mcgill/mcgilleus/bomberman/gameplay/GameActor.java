@@ -21,5 +21,10 @@ public class GameActor extends GameObject {
 	public void moveDown(){
 		
 	}
+	@Override
+	void updateStatus() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

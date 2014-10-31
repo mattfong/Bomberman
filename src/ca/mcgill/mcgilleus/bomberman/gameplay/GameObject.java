@@ -1,30 +1,27 @@
 package ca.mcgill.mcgilleus.bomberman.gameplay;
 
+import javax.swing.ImageIcon;
+
 public abstract class GameObject {
 
-	private int xCoordinate;
-	private int yCoordinate;
-	private boolean isDestroyed;
-	private GameBoard board; 
-	private Image objectImage;
+	protected int xCoordinate;
+	protected int yCoordinate;
+	protected boolean isDestroyed;
+	protected GameBoard board; 
+	protected ImageIcon objectImage;
 	
 	
-	
-	public void render(){
-			
-	}
+
 	
 	public boolean hasCollided(GameObject otherObject){
-		
+		return true; //TO-FIX
 	}
 	
-	public void updateStatus(){
-		
-	}
+	abstract void updateStatus();
 	
-	public boolean checkIfBombed(){
+	public boolean checkIfBombed (){
 		
-			
+		return true; //TOFIX	
 	}
 	
 	

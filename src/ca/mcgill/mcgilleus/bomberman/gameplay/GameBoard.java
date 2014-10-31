@@ -37,13 +37,16 @@ public class GameBoard extends JPanel {
 		
 	}
 	
-	public list shortestPathBetweenObjects(GameObject object1,GameObject object2){
+	private void renderGameObject(GameObject gameObject){
+		for 
+		
 	}
+	
+	//public int shortestPathBetweenObjects(GameObject object1,GameObject object2) TO IMPLEMENT
 	
 	public void killGameObjects(){
 		
 	}
-	
 	
 	
 	
@@ -57,7 +60,7 @@ public class GameBoard extends JPanel {
 	
 	}
 	
-	public private void createNewGameObject(int xCoordinate, int yCoordinate, GameObject gameObject){
+	public void createNewGameObject(int xCoordinate, int yCoordinate, GameObject gameObject){
 		
 	}
 
