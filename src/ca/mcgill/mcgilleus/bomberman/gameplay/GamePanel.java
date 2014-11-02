@@ -46,7 +46,6 @@ public class GamePanel extends JPanel implements Runnable{
 		addKeyListener(new KeyAdapter(){
 			@Override
 			public void keyPressed(KeyEvent e){
-				
 			}
 			@Override
 			public void keyReleased(KeyEvent e){
@@ -73,7 +72,7 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	private void gameUpdate(){
 		if(running && game!=null){
-			//update game state
+			world.moveMap();
 		}
 		
 	}
@@ -81,19 +80,19 @@ public class GamePanel extends JPanel implements Runnable{
 	private void gameRender(){
 		if(dbImage==null){//create the buffer
 			dbImage=createImage(GWIDTH,GHEIGHT);
-				if(dbImage==null){
-					System.err.println("dbImage is still null!");
-					return;
-				}else{
-					dbg=dbImage.getGraphics();
-				}
-				//clear the screen
-				dbg.setColor(Color.WHITE);
-				dbg.fillRect(0,0,GWIDTH,GHEIGHT);
-				//Draw game elements
-				draw(dbg);
-				
+			if(dbImage==null){
+				System.err.println("dbImage is still null!");
+				return;
+			}
+			else{
+				dbg=dbImage.getGraphics();
+			}
 		}
+		//clear the screen
+		dbg.setColor(Color.WHITE);
+		dbg.fillRect(0,0,GWIDTH,GHEIGHT);
+		//Draw game elements
+		draw(dbg);
 	}
 	
 	/*draw all game stuff in here */
@@ -106,7 +105,7 @@ public class GamePanel extends JPanel implements Runnable{
 		Graphics g;
 		try {
 			g=this.getGraphics();
-			if(dbImage!=null&g!=null){
+			if((dbImage!=null)&&(g!=null)){
 				g.drawImage(dbImage, 0, 0, null);
 			}
 			Toolkit.getDefaultToolkit().sync();//for linux

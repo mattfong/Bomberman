@@ -17,8 +17,10 @@ public class World {
 		private Image[] blockImg;
 		private Image BLOCK_HARD;
 		private final int arrayNum=195;
-		private int x,y;
+		private int x,y,xDirection,yDirection;
 		
+		//Map navigation
+		static final int PAN_UP=0, PAN_DOWN=1, PAN_LEFT=2, PAN_RIGHT=3;
 		
 		public World(){
 			BLOCK_HARD=new ImageIcon("C:/Users/MF/Documents/GitHub/Team-7/src/ca/mcgill/mcgilleus/bomberman/gameplay/HardBlock.png").getImage();
@@ -46,7 +48,40 @@ public class World {
 		public void draw(Graphics g){
 			for(int i=0;i<arrayNum;i++){
 				g.drawImage(blockImg[i], blocks[i].x, blocks[i].y, null);
-
 			}
 		}
+		
+		public void moveMap(){
+			for(Rectangle r:blocks){
+				r.x+=xDirection;
+				r.y+=yDirection;
+			}
+		}
+		private void setXDirection(int dir){
+			xDirection=dir;
+			
+		}
+		private void setYDirection(int dir){
+			yDirection=dir;
+		}
+		public void navigateMap(int nav){
+			switch(nav){
+				default:
+					System.out.println("default case entered");
+					break;
+				case PAN_UP:
+					setYDirection(-1);
+					break;
+				case PAN_DOWN:
+					setYDirection(1);
+					break;
+				case PAN_LEFT:
+					setXDirection(-1);
+					break;
+				case PAN_RIGHT:
+					setXDirection(1);
+					break;				
+			}
+		}
+		
 }
