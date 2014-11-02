@@ -16,7 +16,7 @@ public class GameActor extends GameObject {
 	}
 	
 	public void moveUp(){
-	}
+	} 
 	
 	public void moveDown(){
 		

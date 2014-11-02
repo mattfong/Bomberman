@@ -38,7 +38,7 @@ public class GameBoard extends JPanel {
 	}
 	
 	private void renderGameObject(GameObject gameObject){
-		for 
+		 
 		
 	}
 	
