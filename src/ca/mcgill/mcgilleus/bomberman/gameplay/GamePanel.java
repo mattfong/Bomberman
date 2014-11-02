@@ -46,10 +46,23 @@ public class GamePanel extends JPanel implements Runnable{
 		addKeyListener(new KeyAdapter(){
 			@Override
 			public void keyPressed(KeyEvent e){
+				if(e.getKeyCode()==KeyEvent.VK_LEFT){
+					world.navigateMap(World.PAN_LEFT);
+				}
+				if(e.getKeyCode()==KeyEvent.VK_RIGHT){
+					world.navigateMap(World.PAN_RIGHT);
+				}
+				if(e.getKeyCode()==KeyEvent.VK_UP){
+					world.navigateMap(World.PAN_UP);
+				}
+				if(e.getKeyCode()==KeyEvent.VK_DOWN){
+					world.navigateMap(World.PAN_DOWN);
+				}
+				
 			}
 			@Override
 			public void keyReleased(KeyEvent e){
-				
+				world.stopMoveMap();
 			}
 			@Override
 			public void keyTyped(KeyEvent e){

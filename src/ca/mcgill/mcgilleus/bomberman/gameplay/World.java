@@ -57,6 +57,11 @@ public class World {
 				r.y+=yDirection;
 			}
 		}
+		public void stopMoveMap(){
+			xDirection=0;
+			yDirection=0;
+		}
+		
 		private void setXDirection(int dir){
 			xDirection=dir;
 			
