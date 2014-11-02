@@ -1,4 +1,4 @@
-package ca.mcgill.mcgilleus.bomberman.gameplay;
+package gameplay;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -17,7 +17,7 @@ public class Player {
 	
 	public Player (World world){
 		this.world=world;
-		playerImg=new ImageIcon("C:/Users/MF/Documents/GitHub/Team-7/src/ca/mcgill/mcgilleus/bomberman/gameplay/Sprite.png").getImage();
+		playerImg=new ImageIcon("./src/gameplay/Sprite.png").getImage();
 		playerRect=new Rectangle(0,0,20,20);
 	
 	

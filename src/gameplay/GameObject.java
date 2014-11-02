@@ -21,6 +21,10 @@ public abstract class GameObject {
 		this.yCoordinate = y;
 	}
 	
+	public GameObject(){
+		//TOFIX: Java complaining here
+	}
+	
 	//Using rectangle method as it contains the intersect method
 	public Rectangle getBounds(int width, int height){
 		return new Rectangle(this.xCoordinate, this.yCoordinate, width, height);
