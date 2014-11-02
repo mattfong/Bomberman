@@ -1,0 +1,73 @@
+[1mdiff --git a/src/ca/mcgill/mcgilleus/bomberman/gameplay/GamePanel.java b/src/ca/mcgill/mcgilleus/bomberman/gameplay/GamePanel.java[m
+[1mindex c227437..a58c300 100644[m
+[1m--- a/src/ca/mcgill/mcgilleus/bomberman/gameplay/GamePanel.java[m
+[1m+++ b/src/ca/mcgill/mcgilleus/bomberman/gameplay/GamePanel.java[m
+[36m@@ -35,8 +35,10 @@[m [mpublic class GamePanel extends JPanel implements Runnable{[m
+ 	[m
+ 	//GameObjects[m
+ 	World world;[m
+[32m+[m	[32mPlayer p1;[m[41m[m
+ 	[m
+ 	public GamePanel(){[m
+[32m+[m		[32mp1=new Player(world);[m[41m[m
+ 		setPreferredSize(gameDim);[m
+ 		setFocusable(true);[m
+ 		requestFocus();[m
+[36m@@ -125,6 +127,7 @@[m [mpublic class GamePanel extends JPanel implements Runnable{[m
+ 	/*draw all game stuff in here */[m
+ 	public void draw(Graphics g){[m
+ 		world.draw(g);[m
+[32m+[m		[32mp1.draw(g);[m[41m[m
+ 		[m
+ 	}[m
+ 	[m
+[1mdiff --git a/src/ca/mcgill/mcgilleus/bomberman/gameplay/World.java b/src/ca/mcgill/mcgilleus/bomberman/gameplay/World.java[m
+[1mindex 0fd37a4..c575227 100644[m
+[1m--- a/src/ca/mcgill/mcgilleus/bomberman/gameplay/World.java[m
+[1m+++ b/src/ca/mcgill/mcgilleus/bomberman/gameplay/World.java[m
+[36m@@ -7,13 +7,15 @@[m [mpackage ca.mcgill.mcgilleus.bomberman.gameplay;[m
+ import java.awt.Graphics;[m
+ import java.awt.Image;[m
+ import java.awt.Rectangle;[m
+[32m+[m[32mimport java.util.Arrays;[m[41m[m
+ [m
+ import javax.swing.ImageIcon;[m
+ [m
+ [m
+ [m
+ public class World {[m
+[31m-		private Rectangle[] blocks;[m
+[32m+[m		[32mpublic Rectangle[] blocks;[m[41m[m
+[32m+[m		[32mpublic boolean[] isSolid=new boolean[195];[m[41m[m
+ 		private Image[] blockImg;[m
+ 		private Image BLOCK_HARD;[m
+ 		private final int arrayNum=195;[m
+[36m@@ -25,6 +27,8 @@[m [mpublic class World {[m
+ 		public World(){[m
+ 			BLOCK_HARD=new ImageIcon("C:/Users/MF/Documents/GitHub/Team-7/src/ca/mcgill/mcgilleus/bomberman/gameplay/HardBlock.png").getImage();[m
+ 			blocks= new Rectangle[195];[m
+[32m+[m			[32misSolid=new boolean[195];[m[41m[m
+[32m+[m			[32mArrays.fill(isSolid, Boolean.FALSE);[m[41m[m
+ 			blockImg=new Image[195];[m
+ 			loadArrays();[m
+ 			[m
+[36m@@ -39,14 +43,16 @@[m [mpublic class World {[m
+ 					x=0;[m
+ 					y+=32;[m
+ 				}[m
+[31m-				[m
+[31m-				blockImg[i]=BLOCK_HARD;[m
+[32m+[m				[32mif(i%4==0){[m[41m[m
+[32m+[m					[32mblockImg[i]=BLOCK_HARD;[m[41m[m
+[32m+[m					[32misSolid[i]=true;[m[41m[m
+[32m+[m				[32m}[m[41m[m
+ 				blocks[i] = new Rectangle(x,y,32,32);[m
+ 				x+=32;[m
+ 			}[m
+ 		}[m
+ 		public void draw(Graphics g){[m
+[31m-			for(int i=0;i<arrayNum;i++){[m
+[32m+[m			[32mfor(int i=1;i<arrayNum;i++){[m[41m[m
+ 				g.drawImage(blockImg[i], blocks[i].x, blocks[i].y, null);[m
+ 			}[m
+ 		}[m

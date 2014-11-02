@@ -7,13 +7,15 @@ package ca.mcgill.mcgilleus.bomberman.gameplay;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.util.Arrays;
 
 import javax.swing.ImageIcon;
 
 
 
 public class World {
-		private Rectangle[] blocks;
+		public Rectangle[] blocks;
+		public boolean[] isSolid=new boolean[195];
 		private Image[] blockImg;
 		private Image BLOCK_HARD;
 		private final int arrayNum=195;
@@ -25,6 +27,8 @@ public class World {
 		public World(){
 			BLOCK_HARD=new ImageIcon("C:/Users/MF/Documents/GitHub/Team-7/src/ca/mcgill/mcgilleus/bomberman/gameplay/HardBlock.png").getImage();
 			blocks= new Rectangle[195];
+			isSolid=new boolean[195];
+			Arrays.fill(isSolid, Boolean.FALSE);
 			blockImg=new Image[195];
 			loadArrays();
 			
@@ -39,14 +43,16 @@ public class World {
 					x=0;
 					y+=32;
 				}
-				
-				blockImg[i]=BLOCK_HARD;
+				if(i%4==0){
+					blockImg[i]=BLOCK_HARD;
+					isSolid[i]=true;
+				}
 				blocks[i] = new Rectangle(x,y,32,32);
 				x+=32;
 			}
 		}
 		public void draw(Graphics g){
-			for(int i=0;i<arrayNum;i++){
+			for(int i=1;i<arrayNum;i++){
 				g.drawImage(blockImg[i], blocks[i].x, blocks[i].y, null);
 			}
 		}

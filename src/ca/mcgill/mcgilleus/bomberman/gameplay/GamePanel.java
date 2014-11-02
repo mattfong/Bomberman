@@ -35,8 +35,10 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	//GameObjects
 	World world;
+	Player p1;
 	
 	public GamePanel(){
+		p1=new Player(world);
 		setPreferredSize(gameDim);
 		setFocusable(true);
 		requestFocus();
@@ -125,6 +127,7 @@ public class GamePanel extends JPanel implements Runnable{
 	/*draw all game stuff in here */
 	public void draw(Graphics g){
 		world.draw(g);
+		p1.draw(g);
 		
 	}
 	
