@@ -6,7 +6,7 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
-public class Player {
+public class Player extends GameActor{
 
 	private World world;
 	
