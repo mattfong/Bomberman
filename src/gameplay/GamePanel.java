@@ -38,32 +38,34 @@ public class GamePanel extends JPanel implements Runnable{
 	Player p1;
 	
 	public GamePanel(){
-		p1=new Player(world);
+		
 		setPreferredSize(gameDim);
 		setFocusable(true);
 		requestFocus();
 		world = new World();
+		p1=new Player(world);
 		
 		addKeyListener(new KeyAdapter(){
 			@Override
 			public void keyPressed(KeyEvent e){
 				if(e.getKeyCode()==KeyEvent.VK_LEFT){
-					world.navigateMap(World.PAN_LEFT);
+					p1.setXDirection(-1);
 				}
 				if(e.getKeyCode()==KeyEvent.VK_RIGHT){
-					world.navigateMap(World.PAN_RIGHT);
+					p1.setXDirection(1);
 				}
 				if(e.getKeyCode()==KeyEvent.VK_UP){
-					world.navigateMap(World.PAN_UP);
+					p1.setYDirection(-1);
 				}
 				if(e.getKeyCode()==KeyEvent.VK_DOWN){
-					world.navigateMap(World.PAN_DOWN);
+					p1.setYDirection(1);
 				}
 				
 			}
 			@Override
 			public void keyReleased(KeyEvent e){
-				world.stopMoveMap();
+				p1.setYDirection(0);
+				p1.setXDirection(0);
 			}
 			@Override
 			public void keyTyped(KeyEvent e){
@@ -101,7 +103,7 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	private void gameUpdate(){
 		if(running && game!=null){
-			world.moveMap();
+			p1.update();
 		}
 		
 	}

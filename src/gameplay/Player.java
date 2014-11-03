@@ -18,16 +18,21 @@ public class Player {
 	public Player (World world){
 		this.world=world;
 		playerImg=new ImageIcon("./src/gameplay/Sprite.png").getImage();
-		playerRect=new Rectangle(0,0,20,20);
+		playerRect=new Rectangle(32,32,20,20);
 	
 	
 	
-		
+		 
 	}
 	
 	public void update(){
+		//System.out.println(checkForCollision());
 		move();
-		checkForCollision();
+		if(checkForCollision()){
+			imove();
+		}
+		
+		
 		
 		
 	}
@@ -36,18 +41,31 @@ public class Player {
 		playerRect.y+=yDirection;
 		
 	}
-	private void checkForCollision(){
+	private void imove(){
+		playerRect.x-=xDirection;
+		playerRect.y-=yDirection;
 		
+	}
+	private boolean checkForCollision(){
+		for(int i=0;i<world.arrayNum;i++){
+
+			if(world.isSolid[i]&&playerRect.intersects(world.blocks[i])){
+				System.out.println("Solid" +world.isSolid[i]+""+i);
+
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public void draw(Graphics g){
 		g.drawImage(playerImg, playerRect.x, playerRect.y, null);
 	}
 	
-	private void setXDirection (int d){
+	public void setXDirection (int d){
 		xDirection=d;
 	}
-	private void setYDirection(int d){
+	public void setYDirection(int d){
 		yDirection=d;
 	}
 }

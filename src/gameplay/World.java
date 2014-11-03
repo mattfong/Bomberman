@@ -18,7 +18,7 @@ public class World {
 		public boolean[] isSolid=new boolean[195];
 		private Image[] blockImg;
 		private Image BLOCK_HARD;
-		private final int arrayNum=195;
+		public final int arrayNum=195;
 		private int x,y,xDirection,yDirection;
 		
 		//Map navigation
@@ -28,7 +28,6 @@ public class World {
 			BLOCK_HARD=new ImageIcon("./src/gameplay/HardBlock.png").getImage();
 			blocks= new Rectangle[195];
 			isSolid=new boolean[195];
-			Arrays.fill(isSolid, Boolean.FALSE);
 			blockImg=new Image[195];
 			loadArrays();
 			
@@ -39,11 +38,12 @@ public class World {
 				
 			
 			for(int i = 0; i < arrayNum ;  i++ ){
+				isSolid[i]=false;
 				if(x>=480){
 					x=0;
 					y+=32;
 				}
-				if(i%4==0){
+				if(i%6==0){
 					blockImg[i]=BLOCK_HARD;
 					isSolid[i]=true;
 				}
