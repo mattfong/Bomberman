@@ -81,16 +81,16 @@ public class World {
 					System.out.println("default case entered");
 					break;
 				case PAN_UP:
-					setYDirection(-1);
+					setYDirection(+1);
 					break;
 				case PAN_DOWN:
-					setYDirection(1);
+					setYDirection(-1);
 					break;
 				case PAN_LEFT:
-					setXDirection(-1);
+					setXDirection(+1);
 					break;
 				case PAN_RIGHT:
-					setXDirection(1);
+					setXDirection(-1);
 					break;				
 			}
 		}
