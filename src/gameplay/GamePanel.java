@@ -24,7 +24,7 @@ public class GamePanel extends JPanel implements Runnable{
 	private Graphics dbg;
 	
 	//Jpanel Variables
-	static final int GWIDTH=480,GHEIGHT=416;
+	static final int GWIDTH=992,GHEIGHT=448;
 	static final Dimension gameDim=new Dimension(GWIDTH,GHEIGHT);
 	
 	//Game variables

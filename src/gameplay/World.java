@@ -15,35 +15,54 @@ import javax.swing.ImageIcon;
 
 public class World {
 		public Rectangle[] blocks;
-		public boolean[] isSolid=new boolean[195];
+		public boolean[] isSolid;
 		private Image[] blockImg;
 		private Image BLOCK_HARD;
-		public final int arrayNum=195;
-		private int x,y,xDirection,yDirection;
+		public final int arrayNum=403;
+		private int x,y,xDirection,yDirection,rowNumber;
 		
 		//Map navigation
 		static final int PAN_UP=0, PAN_DOWN=1, PAN_LEFT=2, PAN_RIGHT=3;
 		
 		public World(){
 			BLOCK_HARD=new ImageIcon("./src/gameplay/HardBlock.png").getImage();
-			blocks= new Rectangle[195];
-			isSolid=new boolean[195];
-			blockImg=new Image[195];
+			blocks= new Rectangle[403];
+			isSolid=new boolean[403];
+			blockImg=new Image[403];
 			loadArrays();
 			
 		}
 		
 		
 		private void loadArrays(){
-				
+			rowNumber=0;	
 			
 			for(int i = 0; i < arrayNum ;  i++ ){
 				isSolid[i]=false;
-				if(x>=480){
+				if(x>=992){
 					x=0;
 					y+=32;
+					rowNumber++;
 				}
-				if(i%6==0){
+				//set first row of blocks
+				if (i<31){
+					blockImg[i]=BLOCK_HARD;
+					isSolid[i]=true;
+				}
+				if (i>371){
+					blockImg[i]=BLOCK_HARD;
+					isSolid[i]=true;
+				}
+				if (i%31==0){
+					blockImg[i]=BLOCK_HARD;
+					isSolid[i]=true;
+				}
+				if (i%31==30){
+					blockImg[i]=BLOCK_HARD;
+					isSolid[i]=true;
+				}
+				
+				if ((i%2==0)&&(rowNumber%2==0)){
 					blockImg[i]=BLOCK_HARD;
 					isSolid[i]=true;
 				}
@@ -51,8 +70,9 @@ public class World {
 				x+=32;
 			}
 		}
+		
 		public void draw(Graphics g){
-			for(int i=1;i<arrayNum;i++){
+			for(int i=0;i<arrayNum;i++){
 				g.drawImage(blockImg[i], blocks[i].x, blocks[i].y, null);
 			}
 		}

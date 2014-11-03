@@ -50,7 +50,6 @@ public class Player {
 		for(int i=0;i<world.arrayNum;i++){
 
 			if(world.isSolid[i]&&playerRect.intersects(world.blocks[i])){
-				System.out.println("Solid" +world.isSolid[i]+""+i);
 
 				return true;
 			}
