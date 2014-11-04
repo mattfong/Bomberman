@@ -15,7 +15,7 @@ public class GamePanel extends JPanel implements Runnable{
 	int xCoord;
 	int yCoord;
 	
-	private long period=6*1000000;
+	private long period=60*1000000;
 	//Double buffering
 	private Image dbImage;
 	private Graphics dbg;
@@ -48,23 +48,33 @@ public class GamePanel extends JPanel implements Runnable{
 			@Override
 			public void keyPressed(KeyEvent e){
 				if(e.getKeyCode()==KeyEvent.VK_LEFT){
-					p1.setXDirection(-1);
+					p1.setXDirection(-32);
 				}
 				if(e.getKeyCode()==KeyEvent.VK_RIGHT){
-					p1.setXDirection(1);
+					p1.setXDirection(32);
 				}
 				if(e.getKeyCode()==KeyEvent.VK_UP){
-					p1.setYDirection(-1);
+					p1.setYDirection(-32);
 				}
 				if(e.getKeyCode()==KeyEvent.VK_DOWN){
-					p1.setYDirection(1);
+					p1.setYDirection(32);
 				}
 				
 			}
 			@Override
 			public void keyReleased(KeyEvent e){
-				p1.setYDirection(0);
-				p1.setXDirection(0);
+				if(e.getKeyCode()==KeyEvent.VK_LEFT){
+					p1.setXDirection(0);
+				}
+				if(e.getKeyCode()==KeyEvent.VK_RIGHT){
+					p1.setXDirection(0);
+				}
+				if(e.getKeyCode()==KeyEvent.VK_UP){
+					p1.setYDirection(0);
+				}
+				if(e.getKeyCode()==KeyEvent.VK_DOWN){
+					p1.setYDirection(0);
+				}
 			}
 			@Override
 			public void keyTyped(KeyEvent e){
@@ -119,7 +129,7 @@ public class GamePanel extends JPanel implements Runnable{
 			}
 		}
 		//clear the screen
-		dbg.setColor(Color.WHITE);
+		dbg.setColor(Color.GRAY);
 		dbg.fillRect(0,0,GWIDTH,GHEIGHT);
 		//Draw game elements
 		draw(dbg);

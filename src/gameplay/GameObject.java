@@ -7,18 +7,15 @@ import javax.swing.ImageIcon;
 
 public abstract class GameObject {
 
-	protected int xCoordinate;
-	protected int yCoordinate;
+	private Recantgle gridLocation;
 	protected boolean isDestroyed;
 	protected GameBoard board; 
 	protected ImageIcon objectImage;
 	protected GameObject Object;
+	private final Image blockSprite= new ImageIcon("./src/gameplay/HardBlock.png").getImage();
 	
-	
-	
-	public GameObject(int x, int y){
-		this.xCoordinate = x;
-		this.yCoordinate = y;
+	public GameObject(Rectangle location){
+		
 	}
 	
 	public GameObject(){
