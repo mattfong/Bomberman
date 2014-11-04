@@ -6,18 +6,18 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
-public class Wall {
-	private Rectangle gridLocation;
-	private final boolean isSolid=true;
-	private Image blockSprite;
+public class Wall extends GameObject {
+	private boolean isSolid;
 	
 	public Wall(Rectangle location){
-		blockSprite= new ImageIcon("./src/gameplay/HardBlock.png").getImage();
-		gridLocation=location;
+		super(location); 
+		isSolid=true;
+		sprite=new ImageIcon("./src/gameplay/HardBlock.png").getImage();
+		
 	}
 	
 	public void draw(Graphics g){
-		g.drawImage(blockSprite, gridLocation.x,gridLocation.y,null);	
+		g.drawImage(sprite, gridLocation.x,gridLocation.y,null);	
 	}
 	
 	public Rectangle getCollisionBorder(){
@@ -30,5 +30,11 @@ public class Wall {
 	
 	public void setYCoordinate(int newYCoordinate){
 		gridLocation.y=newYCoordinate;
+	}
+
+	@Override
+	void updateStatus() {
+		// TODO Auto-generated method stub
+		
 	}
 }

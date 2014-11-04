@@ -1,5 +1,6 @@
 package gameplay;
 
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 
@@ -7,24 +8,21 @@ import javax.swing.ImageIcon;
 
 public abstract class GameObject {
 
-	private Recantgle gridLocation;
+	protected Rectangle gridLocation;
 	protected boolean isDestroyed;
-	protected GameBoard board; 
-	protected ImageIcon objectImage;
-	protected GameObject Object;
-	private final Image blockSprite= new ImageIcon("./src/gameplay/HardBlock.png").getImage();
+	//protected GameBoard board; 
+	protected Image sprite;
+	
+	abstract void updateStatus();
 	
 	public GameObject(Rectangle location){
-		
+		gridLocation=location;
 	}
 	
-	public GameObject(){
-		//TOFIX: Java complaining here
-	}
 	
 	//Using rectangle method as it contains the intersect method
-	public Rectangle getBounds(int width, int height){
-		return new Rectangle(this.xCoordinate, this.yCoordinate, width, height);
+	public Rectangle getCollisionBoundaries(int width, int height){
+		return new Rectangle(this.gridLocation.x, this.gridLocation.y, width, height);
 	}
 	
 	
@@ -33,7 +31,7 @@ public abstract class GameObject {
 		
 		for (int i = 0; i < listOfGameObjects.size(); i++){
 			
-			if(this.Object.getBounds(this.Object.getWidth(), this.Object.getHeight()).intersects(listOfGameObjects.get(i).getBounds(getWidth(), getHeight()))){
+			if(this.Object.getCollisionBoundaries(this.Object.getWidth(), this.Object.getHeight()).intersects(listOfGameObjects.get(i).getCollisionBoundaries(getWidth(), getHeight()))){
 				return true;
 			}
 			
@@ -43,22 +41,27 @@ public abstract class GameObject {
 	}
 	
 	
-	//To fix
+	public void setXCoordinate(int newXCoord){
+		gridLocation.x=newXCoord;
+	}
+	
+	public void setYCoordinate(int newYCoord){
+		gridLocation.y=newYCoord;
+	}
+	
 	public int getWidth(){
 	
-		return 0;
+		return gridLocation.x;
 	
 	}
 	
-	
-	//To fix
 	public int getHeight(){
-		return 0;
+		return gridLocation.y;
 	}
 	
 	
 	
-	abstract void updateStatus();
+	
 	
 	public boolean checkIfBombed (){
 		
