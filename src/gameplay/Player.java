@@ -6,7 +6,7 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
-public class Player extends GameActor{
+public class Player {
 
 	private World world;
 	
@@ -26,12 +26,13 @@ public class Player extends GameActor{
 	}
 	
 	public void update(){
-		//System.out.println(checkForCollision());
+	
 		move();
+		/*
 		if(checkForCollision()){
 			imove();
 		}
-		
+		*/
 		
 		
 		
@@ -46,6 +47,7 @@ public class Player extends GameActor{
 		playerRect.y-=yDirection;
 		
 	}
+	/*
 	private boolean checkForCollision(){
 		for(int i=0;i<world.arrayNum;i++){
 
@@ -56,7 +58,7 @@ public class Player extends GameActor{
 		}
 		return false;
 	}
-	
+	*/
 	public void draw(Graphics g){
 		g.drawImage(playerImg, playerRect.x, playerRect.y, null);
 	}

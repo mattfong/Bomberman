@@ -12,7 +12,6 @@ public class GameFrame extends JFrame{
 	private void initUI(){
 		add(new GamePanel());
 		setSize(992,448);
-		
 		setTitle("Bomberman");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);

@@ -11,10 +11,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel implements Runnable{
-	private int boardSizeX;
-	private int boardSizeY;
-	private int viewSizeX;
-	private int viewSizeY;
+
 	int xCoord;
 	int yCoord;
 	
@@ -24,7 +21,9 @@ public class GamePanel extends JPanel implements Runnable{
 	private Graphics dbg;
 	
 	//Jpanel Variables
-	static final int GWIDTH=992,GHEIGHT=448;
+	//static final int GWIDTH=992,GHEIGHT=448;
+	static final int GWIDTH=1500,GHEIGHT=1500;
+	
 	static final Dimension gameDim=new Dimension(GWIDTH,GHEIGHT);
 	
 	//Game variables
@@ -42,7 +41,7 @@ public class GamePanel extends JPanel implements Runnable{
 		setPreferredSize(gameDim);
 		setFocusable(true);
 		requestFocus();
-		world = new World();
+		world=new World(31,13);
 		p1=new Player(world);
 		
 		addKeyListener(new KeyAdapter(){
