@@ -11,7 +11,9 @@ public abstract class GameObject {
 	//protected GameBoard board; 
 	protected Image sprite;
 	protected final int pictureSize=32;
-	abstract void updateStatus();
+	
+	
+	abstract public void updateStatus();
 	
 	public GameObject(Rectangle location){
 		gridLocation=location;

@@ -10,17 +10,17 @@ import java.awt.Rectangle;
 
 
 public class World{
-	
+
 	private int gridWidth;
 	private int gridHeight;
 	private final int blockSize=32; 
 	public GameObject[][] grid;
 
 	public World(int widthInBlocks,int heightInBlocks){
-		
+
 		gridHeight=heightInBlocks;
 		gridWidth=widthInBlocks;
-		
+
 		grid=new GameObject[widthInBlocks][heightInBlocks];
 		fillGrid();
 
@@ -33,25 +33,25 @@ public class World{
 				}
 			}
 		}
-		
+
 	}
 
-	
+
 	private void fillGrid(){
 		fillTopAndBottomBorders();
 		fillLeftAndRightBorders();
 		fillInnerGrid();
 	}
-	
-	
+
+
 	private void fillTopAndBottomBorders(){
 		for(int i=0;i<gridWidth;i++){
 			//Top
 			grid[i][0]= new Wall( new Rectangle(i*blockSize,0*blockSize,blockSize,blockSize));
-		
+
 			//Bottom
 			grid[i][gridHeight-1]=new Wall(new Rectangle(i*blockSize,(gridHeight-1)*blockSize,blockSize,blockSize));
-															
+
 		}
 	}
 
@@ -62,7 +62,7 @@ public class World{
 			grid[0][j]= new Wall( new Rectangle(0*blockSize,j*blockSize,blockSize,blockSize));
 			//Right
 			grid[gridWidth-1][j]=new Wall(new Rectangle((gridWidth-1)*blockSize,j*blockSize,blockSize,blockSize));
-															
+
 		}
 	}
 
@@ -72,7 +72,7 @@ public class World{
 				grid[i][j]=new Wall( new Rectangle(i*blockSize,j*blockSize,blockSize,blockSize));
 			}
 		}
-		
+
 	}
 	public int getGridWidth(){
 		return gridWidth;
@@ -94,23 +94,23 @@ public class World {
 		private Image BLOCK_HARD;
 		public final int arrayNum=403;
 		private int x,y,xDirection,yDirection,rowNumber;
-		
+
 		//Map navigation
 		static final int PAN_UP=0, PAN_DOWN=1, PAN_LEFT=2, PAN_RIGHT=3;
-		
+
 		public World(){
 			BLOCK_HARD=new ImageIcon("./src/gameplay/HardBlock.png").getImage();
 			blocks= new Rectangle[403];
 			isSolid=new boolean[403];
 			blockImg=new Image[403];
 			loadArrays();
-			
+
 		}
-		
-		
+
+
 		private void loadArrays(){
 			rowNumber=0;	
-			
+
 			for(int i = 0; i < arrayNum ;  i++ ){
 				isSolid[i]=false;
 				if(x>=992){
@@ -135,7 +135,7 @@ public class World {
 					blockImg[i]=BLOCK_HARD;
 					isSolid[i]=true;
 				}
-				
+
 				if ((i%2==0)&&(rowNumber%2==0)){
 					blockImg[i]=BLOCK_HARD;
 					isSolid[i]=true;
@@ -144,13 +144,13 @@ public class World {
 				x+=32;
 			}
 		}
-		
+
 		public void draw(Graphics g){
 			for(int i=0;i<arrayNum;i++){
 				g.drawImage(blockImg[i], blocks[i].x, blocks[i].y, null);
 			}
 		}
-		
+
 		public void moveMap(){
 			for(Rectangle r:blocks){
 				r.x+=xDirection;
@@ -161,10 +161,10 @@ public class World {
 			xDirection=0;
 			yDirection=0;
 		}
-		
+
 		private void setXDirection(int dir){
 			xDirection=dir;
-			
+
 		}
 		private void setYDirection(int dir){
 			yDirection=dir;
@@ -188,6 +188,6 @@ public class World {
 					break;				
 			}
 		}
-		
+
 }
-*/
+ */

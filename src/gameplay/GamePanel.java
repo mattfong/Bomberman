@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	//GameObjects
 	World world;
-	Player p1;
+	Bomberman p1;
 	
 	public GamePanel(){
 		
@@ -43,7 +43,7 @@ public class GamePanel extends JPanel implements Runnable{
 		setFocusable(true);
 		requestFocus();
 		world=new World(31,13);
-		p1=new Player(world, new Rectangle(32,32,32,32));
+		p1=new Bomberman(world, new Rectangle(32,32,32,32));
 		
 		addKeyListener(new KeyAdapter(){
 			@Override
