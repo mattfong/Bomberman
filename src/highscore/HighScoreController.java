@@ -5,17 +5,31 @@ public class HighScoreController {
 	
 	public static void main(String[]args){
 	
-		//Need to put a call to displaying the highscore
-	}
-	
-	
-	public void exitHighScore(){ 
+		//HighScoreView view = new HighScoreView();
+		HighScoreView newHighScoreView = displayHighScore();
 		
+		//System.out.println("anyCommand");
+		
+		//Will quickly close/hide the frame
+		//exitHighScore(newHighScoreView);
 	}
+	
+
+	
+
+	//Closes or hides the HighScore Display
+	public static void exitHighScore(HighScoreView view){ 
+		view.f.dispose();
+		//view.f.setVisible(false);
+	}
+
+
 	
 	//Calls highscore display
-	public void displayHighScore(){
-		
+	public static HighScoreView displayHighScore(){
+
+		HighScoreView view = new HighScoreView();
+		return view;
 	}
 	
 	
