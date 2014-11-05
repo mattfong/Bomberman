@@ -13,21 +13,27 @@ public abstract class GameObject {
 	protected final int pictureSize=32;
 	
 	
-	abstract public void updateStatus();
 	
+	//Constructor
 	public GameObject(Rectangle location){
 		gridLocation=location;
 	}
 	
+	
+	//Game Engine Stuff
 	public void draw(Graphics g){
 		
 		g.drawImage(sprite, gridLocation.x,gridLocation.y,null);	
 	}
-	//Using rectangle method as it contains the intersect method
-	public Rectangle getCollisionBoundaries(){
-		return new Rectangle(this.gridLocation.x, this.gridLocation.y, pictureSize,pictureSize);
+	
+	public void updateStatus(){
+		
 	}
 	
+	
+	
+	//Colision detection stuff
+
 	
 	public boolean hasCollided(GameObject obj){
 		if(gridLocation.intersects(obj.getCollisionBoundaries())){
@@ -36,6 +42,18 @@ public abstract class GameObject {
 		return false; 
 	}
 	
+	
+	
+	public boolean checkIfBombed (){
+		
+		return true; //TOFIX	
+	}
+	
+	
+	
+	
+	
+	//Getters and setters
 	
 	public void setXCoordinate(int newXCoord){
 		gridLocation.x=newXCoord;
@@ -46,9 +64,7 @@ public abstract class GameObject {
 	}
 	
 	public int getWidth(){
-	
 		return gridLocation.x;
-	
 	}
 	
 	public int getHeight(){
@@ -56,13 +72,10 @@ public abstract class GameObject {
 	}
 	
 	
-	
-	
-	
-	public boolean checkIfBombed (){
-		
-		return true; //TOFIX	
+	public Rectangle getCollisionBoundaries(){
+		return new Rectangle(this.gridLocation.x, this.gridLocation.y, pictureSize,pictureSize);
 	}
 	
+
 	
 }

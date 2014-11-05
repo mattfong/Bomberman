@@ -15,24 +15,5 @@ public class Wall extends GameObject {
 		sprite=new ImageIcon("./src/gameplay/HardBlock.png").getImage();
 		
 	}
-	
 
-	
-	public Rectangle getCollisionBorder(){
-		return new Rectangle(gridLocation.x,gridLocation.y,gridLocation.width,gridLocation.height);
-	}
-
-	public void setXCooridnate(int newXCoordinate){
-		gridLocation.x=newXCoordinate;
-	}
-	
-	public void setYCoordinate(int newYCoordinate){
-		gridLocation.y=newYCoordinate;
-	}
-
-	@Override
-	void updateStatus() {
-		// TODO Auto-generated method stub
-		
-	}
 }
