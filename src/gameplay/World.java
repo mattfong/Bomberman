@@ -14,14 +14,14 @@ public class World{
 	private int gridWidth;
 	private int gridHeight;
 	private final int blockSize=32; 
-	public Wall[][] grid;
+	public GameObject[][] grid;
 
 	public World(int widthInBlocks,int heightInBlocks){
 		
 		gridHeight=heightInBlocks;
 		gridWidth=widthInBlocks;
 		
-		grid=new Wall[widthInBlocks][heightInBlocks];
+		grid=new GameObject[widthInBlocks][heightInBlocks];
 		fillGrid();
 
 	}
@@ -74,8 +74,12 @@ public class World{
 		}
 		
 	}
-
-
+	public int getGridWidth(){
+		return gridWidth;
+	}
+	public int getGridHeight(){
+		
+	}
 
 
 }

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -42,7 +43,7 @@ public class GamePanel extends JPanel implements Runnable{
 		setFocusable(true);
 		requestFocus();
 		world=new World(31,13);
-		p1=new Player(world);
+		p1=new Player(world, new Rectangle(32,32,32,32));
 		
 		addKeyListener(new KeyAdapter(){
 			@Override

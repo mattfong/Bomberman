@@ -1,27 +1,19 @@
 package gameplay;
 
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
-public class Player {
+public class Player extends GameObject{
 
 	private World world;
 	
-	private Rectangle playerRect;
-	private Image playerImg;
-	
 	protected int xDirection, yDirection;
 	
-	public Player (World world){
+	public Player (World world, Rectangle location){
+		super(location);
 		this.world=world;
-		playerImg=new ImageIcon("./src/gameplay/Sprite.png").getImage();
-		playerRect=new Rectangle(32,32,20,20);
-	
-	
-	
+		sprite=new ImageIcon("./src/gameplay/Sprite.png").getImage();
 		 
 	}
 	
@@ -38,35 +30,45 @@ public class Player {
 		
 	}
 	private void move(){
-		playerRect.x+=xDirection;
-		playerRect.y+=yDirection;
+		gridLocation.x+=xDirection;
+		gridLocation.y+=yDirection;
 		
 	}
 	private void imove(){
-		playerRect.x-=xDirection;
-		playerRect.y-=yDirection;
+		gridLocation.x-=xDirection;
+		gridLocation.y-=yDirection;
 		
 	}
-	/*
+	
 	private boolean checkForCollision(){
-		for(int i=0;i<world.arrayNum;i++){
+		int width=world.getGridWidth();
+		int height=world.getGridHeight();
+		
+		
+		for(int i=0;i<width;i++){
+			for(int j=0;j<height;j++){
+				if(world.grid[i][j].hasCollided(this)){
+					return true;	
+				}
 
-			if(world.isSolid[i]&&playerRect.intersects(world.blocks[i])){
 
-				return true;
 			}
 		}
 		return false;
 	}
-	*/
-	public void draw(Graphics g){
-		g.drawImage(playerImg, playerRect.x, playerRect.y, null);
-	}
+	
+
 	
 	public void setXDirection (int d){
 		xDirection=d;
 	}
 	public void setYDirection(int d){
 		yDirection=d;
+	}
+
+	@Override
+	void updateStatus() {
+		// TODO Auto-generated method stub
+		
 	}
 }

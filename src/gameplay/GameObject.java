@@ -1,10 +1,8 @@
 package gameplay;
 
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.util.LinkedList;
-
-import javax.swing.ImageIcon;
 
 public abstract class GameObject {
 
@@ -12,31 +10,27 @@ public abstract class GameObject {
 	protected boolean isDestroyed;
 	//protected GameBoard board; 
 	protected Image sprite;
-	
+	protected final int pictureSize=32;
 	abstract void updateStatus();
 	
 	public GameObject(Rectangle location){
 		gridLocation=location;
 	}
 	
-	
+	public void draw(Graphics g){
+		
+		g.drawImage(sprite, gridLocation.x,gridLocation.y,null);	
+	}
 	//Using rectangle method as it contains the intersect method
-	public Rectangle getCollisionBoundaries(int width, int height){
-		return new Rectangle(this.gridLocation.x, this.gridLocation.y, width, height);
+	public Rectangle getCollisionBoundaries(){
+		return new Rectangle(this.gridLocation.x, this.gridLocation.y, pictureSize,pictureSize);
 	}
 	
 	
-	//This takes a list of other objects as input and loops through them. If it collides, it returns true.  
-	public boolean hasCollided(LinkedList <GameObject> listOfGameObjects){
-		
-		for (int i = 0; i < listOfGameObjects.size(); i++){
-			
-			if(this.Object.getCollisionBoundaries(this.Object.getWidth(), this.Object.getHeight()).intersects(listOfGameObjects.get(i).getCollisionBoundaries(getWidth(), getHeight()))){
-				return true;
-			}
-			
+	public boolean hasCollided(GameObject obj){
+		if(gridLocation.intersects(obj.getCollisionBoundaries())){
+			return true;
 		}
-		
 		return false; 
 	}
 	

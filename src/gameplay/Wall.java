@@ -16,9 +16,7 @@ public class Wall extends GameObject {
 		
 	}
 	
-	public void draw(Graphics g){
-		g.drawImage(sprite, gridLocation.x,gridLocation.y,null);	
-	}
+
 	
 	public Rectangle getCollisionBorder(){
 		return new Rectangle(gridLocation.x,gridLocation.y,gridLocation.width,gridLocation.height);
