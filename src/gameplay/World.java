@@ -78,7 +78,7 @@ public class World{
 		return gridWidth;
 	}
 	public int getGridHeight(){
-		
+		return gridHeight;
 	}
 
 

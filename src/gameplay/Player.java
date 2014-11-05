@@ -20,11 +20,11 @@ public class Player extends GameObject{
 	public void update(){
 	
 		move();
-		/*
+		
 		if(checkForCollision()){
 			imove();
 		}
-		*/
+		
 		
 		
 		
@@ -47,8 +47,10 @@ public class Player extends GameObject{
 		
 		for(int i=0;i<width;i++){
 			for(int j=0;j<height;j++){
-				if(world.grid[i][j].hasCollided(this)){
-					return true;	
+				if(world.grid[i][j]!=null){ //TODO: Implement a way to deal with null cases, unused grid elements are set to null
+					if(world.grid[i][j].hasCollided(this)){
+						return true;	
+					}
 				}
 
 
