@@ -52,7 +52,7 @@ public class LoginMenu {
 				
 				
 				try {
-					if(CSVReader.checkUser(jt.getText(), pf.getText())==true){
+					if(CSVreader.checkUser(jt.getText(), pf.getText())==true){
 						frame.dispose();
 						PlayGame.playMenu();
 						System.out.println("Username entered correctly");
