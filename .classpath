@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="ca/mcgill/mcgilleus/bomberman/gameplay/Bomberman.java|ca/mcgill/mcgilleus/bomberman/gameplay/GameActor.java|ca/mcgill/mcgilleus/bomberman/gameplay/GameObject.java|ca/mcgill/mcgilleus/bomberman/gameplay/GameSolid.java|ca/mcgill/mcgilleus/bomberman/gameplay/GameState.java|ca/mcgill/mcgilleus/bomberman/gameplay/GameBoard.java|gameplay/GameActor.java|gameplay/GameBoard.java|gameplay/GameSolid.java|gameplay/GameState.java" kind="src" path="src"/>
+	<classpathentry excluding="ca/mcgill/mcgilleus/bomberman/gameplay/Bomberman.java|ca/mcgill/mcgilleus/bomberman/gameplay/GameActor.java|ca/mcgill/mcgilleus/bomberman/gameplay/GameObject.java|ca/mcgill/mcgilleus/bomberman/gameplay/GameSolid.java|ca/mcgill/mcgilleus/bomberman/gameplay/GameState.java|ca/mcgill/mcgilleus/bomberman/gameplay/GameBoard.java|highscore/Comparable.java|highscore/HighScoreController.java|highscore/HighScoreDatabase.java|highscore/HighScoreManager.java|highscore/HighScoreView.java|highscore/Observer.java|highscore/ScoreRecord.java" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

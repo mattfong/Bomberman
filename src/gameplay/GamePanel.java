@@ -45,43 +45,7 @@ public class GamePanel extends JPanel implements Runnable{
 		world=new World(31,13);
 		p1=new Bomberman(world, new Rectangle(32,32,32,32));
 		
-		addKeyListener(new KeyAdapter(){
-			@Override
-			public void keyPressed(KeyEvent e){
-				if(e.getKeyCode()==KeyEvent.VK_LEFT){
-					p1.setXDirection(-32);
-				}
-				if(e.getKeyCode()==KeyEvent.VK_RIGHT){
-					p1.setXDirection(32);
-				}
-				if(e.getKeyCode()==KeyEvent.VK_UP){
-					p1.setYDirection(-32);
-				}
-				if(e.getKeyCode()==KeyEvent.VK_DOWN){
-					p1.setYDirection(32);
-				}
-				
-			}
-			@Override
-			public void keyReleased(KeyEvent e){
-				if(e.getKeyCode()==KeyEvent.VK_LEFT){
-					p1.setXDirection(0);
-				}
-				if(e.getKeyCode()==KeyEvent.VK_RIGHT){
-					p1.setXDirection(0);
-				}
-				if(e.getKeyCode()==KeyEvent.VK_UP){
-					p1.setYDirection(0);
-				}
-				if(e.getKeyCode()==KeyEvent.VK_DOWN){
-					p1.setYDirection(0);
-				}
-			}
-			@Override
-			public void keyTyped(KeyEvent e){
-				
-			}
-		});
+		addKeyListener(new InputListener(p1));
 		
 	}
 	
