@@ -4,12 +4,13 @@ package gameplay;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
-
-
+import java.util.Random;
 
 
 
 public class World{
+
+	private final int probabilityConstant=50;
 
 	private int gridWidth;
 	private int gridHeight;
@@ -41,9 +42,25 @@ public class World{
 		fillTopAndBottomBorders();
 		fillLeftAndRightBorders();
 		fillInnerGrid();
+		placeBricks();
+		grid[2][1]=null; // fix later when implementing the game board.
+		grid[1][2]=null; //
+		grid[1][1]=null;
 	}
 
+	Random rng=new Random(4);
+	double percentage;
+	
+	private void placeBricks(){
+		for(int i=0;i<gridWidth;i++){
+			for(int j=0;j<gridHeight;j++){
+				if(grid[i][j]==null &&(rng.nextInt(100)>=probabilityConstant)){ 
+					grid[i][j]=new Brick( new Rectangle(i*blockSize,j*blockSize,blockSize,blockSize));
+				}
+			}
+		}
 
+	}
 	private void fillTopAndBottomBorders(){
 		for(int i=0;i<gridWidth;i++){
 			//Top
