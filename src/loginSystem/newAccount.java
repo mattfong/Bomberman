@@ -40,7 +40,7 @@ public class newAccount {
 				String User=UserTF.getText();
 				String Pass=PassPF.getText();
 				try {
-					CSVWriter.CSVwriter(User, Pass);
+					CSVwriter.CSVwriter(User, Pass);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
