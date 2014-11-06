@@ -11,7 +11,7 @@ public abstract class GameObject {
 	//protected GameBoard board; 
 	protected Image sprite;
 	protected final int pictureSize=32;
-	protected final int stepSize=32;
+
 	
 	
 	//Constructor
@@ -26,7 +26,7 @@ public abstract class GameObject {
 		g.drawImage(sprite, gridLocation.x,gridLocation.y,null);	
 	}
 	
-	public void updateStatus(){
+	public void update(){
 		
 	}
 	
