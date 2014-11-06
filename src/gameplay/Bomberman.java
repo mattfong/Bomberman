@@ -64,11 +64,33 @@ public class Bomberman extends GameObject{
 	
 
 	
-	public void setXDirection (int d){
-		xDirection=d;
+	public void moveLeft(){
+		gridLocation.x=gridLocation.x-stepSize;
+		if(checkForCollision()){
+			gridLocation.x=gridLocation.x+stepSize;
+		}
+			
 	}
-	public void setYDirection(int d){
-		yDirection=d;
+	public void moveRight(){
+		gridLocation.x=gridLocation.x+stepSize;
+		if(checkForCollision()){
+			gridLocation.x=gridLocation.x-stepSize;
+		}
+	}
+	
+	public void moveUp(){
+		gridLocation.y=gridLocation.y-stepSize;
+		if(checkForCollision()){
+			gridLocation.y=gridLocation.y+stepSize;
+		}
+	} 
+	
+	public void moveDown(){
+		gridLocation.y=gridLocation.y+stepSize;
+		if(checkForCollision()){
+			gridLocation.y=gridLocation.y-stepSize;
+		}
+		
 	}
 
 	@Override

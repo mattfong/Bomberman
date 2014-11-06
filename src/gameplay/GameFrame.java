@@ -7,7 +7,7 @@ public class GameFrame extends JFrame{
 	public GameFrame(){
 		initUI();
 		
-	}
+	}	
 	
 	private void initUI(){
 		add(new GamePanel());

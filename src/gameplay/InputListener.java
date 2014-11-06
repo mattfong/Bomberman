@@ -14,33 +14,22 @@ public class InputListener extends KeyAdapter {
 	@Override
 	public void keyPressed(KeyEvent e){
 		if(e.getKeyCode()==KeyEvent.VK_LEFT){
-			p1.setXDirection(-32);
+			p1.moveLeft();
 		}
 		if(e.getKeyCode()==KeyEvent.VK_RIGHT){
-			p1.setXDirection(32);
+			p1.moveRight();
 		}
 		if(e.getKeyCode()==KeyEvent.VK_UP){
-			p1.setYDirection(-32);
+			p1.moveUp();
 		}
 		if(e.getKeyCode()==KeyEvent.VK_DOWN){
-			p1.setYDirection(32);
+			p1.moveDown();
 		}
 		
 	}
 	@Override
 	public void keyReleased(KeyEvent e){
-		if(e.getKeyCode()==KeyEvent.VK_LEFT){
-			p1.setXDirection(0);
-		}
-		if(e.getKeyCode()==KeyEvent.VK_RIGHT){
-			p1.setXDirection(0);
-		}
-		if(e.getKeyCode()==KeyEvent.VK_UP){
-			p1.setYDirection(0);
-		}
-		if(e.getKeyCode()==KeyEvent.VK_DOWN){
-			p1.setYDirection(0);
-		}
+
 	}
 	@Override
 	public void keyTyped(KeyEvent e){

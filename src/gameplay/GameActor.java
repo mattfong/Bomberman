@@ -6,7 +6,7 @@ public class GameActor extends GameObject {
 	private boolean moveSpeed;
 	private boolean isSeen;
 	private boolean isAlive;
-	
+	protected World world;
 	
 	public void moveLeft(){
 		
