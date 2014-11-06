@@ -18,11 +18,11 @@ public class Bomberman extends GameActor{
 
 
 
-	private void placeBomb(int explosionRadius){
-		
+	public void placeBomb(){
+		world.grid[gridLocation.x/pictureSize][gridLocation.y/pictureSize]=new Bomb(new Rectangle(gridLocation));
 	}
 	
-	private void detonateBomb(){
+	public void detonateBomb(){
 		
 	}
 	

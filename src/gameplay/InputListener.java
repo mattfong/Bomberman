@@ -25,6 +25,9 @@ public class InputListener extends KeyAdapter {
 		if(e.getKeyCode()==KeyEvent.VK_DOWN){
 			p1.moveDown();
 		}
+		if(e.getKeyCode()==KeyEvent.VK_X){
+			p1.placeBomb();
+		}
 		
 	}
 	@Override
