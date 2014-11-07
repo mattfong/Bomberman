@@ -7,11 +7,11 @@ public class SaveGameMenuController {
 
 	}
 	
-	public void displaySavedGameMenu(){
+	public static void displaySavedGameMenu(){
 		
 	}
 	
-	public void saveGame(){
+	public static void saveGame(){
 		
 	}
 }
