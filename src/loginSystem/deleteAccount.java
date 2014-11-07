@@ -9,30 +9,35 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class deleteAccount {
 
 	static JTextField UserTF= new JTextField(30);
+	static JPasswordField PassPF = new JPasswordField(30);
 	
 	public static void deleteAccount(){
 		final JFrame frame=new JFrame("Delete your account");
 		JPanel panel = new JPanel();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(350, 400);
+		frame.setSize(300, 400);
 
-		panel.setLayout(new GridLayout(5,1,5,10));
+		panel.setLayout(new GridLayout(6,1,5,10));
 		
-		JLabel enterUser = new JLabel("Enter the username of the account you want to delete");
+		JLabel loginInfo = new JLabel("Enter the login account you want to delete");
+		JLabel enterUser = new JLabel("Username");
+		JLabel enterPass = new JLabel("Password");
 		JButton deleteUser = new JButton("Click here to delete your account");
 		
 		deleteUser.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent arg0) {
 				String User=UserTF.getText();
+				String Pass=PassPF.getText();
 				try {
-					CSVreader.deleteAccount(User);
+					CSVreader.deleteAccount(User, Pass);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -44,8 +49,11 @@ public class deleteAccount {
 			
 		});	
 		
+		panel.add(loginInfo);
 		panel.add(enterUser);
 		panel.add(UserTF);
+		panel.add(enterPass);
+		panel.add(PassPF);
 		panel.add(deleteUser);
 		frame.add(panel);
 	}

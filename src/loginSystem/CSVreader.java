@@ -39,20 +39,18 @@ public class CSVreader {
 		reader.close();
 	}
 	
-	public static void deleteAccount(String userName) throws IOException{
+	public static void deleteAccount(String userName, String password) throws IOException{
 		
 		// Reading the Original CSV file
 		File file = new File(csv);
 		//Creating a temporary CSV file when deleting the users
-		// In the quotations put your path to the folder
-		String path = "";
+		// Using relative paths
+		String path = "../../";
 		File tmp = File.createTempFile("tmp", ".csv", new File(path));
-		
 		Scanner sc = new Scanner(file);
 		
 		BufferedWriter bw = new BufferedWriter(new FileWriter(tmp));
-		System.out.println("File path: "+tmp.getAbsolutePath());
-		
+
 		String[] record;
 		
 		// Reading through the CSV file line by line
@@ -60,9 +58,10 @@ public class CSVreader {
 			String data = sc.next();
 			record = data.split(",");
 			String name = "\"" + userName + "\""; 
-
+			String pwd = "\"" + password + "\"";
+			
 			// Writing all the users and passwords except the one we are deleting to a temporary file
-			if(!(record[0].equals(name))){
+			if(!(record[0].equals(name)) && !(record[1].equals(pwd))){
 				String userPass = record[0] + "," + record[1];
 				bw.write(userPass);
 				bw.write("\n");
