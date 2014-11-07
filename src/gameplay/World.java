@@ -93,7 +93,16 @@ public class World{
 	}
 
 	
-
+	public void removeGameObject(GameObject obj){
+		for (int i=0;i<gridWidth;i++){
+			for(int j=0;j<gridHeight;j++){
+				if(grid[i][j]==obj){
+					grid[i][j]=null;
+				}
+			}
+		}
+		
+	}
 	
 	public int getGridWidth(){
 		return gridWidth;

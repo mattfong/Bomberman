@@ -28,6 +28,9 @@ public class InputListener extends KeyAdapter {
 		if(e.getKeyCode()==KeyEvent.VK_X){
 			p1.placeBomb();
 		}
+		if(e.getKeyCode()==KeyEvent.VK_Z){
+			p1.detonateBomb();
+		}
 		
 	}
 	@Override

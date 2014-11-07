@@ -11,7 +11,7 @@ public abstract class GameObject {
 	//protected GameBoard board; 
 	protected Image sprite;
 	protected final int pictureSize=32;
-
+	protected World world;
 	
 	
 	//Constructor
@@ -71,6 +71,9 @@ public abstract class GameObject {
 		return gridLocation.y;
 	}
 	
+	public void remove(){
+		world.removeGameObject(this);
+	}
 	
 	public Rectangle getCollisionBoundaries(){
 		return new Rectangle(this.gridLocation.x, this.gridLocation.y, pictureSize,pictureSize);

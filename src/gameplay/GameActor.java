@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 public class GameActor extends GameObject {
 
 	protected int moveSpeed=32;
-	protected World world;
+
 	
 
 	public GameActor(World world, Rectangle location){
