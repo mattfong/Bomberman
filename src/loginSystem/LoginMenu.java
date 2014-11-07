@@ -27,7 +27,7 @@ public class LoginMenu {
 		JPanel panel = new JPanel();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(350, 400);
+		frame.setSize(300, 400);
 
 		panel.setLayout(new GridLayout(7,1,5,10));
 		

@@ -25,7 +25,7 @@ public class newAccount {
 		JPanel panel = new JPanel();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(350, 400);
+		frame.setSize(300, 400);
 
 		panel.setLayout(new GridLayout(5,1,5,10));
 		
@@ -45,7 +45,7 @@ public class newAccount {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				System.out.println("Entered user is "+User+" and pass is"+Pass);
+				System.out.println("Entered user is "+User+" and pass is "+Pass);
 				frame.dispose();
 				LoginMenu.loginMenu();	
 			}
