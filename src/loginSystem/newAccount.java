@@ -25,12 +25,12 @@ public class newAccount {
 		JPanel panel = new JPanel();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(300, 400);
+		frame.setSize(350, 400);
 
 		panel.setLayout(new GridLayout(5,1,5,10));
 		
-		JLabel enterUser = new JLabel("			Enter your desiered username");
-		JLabel enterPass = new JLabel("			Enter your desiered Password");
+		JLabel enterUser = new JLabel("			Enter your desired username");
+		JLabel enterPass = new JLabel("			Enter your desired Password");
 		
 		JButton makeUser = new JButton("Click here to create your account");
 		

@@ -27,15 +27,16 @@ public class LoginMenu {
 		JPanel panel = new JPanel();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(300, 400);
+		frame.setSize(350, 400);
 
-		panel.setLayout(new GridLayout(6,1,5,10));
+		panel.setLayout(new GridLayout(7,1,5,10));
 		
 		JLabel enterUser = new JLabel("Enter your username");
 		JLabel enterPass = new JLabel("Enter your Password");
 		
 		JButton login = new JButton("To Login click here");
 		JButton newUser = new JButton("To create a username click here");
+		JButton deleteUser = new JButton("Delete Account");
 		
 		newUser.addActionListener(new ActionListener(){
 			
@@ -46,6 +47,14 @@ public class LoginMenu {
 			
 		});	
 		
+		deleteUser.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent arg0) {
+			frame.dispose();
+			deleteAccount.deleteAccount();	
+			}
+			
+		});	
 		
 		login.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
@@ -82,6 +91,7 @@ public class LoginMenu {
 		panel.add(pf);
 		panel.add(login);
 		panel.add(newUser);
+		panel.add(deleteUser);
 		frame.add(panel);
 	}
 	
