@@ -18,6 +18,9 @@ public class deleteAccount {
 	static JPasswordField PassPF = new JPasswordField(30);
 	
 	public static void deleteAccount(){
+		//UserTF.setText(null);
+		//PassPF.setText(null);
+		
 		final JFrame frame=new JFrame("Delete your account");
 		JPanel panel = new JPanel();
 		frame.setVisible(true);
