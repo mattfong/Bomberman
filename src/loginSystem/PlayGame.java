@@ -1,5 +1,6 @@
 package loginSystem;
 import gameplay.GameFrame;
+import highscore.HighScoreController;
 
 import java.awt.ComponentOrientation;
 import java.awt.GridLayout;
@@ -58,8 +59,6 @@ public class PlayGame {
 		JButton play =new JButton("Play Game");
 		play.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				//frame.dispose();
-				//notYet();	
 				System.out.println("New Game Frame");
 				GameFrame gameplay=new GameFrame();
 				gameplay.setVisible(true);
@@ -77,6 +76,7 @@ public class PlayGame {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				notYet();	
+				HighScoreController.displayHighScore();
 			}
 		});	
 		JButton logOut =new JButton("Log Out"); 
