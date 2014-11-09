@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -15,6 +16,7 @@ import javax.swing.JTextField;
 public class newAccount {
 	static JTextField UserTF= new JTextField(30);
 	static JPasswordField PassPF = new JPasswordField(30);
+	private static JFrame controllingFrame;
 	
 	
 	public static void newAccount(){
@@ -41,15 +43,20 @@ public class newAccount {
 			public void actionPerformed(ActionEvent arg0) {
 				String User=UserTF.getText();
 				String Pass=PassPF.getText();
-				try {
-					CSVwriter.CSVwriter(User, Pass);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				System.out.println("Entered user is "+User+" and pass is "+Pass);
-				frame.dispose();
-				LoginMenu.loginMenu();	
+				
+				
+				if(UsernameAndPasswordValid.valid(User, Pass)){
+					try {
+						CSVwriter.CSVwriter(User, Pass);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					System.out.println("Entered user is "+User+" and pass is "+Pass);
+					frame.dispose();
+					LoginMenu.loginMenu();	
+				}//end if
+				
 			}
 			
 		});	
