@@ -27,16 +27,20 @@ public class LoginMenu {
 		JPanel panel = new JPanel();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(300, 400);
+		frame.setSize(992,448);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
 
 		panel.setLayout(new GridLayout(7,1,5,10));
 		
-		JLabel enterUser = new JLabel("Enter your username");
-		JLabel enterPass = new JLabel("Enter your Password");
+		JLabel enterUser = new JLabel("                                                     "
+				+ "                                                                                           Enter your username");
+		JLabel enterPass = new JLabel("                                                                   "
+				+ "                                                                               Enter your Password");
 		
 		JButton login = new JButton("To Login click here");
 		JButton newUser = new JButton("To create a username click here");
-		JButton deleteUser = new JButton("Delete Account");
+		JButton deleteUser = new JButton("To delete your Account click here");
 		
 		newUser.addActionListener(new ActionListener(){
 			
@@ -66,9 +70,12 @@ public class LoginMenu {
 						PlayGame.playMenu();
 						System.out.println("Username entered correctly");
 					}
-					else
+					else{
 						 JOptionPane.showMessageDialog(controllingFrame,
 					                "Wrong username or password");
+						 jt.setText(null);
+						 pf.setText(null);
+					}
 				} catch (HeadlessException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -84,6 +91,7 @@ public class LoginMenu {
 				
 			}
 		});	
+		
 		
 		panel.add(enterUser);
 		panel.add(jt);

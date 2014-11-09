@@ -22,10 +22,15 @@ public class PlayGame {
 	
 	public static void notYet()
 	{
+		//final LoginFrame frame2=new LoginFrame();
+		
 		final JFrame frame2=new JFrame("not yet");
 		frame2.setVisible(true);
 		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame2.setSize(300, 400);
+		frame2.setSize(992,448);
+		frame2.setLocationRelativeTo(null);
+		frame2.setResizable(false);
+		
 		JPanel comingSoon = new JPanel();
 		comingSoon.setLayout(new GridLayout(2,1,5,10));
 		JLabel myLabel = new JLabel("This feature is not avalibe yet");
@@ -48,9 +53,12 @@ public class PlayGame {
 	public static void playMenu()
 	{
 		final JFrame frame=new JFrame("Bomberman");
+		//final LoginFrame frame=new LoginFrame();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(300, 400);
+		frame.setSize(992,448);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
 		
 		JPanel panel = new JPanel();
 
@@ -62,6 +70,7 @@ public class PlayGame {
 				System.out.println("New Game Frame");
 				GameFrame gameplay=new GameFrame();
 				gameplay.setVisible(true);
+				frame.dispose();
 			}
 		});		
 		JButton saved =new JButton("Load Saved game"); 
@@ -95,6 +104,10 @@ public class PlayGame {
 		frame.add(panel);
 		
 		
+	}
+	
+	public static void main(String[] args){
+		playMenu();
 	}
 	 
 }

@@ -25,7 +25,9 @@ public class newAccount {
 		JPanel panel = new JPanel();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(300, 400);
+		frame.setSize(992,448);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
 
 		panel.setLayout(new GridLayout(5,1,5,10));
 		

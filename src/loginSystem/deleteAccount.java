@@ -18,14 +18,16 @@ public class deleteAccount {
 	static JPasswordField PassPF = new JPasswordField(30);
 	
 	public static void deleteAccount(){
-		//UserTF.setText(null);
-		//PassPF.setText(null);
+		UserTF.setText(null);
+		PassPF.setText(null);
 		
 		final JFrame frame=new JFrame("Delete your account");
 		JPanel panel = new JPanel();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(300, 400);
+		frame.setSize(992,448);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
 
 		panel.setLayout(new GridLayout(6,1,5,10));
 		

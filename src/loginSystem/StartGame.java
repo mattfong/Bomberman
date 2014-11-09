@@ -8,7 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-//import javax.swing.JTextField;
 
 
 
@@ -18,8 +17,8 @@ public class StartGame {
 	
 	public static void main(String[] args)
 	{
-		
-		
+		LoginMenu.loginMenu();	
+		/*
 		final JFrame frame=new JFrame("Bomberman");
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,5 +41,6 @@ public class StartGame {
 		panel.add(enterUser);
 		panel.add(play);
 		frame.add(panel);
+		*/
 	}
 }
