@@ -47,7 +47,6 @@ public class deleteAccount {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				System.out.println("Deleting user "+User);
 				frame.dispose();
 				LoginMenu.loginMenu();	
 			}
