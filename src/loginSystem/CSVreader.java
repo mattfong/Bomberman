@@ -43,21 +43,12 @@ public class CSVreader {
 		
 		// Reading the Original CSV file
 		File file = new File(csv);
-		
+	
 		//Creating a temporary CSV file when deleting the users
-<<<<<<< HEAD
-//		String path = "src";
-//		File tmp = File.createTempFile("tmp", ".csv", new File(path));
-=======
-		// Using relative paths
-		//String path = "../../";
-		//File tmp = File.createTempFile("tmp", ".csv", new File(path));
->>>>>>> 10da98ff6d5c80061b848dea5481e7c83584bdf7
 		File tmp = File.createTempFile("tmp", ".csv");
 		Scanner sc = new Scanner(file);
 		
 		BufferedWriter bw = new BufferedWriter(new FileWriter(tmp));
-		System.out.println("File path: "+tmp.getAbsolutePath());
 		
 		String[] record;
 		
@@ -70,19 +61,13 @@ public class CSVreader {
 			String u = "\"" + record[0] + "\"";
 			String p = "\"" + record[1] + "\"";
 			
-			System.out.println("Original: " + record[0] + "," + record[1]);
-			System.out.println("Original Converted to String: " + u + "," + p);
-			System.out.println("Inputs for deleting account:" + userName + "," + password);
-			System.out.println("String: " + name + "," + pwd);
-			
 			// Writing all the users and passwords except the one we are deleting to a temporary file
 			if(u.equals(name) && p.equals(pwd)){
-				System.out.println("Deleting account " + userName + "," + password);
+				System.out.println("Deleting account, username: " + userName + ", password: " + password);
 			} else {
 				String userPass = record[0] + "," + record[1];
 				bw.write(userPass);
 				bw.write("\n");
-				System.out.println("New: " + userPass);
 			}	
 		}
 		
@@ -115,8 +100,4 @@ public class CSVreader {
 		return false;
 	}
 	
-/*	public static void main(String[] args) throws IOException{
-		deleteAccount("Jill", "3");
-	}
-*/
 }
