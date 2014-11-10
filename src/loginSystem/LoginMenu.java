@@ -39,7 +39,7 @@ public class LoginMenu {
 				+ "                                                                               Enter your Password");
 		
 		JButton login = new JButton("To Login click here");
-		JButton newUser = new JButton("To create a username click here");
+		JButton newUser = new JButton("IF you do not have an account click here to create one");
 		JButton deleteUser = new JButton("To delete your Account click here");
 		
 		newUser.addActionListener(new ActionListener(){

@@ -45,8 +45,14 @@ public class CSVreader {
 		File file = new File(csv);
 		
 		//Creating a temporary CSV file when deleting the users
+<<<<<<< HEAD
 //		String path = "src";
 //		File tmp = File.createTempFile("tmp", ".csv", new File(path));
+=======
+		// Using relative paths
+		//String path = "../../";
+		//File tmp = File.createTempFile("tmp", ".csv", new File(path));
+>>>>>>> 10da98ff6d5c80061b848dea5481e7c83584bdf7
 		File tmp = File.createTempFile("tmp", ".csv");
 		Scanner sc = new Scanner(file);
 		
