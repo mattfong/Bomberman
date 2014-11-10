@@ -2,6 +2,7 @@ package highscore;
 
 public class HighScoreController {
 	
+	//Testing new setup
 	
 	public static void main(String[]args){
 	
