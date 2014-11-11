@@ -1,6 +1,7 @@
 package loginSystem;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -42,26 +43,28 @@ public class CSVreader {
 		
 		// Reading the Original CSV file
 		File file = new File(csv);
+	
 		//Creating a temporary CSV file when deleting the users
-		// Using relative paths
-		//String path = "../../";
-		//File tmp = File.createTempFile("tmp", ".csv", new File(path));
 		File tmp = File.createTempFile("tmp", ".csv");
 		Scanner sc = new Scanner(file);
 		
 		BufferedWriter bw = new BufferedWriter(new FileWriter(tmp));
-
+		
 		String[] record;
 		
 		// Reading through the CSV file line by line
 		while(sc.hasNext()){
 			String data = sc.next();
 			record = data.split(",");
-			String name = "\"" + userName + "\""; 
+			String name = "\"" + userName + "\"";
 			String pwd = "\"" + password + "\"";
+			String u = "\"" + record[0] + "\"";
+			String p = "\"" + record[1] + "\"";
 			
 			// Writing all the users and passwords except the one we are deleting to a temporary file
-			if(!(record[0].equals(name)) && !(record[1].equals(pwd))){
+			if(u.equals(name) && p.equals(pwd)){
+				System.out.println("Deleting account, username: " + userName + ", password: " + password);
+			} else {
 				String userPass = record[0] + "," + record[1];
 				bw.write(userPass);
 				bw.write("\n");
@@ -96,5 +99,5 @@ public class CSVreader {
 		
 		return false;
 	}
-
+	
 }
