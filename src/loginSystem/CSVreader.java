@@ -100,4 +100,24 @@ public class CSVreader {
 		return false;
 	}
 	
+	public static boolean checkUsernameOnly(String Username) throws IOException{
+		CSVReader reader = new CSVReader(new FileReader(csv));
+		String [] nextLine;
+		Account acc;
+		
+		// Reading through the CSV file line by line
+		while((nextLine=reader.readNext()) !=null){
+			acc = new Account(nextLine);
+			
+			// Checking if the user already exists in the database
+			if(Username.equals(acc.User)){
+				return true;
+			}
+		}
+		
+		reader.close();
+		
+		return false;
+	}
+	
 }

@@ -1,11 +1,14 @@
 package loginSystem;
 
+import java.awt.HeadlessException;
+import java.io.IOException;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class UsernameAndPasswordValid {
 	private static JFrame controllingFrame;
-	public static boolean valid(String User, String Pass){
+	public static boolean valid(String User, String Pass) throws HeadlessException, IOException{
 		int passLength=Pass.length();
 		int userLength=User.length();
 		boolean userValid = User.matches("\\w+");
@@ -26,6 +29,11 @@ public class UsernameAndPasswordValid {
 			return true;
 		}
 		
+		else if(CSVreader.checkUsernameOnly(User)){
+			JOptionPane.showMessageDialog(controllingFrame,
+	                "Username already exists ");
+			return false;
+		}
 		
 		else if(userLength<6){//checks for appropreate size
 			JOptionPane.showMessageDialog(controllingFrame,

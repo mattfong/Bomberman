@@ -33,10 +33,8 @@ public class LoginMenu {
 
 		panel.setLayout(new GridLayout(7,1,5,10));
 		
-		JLabel enterUser = new JLabel("                                                     "
-				+ "                                                                                           Enter your username");
-		JLabel enterPass = new JLabel("                                                                   "
-				+ "                                                                               Enter your Password");
+		JLabel enterUser = new JLabel("If you have an account enter your username enter it here");
+		JLabel enterPass = new JLabel("If you have an account enter your Password here");
 		
 		JButton login = new JButton("To Login click here");
 		JButton newUser = new JButton("IF you do not have an account click here to create one");
