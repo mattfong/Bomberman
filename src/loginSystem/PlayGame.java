@@ -22,8 +22,6 @@ public class PlayGame {
 	
 	public static void notYet()
 	{
-		//final LoginFrame frame2=new LoginFrame();
-		
 		final JFrame frame2=new JFrame("not yet");
 		frame2.setVisible(true);
 		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,7 +51,6 @@ public class PlayGame {
 	public static void playMenu()
 	{
 		final JFrame frame=new JFrame("Bomberman");
-		//final LoginFrame frame=new LoginFrame();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(992,448);

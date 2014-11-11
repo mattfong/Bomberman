@@ -15,9 +15,7 @@ import javax.swing.JTextField;
 
 public class newAccount {
 	static JTextField UserTF= new JTextField(30);
-	static JPasswordField PassPF = new JPasswordField(30);
-	private static JFrame controllingFrame;
-	
+	static JPasswordField PassPF = new JPasswordField(30);	
 	
 	public static void newAccount(){
 		UserTF.setText(null);
