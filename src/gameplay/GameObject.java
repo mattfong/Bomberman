@@ -32,26 +32,7 @@ public abstract class GameObject {
 	
 	
 	
-	//Colision detection stuff
 
-	
-	public boolean hasCollided(GameObject obj){
-		if(gridLocation.intersects(obj.getCollisionBoundaries())){
-			return true;
-		}
-		return false; 
-	}
-	
-	
-	
-	public boolean checkIfBombed (){
-		
-		return true; //TOFIX	
-	}
-	
-	
-	
-	
 	
 	//Getters and setters
 	
@@ -77,6 +58,15 @@ public abstract class GameObject {
 	
 	public Rectangle getCollisionBoundaries(){
 		return new Rectangle(this.gridLocation.x, this.gridLocation.y, pictureSize,pictureSize);
+	}
+	//Colision detection stuff
+
+	
+	public boolean hasCollided(GameObject obj){
+		if(gridLocation.intersects(obj.getCollisionBoundaries())){
+			return true;
+		}
+		return false; 
 	}
 	
 

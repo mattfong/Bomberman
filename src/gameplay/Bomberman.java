@@ -12,8 +12,8 @@ public class Bomberman extends GameActor{
 	
 	public Bomberman (World world, Rectangle location){
 		super(world, location);
-		sprite=new ImageIcon("./src/gameplay/Sprite.png").getImage();
-		 
+		sprite=new ImageIcon(Bomberman.class.getResource("/Sprite.png")).getImage();
+		
 	}
 	
 

@@ -10,7 +10,7 @@ public class Brick extends GameObject {
 	public Brick(Rectangle location){
 		super(location); 
 		isSolid=true;
-		sprite=new ImageIcon("./src/gameplay/SoftBlock.png").getImage();
+		sprite=new ImageIcon(Brick.class.getResource("/SoftBlock.png")).getImage();
 		
 	}
 

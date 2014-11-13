@@ -17,7 +17,7 @@ public class Bomb extends GameObject implements ActionListener{
 		super(location); 
 		isSolid=true;
 		this.world=world;
-		sprite=new ImageIcon("./src/gameplay/BombSprite.png").getImage();
+		sprite=new ImageIcon(Bomb.class.getResource("/BombSprite.png")).getImage();
 		bombTimer=new Timer(countdownTimer,this);
 		bombTimer.start();
 		
