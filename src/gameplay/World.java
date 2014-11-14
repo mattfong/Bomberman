@@ -24,7 +24,7 @@ public class World {
 		fillGrid();
 
 	}
-<<<<<<< HEAD
+
 
 	public void update(){
 		for (int i = 0; i < gridWidth; i++) {

@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
-public class Bomb extends GameObject implements ActionListener {
+public class Bomb extends GameObject{
 	private boolean isSolid;
 	private int explosionRadius;
 
@@ -18,8 +18,8 @@ public class Bomb extends GameObject implements ActionListener {
 		super(location);
 		isSolid = true;
 		this.world = world;
-		sprite = new ImageIcon("./src/gameplay/BombSprite.png").getImage();
-		bombCountdown=120;
+		sprite = new ImageIcon(Bomb.class.getResource("/BombSprite.png")).getImage();
+		bombCountdown=40;
 
 	}
 
@@ -27,6 +27,7 @@ public class Bomb extends GameObject implements ActionListener {
 	public void update() {
 		super.update();
 		
+		bombCountdown--;
 		if(checkBombTimer()){
 			this.explode();
 		}
