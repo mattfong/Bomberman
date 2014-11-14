@@ -21,6 +21,7 @@ public class Bomb extends GameObject implements ActionListener{
 		bombTimer=new Timer(countdownTimer,this);
 		bombTimer.start();
 		
+		
 	}
 	
 	public void explode(){
