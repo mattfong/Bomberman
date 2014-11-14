@@ -10,6 +10,7 @@ import javax.swing.Timer;
 public class Bomb extends GameObject implements ActionListener {
 	private boolean isSolid;
 	private int explosionRadius;
+
 	private int bombCountdown;
 	private final int countdownTimer = 3000;// in miliseconds
 
@@ -29,6 +30,8 @@ public class Bomb extends GameObject implements ActionListener {
 		if(checkBombTimer()){
 			this.explode();
 		}
+		
+
 		
 		
 	}

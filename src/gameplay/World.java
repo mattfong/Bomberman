@@ -24,6 +24,7 @@ public class World {
 		fillGrid();
 
 	}
+<<<<<<< HEAD
 
 	public void update(){
 		for (int i = 0; i < gridWidth; i++) {
@@ -42,10 +43,11 @@ public class World {
 				}
 			}
 		}
-
 	}
 
+
 	private void fillGrid() {
+
 		fillTopAndBottomBorders();
 		fillLeftAndRightBorders();
 		fillInnerGrid();
@@ -127,5 +129,6 @@ public class World {
 	public int getGridHeight() {
 		return gridHeight;
 	}
+
 
 }

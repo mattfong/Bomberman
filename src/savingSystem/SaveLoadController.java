@@ -14,7 +14,7 @@ public class SaveLoadController {
 		
 		final JFrame frame = new JFrame("Load and Save Menu Options");
 		frame.setVisible(true);
-	    frame.setSize(400, 400);
+	    frame.setSize(992,448);
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    frame.setLayout(new GridLayout(2,1));
 	    
