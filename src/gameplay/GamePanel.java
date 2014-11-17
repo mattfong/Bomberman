@@ -1,5 +1,7 @@
 package gameplay;
 
+import gameplay.input.InputListener;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
