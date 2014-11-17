@@ -54,7 +54,14 @@ public class InputListener extends KeyAdapter {
 				bufferedKey=null;
 				return new CommandDown();
 			}
-		
+			if(bufferedKey.getKeyCode()==KeyEvent.VK_SPACE){
+				bufferedKey=null;
+				return new CommandPlaceBomb();
+			}
+			if(bufferedKey.getKeyCode()==KeyEvent.VK_X){
+				bufferedKey=null;
+				return new CommandDetonateBomb();
+			}
 		}
 		return null;
 	}
