@@ -14,7 +14,7 @@ public class GamePanel extends JPanel implements Runnable{
 	int xCoord;
 	int yCoord;
 	
-	private long period=6*1000000;
+	private long period=30*1000000;
 	//Double buffering
 	private Image dbImage;
 	private Graphics dbg;
@@ -76,6 +76,7 @@ public class GamePanel extends JPanel implements Runnable{
 	private void gameUpdate(){
 		if(running && game!=null){
 			p1.update();
+			world.update();
 		}
 		
 	}
