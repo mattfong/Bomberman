@@ -8,9 +8,9 @@ public class GameActor extends GameObject {
 
 	
 
-	public GameActor(World world, Rectangle location){
-		super(location);
-		this.world=world;	
+	public GameActor(Rectangle location, World world){
+		super(location, world);
+	
 	}
 	public void update(){
 		

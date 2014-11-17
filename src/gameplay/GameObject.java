@@ -7,16 +7,17 @@ import java.awt.Rectangle;
 public abstract class GameObject {
 
 	protected Rectangle gridLocation;
-	protected boolean isDestroyed;
+	protected boolean destroyable;
 	//protected GameBoard board; 
 	protected Image sprite;
 	protected final int pictureSize=32;
 	protected World world;
-	
+	protected boolean solid;
 	
 	//Constructor
-	public GameObject(Rectangle location){
+	public GameObject(Rectangle location, World world){
 		gridLocation=location;
+		this.world=world;
 	}
 	
 	
@@ -35,6 +36,14 @@ public abstract class GameObject {
 
 	
 	//Getters and setters
+	
+	public boolean isDestroyable(){
+		return destroyable;
+	}
+	
+	public boolean isSolid(){
+		return solid;
+	}
 	
 	public void setXCoordinate(int newXCoord){
 		gridLocation.x=newXCoord;

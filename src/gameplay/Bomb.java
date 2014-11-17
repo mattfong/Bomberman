@@ -14,13 +14,13 @@ public class Bomb extends GameObject{
 	private int bombCountdown;
 	private final int countdownTimer = 3000;// in miliseconds
 
-	public Bomb(Rectangle location, World world) {
-		super(location);
+	public Bomb(Rectangle location, World world,int radius) {
+		super(location,world);
 		isSolid = true;
-		this.world = world;
 		sprite = new ImageIcon(Bomb.class.getResource("/BombSprite.png")).getImage();
 		bombCountdown=40;
-
+		destroyable=false;
+		explosionRadius=radius;
 	}
 
 	@Override
@@ -38,8 +38,11 @@ public class Bomb extends GameObject{
 	}
 
 	public void explode() {
-		remove();
-
+		this.remove();
+		world.detonateSpot(gridLocation.x, gridLocation.y, Direction.UP, explosionRadius);
+		world.detonateSpot(gridLocation.x, gridLocation.y, Direction.DOWN, explosionRadius);
+		world.detonateSpot(gridLocation.x, gridLocation.y, Direction.LEFT, explosionRadius);
+		world.detonateSpot(gridLocation.x, gridLocation.y, Direction.RIGHT, explosionRadius);
 	}
 	
 	private boolean checkBombTimer(){

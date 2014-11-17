@@ -26,6 +26,9 @@ public class World {
 	}
 
 
+	/**
+	 * 
+	 */
 	public void update(){
 		for (int i = 0; i < gridWidth; i++) {
 			for (int j = 0; j < gridHeight; j++) {
@@ -35,6 +38,11 @@ public class World {
 			}
 		}
 	}
+	
+	
+	/**
+	 * @param g
+	 */
 	public void draw(Graphics g) {
 		for (int i = 0; i < gridWidth; i++) {
 			for (int j = 0; j < gridHeight; j++) {
@@ -66,7 +74,7 @@ public class World {
 				if (grid[i][j] == null
 						&& (rng.nextInt(100) >= (100 - probabilityConstant))) {
 					grid[i][j] = new Brick(new Rectangle(i * blockSize, j
-							* blockSize, blockSize, blockSize));
+							* blockSize, blockSize, blockSize),this);
 				}
 			}
 		}
@@ -77,11 +85,11 @@ public class World {
 		for (int i = 0; i < gridWidth; i++) {
 			// Top
 			grid[i][0] = new Wall(new Rectangle(i * blockSize, 0 * blockSize,
-					blockSize, blockSize));
+					blockSize, blockSize),this);
 
 			// Bottom
 			grid[i][gridHeight - 1] = new Wall(new Rectangle(i * blockSize,
-					(gridHeight - 1) * blockSize, blockSize, blockSize));
+					(gridHeight - 1) * blockSize, blockSize, blockSize),this);
 
 		}
 	}
@@ -92,11 +100,11 @@ public class World {
 		// values either way
 		for (int j = 0; j < gridHeight; j++) {
 			// Left
-			grid[0][j] = new Wall(new Rectangle(0 * blockSize, j * blockSize,
-					blockSize, blockSize));
+			grid[0][j] = new Wall(
+						new Rectangle(0 * blockSize, j * blockSize, blockSize, blockSize),this);
 			// Right
-			grid[gridWidth - 1][j] = new Wall(new Rectangle((gridWidth - 1)
-					* blockSize, j * blockSize, blockSize, blockSize));
+			grid[gridWidth - 1][j] = new Wall(
+						new Rectangle((gridWidth - 1)* blockSize, j * blockSize, blockSize, blockSize),this);
 
 		}
 	}
@@ -105,7 +113,7 @@ public class World {
 		for (int i = 0; i < gridWidth; i = i + 2) {
 			for (int j = 0; j < gridHeight; j += 2) {
 				grid[i][j] = new Wall(new Rectangle(i * blockSize, j
-						* blockSize, blockSize, blockSize));
+						* blockSize, blockSize, blockSize),this);
 			}
 		}
 
@@ -130,5 +138,31 @@ public class World {
 		return gridHeight;
 	}
 
+
+	/**
+	 * @param xCoordinate
+	 * @param yCoordinate
+	 * @param direction
+	 * @param radius
+	 */
+	public void detonateSpot(int xCoordinate,int yCoordinate,Direction direction, int radius){
+		
+		if(radius==0){
+			return;
+		}
+		
+		int xIndex=xCoordinate/32+direction.getX();
+		int yIndex=yCoordinate/32+direction.getY();
+		
+		if( (grid[xIndex][yIndex] != null) && (grid[xIndex][yIndex].isDestroyable() == true) ){
+			GameObject o;
+			o=grid[xIndex][yIndex];
+			o.remove();
+			detonateSpot(xIndex*32,yIndex*32,direction,radius);
+			
+		}
+
+		
+	}
 
 }

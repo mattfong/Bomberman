@@ -4,8 +4,8 @@ import java.awt.Rectangle;
 
 public class MockGameObject extends GameObject {
 
-	public MockGameObject(Rectangle location) {
-		super(location);
+	public MockGameObject(Rectangle location, World world) {
+		super(location, world);
 
 	}
 
