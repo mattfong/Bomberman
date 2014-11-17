@@ -35,8 +35,10 @@ public class Bomberman extends GameActor{
 	public void detonateBomb(){
 		Bomb bomb;
 		bomb=bombList.poll();
-		bomb.remove();
 		
+		if(bomb!=null){
+			bomb.remove();
+		}
 	}
 	
 	
