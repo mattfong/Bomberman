@@ -5,10 +5,23 @@ import java.awt.event.KeyEvent;
 
 public class InputListener extends KeyAdapter {
 	
-	private Bomberman p1;
+	private static InputListener singleton=null;
+	private static GameActor p1;
 	
-	public InputListener(Bomberman o){
-		p1=o;
+	
+	protected InputListener(){
+		
+	}
+	
+	public static InputListener getInstance(){
+		if(singleton==null){
+			singleton=new InputListener();
+		}
+		return singleton;
+	}
+	
+	public static void setGameActor(GameActor actor){
+		p1=actor;
 	}
 	
 	@Override
@@ -26,10 +39,14 @@ public class InputListener extends KeyAdapter {
 			p1.moveDown();
 		}
 		if(e.getKeyCode()==KeyEvent.VK_X){
-			p1.placeBomb();
+			if(p1 instanceof Bomberman){
+				((Bomberman)p1).placeBomb();
+			}
 		}
 		if(e.getKeyCode()==KeyEvent.VK_Z){
-			p1.detonateBomb();
+			if(p1 instanceof Bomberman){
+				((Bomberman)p1).detonateBomb();
+			}
 		}
 		
 	}

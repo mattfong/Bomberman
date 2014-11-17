@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry excluding="ca/mcgill/mcgilleus/bomberman/gameplay/Bomberman.java|ca/mcgill/mcgilleus/bomberman/gameplay/GameActor.java|ca/mcgill/mcgilleus/bomberman/gameplay/GameBoard.java|ca/mcgill/mcgilleus/bomberman/gameplay/GameObject.java|ca/mcgill/mcgilleus/bomberman/gameplay/GameSolid.java|ca/mcgill/mcgilleus/bomberman/gameplay/GameState.java|gameplay/GameSolid.java" kind="src" path="src"/>
-	<classpathentry kind="src" path="tests"/>
 	<classpathentry kind="src" path="res"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/opencsv-3.0.jar"/>
-
 	<classpathentry kind="output" path="bin"/>
 </classpath>

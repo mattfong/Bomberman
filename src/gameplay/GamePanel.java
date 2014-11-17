@@ -43,7 +43,7 @@ public class GamePanel extends JPanel implements Runnable{
 		world=new World(31,13);
 		p1=new Bomberman(world, new Rectangle(32,32,32,32));
 		
-		addKeyListener(new InputListener(p1));
+		addKeyListener(InputListener.getInstance());
 		
 	}
 	

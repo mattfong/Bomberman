@@ -13,7 +13,7 @@ public class Bomberman extends GameActor{
 	public Bomberman (World world, Rectangle location){
 		super(location, world);
 		sprite=new ImageIcon(Bomberman.class.getResource("/Sprite.png")).getImage();
-		
+		InputListener.setGameActor(this);
 	}
 	
 
