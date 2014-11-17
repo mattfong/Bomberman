@@ -1,4 +1,6 @@
-package gameplay;
+package gameplay.gameobject;
+
+import gameplay.World;
 
 import java.awt.Rectangle;
 

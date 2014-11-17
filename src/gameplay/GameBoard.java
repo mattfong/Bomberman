@@ -1,5 +1,7 @@
 package gameplay;
 
+import gameplay.gameobject.GameObject;
+
 import java.awt.List;
 import java.util.LinkedList;
 

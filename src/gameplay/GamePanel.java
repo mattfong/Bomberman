@@ -1,5 +1,6 @@
 package gameplay;
 
+import gameplay.gameobject.Bomberman;
 import gameplay.input.InputListener;
 
 import java.awt.Color;

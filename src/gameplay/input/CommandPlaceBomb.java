@@ -1,7 +1,7 @@
 package gameplay.input;
 
-import gameplay.Bomberman;
-import gameplay.GameActor;
+import gameplay.gameobject.Bomberman;
+import gameplay.gameobject.GameActor;
 
 public class CommandPlaceBomb implements Command{
 

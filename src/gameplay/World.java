@@ -2,6 +2,10 @@
 
 package gameplay;
 
+import gameplay.gameobject.Brick;
+import gameplay.gameobject.GameObject;
+import gameplay.gameobject.Wall;
+
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
@@ -157,8 +161,14 @@ public class World {
 		if( (grid[xIndex][yIndex] != null) && (grid[xIndex][yIndex].isDestroyable() == true) ){
 			GameObject o;
 			o=grid[xIndex][yIndex];
+			
+			if(o.conductsExplosions()){
+				detonateSpot(xIndex*32,yIndex*32,direction,radius-1);
+			}
+			
 			o.remove();
-			detonateSpot(xIndex*32,yIndex*32,direction,radius);
+			
+			
 			
 		}
 

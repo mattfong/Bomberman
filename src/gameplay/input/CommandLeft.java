@@ -1,6 +1,6 @@
 package gameplay.input;
 
-import gameplay.GameActor;
+import gameplay.gameobject.GameActor;
 
 public class CommandLeft implements Command {
 

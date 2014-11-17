@@ -1,4 +1,6 @@
-package gameplay;
+package gameplay.gameobject;
+
+import gameplay.World;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -8,11 +10,11 @@ public abstract class GameObject {
 
 	protected Rectangle gridLocation;
 	protected boolean destroyable;
-	//protected GameBoard board; 
 	protected Image sprite;
 	protected final int pictureSize=32;
 	protected World world;
 	protected boolean solid;
+	protected boolean conductsExplosions;
 	
 	//Constructor
 	public GameObject(Rectangle location, World world){
@@ -78,6 +80,9 @@ public abstract class GameObject {
 		return false; 
 	}
 	
+	public boolean conductsExplosions(){
+		return conductsExplosions;
+	}
 
 	
 }

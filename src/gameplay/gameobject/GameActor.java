@@ -1,4 +1,6 @@
-package gameplay;
+package gameplay.gameobject;
+
+import gameplay.World;
 
 import java.awt.Rectangle;
 
@@ -10,6 +12,7 @@ public class GameActor extends GameObject {
 
 	public GameActor(Rectangle location, World world){
 		super(location, world);
+		conductsExplosions=true;
 	
 	}
 	public void update(){

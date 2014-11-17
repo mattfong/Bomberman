@@ -1,5 +1,6 @@
-package gameplay;
+package gameplay.gameobject;
 
+import gameplay.World;
 import gameplay.input.CommandManager;
 import gameplay.input.InputListener;
 
@@ -37,7 +38,7 @@ public class Bomberman extends GameActor{
 		bomb=bombList.poll();
 		
 		if(bomb!=null){
-			bomb.remove();
+			bomb.explode();
 		}
 	}
 	

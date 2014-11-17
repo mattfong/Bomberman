@@ -1,4 +1,6 @@
-package gameplay;
+package gameplay.gameobject;
+
+import gameplay.World;
 
 import java.awt.Rectangle;
 
@@ -12,6 +14,7 @@ public class Wall extends GameObject {
 		isSolid=true;
 		sprite=new ImageIcon(Wall.class.getResource("/HardBlock.png")).getImage();
 		destroyable=false;
+		conductsExplosions=false;
 		
 	}
 

@@ -1,4 +1,7 @@
-package gameplay;
+package gameplay.gameobject;
+
+import gameplay.Direction;
+import gameplay.World;
 
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -12,7 +15,6 @@ public class Bomb extends GameObject{
 	private int explosionRadius;
 
 	private int bombCountdown;
-	private final int countdownTimer = 3000;// in miliseconds
 
 	public Bomb(Rectangle location, World world,int radius) {
 		super(location,world);
@@ -21,6 +23,7 @@ public class Bomb extends GameObject{
 		bombCountdown=40;
 		destroyable=false;
 		explosionRadius=radius;
+		conductsExplosions=false;
 	}
 
 	@Override
