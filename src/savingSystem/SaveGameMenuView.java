@@ -16,12 +16,8 @@ public class SaveGameMenuView {
 	private static JTextField jt= new JTextField(30);
 	private static String savedGameName = "";
 	static List<SavedGame> savedGames = new ArrayList<SavedGame>();
-	static SavedGameManager sgm = new SavedGameManager();
+	static SavedGameManager saveManager = new SavedGameManager();
 	
-	/**
-	 * The SaveGameMenuView  
-	 * 
-	 */
 	public static void SaveGameMenuView(){
 		JPanel panel = new JPanel();
 		final JFrame frame = new JFrame("Save Game Menu");
@@ -43,17 +39,16 @@ public class SaveGameMenuView {
 				
 				String fileName = "SaveGameName.ser";
 
-				sgm.addSavedGame(getSavedGameName());
+				saveManager.addSavedGame(getSavedGameName());
 				SavedGameSerialization serializeGame = new SavedGameSerialization();
 				System.out.println(getSavedGameName());
 				
-				serializeGame.serializeSaveGameName(sgm.addSavedGame(getSavedGameName()), fileName);
+				serializeGame.serializeSaveGameName(saveManager.addSavedGame(getSavedGameName()), fileName);
 				System.out.println("Serialization Done");
 				
 				List<SavedGame> newSavedGames = serializeGame.deserializeSaveGameName(fileName);
 				System.out.println("SaveName: " + newSavedGames.get(0).getGameState() + "," +
 						newSavedGames.get(0).getUserName() + "," + newSavedGames.get(0).getSavedGameName() );
-				//frame.dispose();	
 			}
 			
 		});
@@ -61,7 +56,7 @@ public class SaveGameMenuView {
 	    playNewGame.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent arg0) {
-				sgm.newOperation();	
+				saveManager.newOperation();	
 			}
 			
 		});	
