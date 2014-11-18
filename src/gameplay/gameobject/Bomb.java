@@ -11,14 +11,14 @@ import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 public class Bomb extends GameObject{
-	private boolean isSolid;
+	
 	private int explosionRadius;
 
 	private int bombCountdown;
 
 	public Bomb(Rectangle location, World world,int radius) {
 		super(location,world);
-		isSolid = true;
+		solid = true;
 		sprite = new ImageIcon(Bomb.class.getResource("/BombSprite.png")).getImage();
 		bombCountdown=40;
 		destroyable=false;

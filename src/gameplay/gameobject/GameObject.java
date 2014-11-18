@@ -47,6 +47,14 @@ public abstract class GameObject {
 		return solid;
 	}
 	
+	public int getXCoordinate(){
+		return gridLocation.x;
+	}
+	
+	public int getYCoordinate(){
+		return gridLocation.y;
+	}
+	
 	public void setXCoordinate(int newXCoord){
 		gridLocation.x=newXCoord;
 	}
@@ -56,11 +64,11 @@ public abstract class GameObject {
 	}
 	
 	public int getWidth(){
-		return gridLocation.x;
+		return pictureSize;
 	}
 	
 	public int getHeight(){
-		return gridLocation.y;
+		return pictureSize;
 	}
 	
 	public void remove(){

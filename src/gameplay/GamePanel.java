@@ -23,8 +23,7 @@ public class GamePanel extends JPanel implements Runnable{
 	private Graphics dbg;
 	
 	//Jpanel Variables
-	//static final int GWIDTH=992,GHEIGHT=448;
-	static final int GWIDTH=1500,GHEIGHT=1500;
+	static final int GWIDTH=992,GHEIGHT=448;
 	
 	static final Dimension gameDim=new Dimension(GWIDTH,GHEIGHT);
 	
@@ -79,7 +78,7 @@ public class GamePanel extends JPanel implements Runnable{
 	private void gameUpdate(){
 		if(running && game!=null){
 			p1.update();
-			world.update();
+			//world.update();
 		}
 		
 	}
@@ -96,7 +95,7 @@ public class GamePanel extends JPanel implements Runnable{
 			}
 		}
 		//clear the screen
-		dbg.setColor(Color.LIGHT_GRAY);
+		dbg.setColor(Color.WHITE);
 		dbg.fillRect(0,0,GWIDTH,GHEIGHT);
 		//Draw game elements
 		draw(dbg);

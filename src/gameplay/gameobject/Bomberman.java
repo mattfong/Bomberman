@@ -30,7 +30,7 @@ public class Bomberman extends GameActor{
 	public void placeBomb(){
 		Bomb bomb=new Bomb( new Rectangle(gridLocation),this.world, this.explosionRadius);
 		bombList.add(bomb);
-		world.grid[gridLocation.x/pictureSize][gridLocation.y/pictureSize]=bomb;
+		world.addGameObject(bomb);
 	}
 	
 	public void detonateBomb(){
