@@ -2,6 +2,7 @@ package loginSystem;
 import gameplay.GameFrame;
 import highscore.HighScoreController;
 
+import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -51,17 +52,21 @@ public class PlayGame {
 	public static void playMenu()
 	{
 		final JFrame frame=new JFrame("Bomberman");
+		//JFrame frame=new LoginFrame.LoginFrame();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(992,448);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		
+		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.RED);
 
 		
 		panel.setLayout(new GridLayout(4,1,5,10));
 		JButton play =new JButton("Play Game");
+		//play.setBackground(Color.green);
 		play.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("New Game Frame");

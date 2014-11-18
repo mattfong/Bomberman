@@ -1,5 +1,6 @@
 package loginSystem;
 import java.awt.GridLayout;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -43,16 +44,21 @@ public class newAccount {
 				String Pass=PassPF.getText();
 				
 				
-				if(UsernameAndPasswordValid.valid(User, Pass)){
-					try {
-						CSVwriter.CSVwriter(User, Pass);
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+				try {
+					if(UsernameAndPasswordValid.valid(User, Pass)){
+						try {
+							CSVwriter.CSVwriter(User, Pass);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						System.out.println("Entered user is "+User+" and pass is "+Pass);
+						frame.dispose();
+						LoginMenu.loginMenu();	
 					}
-					System.out.println("Entered user is "+User+" and pass is "+Pass);
-					frame.dispose();
-					LoginMenu.loginMenu();	
+				} catch (HeadlessException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}//end if
 				
 			}
