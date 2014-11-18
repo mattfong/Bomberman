@@ -9,11 +9,13 @@ import java.awt.Rectangle;
 public abstract class GameObject {
 
 	protected Rectangle gridLocation;
-	protected boolean destroyable;
+
 	protected Image sprite;
 	protected final int pictureSize=32;
 	protected World world;
+	
 	protected boolean solid;
+	protected boolean destroyable;
 	protected boolean conductsExplosions;
 	
 	//Constructor

@@ -7,8 +7,9 @@ import java.awt.Rectangle;
 public class GameActor extends GameObject {
 
 	protected int moveSpeed=32;
-
-	
+	protected boolean wallPass;
+	protected boolean bombPass;
+	protected boolean flamePass;
 
 	public GameActor(Rectangle location, World world){
 		super(location, world);
@@ -18,6 +19,7 @@ public class GameActor extends GameObject {
 	public void update(){
 		
 	}
+	
 	private boolean hasCollided(){
 
 		return world.checkForCollision(this);
@@ -32,6 +34,7 @@ public class GameActor extends GameObject {
 		}
 			
 	}
+
 	public void moveRight(){
 		gridLocation.x=gridLocation.x+moveSpeed;
 		if(hasCollided()){
