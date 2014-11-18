@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.border.Border;
 import javax.swing.JButton;
 
-public class HighScoreView extends JFram implements ActionListener{
+public class HighScoreView extends JFrame implements ActionListener{
 
 	JFrame f;
 
