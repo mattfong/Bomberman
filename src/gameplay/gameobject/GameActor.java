@@ -1,64 +1,57 @@
-package gameplay;
+package gameplay.gameobject;
+
+import gameplay.World;
 
 import java.awt.Rectangle;
 
 public class GameActor extends GameObject {
 
 	protected int moveSpeed=32;
+	protected boolean wallPass;
+	protected boolean bombPass;
+	protected boolean flamePass;
 
+	public GameActor(Rectangle location, World world){
+		super(location, world);
+		conductsExplosions=true;
 	
-
-	public GameActor(World world, Rectangle location){
-		super(location);
-		this.world=world;	
 	}
 	public void update(){
 		
 	}
-	private boolean checkForCollision(){
-		int width=world.getGridWidth();
-		int height=world.getGridHeight();
-		
-		
-		for(int i=0;i<width;i++){
-			for(int j=0;j<height;j++){
-				if(world.grid[i][j]!=null){ //TODO: Implement a way to deal with null cases, unused grid elements are set to null
-					if(world.grid[i][j].hasCollided(this)){
-						return true;	
-					}
-				}
+	
+	private boolean hasCollided(){
 
+		return world.checkForCollision(this);
 
-			}
-		}
-		return false;
 	}
 
 	
 	public void moveLeft(){
 		gridLocation.x=gridLocation.x-moveSpeed;
-		if(checkForCollision()){
+		if(hasCollided()){
 			gridLocation.x=gridLocation.x+moveSpeed;
 		}
 			
 	}
+
 	public void moveRight(){
 		gridLocation.x=gridLocation.x+moveSpeed;
-		if(checkForCollision()){
+		if(hasCollided()){
 			gridLocation.x=gridLocation.x-moveSpeed;
 		}
 	}
-	
+	 
 	public void moveUp(){
 		gridLocation.y=gridLocation.y-moveSpeed;
-		if(checkForCollision()){
+		if(hasCollided()){
 			gridLocation.y=gridLocation.y+moveSpeed;
 		}
 	} 
 	
 	public void moveDown(){
 		gridLocation.y=gridLocation.y+this.moveSpeed;
-		if(checkForCollision()){
+		if(hasCollided()){
 			gridLocation.y=gridLocation.y-moveSpeed;
 		}
 		

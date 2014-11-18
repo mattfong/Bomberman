@@ -4,14 +4,16 @@ package highscore;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.border.Border;
+import javax.swing.JButton;
 
-
-public class HighScoreView extends JFrame{
+public class HighScoreView extends JFram implements ActionListener{
 
 	JFrame f;
 
@@ -147,8 +149,17 @@ public class HighScoreView extends JFrame{
 	    highScoreTen.setVerticalAlignment(JLabel.TOP);
 
 
+	    //The button will make the player go back the game/main menu depending on where he was 
+	    //beforehand
+	    JButton goBack = new JButton("Back");
+	    
+	    //The following will be used to execute any commands related to the button
+	    //goBack.addActionListener(this.actionPerformed(arg0););	    
+
+
 
 	    f.add(label);
+	    f.add(goBack);
 	    f.add(highScoreOne);
 	    f.add(highScoreTwo);
 	    f.add(highScoreThree);
@@ -166,8 +177,11 @@ public class HighScoreView extends JFrame{
 	}
 
 
-
-
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 }

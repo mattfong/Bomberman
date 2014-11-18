@@ -1,5 +1,8 @@
 package gameplay;
 
+import gameplay.gameobject.Bomberman;
+import gameplay.input.InputListener;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -14,14 +17,13 @@ public class GamePanel extends JPanel implements Runnable{
 	int xCoord;
 	int yCoord;
 	
-	private long period=6*1000000;
+	private long period=30*1000000;
 	//Double buffering
 	private Image dbImage;
 	private Graphics dbg;
 	
 	//Jpanel Variables
-	//static final int GWIDTH=992,GHEIGHT=448;
-	static final int GWIDTH=1500,GHEIGHT=1500;
+	static final int GWIDTH=992,GHEIGHT=448;
 	
 	static final Dimension gameDim=new Dimension(GWIDTH,GHEIGHT);
 	
@@ -43,7 +45,7 @@ public class GamePanel extends JPanel implements Runnable{
 		world=new World(31,13);
 		p1=new Bomberman(world, new Rectangle(32,32,32,32));
 		
-		addKeyListener(new InputListener(p1));
+		addKeyListener(InputListener.getInstance());
 		
 	}
 	
@@ -76,6 +78,7 @@ public class GamePanel extends JPanel implements Runnable{
 	private void gameUpdate(){
 		if(running && game!=null){
 			p1.update();
+			world.update();
 		}
 		
 	}
@@ -92,7 +95,7 @@ public class GamePanel extends JPanel implements Runnable{
 			}
 		}
 		//clear the screen
-		dbg.setColor(Color.LIGHT_GRAY);
+		dbg.setColor(Color.WHITE);
 		dbg.fillRect(0,0,GWIDTH,GHEIGHT);
 		//Draw game elements
 		draw(dbg);

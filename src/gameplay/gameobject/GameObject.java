@@ -1,4 +1,6 @@
-package gameplay;
+package gameplay.gameobject;
+
+import gameplay.World;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -7,16 +9,19 @@ import java.awt.Rectangle;
 public abstract class GameObject {
 
 	protected Rectangle gridLocation;
-	protected boolean isDestroyed;
-	//protected GameBoard board; 
+
 	protected Image sprite;
 	protected final int pictureSize=32;
 	protected World world;
 	
+	protected boolean solid;
+	protected boolean destroyable;
+	protected boolean conductsExplosions;
 	
 	//Constructor
-	public GameObject(Rectangle location){
+	public GameObject(Rectangle location, World world){
 		gridLocation=location;
+		this.world=world;
 	}
 	
 	
@@ -36,6 +41,22 @@ public abstract class GameObject {
 	
 	//Getters and setters
 	
+	public boolean isDestroyable(){
+		return destroyable;
+	}
+	
+	public boolean isSolid(){
+		return solid;
+	}
+	
+	public int getXCoordinate(){
+		return gridLocation.x;
+	}
+	
+	public int getYCoordinate(){
+		return gridLocation.y;
+	}
+	
 	public void setXCoordinate(int newXCoord){
 		gridLocation.x=newXCoord;
 	}
@@ -45,11 +66,11 @@ public abstract class GameObject {
 	}
 	
 	public int getWidth(){
-		return gridLocation.x;
+		return pictureSize;
 	}
 	
 	public int getHeight(){
-		return gridLocation.y;
+		return pictureSize;
 	}
 	
 	public void remove(){
@@ -69,6 +90,9 @@ public abstract class GameObject {
 		return false; 
 	}
 	
+	public boolean conductsExplosions(){
+		return conductsExplosions;
+	}
 
 	
 }
