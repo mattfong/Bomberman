@@ -28,7 +28,7 @@ public class World {
 		grid = new Stack[widthInBlocks][heightInBlocks];
 
 		initStack();
-		backGroundFill();
+		fillBackground();
 		concreteFill();
 		placeBricks();
 
@@ -113,7 +113,7 @@ public class World {
 		}
 	}
 	
-	private void backGroundFill(){
+	private void fillBackground(){
 		for(int i=0;i<gridWidth;i++){
 			for(int j=0;j<gridHeight;j++){
 				addGameObject(new Background(new Rectangle(i*blockSize,j*blockSize,blockSize,blockSize),this));

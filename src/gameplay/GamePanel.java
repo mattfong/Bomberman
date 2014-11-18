@@ -78,7 +78,7 @@ public class GamePanel extends JPanel implements Runnable{
 	private void gameUpdate(){
 		if(running && game!=null){
 			p1.update();
-			//world.update();
+			world.update();
 		}
 		
 	}
