@@ -21,14 +21,16 @@ public class PlayGame {
 	static JTextField jt= new JTextField(30);
 	static JTextField ft =new JTextField(30);
 	
+	//static JFrame frame= new LoginFrame();
+	
 	public static void notYet()
 	{
-		final JFrame frame2=new JFrame("not yet");
-		frame2.setVisible(true);
-		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame2.setSize(992,448);
-		frame2.setLocationRelativeTo(null);
-		frame2.setResizable(false);
+		final JFrame frame=new JFrame("not yet");
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(992,448);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
 		
 		JPanel comingSoon = new JPanel();
 		comingSoon.setLayout(new GridLayout(2,1,5,10));
@@ -37,13 +39,13 @@ public class PlayGame {
 		JButton goBack = new JButton("Go back to the Play menu");
 		goBack.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				frame2.dispose();
+				frame.dispose();
 				playMenu();	
 			}
 		});	
 		comingSoon.add(myLabel);
 		comingSoon.add(goBack);
-		frame2.add(comingSoon);
+		frame.add(comingSoon);
 		
 		
 	}
@@ -61,7 +63,7 @@ public class PlayGame {
 		
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.RED);
+		//panel.setBackground(Color.RED);
 
 		
 		panel.setLayout(new GridLayout(4,1,5,10));
