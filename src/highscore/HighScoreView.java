@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.border.Border;
 import javax.swing.JButton;
 
+import loginSystem.PlayGame;
+
 public class HighScoreView extends JFrame implements ActionListener{
 
 	JFrame f;
@@ -152,7 +154,12 @@ public class HighScoreView extends JFrame implements ActionListener{
 	    //The button will make the player go back the game/main menu depending on where he was 
 	    //beforehand
 	    JButton goBack = new JButton("Back");
-	    
+	    goBack.addActionListener(new ActionListener(){
+	    public void actionPerformed(ActionEvent arg0) {
+			f.dispose();
+			//notYet();	
+			PlayGame.playMenu();
+	    }});
 	    //The following will be used to execute any commands related to the button
 	    //goBack.addActionListener(this.actionPerformed(arg0););	    
 
