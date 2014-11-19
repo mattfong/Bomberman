@@ -1,5 +1,7 @@
 package loginSystem;
 
+import loginSystem.LoginMenu;
+
 
 public class StartGame {
 		
@@ -8,4 +10,6 @@ public class StartGame {
 		LoginMenu.loginMenu();	
 		
 	}
+	
+	
 }

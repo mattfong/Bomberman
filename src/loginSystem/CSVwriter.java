@@ -6,13 +6,13 @@ import au.com.bytecode.opencsv.CSVWriter;
 
 public class CSVwriter {
 	
-	public static void CSVwriter(String User, String Pass) throws IOException{
+	public static void CSVwriter(String Name, String User, String Pass) throws IOException{
 		
 		String csv = "UserPass.csv";
 		
 		//Creates a CSV file if it does not exist, and appends data to the file
 		CSVWriter writer = new CSVWriter(new FileWriter((csv), true), ',');	
-		Account newUser = new Account(User, Pass);
+		Account newUser = new Account(/*Name,*/ User, Pass);
 		writer.writeNext(newUser.toCSVEntry());
 		writer.close();
 	}

@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 
 
 public class newAccount {
+	static JTextField NameTF = new JTextField(30);
 	static JTextField UserTF= new JTextField(30);
 	static JPasswordField PassPF = new JPasswordField(30);	
 	
@@ -30,8 +31,9 @@ public class newAccount {
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 
-		panel.setLayout(new GridLayout(5,1,5,10));
+		panel.setLayout(new GridLayout(7,1,5,10));
 		
+		JLabel enterName = new JLabel("          Enter your name");
 		JLabel enterUser = new JLabel("			Enter your desired username");
 		JLabel enterPass = new JLabel("			Enter your desired Password");
 		
@@ -40,6 +42,7 @@ public class newAccount {
 		makeUser.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent arg0) {
+				String Name =NameTF.getText();
 				String User=UserTF.getText();
 				String Pass=PassPF.getText();
 				
@@ -47,7 +50,7 @@ public class newAccount {
 				try {
 					if(UsernameAndPasswordValid.valid(User, Pass)){
 						try {
-							CSVwriter.CSVwriter(User, Pass);
+							CSVwriter.CSVwriter(Name, User, Pass);
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -64,7 +67,8 @@ public class newAccount {
 			}
 			
 		});	
-		
+		panel.add(enterName);
+		panel.add(NameTF);
 		panel.add(enterUser);
 		panel.add(UserTF);
 		panel.add(enterPass);
