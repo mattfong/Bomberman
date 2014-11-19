@@ -7,8 +7,8 @@ import java.util.List;
 
 public class SavedGameManager {
 	
-	List<SavedGame> savedGames = new ArrayList<SavedGame>();
-	SavedGame savedGame = new SavedGame();
+	private List<SavedGame> savedGames = new ArrayList<SavedGame>();
+	private SavedGame savedGame = new SavedGame();
 	
 	
 	public SavedGameManager() {
@@ -17,8 +17,8 @@ public class SavedGameManager {
 
 	public List<SavedGame> addSavedGame(String savedGameName){
 		savedGame.setSavedGameName(savedGameName);
-//		savedGames.add(new SavedGame(savedGame.getGameState(), savedGame.getUserName(), savedGame.getSavedGameName()));
-		savedGames.add(new SavedGame(null,"Ann", savedGameName));
+		savedGames.add(new SavedGame(savedGame.getGameState(), savedGame.getUserName(), savedGame.getSavedGameName()));
+//		savedGames.add(new SavedGame(null,"Ann", savedGameName));
 		return savedGames;
 	}
 	

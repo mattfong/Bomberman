@@ -140,7 +140,27 @@ public class World {
 		return gridHeight;
 	}
 
-
+	/**
+	 * @param location rectangle representing a location on the game grid
+	 * @return returns true if the rectangle is at an intersection of walls, returns false if it's not at an intersection of walls
+	 */
+	public boolean isIntersection(Rectangle location){
+		int xIndex;
+		int yIndex;
+		
+		xIndex=location.x/blockSize;
+		yIndex=location.y/blockSize;
+		
+		if( (grid[xIndex-1][yIndex].peek() instanceof Wall) || (grid[xIndex+1][yIndex].peek() instanceof Wall) ){
+			return false;
+		}
+		if ( (grid[xIndex][yIndex+1].peek() instanceof Wall) || (grid[xIndex][yIndex-1].peek() instanceof Wall) ){
+			return false;
+		}
+		
+		return true;
+	}
+	
 	/**
 	 * @param xCoordinate
 	 * @param yCoordinate

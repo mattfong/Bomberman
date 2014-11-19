@@ -10,7 +10,7 @@ import java.util.List;
 public class SavedGameSerialization {
 	
 	public void serializeSaveGameName(List<SavedGame> savedGames, String fileName) {
-		try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName))) {
+		try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName, true))) {
 			out.writeObject(savedGames);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
