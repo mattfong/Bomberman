@@ -13,14 +13,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class SaveGameMenuView {
-	private static JTextField jt= new JTextField(30);
-	private static String savedGameName = "";
-	static List<SavedGame> savedGames = new ArrayList<SavedGame>();
-	static SavedGameManager saveManager = new SavedGameManager();
-	
-	public static void SaveGameMenuView(){
+	private JTextField jt= new JTextField(30);
+	private String savedGameName = "";
+	private List<SavedGame> savedGames = new ArrayList<SavedGame>();
+	private SavedGameManager saveManager = new SavedGameManager();
+	private final JFrame frame = new JFrame("Save Game Menu");
+
+	public void SaveGameMenuView(){
 		JPanel panel = new JPanel();
-		final JFrame frame = new JFrame("Save Game Menu");
 		frame.setVisible(true);
 	    frame.setSize(992,448);
 	    frame.setLocationRelativeTo(null);
@@ -79,17 +79,12 @@ public class SaveGameMenuView {
 	
 	}
 	
-	public static String getSavedGameName() {
+	public String getSavedGameName() {
 		return savedGameName;
 	}
 
-	public static void setSavedGameName(String savedGameName) {
-		SaveGameMenuView.savedGameName = savedGameName;
-	}
-
-	public static void main(String[] args) {
-
-		SaveGameMenuView();
+	public void setSavedGameName(String savedGameName) {
+		this.savedGameName = savedGameName;
 	}
 	
 }

@@ -13,9 +13,9 @@ import javax.swing.JPanel;
 public class LoadGameMenuView {
 
 	private List<SavedGame> savedGames = new ArrayList<SavedGame>();
-	
-	public static void LoadGameMenuView(){
-		final JFrame frame = new JFrame("Load Game Menu");
+	private final JFrame frame = new JFrame("Load Game Menu");
+
+	public void LoadGameMenuView(){
 		frame.setVisible(true);
 	    frame.setSize(992,448);
 	    frame.setLocationRelativeTo(null);
@@ -43,8 +43,4 @@ public class LoadGameMenuView {
 	    
 	}
 	
-	public static void main(String[] args) {
-
-		LoadGameMenuView();
-	}
 }
