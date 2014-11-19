@@ -9,17 +9,19 @@ import gameplay.gameobject.GameActor;
 public class CommandManager {
 
 	private GameActor actor;
-	private InputListener commandSource;
+	private CommandIssuer commandSource;
+	
 	/**
 	 * @param actor The GameActor which will be controlled by Command Manager.
 	 * @param commandSource The source of the commands that will be piped to the GameActors, in the case of Bomberman this is the inputListener, in the case of an Enemy it will be an AI.
 	 */
-	public CommandManager(GameActor actor,InputListener commandSource) {
-		this.actor=actor;
-		this.commandSource=commandSource;
+	
+	public CommandManager(GameActor actor,CommandIssuer commandSource) {
+		this.actor = actor;
+		this.commandSource = commandSource;
 	}
 	
-	
+
 	/**
 	 * Method gets a command from the specified Command source defined in constructor and executes the command.
 	 */

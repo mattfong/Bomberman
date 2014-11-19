@@ -3,7 +3,7 @@ package gameplay.input;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class InputListener extends KeyAdapter {
+public class InputListener extends KeyAdapter implements CommandIssuer {
 	
 	private static InputListener singleton=null;
 	private static KeyEvent bufferedKey;
@@ -32,6 +32,7 @@ public class InputListener extends KeyAdapter {
 	public void keyTyped(KeyEvent e){
 		
 	}
+	@Override
 	public Command getCommand(){
 		
 		if(bufferedKey!=null){
