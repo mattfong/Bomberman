@@ -4,11 +4,8 @@ import gameplay.Direction;
 import gameplay.World;
 
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
-import javax.swing.Timer;
+
 
 public class Bomb extends GameObject{
 	
@@ -18,12 +15,14 @@ public class Bomb extends GameObject{
 
 	public Bomb(Rectangle location, World world,int radius) {
 		super(location,world);
-		solid = true;
 		sprite = new ImageIcon(Bomb.class.getResource("/BombSprite.png")).getImage();
-		bombCountdown=40;
+		
 		destroyable=false;
-		explosionRadius=radius;
+		solid = true;
 		conductsExplosions=false;
+		
+		bombCountdown=40;
+		explosionRadius=radius;
 	}
 
 	@Override
@@ -41,11 +40,11 @@ public class Bomb extends GameObject{
 	}
 
 	public void explode() {
-		this.remove();
-		world.detonateSpot(gridLocation.x, gridLocation.y, Direction.UP, explosionRadius);
-		world.detonateSpot(gridLocation.x, gridLocation.y, Direction.DOWN, explosionRadius);
-		world.detonateSpot(gridLocation.x, gridLocation.y, Direction.LEFT, explosionRadius);
-		world.detonateSpot(gridLocation.x, gridLocation.y, Direction.RIGHT, explosionRadius);
+		this.destroy();
+		world.detonateLine(gridLocation.x, gridLocation.y, Direction.UP, explosionRadius);
+		world.detonateLine(gridLocation.x, gridLocation.y, Direction.DOWN, explosionRadius);
+		world.detonateLine(gridLocation.x, gridLocation.y, Direction.LEFT, explosionRadius);
+		world.detonateLine(gridLocation.x, gridLocation.y, Direction.RIGHT, explosionRadius);
 	}
 	
 	private boolean checkBombTimer(){
