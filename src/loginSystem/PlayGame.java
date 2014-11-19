@@ -88,7 +88,7 @@ public class PlayGame {
 		high.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				notYet();	
+				//notYet();	
 				HighScoreController.displayHighScore();
 			}
 		});	
