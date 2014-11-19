@@ -32,6 +32,10 @@ public class CommandManager {
 	}
 	
 	
+	/**
+	 * executes the given command on the bounded GameActor
+	 * @param inputCommand command that is to be executed.
+	 */
 	private void executeCommand(Command inputCommand){
 		inputCommand.execute(actor);
 	}

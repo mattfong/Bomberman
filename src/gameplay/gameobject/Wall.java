@@ -8,16 +8,15 @@ import javax.swing.ImageIcon;
 
 public class Wall extends GameObject {
 
-	
-	public Wall(Rectangle location, World world){
-		super(location, world); 
+    public Wall(Rectangle location, World world) {
+	super(location, world);
 
-		sprite=new ImageIcon(Wall.class.getResource("/HardBlock.png")).getImage();
-		
-		destroyable=false;
-		solid=true;
-		conductsExplosions=false;
-		
-	}
+	sprite = new ImageIcon(Wall.class.getResource("/HardBlock.png")).getImage();
+
+	destroyable = false;
+	solid = true;
+	conductsExplosions = false;
+
+    }
 
 }

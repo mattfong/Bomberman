@@ -25,13 +25,16 @@ public class InputListener extends KeyAdapter {
 		bufferedKey=e;
 	}
 	@Override
+
 	public void keyReleased(KeyEvent e){
 
 	}
 	@Override
+
 	public void keyTyped(KeyEvent e){
 		
 	}
+	
 	public Command getCommand(){
 		
 		if(bufferedKey!=null){
