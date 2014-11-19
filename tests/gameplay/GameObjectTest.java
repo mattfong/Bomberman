@@ -1,6 +1,7 @@
 package gameplay;
 
 import static org.junit.Assert.*;
+import gameplay.gameobject.MockGameObject;
 
 import java.awt.Rectangle;
 
@@ -12,16 +13,17 @@ public class GameObjectTest {
 
 	@Test
 	public void testHasCollided() {
-		MockGameObject center=new MockGameObject(new Rectangle(32,32,32,32));
-		MockGameObject left=new MockGameObject(new Rectangle(0,32,32,32));
-		MockGameObject right=new MockGameObject(new Rectangle(64,32,32,32));
-		MockGameObject up=new MockGameObject(new Rectangle(32,0,32,32));
-		MockGameObject down=new MockGameObject(new Rectangle(32,64,32,32));
-		MockGameObject upperLeft=new MockGameObject(new Rectangle(0,0,32,32));
-		MockGameObject upperRight=new MockGameObject(new Rectangle(64,0,32,32));
-		MockGameObject lowerLeft=new MockGameObject(new Rectangle(0,64,32,32));
-		MockGameObject lowerRight=new MockGameObject(new Rectangle(64,64,32,32));
-		MockGameObject coincident=new MockGameObject(new Rectangle(32,32,32,32));
+		
+		MockGameObject center=new MockGameObject(new Rectangle(32,32,32,32),null);
+		MockGameObject left=new MockGameObject(new Rectangle(0,32,32,32),null);
+		MockGameObject right=new MockGameObject(new Rectangle(64,32,32,32),null);
+		MockGameObject up=new MockGameObject(new Rectangle(32,0,32,32),null);
+		MockGameObject down=new MockGameObject(new Rectangle(32,64,32,32),null);
+		MockGameObject upperLeft=new MockGameObject(new Rectangle(0,0,32,32),null);
+		MockGameObject upperRight=new MockGameObject(new Rectangle(64,0,32,32),null);
+		MockGameObject lowerLeft=new MockGameObject(new Rectangle(0,64,32,32),null);
+		MockGameObject lowerRight=new MockGameObject(new Rectangle(64,64,32,32),null);
+		MockGameObject coincident=new MockGameObject(new Rectangle(32,32,32,32),null);
 
 		
 		//tests collision along all edges and tips around a central box

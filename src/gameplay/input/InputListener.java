@@ -1,8 +1,5 @@
 package gameplay.input;
 
-import gameplay.gameobject.Bomberman;
-import gameplay.gameobject.GameActor;
-
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 

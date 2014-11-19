@@ -5,6 +5,8 @@ package gameplay;
 import gameplay.gameobject.Brick;
 import gameplay.gameobject.GameObject;
 import gameplay.gameobject.Wall;
+import gameplay.powerups.DetonatorPowerup;
+import gameplay.powerups.Powerup;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -27,11 +29,17 @@ public class World {
 
 		grid = new Stack[widthInBlocks][heightInBlocks];
 
+		createGrid();
+
+	}
+	
+	private void createGrid(){
 		initStack();
 		fillBackground();
 		concreteFill();
 		placeBricks();
-
+		clearTopLeftCorner();
+		placePowerup();
 	}
 	
 	private void initStack(){
@@ -42,7 +50,13 @@ public class World {
 		}
 	}
 	
+	
+	//TODO implement it so that it's placed under a random spot
+	private void placePowerup(){
+		Rectangle location = new Rectangle(1*blockSize,2*blockSize,blockSize,blockSize);
+		addGameObject(new DetonatorPowerup(location,this));
 
+	}
 	
 	public void update(){
 		for (int i = 0; i < gridWidth; i++) {
@@ -94,6 +108,19 @@ public class World {
 
 	}
 
+	private void clearTopLeftCorner(){
+		if(grid[1][1].peek() instanceof Brick){
+			grid[1][1].pop();
+		}
+		if(grid[2][1].peek() instanceof Brick){
+			grid[2][1].pop();
+		}
+		if(grid[1][2].peek() instanceof Brick){
+			grid[1][2].pop();
+		}
+		
+	}
+	
 	private void concreteFill(){
 		for(int i = 0;i<gridWidth;i++){
 			
@@ -167,7 +194,7 @@ public class World {
 	 * @param direction
 	 * @param radius
 	 */
-	public void detonateSpot(int xCoordinate,int yCoordinate,Direction direction, int radius){
+	public void detonateLine(int xCoordinate,int yCoordinate,Direction direction, int radius){
 		
 		if(radius==0){
 			return;
@@ -181,10 +208,10 @@ public class World {
 			o=grid[xIndex][yIndex].peek();
 			
 			if(o.conductsExplosions()){
-				detonateSpot(xIndex*32,yIndex*32,direction,radius-1);
+				detonateLine(xIndex*32,yIndex*32,direction,radius-1);
 			}
 			
-			o.remove();
+			o.destroy();
 			
 			
 			

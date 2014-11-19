@@ -73,7 +73,7 @@ public abstract class GameObject {
 		return pictureSize;
 	}
 	
-	public void remove(){
+	public void destroy(){
 		world.removeGameObject(this);
 	}
 	

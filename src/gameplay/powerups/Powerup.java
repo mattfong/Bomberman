@@ -4,6 +4,6 @@ import gameplay.gameobject.GameActor;
 
 public interface Powerup {
 
-	public void apply(GameActor actor);
+	public void applyPowerup(GameActor actor);
 	
 }

@@ -11,8 +11,8 @@ import java.util.Queue;
 import javax.swing.ImageIcon;
 
 public class Bomberman extends GameActor{
-	int explosionRadius=1;
-	Queue<Bomb> bombList= new LinkedList();
+	
+	Queue<Bomb> bombList= new LinkedList<Bomb>();
 	CommandManager inputManager;
 	
 	public Bomberman (World world, Rectangle location){
