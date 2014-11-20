@@ -8,22 +8,25 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+/**
+ * @author mfong8 BombPass powerup which allows bomberman to move through bombs.
+ */
 public class BombPassPowerup extends GameObject implements Powerup {
 
-	public BombPassPowerup(Rectangle location, World world) {
-		super(location,world);
-		sprite=new ImageIcon(BombPassPowerup.class.getResource("/PowerupBombpass.png")).getImage();
-		
-		destroyable=true;
-		solid = false;
-		conductsExplosions=false;
-		
-	}
+    public BombPassPowerup(Rectangle location, World world) {
+	super(location, world);
+	sprite = new ImageIcon(BombPassPowerup.class.getResource("/PowerupBombpass.png")).getImage();
 
-	@Override
-	public void applyPowerup(GameActor actor) {
-		actor.setBombPass(true);
-		
-	}
+	destroyable = true;
+	solid = false;
+	conductsExplosions = false;
+
+    }
+
+    @Override
+    public void applyPowerup(GameActor actor) {
+	actor.setBombPass(true);
+
+    }
 
 }
