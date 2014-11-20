@@ -16,6 +16,11 @@ public abstract class GameObject {
     protected boolean solid;
     protected boolean destroyable;
     protected boolean conductsExplosions;
+    protected int score;
+
+    public int getScore() {
+	return score;
+    }
 
     public GameObject(Rectangle location, World world) {
 	gridLocation = location;
@@ -25,7 +30,7 @@ public abstract class GameObject {
     // Game Engine related items
     /**
      * draws the object to the graphics object supplied.
-     * 
+     *
      * @param g
      *            Graphics object that will be drawn on.
      */
@@ -59,7 +64,7 @@ public abstract class GameObject {
 
     /**
      * Returns if the game object conducts explosions through it.
-     * 
+     *
      * @return a boolean true if explosions should pass through the object,
      *         false if object stops explosions.
      */
@@ -70,7 +75,7 @@ public abstract class GameObject {
     /**
      * Checks if the current gameobject has collided with another gameobject
      * obj.
-     * 
+     *
      * @param obj
      *            -GameObject to check against
      * @return true if the instance collides with obj, false if they do not
@@ -86,7 +91,7 @@ public abstract class GameObject {
     /**
      * Method generates a rectangle which represents the collision boundaries of
      * the instance of GameObject
-     * 
+     *
      * @return a Rectangle which represents the collision boundaries of the
      *         GameObject.
      */
