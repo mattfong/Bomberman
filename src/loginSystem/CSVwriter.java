@@ -12,9 +12,10 @@ public class CSVwriter {
 		
 		//Creates a CSV file if it does not exist, and appends data to the file
 		CSVWriter writer = new CSVWriter(new FileWriter((csv), true), ',');	
-		Account newUser = new Account(/*Name,*/ User, Pass);
-		writer.writeNext(newUser.toCSVEntry());
-		writer.close();
+		String entries=Name+","+User+","+Pass+",";
+		  String[] toCSV=entries.split(",");
+		  writer.writeNext(toCSV);
+		  writer.close();
 	}
 	
 }

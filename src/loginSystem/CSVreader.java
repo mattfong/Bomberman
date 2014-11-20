@@ -1,4 +1,5 @@
 package loginSystem;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -80,23 +81,38 @@ public class CSVreader {
 		}
 	}
 	
-	public static boolean checkUser(String Username, String Password) throws IOException{
-		CSVReader reader = new CSVReader(new FileReader(csv));
-		String [] nextLine;
-		Account acc;
-		
-		// Reading through the CSV file line by line
-		while((nextLine=reader.readNext()) !=null){
-			acc = new Account(nextLine);
-			
-			// Checking if the user already exists in the database
-			if(Username.equals(acc.User)&&Password.equals(acc.Pass)){
-				return true;
-			}
-		}
-		
-		reader.close();
-		
+	public static boolean checkUser(String username, String password) throws IOException{
+		String csvFileToRead = "Test.csv";  
+		  BufferedReader br = null;  
+		  String line = "";  
+		  String splitBy = ",";  
+		  username="\""+username+"\"";
+		  password="\""+password+"\"";
+		  try {  
+			  
+			   br = new BufferedReader(new FileReader(csvFileToRead));  
+			   while ((line = br.readLine()) != null) {  
+			  
+				   String[] cars = line.split(splitBy);  
+				   if(username.equals(cars[1])&&password.equals(cars[2]))
+					   return true;
+			   }  
+			  
+		  } catch (FileNotFoundException e) {  
+			   e.printStackTrace();  
+		  } catch (IOException e) {  
+			  e.printStackTrace();  
+		  } finally {  
+			   if (br != null) {  
+				   try {  
+					   br.close();  
+				   } catch (IOException e) {  
+					   e.printStackTrace();  
+				   }  
+			   }  
+		  }  
+			  
+		  
 		return false;
 	}
 	
