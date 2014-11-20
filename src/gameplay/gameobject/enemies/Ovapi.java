@@ -13,7 +13,8 @@ public class Ovapi extends GameActor {
 	super(location, world);
 	sprite = new ImageIcon(Ovapi.class.getResource("/Ovapi.jpg")).getImage();
 	// inputManager = new CommandManager(this, InputListener.getInstance());
-
+	score = 2000;
+	wallPass = false;
     }
 
 }

@@ -26,6 +26,8 @@ public class GameActor extends GameObject implements Cloneable {
 
 	conductsExplosions = true;
 	wallPass = false;
+	solid = false;
+	destroyable = true;
 
 	// Bomberman specific stuff
 

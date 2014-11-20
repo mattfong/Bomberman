@@ -13,7 +13,8 @@ public class Oneal extends GameActor {
 	super(location, world);
 	sprite = new ImageIcon(Oneal.class.getResource("/Oneal.jpg")).getImage();
 	// inputManager = new CommandManager(this, InputListener.getInstance());
-
+	score = 200;
+	wallPass = false;
     }
 
 }

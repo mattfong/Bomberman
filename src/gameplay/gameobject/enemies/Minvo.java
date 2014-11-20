@@ -14,6 +14,8 @@ public class Minvo extends GameActor {
 	sprite = new ImageIcon(Minvo.class.getResource("/Minvo.jpg")).getImage();
 	// inputManager = new CommandManager(this, InputListener.getInstance());
 
+	score = 800;
+	wallPass = false;
     }
 
 }

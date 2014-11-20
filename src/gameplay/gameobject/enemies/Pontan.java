@@ -13,7 +13,8 @@ public class Pontan extends GameActor {
 	super(location, world);
 	sprite = new ImageIcon(Pontan.class.getResource("/Pontan.jpg")).getImage();
 	// inputManager = new CommandManager(this, InputListener.getInstance());
-
+	score = 8000;
+	wallPass = true;
     }
 
 }

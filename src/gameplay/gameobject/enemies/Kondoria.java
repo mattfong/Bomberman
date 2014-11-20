@@ -13,6 +13,7 @@ public class Kondoria extends GameActor {
 	super(location, world);
 	sprite = new ImageIcon(Kondoria.class.getResource("/Kondogira.jpg")).getImage();
 	// inputManager = new CommandManager(this, InputListener.getInstance());
-
+	score = 1000;
+	wallPass = true;
     }
 }
