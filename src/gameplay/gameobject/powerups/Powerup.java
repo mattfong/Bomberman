@@ -1,4 +1,4 @@
-package gameplay.powerups;
+package gameplay.gameobject.powerups;
 
 import gameplay.gameobject.GameActor;
 

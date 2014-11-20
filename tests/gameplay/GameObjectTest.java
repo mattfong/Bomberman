@@ -1,7 +1,7 @@
 package gameplay;
 
 import static org.junit.Assert.*;
-import gameplay.gameobject.MockGameObject;
+import gameplay.gameobject.blocks.MockGameObject;
 
 import java.awt.Rectangle;
 

@@ -1,9 +1,9 @@
 package gameplay;
 
-import gameplay.gameobject.Background;
-import gameplay.gameobject.Brick;
-import gameplay.gameobject.GameObject;
-import gameplay.gameobject.Wall;
+import gameplay.gameobject.blocks.Background;
+import gameplay.gameobject.blocks.Brick;
+import gameplay.gameobject.blocks.GameObject;
+import gameplay.gameobject.blocks.Wall;
 
 import java.awt.Rectangle;
 import java.util.Random;

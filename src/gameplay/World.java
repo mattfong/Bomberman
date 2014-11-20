@@ -2,8 +2,8 @@
 
 package gameplay;
 
-import gameplay.gameobject.GameObject;
-import gameplay.gameobject.Wall;
+import gameplay.gameobject.blocks.GameObject;
+import gameplay.gameobject.blocks.Wall;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;

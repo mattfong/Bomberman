@@ -1,6 +1,6 @@
 package gameplay;
 
-import gameplay.gameobject.GameObject;
+import gameplay.gameobject.blocks.GameObject;
 
 import java.util.Stack;
 

@@ -1,6 +1,7 @@
 package gameplay.gameobject;
 
 import gameplay.World;
+import gameplay.gameobject.blocks.Bomb;
 import gameplay.input.CommandManager;
 import gameplay.input.InputListener;
 

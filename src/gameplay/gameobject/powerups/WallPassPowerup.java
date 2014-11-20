@@ -1,8 +1,8 @@
-package gameplay.powerups;
+package gameplay.gameobject.powerups;
 
 import gameplay.World;
 import gameplay.gameobject.GameActor;
-import gameplay.gameobject.GameObject;
+import gameplay.gameobject.blocks.GameObject;
 
 import java.awt.Rectangle;
 

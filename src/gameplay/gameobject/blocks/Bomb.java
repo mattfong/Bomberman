@@ -1,4 +1,4 @@
-package gameplay.gameobject;
+package gameplay.gameobject.blocks;
 
 import gameplay.Direction;
 import gameplay.World;
