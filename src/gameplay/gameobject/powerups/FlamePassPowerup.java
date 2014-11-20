@@ -1,8 +1,8 @@
 package gameplay.gameobject.powerups;
 
 import gameplay.World;
-import gameplay.gameobject.GameActor;
-import gameplay.gameobject.blocks.GameObject;
+import gameplay.gameobject.BombermanInterface;
+import gameplay.gameobject.GameObject;
 
 import java.awt.Rectangle;
 
@@ -24,7 +24,7 @@ public class FlamePassPowerup extends GameObject implements Powerup {
     }
 
     @Override
-    public void applyPowerup(GameActor actor) {
+    public void applyPowerup(BombermanInterface actor) {
 	actor.setFlamePass(true);
     }
 
