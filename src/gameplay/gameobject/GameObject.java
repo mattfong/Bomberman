@@ -1,4 +1,4 @@
-package gameplay.gameobject.blocks;
+package gameplay.gameobject;
 
 import gameplay.World;
 
@@ -11,8 +11,9 @@ public abstract class GameObject {
     protected final int pictureSize = 32;
 
     protected Rectangle gridLocation;
-    protected Image sprite;
     protected World world;
+
+    protected Image sprite;
     protected boolean solid;
     protected boolean destroyable;
     protected boolean conductsExplosions;
