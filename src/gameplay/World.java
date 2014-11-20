@@ -2,15 +2,11 @@
 
 package gameplay;
 
-import gameplay.gameobject.Background;
-import gameplay.gameobject.Brick;
 import gameplay.gameobject.GameObject;
 import gameplay.gameobject.Wall;
-import gameplay.powerups.DetonatorPowerup;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.util.Random;
 import java.util.Stack;
 
 /**
@@ -19,45 +15,18 @@ import java.util.Stack;
  */
 public class World {
 
-    private final int probabilityConstant = 20;
-
     private int gridWidth;
     private int gridHeight;
     private final int blockSize = 32;
     public Stack<GameObject>[][] grid;
+    WorldGenerator worldGenerator;
 
     public World(int widthInBlocks, int heightInBlocks) {
 
 	gridHeight = heightInBlocks;
 	gridWidth = widthInBlocks;
-
-	grid = new Stack[widthInBlocks][heightInBlocks];
-
-	createGrid();
-
-    }
-
-    private void createGrid() {
-	initStack();
-	fillBackground();
-	concreteFill();
-	placeBricks();
-	clearTopLeftCorner();
-	placePowerup();
-    }
-
-    private void initStack() {
-	for (int i = 0; i < gridWidth; i++) {
-	    for (int j = 0; j < gridHeight; j++) {
-		grid[i][j] = new Stack<GameObject>();
-	    }
-	}
-    }
-
-    // TODO implement it so that it's placed under a random spot
-    private void placePowerup() {
-	Rectangle location = new Rectangle(1 * blockSize, 2 * blockSize, blockSize, blockSize);
-	addGameObject(new DetonatorPowerup(location, this));
+	worldGenerator = new WorldGenerator(this, widthInBlocks, heightInBlocks);
+	grid = worldGenerator.generateGameGrid();
 
     }
 
@@ -91,7 +60,7 @@ public class World {
     /**
      * takes in a gameobject and places it on the grid at the location specified
      * by the object itself.
-     * 
+     *
      * @param gameObject
      *            object that is to be added to the game world.
      */
@@ -104,60 +73,6 @@ public class World {
 
 	grid[xIndex][yIndex].push(gameObject);
 
-    }
-
-    Random rng = new Random();
-    double percentage;
-
-    private void placeBricks() {
-	for (int i = 0; i < gridWidth; i++) {
-	    for (int j = 0; j < gridHeight; j++) {
-		if (!(grid[i][j].peek() instanceof Wall) && (rng.nextInt(100) >= (100 - probabilityConstant))) {
-		    addGameObject(new Brick(new Rectangle(i * blockSize, j * blockSize, blockSize, blockSize), this));
-		}
-	    }
-	}
-
-    }
-
-    private void clearTopLeftCorner() {
-	if (grid[1][1].peek() instanceof Brick) {
-	    grid[1][1].pop();
-	}
-	if (grid[2][1].peek() instanceof Brick) {
-	    grid[2][1].pop();
-	}
-	if (grid[1][2].peek() instanceof Brick) {
-	    grid[1][2].pop();
-	}
-
-    }
-
-    private void concreteFill() {
-	for (int i = 0; i < gridWidth; i++) {
-
-	    addGameObject(new Wall(new Rectangle(i * blockSize, 0 * blockSize, blockSize, blockSize), this));
-	    addGameObject(new Wall(new Rectangle(i * blockSize, 12 * blockSize, blockSize, blockSize), this));
-
-	    for (int j = 1; j < (gridHeight - 1); j++) {
-		addGameObject(new Wall(new Rectangle(0 * blockSize, j * blockSize, blockSize, blockSize), this));
-		addGameObject(new Wall(new Rectangle(30 * blockSize, j * blockSize, blockSize, blockSize), this));
-	    }
-	}
-
-	for (int i = 0; i < gridWidth; i += 2) {
-	    for (int j = 0; j < gridHeight; j += 2) {
-		addGameObject(new Wall(new Rectangle(i * blockSize, j * blockSize, blockSize, blockSize), this));
-	    }
-	}
-    }
-
-    private void fillBackground() {
-	for (int i = 0; i < gridWidth; i++) {
-	    for (int j = 0; j < gridHeight; j++) {
-		addGameObject(new Background(new Rectangle(i * blockSize, j * blockSize, blockSize, blockSize), this));
-	    }
-	}
     }
 
     public void removeGameObject(GameObject obj) {
@@ -234,7 +149,7 @@ public class World {
     /**
      * checks if the given GameObject object has collided with any other
      * GameObject on the board
-     * 
+     *
      * @param object
      *            GameObject that is being checked if has collided with
      *            something.
