@@ -4,6 +4,10 @@ import gameplay.World;
 
 import java.awt.Rectangle;
 
+/**
+ * @author mfong8 Implenting class for the abstract GameObject class. Implements
+ *         features associated with moveable game actor objects.
+ */
 public class GameActor extends GameObject {
 
     protected int moveSpeed = 32;
@@ -37,15 +41,27 @@ public class GameActor extends GameObject {
 
     }
 
+    /**
+     * @return true if the GameActor can detonate bombs.
+     */
+
     public boolean canDetonateBomb() {
 	return detonator;
 
     }
 
+    /**
+     * @return true if the GameActor can walk through brick elements, false if
+     *         the GameActor cannot.
+     */
     public boolean canWallPass() {
 	return wallPass;
     }
 
+    /**
+     * @return true if the GameActor can be move through bombs, false if the
+     *         game actor cannot move through bombs.
+     */
     public boolean canBombPass() {
 	return bombPass;
     }

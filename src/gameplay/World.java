@@ -7,13 +7,16 @@ import gameplay.gameobject.Brick;
 import gameplay.gameobject.GameObject;
 import gameplay.gameobject.Wall;
 import gameplay.powerups.DetonatorPowerup;
-import gameplay.powerups.Powerup;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 import java.util.Stack;
 
+/**
+ * @author mfong8
+ *
+ */
 public class World {
 
     private final int probabilityConstant = 20;
@@ -69,7 +72,11 @@ public class World {
     }
 
     /**
+     * draw method which draws the gameworld onto a Graphics object that is
+     * later rendered.
+     *
      * @param g
+     *            graphics object to be drawn on.
      */
     public void draw(Graphics g) {
 	for (int i = 0; i < gridWidth; i++) {
@@ -81,6 +88,13 @@ public class World {
 	}
     }
 
+    /**
+     * takes in a gameobject and places it on the grid at the location specified
+     * by the object itself.
+     * 
+     * @param gameObject
+     *            object that is to be added to the game world.
+     */
     public void addGameObject(GameObject gameObject) {
 	int xIndex;
 	int yIndex;
@@ -200,8 +214,8 @@ public class World {
 	    return;
 	}
 
-	int xIndex = xCoordinate / 32 + direction.getX();
-	int yIndex = yCoordinate / 32 + direction.getY();
+	int xIndex = (xCoordinate / 32) + direction.getX();
+	int yIndex = (yCoordinate / 32) + direction.getY();
 
 	if ((grid[xIndex][yIndex] != null) && (grid[xIndex][yIndex].peek().isDestroyable() == true)) {
 	    GameObject o;
@@ -217,13 +231,23 @@ public class World {
 
     }
 
+    /**
+     * checks if the given GameObject object has collided with any other
+     * GameObject on the board
+     * 
+     * @param object
+     *            GameObject that is being checked if has collided with
+     *            something.
+     * @return true if the object has collided with another GameObject, false if
+     *         it has not.
+     */
     public boolean checkForCollision(GameObject object) {
 	for (int i = 0; i < gridWidth; i++) {
 	    for (int j = 0; j < gridHeight; j++) {
 		if (grid[i][j].peek().isSolid()) { // TODO: Implement a way to
-						   // deal with null cases,
-						   // unused grid elements are
-						   // set to null
+		    // deal with null cases,
+		    // unused grid elements are
+		    // set to null
 		    if (grid[i][j].peek().hasCollided(object)) {
 			return true;
 		    }

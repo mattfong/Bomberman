@@ -6,6 +6,10 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+/**
+ * @author mfong8 Implementation of the Brick game block which represent
+ *         destroyable walls.
+ */
 public class Brick extends GameObject {
 
     public Brick(Rectangle location, World world) {

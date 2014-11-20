@@ -7,6 +7,9 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+/**
+ * @author mfong8 Class implementing the bomb feature.
+ */
 public class Bomb extends GameObject {
     private int explosionRadius;
     private int bombCountdown;
@@ -34,6 +37,10 @@ public class Bomb extends GameObject {
 
     }
 
+    /**
+     * detonates the bomb it's called on which causes objects on the gamemap
+     * that are within the explosion radius to be destroyed.
+     */
     public void explode() {
 	this.destroy();
 	world.detonateLine(gridLocation.x, gridLocation.y, Direction.UP, explosionRadius);

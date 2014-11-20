@@ -6,6 +6,9 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+/**
+ * @author mfong8 Implementation of the Wall GameObject.
+ */
 public class Wall extends GameObject {
 
     public Wall(Rectangle location, World world) {
