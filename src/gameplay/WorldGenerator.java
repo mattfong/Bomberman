@@ -31,9 +31,9 @@ public class WorldGenerator {
     }
 
     /**
-     * Created a game grid populated with the gameobjects specifies in the level
+     * Created a game grid populated with the GameObjects specifies in the level
      * generation
-     * 
+     *
      * @return a fully populated grid.
      */
     public Stack<GameObject>[][] generateGameGrid() {
