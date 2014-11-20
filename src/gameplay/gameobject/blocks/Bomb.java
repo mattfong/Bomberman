@@ -2,6 +2,7 @@ package gameplay.gameobject.blocks;
 
 import gameplay.Direction;
 import gameplay.World;
+import gameplay.gameobject.GameObject;
 
 import java.awt.Rectangle;
 
