@@ -9,6 +9,10 @@ import java.awt.Rectangle;
 import java.util.Random;
 import java.util.Stack;
 
+/**
+ * @author mfong8 WorldGenerator's role is to take in a level configuration and
+ *         generate a populated grid based on the given level specifications.
+ */
 public class WorldGenerator {
 
     private Random rng;
@@ -26,6 +30,12 @@ public class WorldGenerator {
 	grid = new Stack[gridWidth][gridHeight];
     }
 
+    /**
+     * Created a game grid populated with the gameobjects specifies in the level
+     * generation
+     * 
+     * @return a fully populated grid.
+     */
     public Stack<GameObject>[][] generateGameGrid() {
 	populateGrid();
 	return grid;
@@ -106,7 +116,7 @@ public class WorldGenerator {
 	// TODO: IMPLEMENT THIS
     }
 
-    public void addGameObject(GameObject gameObject) {
+    private void addGameObject(GameObject gameObject) {
 	int xIndex;
 	int yIndex;
 
