@@ -15,21 +15,16 @@ import javax.swing.JTextField;
 
 
 public class newAccount {
-	static JTextField NameTF = new JTextField(30);
-	static JTextField UserTF= new JTextField(30);
-	static JPasswordField PassPF = new JPasswordField(30);	
+	JTextField NameTF = new JTextField(30);
+	JTextField UserTF= new JTextField(30);
+	JPasswordField PassPF = new JPasswordField(30);	
 	
-	public static void newAccount(){
+	
+	public void newAccountWindow(final JFrame frame){
+		NameTF.setText(null);
 		UserTF.setText(null);
 		PassPF.setText(null);
-		
-		final JFrame frame=new JFrame("Make an account");
-		JPanel panel = new JPanel();
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(992,448);
-		frame.setLocationRelativeTo(null);
-		frame.setResizable(false);
+		final LoginPanel panel = new LoginPanel();
 
 		panel.setLayout(new GridLayout(7,1,5,10));
 		
@@ -56,8 +51,11 @@ public class newAccount {
 							e.printStackTrace();
 						}
 						System.out.println("Entered user is "+User+" and pass is "+Pass);
-						frame.dispose();
-						LoginMenu.loginMenu();	
+						 frame.remove(panel);
+				         frame.revalidate();
+				         frame.validate();
+				         frame.removeAll();
+						LoginMenu.main(null, frame);	
 					}
 				} catch (HeadlessException | IOException e) {
 					// TODO Auto-generated catch block
@@ -77,7 +75,8 @@ public class newAccount {
 		frame.add(panel);
 		
 	}
-	public static void main(String[] args){
-		newAccount();
+	public static void main(String[] args, JFrame frame){
+		newAccount nonStaticNA = new newAccount();
+		nonStaticNA.newAccountWindow(frame);
 	}
 }

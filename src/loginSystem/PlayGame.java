@@ -88,9 +88,17 @@ public class PlayGame {
 		JButton logOut =new JButton("Log Out"); 
 		
 		logOut.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose();
-				//LoginMenu.loginMenu();	
+			public void actionPerformed(ActionEvent arg0) {	
+				parentPanel.remove(panel);
+				parentPanel.revalidate();
+				parentPanel.validate();
+				parentPanel.repaint();
+	            parentPanel.removeAll();
+	            frame.remove(parentPanel);
+	            frame.revalidate();
+	            frame.validate();
+	            frame.removeAll();
+	            
 				LoginMenu.main(null, frame);
 			
 			}

@@ -14,15 +14,14 @@ import javax.swing.JTextField;
 
 public class deleteAccount {
 
-	static JTextField UserTF= new JTextField(30);
-	static JPasswordField PassPF = new JPasswordField(30);
+	JTextField UserTF= new JTextField(30);
+	JPasswordField PassPF = new JPasswordField(30);
 	
-	public static void deleteAccount(){
+	public void deleteAccountWindow(final JFrame frame){
 		UserTF.setText(null);
 		PassPF.setText(null);
 		
-		final JFrame frame=new JFrame("Delete your account");
-		JPanel panel = new JPanel();
+		final LoginPanel panel = new LoginPanel();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(992,448);
@@ -47,8 +46,11 @@ public class deleteAccount {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				frame.dispose();
-				LoginMenu.loginMenu();	
+				 frame.remove(panel);
+		         frame.revalidate();
+		         frame.validate();
+		         frame.removeAll();
+				LoginMenu.main(null,frame);	
 			}
 			
 		});	
@@ -62,7 +64,8 @@ public class deleteAccount {
 		frame.add(panel);
 	}
 	
-	public static void main(String[] args){
-		deleteAccount();
+	public static void main(String[] args, JFrame frame){
+		deleteAccount nonStaticDA = new deleteAccount();
+		nonStaticDA.deleteAccountWindow(frame);
 	}
 }

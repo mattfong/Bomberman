@@ -24,14 +24,6 @@ public class LoginMenu {
 	public void loginMenu(final JFrame frame){
 		jt.setText(null);
 		pf.setText(null);
-		//final JFrame frame=new JFrame("Login");
-		//JPanel panel = new JPanel();
-		//frame.setVisible(true);
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//frame.setSize(992,448);
-		//frame.setLocationRelativeTo(null);
-		//frame.setResizable(false);
-
 		panel.setLayout(new GridLayout(7,1,5,10));
 		
 		JLabel enterUser = new JLabel("If you have an account enter your username enter it here");
@@ -44,8 +36,11 @@ public class LoginMenu {
 		newUser.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent arg0) {
-			frame.dispose();
-			newAccount.newAccount();	
+				frame.remove(panel);
+		        frame.revalidate();
+		        frame.validate();
+		        frame.removeAll();
+		        newAccount.main(null, frame);	
 			}
 			
 		});	
@@ -53,8 +48,11 @@ public class LoginMenu {
 		deleteUser.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent arg0) {
-			frame.dispose();
-			deleteAccount.deleteAccount();	
+				frame.remove(panel);
+		        frame.revalidate();
+		        frame.validate();
+		        frame.removeAll();
+		        deleteAccount.main(null, frame);	
 			}
 			
 		});	
@@ -65,7 +63,10 @@ public class LoginMenu {
 				
 				try {
 					if(CSVreader.checkUser(jt.getText(), pf.getText())==true){
-						frame.dispose();
+						frame.remove(panel);
+				        frame.revalidate();
+				        frame.validate();
+				        frame.removeAll();
 						//PlayGame.playMenu();
 						PlayGame.main(null, frame);
 						System.out.println("Username entered correctly");
