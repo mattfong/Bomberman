@@ -1,6 +1,8 @@
 package gameplay.gameobject;
 
+import gameplay.Direction;
 import gameplay.World;
+import gameplay.gameobject.blocks.Brick;
 import gameplay.input.CommandManager;
 
 import java.awt.Rectangle;
@@ -8,6 +10,10 @@ import java.awt.Rectangle;
 /**
  * @author mfong8 Implenting class for the abstract GameObject class. Implements
  *         features associated with moveable game actor objects.
+ */
+/**
+ * @author MF
+ *
  */
 public class GameActor extends GameObject implements Cloneable {
 
@@ -32,22 +38,27 @@ public class GameActor extends GameObject implements Cloneable {
 	// driver.getCommand();
     }
 
-    @Override
-    public GameActor clone(Rectangle location) {
-	GameActor clone = new GameActor(location, this.world);
+//    @Override
+//    public GameActor clone(Rectangle location) {
+//	GameActor clone = new GameActor(location, this.world);
+//
+//	clone.sprite = this.sprite;
+//	clone.solid = this.solid;
+//	clone.destroyable = this.destroyable;
+//	clone.conductsExplosions = this.conductsExplosions;
+//	clone.score = this.score;
+//	clone.conductsExplosions = this.conductsExplosions;
+//	clone.wallPass = this.wallPass;
+//	clone.sprite = this.sprite;
+//
+//	return clone;
+//    }
 
-	clone.sprite = this.sprite;
-	clone.solid = this.solid;
-	clone.destroyable = this.destroyable;
-	clone.conductsExplosions = this.conductsExplosions;
-	clone.score = this.score;
-	clone.conductsExplosions = this.conductsExplosions;
-	clone.wallPass = this.wallPass;
-	clone.sprite = this.sprite;
-
-	return clone;
+    public boolean canMove(Direction direction){
+    	return !(world.willCollide(this, direction));
+    
     }
-
+    
     private boolean hasCollided() {
 
 	return world.checkForCollision(this);
@@ -71,9 +82,8 @@ public class GameActor extends GameObject implements Cloneable {
      * command to move the game actor left.
      */
     public void moveLeft() {
-	gridLocation.x = gridLocation.x - moveSpeed;
-	if (hasCollided()) {
-	    gridLocation.x = gridLocation.x + moveSpeed;
+	if (canMove(Direction.LEFT)) {
+	    gridLocation.x = gridLocation.x - moveSpeed;
 	}
 
     }
@@ -82,9 +92,8 @@ public class GameActor extends GameObject implements Cloneable {
      * command to move the game actor right.
      */
     public void moveRight() {
-	gridLocation.x = gridLocation.x + moveSpeed;
-	if (hasCollided()) {
-	    gridLocation.x = gridLocation.x - moveSpeed;
+	if (canMove(Direction.RIGHT)) {
+	    gridLocation.x = gridLocation.x + moveSpeed;
 	}
     }
 
@@ -92,9 +101,8 @@ public class GameActor extends GameObject implements Cloneable {
      * command to move the game actor up
      */
     public void moveUp() {
-	gridLocation.y = gridLocation.y - moveSpeed;
-	if (hasCollided()) {
-	    gridLocation.y = gridLocation.y + moveSpeed;
+	if (canMove(Direction.UP)) {
+	    gridLocation.y = gridLocation.y - moveSpeed;
 	}
     }
 
@@ -102,11 +110,26 @@ public class GameActor extends GameObject implements Cloneable {
      * command to move the game actor down.
      */
     public void moveDown() {
-	gridLocation.y = gridLocation.y + this.moveSpeed;
-	if (hasCollided()) {
-	    gridLocation.y = gridLocation.y - moveSpeed;
+    if(canMove(Direction.DOWN)){
+	    gridLocation.y = gridLocation.y + moveSpeed;
+    }
 	}
 
+    
+    
+    /**
+     * Checks if the GameActor can pass through a given GameObject.
+     * @param object GameObject that is being checked
+     * @return true if the GameActor can pass through the object, false if the object is solid to the GameActor
+     */
+    public boolean canPassThrough(GameObject object){
+    	if(object instanceof Brick){
+    		return wallPass;
+    	}else if (object.isSolid()){
+    		return false;
+    	}
+    		return true;
+    		
     }
 
 }

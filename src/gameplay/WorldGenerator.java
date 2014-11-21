@@ -46,8 +46,8 @@ public class WorldGenerator {
 	initStack();
 	fillBackground();
 	concreteFill();
-	// placeBricks();
-	// clearTopLeftCorner();
+	placeBricks();
+	clearTopLeftCorner();
 	// placePowerup();
     }
 
