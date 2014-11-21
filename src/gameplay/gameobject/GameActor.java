@@ -1,6 +1,7 @@
 package gameplay.gameobject;
 
 import gameplay.World;
+import gameplay.input.CommandManager;
 
 import java.awt.Rectangle;
 
@@ -8,45 +9,48 @@ import java.awt.Rectangle;
  * @author mfong8 Implenting class for the abstract GameObject class. Implements
  *         features associated with moveable game actor objects.
  */
-public class GameActor extends GameObject {
+public class GameActor extends GameObject implements Cloneable {
 
     protected int moveSpeed = 32;
-
-    protected int bombLimit;
     protected boolean wallPass;
-    protected boolean bombPass;
-    protected boolean flamePass;
-    protected boolean detonator;
-    protected int explosionRadius;
+    protected CommandManager driver;
 
     public GameActor(Rectangle location, World world) {
 	super(location, world);
 
 	conductsExplosions = true;
 	wallPass = false;
-	bombPass = false;
-	flamePass = false;
-	detonator = false;
-	explosionRadius = 1;
+	solid = false;
+	destroyable = true;
+
+	// Bomberman specific stuff
+
     }
 
     @Override
     public void update() {
+	// driver.getCommand();
+    }
 
+    @Override
+    public GameActor clone(Rectangle location) {
+	GameActor clone = new GameActor(location, this.world);
+
+	clone.sprite = this.sprite;
+	clone.solid = this.solid;
+	clone.destroyable = this.destroyable;
+	clone.conductsExplosions = this.conductsExplosions;
+	clone.score = this.score;
+	clone.conductsExplosions = this.conductsExplosions;
+	clone.wallPass = this.wallPass;
+	clone.sprite = this.sprite;
+
+	return clone;
     }
 
     private boolean hasCollided() {
 
 	return world.checkForCollision(this);
-
-    }
-
-    /**
-     * @return true if the GameActor can detonate bombs.
-     */
-
-    public boolean canDetonateBomb() {
-	return detonator;
 
     }
 
@@ -62,34 +66,6 @@ public class GameActor extends GameObject {
      * @return true if the GameActor can be move through bombs, false if the
      *         game actor cannot move through bombs.
      */
-    public boolean canBombPass() {
-	return bombPass;
-    }
-
-    /**
-     * Increase the explosion radius of the bombs placed by 1.
-     */
-    public void increaseExplosionRadius() {
-	this.explosionRadius++;
-    }
-
-    /**
-     * Increases the amount of bombs that can be placed on the board at a given
-     * time by 1.
-     */
-    public void increaseBombLimit() {
-	this.bombLimit++;
-    }
-
-    /**
-     * returns if the gameactor is immune to bomb fire.
-     *
-     * @return true if the actor can "take the heat", false if he turns into
-     *         jerky.
-     */
-    public boolean canTakeTheHeat() {
-	return flamePass;
-    }
 
     /**
      * command to move the game actor left.
@@ -133,19 +109,4 @@ public class GameActor extends GameObject {
 
     }
 
-    public void setWallPass(boolean wallPass) {
-	this.wallPass = wallPass;
-    }
-
-    public void setBombPass(boolean bombPass) {
-	this.bombPass = bombPass;
-    }
-
-    public void setFlamePass(boolean flamePass) {
-	this.flamePass = flamePass;
-    }
-
-    public void setDetonator(boolean detonator) {
-	this.detonator = detonator;
-    }
 }
