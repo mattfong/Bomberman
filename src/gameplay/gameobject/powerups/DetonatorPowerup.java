@@ -1,7 +1,7 @@
-package gameplay.powerups;
+package gameplay.gameobject.powerups;
 
 import gameplay.World;
-import gameplay.gameobject.GameActor;
+import gameplay.gameobject.BombermanInterface;
 import gameplay.gameobject.GameObject;
 
 import java.awt.Rectangle;
@@ -24,7 +24,7 @@ public class DetonatorPowerup extends GameObject implements Powerup {
     }
 
     @Override
-    public void applyPowerup(GameActor actor) {
+    public void applyPowerup(BombermanInterface actor) {
 	actor.setDetonator(true);
     }
 
