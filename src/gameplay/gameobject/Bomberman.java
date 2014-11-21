@@ -15,6 +15,11 @@ public class Bomberman extends GameActor implements BombermanInterface {
 
     Queue<Bomb> bombList = new LinkedList<Bomb>();
     CommandManager inputManager;
+    protected int bombLimit;
+    protected boolean bombPass;
+    protected boolean flamePass;
+    protected boolean detonator;
+    protected int explosionRadius;
 
     public Bomberman(World world, Rectangle location) {
 	super(location, world);

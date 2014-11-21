@@ -15,12 +15,6 @@ public class GameActor extends GameObject implements Cloneable {
     protected boolean wallPass;
     protected CommandManager driver;
 
-    protected int bombLimit;
-    protected boolean bombPass;
-    protected boolean flamePass;
-    protected boolean detonator;
-    protected int explosionRadius;
-
     public GameActor(Rectangle location, World world) {
 	super(location, world);
 

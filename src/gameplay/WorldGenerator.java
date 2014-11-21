@@ -1,8 +1,9 @@
 package gameplay;
 
+import gameplay.gameobject.GameActor;
+import gameplay.gameobject.GameObject;
 import gameplay.gameobject.blocks.Background;
 import gameplay.gameobject.blocks.Brick;
-import gameplay.gameobject.blocks.GameObject;
 import gameplay.gameobject.blocks.Wall;
 
 import java.awt.Rectangle;
@@ -45,9 +46,13 @@ public class WorldGenerator {
 	initStack();
 	fillBackground();
 	concreteFill();
-	placeBricks();
-	clearTopLeftCorner();
-	placePowerup();
+	// placeBricks();
+	// clearTopLeftCorner();
+	// placePowerup();
+    }
+
+    private void placeEnemie(GameActor enemy) {
+
     }
 
     private void initStack() {
