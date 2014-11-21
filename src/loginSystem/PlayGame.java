@@ -18,52 +18,59 @@ import javax.swing.JTextField;
 public class PlayGame {
 	
 	
-	static JTextField jt= new JTextField(30);
-	static JTextField ft =new JTextField(30);
 	
 	//static JFrame frame= new LoginFrame();
+	LoginPanel panel = new LoginPanel();
+	LoginPanel panel1 = new LoginPanel();
+	LoginPanel parentPanel = new LoginPanel();
+	LoginFrame frame = new LoginFrame();
 	
-	public static void notYet()
+	public void notYet()
 	{
-		final JFrame frame=new JFrame("not yet");
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(992,448);
-		frame.setLocationRelativeTo(null);
-		frame.setResizable(false);
+		//final JFrame frame=new JFrame("not yet");
+		//frame.setVisible(true);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setSize(992,448);
+		//frame.setLocationRelativeTo(null);
+		//frame.setResizable(false);
 		
-		JPanel comingSoon = new JPanel();
-		comingSoon.setLayout(new GridLayout(2,1,5,10));
+		//JPanel comingSoon = new JPanel();
+		panel1.setLayout(new GridLayout(2,1,5,10));
 		JLabel myLabel = new JLabel("This feature is not avalibe yet");
 		myLabel.setVisible(true);
 		JButton goBack = new JButton("Go back to the Play menu");
 		goBack.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose();
+				parentPanel.remove(panel);
+				
+	              parentPanel.removeAll();
+	              panel1.repaint();
+	              panel1.removeAll();
 				playMenu();	
 			}
 		});	
-		comingSoon.add(myLabel);
-		comingSoon.add(goBack);
-		frame.add(comingSoon);
+		panel1.add(myLabel);
+		panel1.add(goBack);
+		parentPanel.add(panel1);
+		frame.add(parentPanel);
 		
 		
 	}
 	
 	
-	public static void playMenu()
+	public void playMenu()
 	{
-		final JFrame frame=new JFrame("Bomberman");
+		//final JFrame frame=new JFrame("Bomberman");
 		//JFrame frame=new LoginFrame.LoginFrame();
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(992,448);
-		frame.setLocationRelativeTo(null);
-		frame.setResizable(false);
+		//frame.setVisible(true);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setSize(992,448);
+		//frame.setLocationRelativeTo(null);
+		//frame.setResizable(false);
 		
 		
-		JPanel panel = new JPanel();
-		//panel.setBackground(Color.RED);
+		//JPanel panel = new JPanel();
+
 
 		
 		panel.setLayout(new GridLayout(4,1,5,10));
@@ -80,7 +87,16 @@ public class PlayGame {
 		JButton saved =new JButton("Load Saved game"); 
 		saved.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose();
+				
+				
+				
+			
+	              
+				parentPanel.remove(panel);
+				parentPanel.revalidate();
+				parentPanel.validate();
+				parentPanel.repaint();
+	            parentPanel.removeAll();
 				notYet();	
 			}
 		});	
@@ -105,13 +121,15 @@ public class PlayGame {
 		panel.add(saved);
 		panel.add(high);
 		panel.add(logOut);
-		frame.add(panel);
+		parentPanel.add(panel);
+		frame.add(parentPanel);
 		
 		
 	}
 	
 	public static void main(String[] args){
-		playMenu();
+		PlayGame nonStatic = new PlayGame();
+		nonStatic.playMenu();
 	}
 	 
 }
