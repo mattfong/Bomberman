@@ -60,7 +60,7 @@ public abstract class GameObject {
      * @return true if the object is solid, false if it's not.
      */
     public boolean isSolid() {
-	return solid;
+    	return solid;
     }
 
     /**

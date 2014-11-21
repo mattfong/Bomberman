@@ -55,7 +55,7 @@ public class GameActor extends GameObject implements Cloneable {
 //    }
 
     public boolean canMove(Direction direction){
-    	return world.willCollide(this, direction);
+    	return !(world.willCollide(this, direction));
     
     }
     
@@ -82,9 +82,8 @@ public class GameActor extends GameObject implements Cloneable {
      * command to move the game actor left.
      */
     public void moveLeft() {
-	gridLocation.x = gridLocation.x - moveSpeed;
-	if (hasCollided()) {
-	    gridLocation.x = gridLocation.x + moveSpeed;
+	if (canMove(Direction.LEFT)) {
+	    gridLocation.x = gridLocation.x - moveSpeed;
 	}
 
     }
@@ -93,9 +92,8 @@ public class GameActor extends GameObject implements Cloneable {
      * command to move the game actor right.
      */
     public void moveRight() {
-	gridLocation.x = gridLocation.x + moveSpeed;
-	if (hasCollided()) {
-	    gridLocation.x = gridLocation.x - moveSpeed;
+	if (canMove(Direction.RIGHT)) {
+	    gridLocation.x = gridLocation.x + moveSpeed;
 	}
     }
 
@@ -103,9 +101,8 @@ public class GameActor extends GameObject implements Cloneable {
      * command to move the game actor up
      */
     public void moveUp() {
-	gridLocation.y = gridLocation.y - moveSpeed;
-	if (hasCollided()) {
-	    gridLocation.y = gridLocation.y + moveSpeed;
+	if (canMove(Direction.UP)) {
+	    gridLocation.y = gridLocation.y - moveSpeed;
 	}
     }
 
@@ -113,12 +110,12 @@ public class GameActor extends GameObject implements Cloneable {
      * command to move the game actor down.
      */
     public void moveDown() {
-	gridLocation.y = gridLocation.y + this.moveSpeed;
-	if (hasCollided()) {
-	    gridLocation.y = gridLocation.y - moveSpeed;
+    if(canMove(Direction.DOWN)){
+	    gridLocation.y = gridLocation.y + moveSpeed;
+    }
 	}
 
-    }
+    
     
     /**
      * Checks if the GameActor can pass through a given GameObject.
@@ -128,10 +125,11 @@ public class GameActor extends GameObject implements Cloneable {
     public boolean canPassThrough(GameObject object){
     	if(object instanceof Brick){
     		return wallPass;
-    	}else {
-    		return object.isSolid();
+    	}else if (object.isSolid()){
+    		return false;
     	}
-    	
+    		return true;
+    		
     }
 
 }

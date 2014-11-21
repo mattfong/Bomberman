@@ -182,12 +182,13 @@ public class World {
      * @return true if the direction is blocked, false if the direction is free to pass through.
      */
     public boolean willCollide(GameActor actor, Direction direction){
-    	int indexX=actor.getXCoordinate()/blockSize;
-    	int indexY=actor.getYCoordinate()/blockSize;
+    	int indexX=actor.getXCoordinate()/blockSize+direction.getX();
+    	int indexY=actor.getYCoordinate()/blockSize-direction.getY();
     	
-    	GameObject objectToCheck=grid[indexX+direction.getX()][indexY+direction.getY()].peek();
+    	GameObject objectToCheck=grid[indexX][indexY].peek();
 	
-    	return actor.canPassThrough(objectToCheck);
+    	boolean bool=actor.canPassThrough(objectToCheck);
+    	return (!bool);
     }
     
 }
