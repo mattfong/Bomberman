@@ -1,5 +1,7 @@
 package gameplay.input;
 
+import gameplay.GamePanel;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -7,7 +9,7 @@ public class InputListener extends KeyAdapter implements CommandIssuer {
 
     private static InputListener singleton = null;
     private static KeyEvent bufferedKey;
-
+    private static GamePanel gamePanel;
     protected InputListener() {
 
     }
@@ -18,10 +20,18 @@ public class InputListener extends KeyAdapter implements CommandIssuer {
 	}
 	return singleton;
     }
+    
+    public static void setGamePanel(GamePanel panel){
+    	gamePanel=panel;
+    }
 
     @Override
     public void keyPressed(KeyEvent e) {
-	bufferedKey = e;
+    	if(e.getKeyCode()==KeyEvent.VK_ESCAPE){
+    		gamePanel.openPauseMenu();
+    	}
+    	bufferedKey = e;
+		
     }
 
     @Override
