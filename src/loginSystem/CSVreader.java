@@ -116,7 +116,40 @@ public class CSVreader {
 		return false;
 	}
 	
-	public static boolean checkUsernameOnly(String Username) throws IOException{
+	public static boolean checkUsernameOnly(String user) throws IOException{
+		
+		
+		String csvFileToRead = "Test.csv";  
+		  BufferedReader br = null;  
+		  String line = "";  
+		  String splitBy = ",";  
+		  user="\""+user+"\"";
+		  try {  
+			  
+			   br = new BufferedReader(new FileReader(csvFileToRead));  
+			   while ((line = br.readLine()) != null) {  
+			  
+				   String[] account = line.split(splitBy);  
+				   if(user.equals(account[1]))
+					   return true;
+			   }  
+			  
+		  } catch (FileNotFoundException e) {  
+			   e.printStackTrace();  
+		  } catch (IOException e) {  
+			  e.printStackTrace();  
+		  } finally {  
+			   if (br != null) {  
+				   try {  
+					   br.close();  
+				   } catch (IOException e) {  
+					   e.printStackTrace();  
+				   }  
+			   }  
+		  }  
+		return false;
+		
+		/*
 		CSVReader reader = new CSVReader(new FileReader(csv));
 		String [] nextLine;
 		Account acc;
@@ -134,6 +167,7 @@ public class CSVreader {
 		reader.close();
 		
 		return false;
+		*/
 	}
 	
 }

@@ -15,12 +15,13 @@ public class LoginFrame extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
+		setVisible(true);
 	}
 	
 	public static void main (String[] args){
 		
 		LoginFrame loginFrame=new LoginFrame();
-		loginFrame.setVisible(true);
+		//loginFrame.setVisible(true);
 		
 		
 	}
