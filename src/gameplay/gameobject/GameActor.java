@@ -32,21 +32,21 @@ public class GameActor extends GameObject implements Cloneable {
 	// driver.getCommand();
     }
 
-    @Override
-    public GameActor clone(Rectangle location) {
-	GameActor clone = new GameActor(location, this.world);
-
-	clone.sprite = this.sprite;
-	clone.solid = this.solid;
-	clone.destroyable = this.destroyable;
-	clone.conductsExplosions = this.conductsExplosions;
-	clone.score = this.score;
-	clone.conductsExplosions = this.conductsExplosions;
-	clone.wallPass = this.wallPass;
-	clone.sprite = this.sprite;
-
-	return clone;
-    }
+//    @Override
+//    public GameActor clone(Rectangle location) {
+//	GameActor clone = new GameActor(location, this.world);
+//
+//	clone.sprite = this.sprite;
+//	clone.solid = this.solid;
+//	clone.destroyable = this.destroyable;
+//	clone.conductsExplosions = this.conductsExplosions;
+//	clone.score = this.score;
+//	clone.conductsExplosions = this.conductsExplosions;
+//	clone.wallPass = this.wallPass;
+//	clone.sprite = this.sprite;
+//
+//	return clone;
+//    }
 
     private boolean hasCollided() {
 

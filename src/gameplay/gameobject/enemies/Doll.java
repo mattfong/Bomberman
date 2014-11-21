@@ -1,7 +1,6 @@
 package gameplay.gameobject.enemies;
 
 import gameplay.World;
-import gameplay.gameobject.Cloneable;
 import gameplay.gameobject.GameActor;
 
 import java.awt.Rectangle;
