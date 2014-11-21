@@ -23,7 +23,9 @@ public class SavedGameManagerTest {
 	@Test
 	public void test() {
 		String savedGame = "Game1";
-		assertTrue("Saved Game Name equals savedGame", testSavedGameManager.addSavedGame(savedGame).contains(savedGame));
+		SavedGame sg = new SavedGame();
+		assertTrue("Saved Game Name equals savedGame", 
+				testSavedGameManager.addSavedGame(savedGame).contains(sg.getSavedGameName()));
 	}
 
 }
