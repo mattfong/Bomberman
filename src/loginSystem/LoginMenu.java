@@ -15,21 +15,22 @@ import javax.swing.JTextField;
 
 
 public class LoginMenu {
-	static JTextField jt= new JTextField(30);
-	static JPasswordField pf = new JPasswordField(30);
-	private static JFrame controllingFrame;
+	JTextField jt= new JTextField(30);
+	JPasswordField pf = new JPasswordField(30);
+	private JFrame controllingFrame;
+	LoginPanel panel = new LoginPanel();
 
 	
-	public static void loginMenu(){
+	public void loginMenu(final JFrame frame){
 		jt.setText(null);
 		pf.setText(null);
-		final JFrame frame=new JFrame("Login");
-		JPanel panel = new JPanel();
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(992,448);
-		frame.setLocationRelativeTo(null);
-		frame.setResizable(false);
+		//final JFrame frame=new JFrame("Login");
+		//JPanel panel = new JPanel();
+		//frame.setVisible(true);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setSize(992,448);
+		//frame.setLocationRelativeTo(null);
+		//frame.setResizable(false);
 
 		panel.setLayout(new GridLayout(7,1,5,10));
 		
@@ -65,7 +66,8 @@ public class LoginMenu {
 				try {
 					if(CSVreader.checkUser(jt.getText(), pf.getText())==true){
 						frame.dispose();
-						PlayGame.playMenu();
+						//PlayGame.playMenu();
+						PlayGame.main(null, frame);
 						System.out.println("Username entered correctly");
 					}
 					else{
@@ -96,7 +98,8 @@ public class LoginMenu {
 		frame.add(panel);
 	}
 	
-	public static void main(String[] args){
-		loginMenu();
+	public static void main(String[] args, JFrame frame){
+		LoginMenu nonStaticLM = new LoginMenu();
+		nonStaticLM.loginMenu(frame);
 	}
 }

@@ -17,24 +17,13 @@ import javax.swing.JTextField;
 
 public class PlayGame {
 	
-	
-	
-	//static JFrame frame= new LoginFrame();
 	LoginPanel panel = new LoginPanel();
 	LoginPanel panel1 = new LoginPanel();
 	LoginPanel parentPanel = new LoginPanel();
-	LoginFrame frame = new LoginFrame();
+	//LoginFrame frame = new LoginFrame();
 	
-	public void notYet()
+	public void notYet(final JFrame frame)
 	{
-		//final JFrame frame=new JFrame("not yet");
-		//frame.setVisible(true);
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//frame.setSize(992,448);
-		//frame.setLocationRelativeTo(null);
-		//frame.setResizable(false);
-		
-		//JPanel comingSoon = new JPanel();
 		panel1.setLayout(new GridLayout(2,1,5,10));
 		JLabel myLabel = new JLabel("This feature is not avalibe yet");
 		myLabel.setVisible(true);
@@ -42,11 +31,12 @@ public class PlayGame {
 		goBack.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				parentPanel.remove(panel);
-				
-	              parentPanel.removeAll();
-	              panel1.repaint();
-	              panel1.removeAll();
-				playMenu();	
+				parentPanel.repaint();
+	            parentPanel.removeAll();
+	            
+	            panel1.repaint();
+	            panel1.removeAll();
+				playMenu(frame);	
 			}
 		});	
 		panel1.add(myLabel);
@@ -58,24 +48,11 @@ public class PlayGame {
 	}
 	
 	
-	public void playMenu()
+	public void playMenu(final JFrame frame)
 	{
-		//final JFrame frame=new JFrame("Bomberman");
-		//JFrame frame=new LoginFrame.LoginFrame();
-		//frame.setVisible(true);
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//frame.setSize(992,448);
-		//frame.setLocationRelativeTo(null);
-		//frame.setResizable(false);
-		
-		
-		//JPanel panel = new JPanel();
-
-
-		
 		panel.setLayout(new GridLayout(4,1,5,10));
 		JButton play =new JButton("Play Game");
-		//play.setBackground(Color.green);
+
 		play.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("New Game Frame");
@@ -84,23 +61,22 @@ public class PlayGame {
 				frame.dispose();
 			}
 		});		
+		
 		JButton saved =new JButton("Load Saved game"); 
+		
 		saved.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				
-				
-				
-			
-	              
 				parentPanel.remove(panel);
 				parentPanel.revalidate();
 				parentPanel.validate();
 				parentPanel.repaint();
 	            parentPanel.removeAll();
-				notYet();	
+				notYet(frame);	
 			}
 		});	
+		
 		JButton high =new JButton("High Scores");
+		
 		high.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
@@ -108,14 +84,18 @@ public class PlayGame {
 				HighScoreController.displayHighScore();
 			}
 		});	
+		
 		JButton logOut =new JButton("Log Out"); 
+		
 		logOut.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				LoginMenu.loginMenu();	
+				//LoginMenu.loginMenu();	
+				LoginMenu.main(null, frame);
 			
 			}
 		});	
+		
 		panel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		panel.add(play);
 		panel.add(saved);
@@ -123,13 +103,11 @@ public class PlayGame {
 		panel.add(logOut);
 		parentPanel.add(panel);
 		frame.add(parentPanel);
-		
-		
 	}
 	
-	public static void main(String[] args){
+	public static void main(String[] args, JFrame frame){
 		PlayGame nonStatic = new PlayGame();
-		nonStatic.playMenu();
+		nonStatic.playMenu(frame);
 	}
 	 
 }
