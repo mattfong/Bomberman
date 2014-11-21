@@ -2,6 +2,7 @@
 
 package gameplay;
 
+import gameplay.gameobject.GameActor;
 import gameplay.gameobject.GameObject;
 import gameplay.gameobject.blocks.Wall;
 
@@ -11,6 +12,10 @@ import java.util.Stack;
 
 /**
  * @author mfong8
+ *
+ */
+/**
+ * @author MF
  *
  */
 public class World {
@@ -159,10 +164,7 @@ public class World {
     public boolean checkForCollision(GameObject object) {
 	for (int i = 0; i < gridWidth; i++) {
 	    for (int j = 0; j < gridHeight; j++) {
-		if (grid[i][j].peek().isSolid()) { // TODO: Implement a way to
-		    // deal with null cases,
-		    // unused grid elements are
-		    // set to null
+		if (grid[i][j].peek().isSolid()) { 
 		    if (grid[i][j].peek().hasCollided(object)) {
 			return true;
 		    }
@@ -173,4 +175,19 @@ public class World {
 	return false;
     }
 
+    /**
+     * Checks a given direction relative to a GameActor to see if the GameActor is able to move onto that space.
+     * @param actor GameActor that is going to be moving
+     * @param direction direction that in which the actor wants to move
+     * @return true if the direction is blocked, false if the direction is free to pass through.
+     */
+    public boolean willCollide(GameActor actor, Direction direction){
+    	int indexX=actor.getXCoordinate()/blockSize;
+    	int indexY=actor.getYCoordinate()/blockSize;
+    	
+    	GameObject objectToCheck=grid[indexX+direction.getX()][indexY+direction.getY()].peek();
+	
+    	return actor.canPassThrough(objectToCheck);
+    }
+    
 }
