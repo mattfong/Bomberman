@@ -17,7 +17,10 @@ public class StartGame {
 	
 	
 	public void game(){
+		
 		//LoginMenu.main(null, frame);
+		//LoginMenu.loginMenuWindow(frame);
+		
 		PlayGame.main(null, frame);
 	}
 	

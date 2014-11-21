@@ -18,13 +18,13 @@ public class newAccount {
 	JTextField NameTF = new JTextField(30);
 	JTextField UserTF= new JTextField(30);
 	JPasswordField PassPF = new JPasswordField(30);	
-	
+	final LoginPanel panel = new LoginPanel();
 	
 	public void newAccountWindow(final JFrame frame){
 		NameTF.setText(null);
 		UserTF.setText(null);
 		PassPF.setText(null);
-		final LoginPanel panel = new LoginPanel();
+		
 
 		panel.setLayout(new GridLayout(7,1,5,10));
 		
@@ -51,10 +51,14 @@ public class newAccount {
 							e.printStackTrace();
 						}
 						System.out.println("Entered user is "+User+" and pass is "+Pass);
-						 frame.remove(panel);
-				         frame.revalidate();
-				         frame.validate();
-				         frame.removeAll();
+						// frame.remove(panel);
+				        // frame.revalidate();
+				        // frame.validate();
+				        // frame.removeAll();
+						panel.revalidate();
+						panel.validate();
+						panel.repaint();
+			            panel.removeAll();
 						LoginMenu.main(null, frame);	
 					}
 				} catch (HeadlessException | IOException e) {

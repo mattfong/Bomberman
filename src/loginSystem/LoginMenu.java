@@ -21,7 +21,7 @@ public class LoginMenu {
 	LoginPanel panel = new LoginPanel();
 
 	
-	public void loginMenu(final JFrame frame){
+	public void loginMenuWindow(final JFrame frame){
 		jt.setText(null);
 		pf.setText(null);
 		panel.setLayout(new GridLayout(7,1,5,10));
@@ -36,10 +36,15 @@ public class LoginMenu {
 		newUser.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent arg0) {
-				frame.remove(panel);
-		        frame.revalidate();
-		        frame.validate();
-		        frame.removeAll();
+				panel.revalidate();
+				panel.validate();
+				panel.repaint();
+	            panel.removeAll();
+				
+				//frame.remove(panel);
+		        //frame.revalidate();
+		        //frame.validate();
+		        //frame.removeAll();
 		        newAccount.main(null, frame);	
 			}
 			
@@ -48,10 +53,14 @@ public class LoginMenu {
 		deleteUser.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent arg0) {
-				frame.remove(panel);
-		        frame.revalidate();
-		        frame.validate();
-		        frame.removeAll();
+				//frame.remove(panel);
+		        //frame.revalidate();
+		        //frame.validate();
+		        //frame.removeAll();
+				panel.revalidate();
+				panel.validate();
+				panel.repaint();
+	            panel.removeAll();
 		        deleteAccount.main(null, frame);	
 			}
 			
@@ -63,11 +72,15 @@ public class LoginMenu {
 				
 				try {
 					if(CSVreader.checkUser(jt.getText(), pf.getText())==true){
-						frame.remove(panel);
-				        frame.revalidate();
-				        frame.validate();
-				        frame.removeAll();
+						//frame.remove(panel);
+				        //frame.revalidate();
+				        //frame.validate();
+				        //frame.removeAll();
 						//PlayGame.playMenu();
+						panel.revalidate();
+						panel.validate();
+						panel.repaint();
+			            panel.removeAll();
 						PlayGame.main(null, frame);
 						System.out.println("Username entered correctly");
 					}
@@ -97,10 +110,12 @@ public class LoginMenu {
 		panel.add(newUser);
 		panel.add(deleteUser);
 		frame.add(panel);
+		System.out.println("all is well in the loginMenu");
+		System.out.println("breakpooint here");
 	}
 	
 	public static void main(String[] args, JFrame frame){
 		LoginMenu nonStaticLM = new LoginMenu();
-		nonStaticLM.loginMenu(frame);
+		nonStaticLM.loginMenuWindow(frame);
 	}
 }

@@ -18,31 +18,26 @@ import javax.swing.JTextField;
 public class PlayGame {
 	
 	LoginPanel panel = new LoginPanel();
-	LoginPanel panel1 = new LoginPanel();
-	LoginPanel parentPanel = new LoginPanel();
 	//LoginFrame frame = new LoginFrame();
 	
 	public void notYet(final JFrame frame)
 	{
-		panel1.setLayout(new GridLayout(2,1,5,10));
+		panel.setLayout(new GridLayout(2,1,5,10));
 		JLabel myLabel = new JLabel("This feature is not avalibe yet");
 		myLabel.setVisible(true);
 		JButton goBack = new JButton("Go back to the Play menu");
 		goBack.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				parentPanel.remove(panel);
-				parentPanel.repaint();
-	            parentPanel.removeAll();
-	            
-	            panel1.repaint();
-	            panel1.removeAll();
+				panel.revalidate();
+				panel.validate();
+				panel.repaint();
+	            panel.removeAll();
 				playMenu(frame);	
 			}
 		});	
-		panel1.add(myLabel);
-		panel1.add(goBack);
-		parentPanel.add(panel1);
-		frame.add(parentPanel);
+		panel.add(myLabel);
+		panel.add(goBack);
+		frame.add(panel);
 		
 		
 	}
@@ -66,11 +61,10 @@ public class PlayGame {
 		
 		saved.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				parentPanel.remove(panel);
-				parentPanel.revalidate();
-				parentPanel.validate();
-				parentPanel.repaint();
-	            parentPanel.removeAll();
+				panel.revalidate();
+				panel.validate();
+				panel.repaint();
+	            panel.removeAll();
 				notYet(frame);	
 			}
 		});	
@@ -79,6 +73,10 @@ public class PlayGame {
 		
 		high.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
+				panel.revalidate();
+				panel.validate();
+				panel.repaint();
+	            panel.removeAll();
 				frame.dispose();
 				//notYet();	
 				HighScoreController.displayHighScore();
@@ -89,16 +87,10 @@ public class PlayGame {
 		
 		logOut.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {	
-				parentPanel.remove(panel);
-				parentPanel.revalidate();
-				parentPanel.validate();
-				parentPanel.repaint();
-	            parentPanel.removeAll();
-	            frame.remove(parentPanel);
-	            frame.revalidate();
-	            frame.validate();
-	            frame.removeAll();
-	            
+				panel.revalidate();
+				panel.validate();
+				panel.repaint();
+	            panel.removeAll();
 				LoginMenu.main(null, frame);
 			
 			}
@@ -109,8 +101,13 @@ public class PlayGame {
 		panel.add(saved);
 		panel.add(high);
 		panel.add(logOut);
-		parentPanel.add(panel);
-		frame.add(parentPanel);
+		frame.add(panel);
+		
+		System.out.println("All play menu completed");
+		
+		
+		System.out.println("we good");
+		
 	}
 	
 	public static void main(String[] args, JFrame frame){
