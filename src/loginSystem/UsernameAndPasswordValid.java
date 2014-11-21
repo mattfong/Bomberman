@@ -16,7 +16,8 @@ public class UsernameAndPasswordValid {
 		boolean ULcase=false, passUC=false, passLC=false;
 		boolean areThereNumbers=Pass.matches(".*\\d+.*");
 		int i=0;
-			
+		AccountManager accountManager = new AccountManager();
+		
 		if(User.equals("utest")){
 			//THIS IS FOR DEBUGGING PURPOSES, 
 			userValid=true;
@@ -29,7 +30,7 @@ public class UsernameAndPasswordValid {
 			return true;
 		}
 		
-		else if(CSVreader.checkUsernameOnly(User)){
+		else if(accountManager.isUsername(User)){
 			JOptionPane.showMessageDialog(controllingFrame,
 	                "Username already exists ");
 			return false;
