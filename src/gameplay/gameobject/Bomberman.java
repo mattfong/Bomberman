@@ -28,7 +28,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	bombPass = false;
 	flamePass = false;
 	detonator = false;
-	explosionRadius = 1;
+	explosionRadius = 3;
     }
 
     @Override

@@ -17,7 +17,7 @@ public class Background extends GameObject {
 	solid = false;
 	sprite = new ImageIcon(Background.class.getResource("/Background.png")).getImage();
 	destroyable = false;
-	conductsExplosions = false;
+	conductsExplosions = true;
     }
 
 }
