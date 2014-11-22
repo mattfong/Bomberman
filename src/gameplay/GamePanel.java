@@ -1,6 +1,7 @@
 package gameplay;
 
 import gameplay.gameobject.Bomberman;
+import gameplay.gameobject.GameActor;
 import gameplay.input.InputListener;
 import gameplay.pauseMenu.PauseMenuView;
 
@@ -10,6 +11,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -18,7 +20,7 @@ public class GamePanel extends JPanel implements Runnable {
     int xCoord;
     int yCoord;
     PauseMenuView pauseMenu;
-    
+
     private long period = 40 * 1000000;
     // Double buffering
     private Image dbImage;
@@ -36,15 +38,14 @@ public class GamePanel extends JPanel implements Runnable {
 
     // GameObjects
     World world;
-    Bomberman p1;
+    ArrayList<GameActor> actorList;
 
     public GamePanel() {
 
 	setPreferredSize(gameDim);
 	setFocusable(true);
 	requestFocus();
-	world = new World(31, 13);
-	p1 = new Bomberman(world, new Rectangle(32, 32, 32, 32));
+	loadGameLevel();
 
 	addKeyListener(InputListener.getInstance());
 	InputListener.setGamePanel(this);
@@ -52,6 +53,13 @@ public class GamePanel extends JPanel implements Runnable {
 
     }
 
+    private void loadGameLevel() {
+	world = new World(31, 13);
+	actorList = new ArrayList<GameActor>();
+	actorList.add(new Bomberman(world, new Rectangle(32, 32, 32, 32)));
+    }
+
+    @Override
     public void run() {
 	long beforeTime, afterTime, diff, sleepTime, overSleepTime = 0;
 	while (running) {
@@ -62,7 +70,7 @@ public class GamePanel extends JPanel implements Runnable {
 	    afterTime = System.nanoTime();
 	    diff = afterTime - beforeTime;
 	    sleepTime = (period - diff) - overSleepTime;
-	    if (sleepTime < period && sleepTime > 0) {
+	    if ((sleepTime < period) && (sleepTime > 0)) {
 
 		try {
 		    game.sleep(sleepTime / 1000000);
@@ -78,8 +86,12 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     private void gameUpdate() {
-	if (running && game != null) {
-	    p1.update();
+	if (running && (game != null)) {
+
+	    for (GameActor actor : actorList) {
+		actor.update();
+	    }
+
 	    world.update();
 	}
 
@@ -105,8 +117,10 @@ public class GamePanel extends JPanel implements Runnable {
     /* draw all game stuff in here */
     public void draw(Graphics g) {
 	world.draw(g);
-	p1.draw(g);
 
+	for (GameActor actor : actorList) {
+	    actor.draw(g);
+	}
     }
 
     private void paintScreen() {
@@ -125,6 +139,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     }
 
+    @Override
     public void addNotify() {
 	super.addNotify();
 	startGame();
@@ -132,7 +147,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     private void startGame() {
-	if (game == null || !running) {
+	if ((game == null) || !running) {
 	    game = new Thread(this);
 	    game.start();
 	    running = true;
@@ -145,26 +160,29 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
     }
-    private void resumeGame(){
-    	startGame();
-    	requestFocus();
+
+    private void resumeGame() {
+	startGame();
+	requestFocus();
     }
-    public void closePauseMenu(){
-    	remove(pauseMenu);
-    	this.revalidate();
-    	this.repaint();
-    	this.resumeGame();
-    	
+
+    public void closePauseMenu() {
+	remove(pauseMenu);
+	this.revalidate();
+	this.repaint();
+	this.resumeGame();
+
     }
-    public void openPauseMenu(){
-    	stopGame();
-    	pauseMenu= new PauseMenuView(this);
-    	this.add(pauseMenu);
-    	pauseMenu.setBounds(GWIDTH/3,30,311,358);
-    	
-    	this.revalidate();
-    	this.repaint();
-    	
+
+    public void openPauseMenu() {
+	stopGame();
+	pauseMenu = new PauseMenuView(this);
+	this.add(pauseMenu);
+	pauseMenu.setBounds(GWIDTH / 3, 30, 311, 358);
+
+	this.revalidate();
+	this.repaint();
+
     }
-    
+
 }
