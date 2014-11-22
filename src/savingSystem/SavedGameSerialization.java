@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package savingSystem;
 
 import java.io.FileInputStream;
@@ -34,3 +35,39 @@ public class SavedGameSerialization {
 	}
 	
 }
+=======
+package savingSystem;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.List;
+
+public class SavedGameSerialization {
+	
+	public void serializeSaveGameName(List<SavedGame> savedGames, String fileName) {
+		try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName))) {
+			out.writeObject(savedGames);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Problem during serialization");
+		}
+	}
+	
+	public List<SavedGame> deserializeSaveGameName(String fileName) {
+		List<SavedGame> savedGames = null;
+		
+		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName))) {
+			savedGames = (List<SavedGame>) in.readObject();
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Problem when deserializing :" + fileName);
+		}	
+		return savedGames;
+	}
+}
+>>>>>>> 7301196a8b1feee7eba3b4ce54f63e9d7d5e3fd8
