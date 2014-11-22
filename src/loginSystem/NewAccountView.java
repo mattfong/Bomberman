@@ -34,7 +34,7 @@ public class NewAccountView {
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 
-		panel.setLayout(new GridLayout(9,1,5,10));
+		panel.setLayout(new GridLayout(10,1,5,10));
 		
 		JLabel enterName = new JLabel("          Enter your name");
 		JLabel enterUser = new JLabel("			Enter your desired username");
@@ -75,6 +75,20 @@ public class NewAccountView {
 			}
 			
 		});	
+		
+		JButton goBack = new JButton("Go back to login menu");
+
+		goBack.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				LoginMenu loginMenu = new LoginMenu(); 
+				loginMenu.loginMenu();
+			}
+			
+		});
+		
+		
 		panel.add(enterName);
 		panel.add(NameTF);
 		panel.add(enterUser);
@@ -84,6 +98,7 @@ public class NewAccountView {
 		panel.add(enterConfirmPass);
 		panel.add(ConfirmPassPF);
 		panel.add(makeUser);
+		panel.add(goBack);
 		frame.add(panel);
 		
 	}
