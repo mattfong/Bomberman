@@ -29,7 +29,7 @@ public class DeleteAccountView {
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 
-		panel.setLayout(new GridLayout(6,1,5,10));
+		panel.setLayout(new GridLayout(7,1,5,10));
 		
 		JLabel loginInfo = new JLabel("Enter the login account you want to delete");
 		JLabel enterUser = new JLabel("Username");
@@ -62,12 +62,27 @@ public class DeleteAccountView {
 			
 		});	
 		
+
+		JButton goBack = new JButton("Go back to login menu");
+
+		goBack.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				LoginMenu loginMenu = new LoginMenu(); 
+				loginMenu.loginMenu();
+			}
+			
+		});
+		
+		
 		panel.add(loginInfo);
 		panel.add(enterUser);
 		panel.add(UserTF);
 		panel.add(enterPass);
 		panel.add(PassPF);
 		panel.add(deleteUser);
+		panel.add(goBack);
 		frame.add(panel);
 	}
 	
