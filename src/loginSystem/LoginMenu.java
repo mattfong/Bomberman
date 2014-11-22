@@ -20,6 +20,7 @@ public class LoginMenu {
 	private JFrame controllingFrame;
 	private final JFrame frame=new JFrame("Login");
 	private JPanel panel = new JPanel();
+	private final AccountManager accountManager = new AccountManager();
 	
 	public void loginMenu(){
 		jt.setText(null);
@@ -38,6 +39,14 @@ public class LoginMenu {
 		JButton login = new JButton("To Login click here");
 		JButton newUser = new JButton("IF you do not have an account click here to create one");
 		JButton deleteUser = new JButton("To delete your Account click here");
+		
+		CSVreader reader = new CSVreader();
+		try {
+			accountManager.setAccounts(reader.CSVreader());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		newUser.addActionListener(new ActionListener(){
 			
@@ -64,9 +73,6 @@ public class LoginMenu {
 				
 				
 				try {
-					CSVreader reader = new CSVreader();
-					AccountManager accountManager = new AccountManager();
-					accountManager.setAccounts(reader.CSVreader());
 					if(accountManager.isUser(jt.getText(), pf.getText())==true){
 						frame.dispose();
 						PlayGame playGame = new PlayGame();
@@ -82,10 +88,7 @@ public class LoginMenu {
 				} catch (HeadlessException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}				
+				}			
 				
 			}
 		});	
