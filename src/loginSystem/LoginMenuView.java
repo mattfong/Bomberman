@@ -18,16 +18,12 @@ public class LoginMenuView {
 	private JTextField jt= new JTextField(30);
 	private JPasswordField pf = new JPasswordField(30);
 	private JFrame controllingFrame;
-<<<<<<< HEAD:src/loginSystem/LoginMenuView.java
-	//final JFrame frame=new JFrame("Login");
-	LoginFrame frame =new LoginFrame();
 
-=======
-	private final JFrame frame=new JFrame("Login");
+	LoginFrame frame =new LoginFrame();
+//	private final JFrame frame=new JFrame("Login");
 	private JPanel panel = new JPanel();
 	private final AccountManager accountManager = new AccountManager();
->>>>>>> 5b19f19cfdd2f6ce80663b60b68149232a8e49ef:src/loginSystem/LoginMenu.java
-	
+
 	public void loginMenu(){
 		jt.setText(null);
 		pf.setText(null);
