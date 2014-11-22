@@ -60,7 +60,7 @@ public abstract class GameObject {
      * @return true if the object is solid, false if it's not.
      */
     public boolean isSolid() {
-    	return solid;
+	return solid;
     }
 
     /**
@@ -97,6 +97,18 @@ public abstract class GameObject {
      *         GameObject.
      */
     public Rectangle getCollisionBoundaries() {
+	return new Rectangle(this.gridLocation.x, this.gridLocation.y, pictureSize, pictureSize);
+    }
+
+    /**
+     * Method returns the location of this GameObject as a rectangle populated
+     * with the location and size of the gameobject.
+     * 
+     * @return rectangle whose x and y are the same as the top left location of
+     *         the game object and whose width and heigh as the same as the
+     *         gameobject's sprite.
+     */
+    public Rectangle getLocation() {
 	return new Rectangle(this.gridLocation.x, this.gridLocation.y, pictureSize, pictureSize);
     }
 

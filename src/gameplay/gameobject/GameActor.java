@@ -15,7 +15,7 @@ import java.awt.Rectangle;
  * @author MF
  *
  */
-public class GameActor extends GameObject implements Cloneable {
+public class GameActor extends GameObject {
 
     protected int moveSpeed = 32;
     protected boolean wallPass;
@@ -38,27 +38,27 @@ public class GameActor extends GameObject implements Cloneable {
 	// driver.getCommand();
     }
 
-//    @Override
-//    public GameActor clone(Rectangle location) {
-//	GameActor clone = new GameActor(location, this.world);
-//
-//	clone.sprite = this.sprite;
-//	clone.solid = this.solid;
-//	clone.destroyable = this.destroyable;
-//	clone.conductsExplosions = this.conductsExplosions;
-//	clone.score = this.score;
-//	clone.conductsExplosions = this.conductsExplosions;
-//	clone.wallPass = this.wallPass;
-//	clone.sprite = this.sprite;
-//
-//	return clone;
-//    }
+    // @Override
+    // public GameActor clone(Rectangle location) {
+    // GameActor clone = new GameActor(location, this.world);
+    //
+    // clone.sprite = this.sprite;
+    // clone.solid = this.solid;
+    // clone.destroyable = this.destroyable;
+    // clone.conductsExplosions = this.conductsExplosions;
+    // clone.score = this.score;
+    // clone.conductsExplosions = this.conductsExplosions;
+    // clone.wallPass = this.wallPass;
+    // clone.sprite = this.sprite;
+    //
+    // return clone;
+    // }
 
-    public boolean canMove(Direction direction){
-    	return !(world.willCollide(this, direction));
-    
+    public boolean canMove(Direction direction) {
+	return !(world.willCollide(this, direction));
+
     }
-    
+
     private boolean hasCollided() {
 
 	return world.checkForCollision(this);
@@ -110,26 +110,27 @@ public class GameActor extends GameObject implements Cloneable {
      * command to move the game actor down.
      */
     public void moveDown() {
-    if(canMove(Direction.DOWN)){
+	if (canMove(Direction.DOWN)) {
 	    gridLocation.y = gridLocation.y + moveSpeed;
-    }
 	}
+    }
 
-    
-    
     /**
      * Checks if the GameActor can pass through a given GameObject.
-     * @param object GameObject that is being checked
-     * @return true if the GameActor can pass through the object, false if the object is solid to the GameActor
+     * 
+     * @param object
+     *            GameObject that is being checked
+     * @return true if the GameActor can pass through the object, false if the
+     *         object is solid to the GameActor
      */
-    public boolean canPassThrough(GameObject object){
-    	if(object instanceof Brick){
-    		return wallPass;
-    	}else if (object.isSolid()){
-    		return false;
-    	}
-    		return true;
-    		
+    public boolean canPassThrough(GameObject object) {
+	if (object instanceof Brick) {
+	    return wallPass;
+	} else if (object.isSolid()) {
+	    return false;
+	}
+	return true;
+
     }
 
 }
