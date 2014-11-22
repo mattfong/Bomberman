@@ -12,4 +12,6 @@ public class LoginPanel extends JPanel{
     	setPreferredSize(gameDim);
 		setFocusable(true);
     }
+    
+    
 }
