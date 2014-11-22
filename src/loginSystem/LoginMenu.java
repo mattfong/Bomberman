@@ -40,6 +40,7 @@ public class LoginMenu {
 		JButton newUser = new JButton("IF you do not have an account click here to create one");
 		JButton deleteUser = new JButton("To delete your Account click here");
 		
+		// Included CSVreader
 		CSVreader reader = new CSVreader();
 		try {
 			accountManager.setAccounts(reader.CSVreader());
