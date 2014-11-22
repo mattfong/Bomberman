@@ -82,23 +82,24 @@ public class World {
 
     }
 
+    /**
+     * remove the specified gameobject from the world. Object specified must be
+     * the specific instance that is to be removed and not an equivalent one.
+     *
+     * @param obj
+     *            the game object that is to be add to the game world.
+     */
     public void removeGameObject(GameObject obj) {
-	for (int i = 0; i < gridWidth; i++) {
-	    for (int j = 0; j < gridHeight; j++) {
-		if (grid[i][j].peek() == obj) {
-		    grid[i][j].pop();
+
+	if (obj != null) {
+	    for (int i = 0; i < gridWidth; i++) {
+		for (int j = 0; j < gridHeight; j++) {
+		    if (grid[i][j].peek() == obj) {
+			grid[i][j].pop();
+		    }
 		}
 	    }
 	}
-
-    }
-
-    public int getGridWidth() {
-	return gridWidth;
-    }
-
-    public int getGridHeight() {
-	return gridHeight;
     }
 
     /**
@@ -204,6 +205,15 @@ public class World {
 
 	boolean bool = actor.canPassThrough(objectToCheck);
 	return (!bool);
+    }
+
+    public GameObject getGameObjectInstanceAt(Rectangle location) {
+	int xIndex = location.x / blockSize;
+	int yIndex = location.y / blockSize;
+
+	GameObject temp = grid[xIndex][yIndex].peek();
+
+	return temp;
     }
 
 }
