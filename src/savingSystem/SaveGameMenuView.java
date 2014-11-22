@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -12,12 +13,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import loginSystem.Account;
+
 public class SaveGameMenuView {
 	private JTextField jt= new JTextField(30);
 	private String savedGameName = "";
-	private List<SavedGame> savedGames = new ArrayList<SavedGame>();
 	private SavedGameManager saveManager = new SavedGameManager();
 	private final JFrame frame = new JFrame("Save Game Menu");
+	private String fileName = "";
 
 	public void SaveGameMenuView(){
 		JPanel panel = new JPanel();
@@ -36,19 +39,24 @@ public class SaveGameMenuView {
 			
 			public void actionPerformed(ActionEvent arg0) {
 				savedGameName = jt.getText();
-				
-				String fileName = "SaveGameName.ser";
-
-				saveManager.addSavedGame(getSavedGameName());
+				Account acc =new Account();
+				try {
+					fileName = saveManager.getSaveGameFile(acc.getUserName());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				saveManager.addSavedGame(savedGameName);
 				SavedGameSerialization serializeGame = new SavedGameSerialization();
-				System.out.println(getSavedGameName());
+				System.out.println(savedGameName + ", username: " + acc.getUserName());
 				
-				serializeGame.serializeSaveGameName(saveManager.addSavedGame(getSavedGameName()), fileName);
+				serializeGame.serializeSaveGameName(saveManager.getSavedGamesList(), fileName);
 				System.out.println("Serialization Done");
 				
 				List<SavedGame> newSavedGames = serializeGame.deserializeSaveGameName(fileName);
 				System.out.println("SaveName: " + newSavedGames.get(0).getGameState() + "," +
 						newSavedGames.get(0).getUserName() + "," + newSavedGames.get(0).getSavedGameName() );
+				System.out.println("New List: " + newSavedGames);
 			}
 			
 		});
@@ -77,14 +85,6 @@ public class SaveGameMenuView {
 	    panel.add(closeMenu);
 	    frame.add(panel);
 	
-	}
-	
-	public String getSavedGameName() {
-		return savedGameName;
-	}
-
-	public void setSavedGameName(String savedGameName) {
-		this.savedGameName = savedGameName;
 	}
 	
 }

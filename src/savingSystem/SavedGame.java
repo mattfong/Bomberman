@@ -44,5 +44,11 @@ public class SavedGame implements Serializable{
 	public void setSavedGameName(String savedGameName) {
 		this.savedGameName = savedGameName;
 	}
+
+	@Override
+	public String toString() {
+		return "SavedGame [gameState=" + gameState + ", userName=" + userName
+				+ ", savedGameName=" + savedGameName + "]";
+	}
 	
 }
