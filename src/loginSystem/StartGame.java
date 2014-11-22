@@ -4,24 +4,10 @@ import loginSystem.LoginMenu;
 
 
 public class StartGame {
-	LoginFrame frame = new LoginFrame();	
-	public static void main(String[] args)
-	{
-		StartGame start = new StartGame();
 		
-		//LoginMenu.main(null);	
-		
-		start.game();
+	public static void main(String[] args) {
+		LoginMenu loginMenu = new LoginMenu();
+		loginMenu.loginMenu();	
 		
 	}
-	
-	
-	public void game(){
-		
-		//LoginMenu.main(null, frame);
-		//LoginMenu.loginMenuWindow(frame);
-		
-		PlayGame.main(null, frame);
-	}
-	
 }

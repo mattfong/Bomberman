@@ -15,15 +15,21 @@ import javax.swing.JTextField;
 
 
 public class LoginMenu {
-	JTextField jt= new JTextField(30);
-	JPasswordField pf = new JPasswordField(30);
+	private JTextField jt= new JTextField(30);
+	private JPasswordField pf = new JPasswordField(30);
 	private JFrame controllingFrame;
-	LoginPanel panel = new LoginPanel();
-
+	final JFrame frame=new JFrame("Login");
 	
-	public void loginMenuWindow(final JFrame frame){
+	public void loginMenu(){
 		jt.setText(null);
 		pf.setText(null);
+		JPanel panel = new JPanel();
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(992,448);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
+
 		panel.setLayout(new GridLayout(7,1,5,10));
 		
 		JLabel enterUser = new JLabel("If you have an account enter your username enter it here");
@@ -36,16 +42,9 @@ public class LoginMenu {
 		newUser.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent arg0) {
-				panel.revalidate();
-				panel.validate();
-				panel.repaint();
-	            panel.removeAll();
-				
-				//frame.remove(panel);
-		        //frame.revalidate();
-		        //frame.validate();
-		        //frame.removeAll();
-		        newAccount.main(null, frame);	
+			frame.dispose();
+			NewAccountView newAccount = new NewAccountView();
+			newAccount.NewAccountView();	
 			}
 			
 		});	
@@ -53,15 +52,9 @@ public class LoginMenu {
 		deleteUser.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent arg0) {
-				//frame.remove(panel);
-		        //frame.revalidate();
-		        //frame.validate();
-		        //frame.removeAll();
-				panel.revalidate();
-				panel.validate();
-				panel.repaint();
-	            panel.removeAll();
-		        deleteAccount.main(null, frame);	
+				frame.dispose();
+				DeleteAccountView deleteAccount = new DeleteAccountView();
+				deleteAccount.DeleteAccountView();	
 			}
 			
 		});	
@@ -71,17 +64,11 @@ public class LoginMenu {
 				
 				
 				try {
-					if(CSVreader.checkUser(jt.getText(), pf.getText())==true){
-						//frame.remove(panel);
-				        //frame.revalidate();
-				        //frame.validate();
-				        //frame.removeAll();
-						//PlayGame.playMenu();
-						panel.revalidate();
-						panel.validate();
-						panel.repaint();
-			            panel.removeAll();
-						PlayGame.main(null, frame);
+					AccountManager accountManager = new AccountManager();
+					if(accountManager.isUser(jt.getText(), pf.getText())==true){
+						frame.dispose();
+						PlayGame playGame = new PlayGame();
+						playGame.playMenu();
 						System.out.println("Username entered correctly");
 					}
 					else{
@@ -91,9 +78,6 @@ public class LoginMenu {
 						 pf.setText(null);
 					}
 				} catch (HeadlessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}				
@@ -110,12 +94,6 @@ public class LoginMenu {
 		panel.add(newUser);
 		panel.add(deleteUser);
 		frame.add(panel);
-		System.out.println("all is well in the loginMenu");
-		System.out.println("breakpooint here");
 	}
 	
-	public static void main(String[] args, JFrame frame){
-		LoginMenu nonStaticLM = new LoginMenu();
-		nonStaticLM.loginMenuWindow(frame);
-	}
 }
