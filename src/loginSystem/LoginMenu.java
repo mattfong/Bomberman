@@ -18,12 +18,12 @@ public class LoginMenu {
 	private JTextField jt= new JTextField(30);
 	private JPasswordField pf = new JPasswordField(30);
 	private JFrame controllingFrame;
-	final JFrame frame=new JFrame("Login");
+	private final JFrame frame=new JFrame("Login");
+	private JPanel panel = new JPanel();
 	
 	public void loginMenu(){
 		jt.setText(null);
 		pf.setText(null);
-		JPanel panel = new JPanel();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(992,448);
@@ -64,7 +64,9 @@ public class LoginMenu {
 				
 				
 				try {
+					CSVreader reader = new CSVreader();
 					AccountManager accountManager = new AccountManager();
+					accountManager.setAccounts(reader.CSVreader());
 					if(accountManager.isUser(jt.getText(), pf.getText())==true){
 						frame.dispose();
 						PlayGame playGame = new PlayGame();
@@ -78,6 +80,9 @@ public class LoginMenu {
 						 pf.setText(null);
 					}
 				} catch (HeadlessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}				
