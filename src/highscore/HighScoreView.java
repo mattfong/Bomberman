@@ -159,7 +159,7 @@ public class HighScoreView extends JFrame implements ActionListener{
 			f.dispose();
 			//notYet();	
 			PlayGame playGame = new PlayGame();
-			playGame.playMenu(f);
+			playGame.playMenu();
 	    }});
 	    //The following will be used to execute any commands related to the button
 	    //goBack.addActionListener(this.actionPerformed(arg0););	    
