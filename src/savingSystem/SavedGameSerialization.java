@@ -7,6 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
 
+
 public class SavedGameSerialization {
 	
 	public void serializeSaveGameName(List<SavedGame> savedGames, String fileName) {
@@ -31,4 +32,5 @@ public class SavedGameSerialization {
 		}	
 		return savedGames;
 	}
+	
 }

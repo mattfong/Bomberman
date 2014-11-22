@@ -18,14 +18,19 @@ public class LoginMenuView {
 	private JTextField jt= new JTextField(30);
 	private JPasswordField pf = new JPasswordField(30);
 	private JFrame controllingFrame;
+<<<<<<< HEAD:src/loginSystem/LoginMenuView.java
 	//final JFrame frame=new JFrame("Login");
 	LoginFrame frame =new LoginFrame();
 
+=======
+	private final JFrame frame=new JFrame("Login");
+	private JPanel panel = new JPanel();
+	private final AccountManager accountManager = new AccountManager();
+>>>>>>> 5b19f19cfdd2f6ce80663b60b68149232a8e49ef:src/loginSystem/LoginMenu.java
 	
 	public void loginMenu(){
 		jt.setText(null);
 		pf.setText(null);
-		JPanel panel = new JPanel();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(992,448);
@@ -40,6 +45,15 @@ public class LoginMenuView {
 		JButton login = new JButton("To Login click here");
 		JButton newUser = new JButton("IF you do not have an account click here to create one");
 		JButton deleteUser = new JButton("To delete your Account click here");
+		
+		// Included CSVreader
+		CSVreader reader = new CSVreader();
+		try {
+			accountManager.setAccounts(reader.CSVreader());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		newUser.addActionListener(new ActionListener(){
 			
@@ -66,7 +80,6 @@ public class LoginMenuView {
 				
 				
 				try {
-					AccountManager accountManager = new AccountManager();
 					if(accountManager.isUser(jt.getText(), pf.getText())==true){
 						frame.dispose();
 						PlayGameView playGame = new PlayGameView();
@@ -82,7 +95,7 @@ public class LoginMenuView {
 				} catch (HeadlessException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}				
+				}			
 				
 			}
 		});	
