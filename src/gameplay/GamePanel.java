@@ -2,6 +2,7 @@ package gameplay;
 
 import gameplay.gameobject.Bomberman;
 import gameplay.input.InputListener;
+import gameplay.pauseMenu.PauseMenuView;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -16,7 +17,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     int xCoord;
     int yCoord;
-
+    PauseMenuView pauseMenu;
+    
     private long period = 40 * 1000000;
     // Double buffering
     private Image dbImage;
@@ -45,6 +47,8 @@ public class GamePanel extends JPanel implements Runnable {
 	p1 = new Bomberman(world, new Rectangle(32, 32, 32, 32));
 
 	addKeyListener(InputListener.getInstance());
+	InputListener.setGamePanel(this);
+	setLayout(null);
 
     }
 
@@ -141,5 +145,26 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
     }
-
+    private void resumeGame(){
+    	startGame();
+    	requestFocus();
+    }
+    public void closePauseMenu(){
+    	remove(pauseMenu);
+    	this.revalidate();
+    	this.repaint();
+    	this.resumeGame();
+    	
+    }
+    public void openPauseMenu(){
+    	stopGame();
+    	pauseMenu= new PauseMenuView(this);
+    	this.add(pauseMenu);
+    	pauseMenu.setBounds(GWIDTH/3,30,311,358);
+    	
+    	this.revalidate();
+    	this.repaint();
+    	
+    }
+    
 }

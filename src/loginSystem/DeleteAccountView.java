@@ -12,16 +12,17 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class deleteAccount {
+public class DeleteAccountView {
 
-	JTextField UserTF= new JTextField(30);
-	JPasswordField PassPF = new JPasswordField(30);
+	private JTextField UserTF= new JTextField(30);
+	private JPasswordField PassPF = new JPasswordField(30);
+	final JFrame frame=new JFrame("Delete your account");
 	
-	public void deleteAccountWindow(final JFrame frame){
+	public void DeleteAccountView(){
 		UserTF.setText(null);
 		PassPF.setText(null);
 		
-		final LoginPanel panel = new LoginPanel();
+		JPanel panel = new JPanel();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(992,448);
@@ -40,17 +41,23 @@ public class deleteAccount {
 			public void actionPerformed(ActionEvent arg0) {
 				String User=UserTF.getText();
 				String Pass=PassPF.getText();
+				AccountManager accountManager = new AccountManager();
+				CSVreader reader = new CSVreader();
+				CSVwriter writer = new CSVwriter();
+				
 				try {
-					CSVreader.deleteAccount(User, Pass);
+					accountManager.setAccounts(reader.CSVreader());
+					System.out.println("AM in try:" + accountManager.numberOfAccounts() + "," + accountManager.getAccounts());
+					accountManager.deleteAccount(User);
+					System.out.println("AM:" + accountManager.numberOfAccounts() + "," + accountManager.getAccounts());	
+					writer.CSVwriterList(accountManager.getAccounts());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				 frame.remove(panel);
-		         frame.revalidate();
-		         frame.validate();
-		         frame.removeAll();
-				LoginMenu.main(null,frame);	
+				frame.dispose();
+				LoginMenu loginMenu = new LoginMenu();
+				loginMenu.loginMenu();	
 			}
 			
 		});	
@@ -64,8 +71,4 @@ public class deleteAccount {
 		frame.add(panel);
 	}
 	
-	public static void main(String[] args, JFrame frame){
-		deleteAccount nonStaticDA = new deleteAccount();
-		nonStaticDA.deleteAccountWindow(frame);
-	}
 }
