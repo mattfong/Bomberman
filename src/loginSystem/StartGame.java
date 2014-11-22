@@ -1,12 +1,12 @@
 package loginSystem;
 
-import loginSystem.LoginMenu;
+import loginSystem.LoginMenuView;
 
 
 public class StartGame {
 		
 	public static void main(String[] args) {
-		LoginMenu loginMenu = new LoginMenu();
+		LoginMenuView loginMenu = new LoginMenuView();
 		loginMenu.loginMenu();	
 		
 	}

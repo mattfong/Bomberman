@@ -16,7 +16,9 @@ public class DeleteAccountView {
 
 	private JTextField UserTF= new JTextField(30);
 	private JPasswordField PassPF = new JPasswordField(30);
-	final JFrame frame=new JFrame("Delete your account");
+	//final JFrame frame=new JFrame("Delete your account");
+	LoginFrame frame =new LoginFrame();
+
 	
 	public void DeleteAccountView(){
 		UserTF.setText(null);
@@ -56,7 +58,7 @@ public class DeleteAccountView {
 					e.printStackTrace();
 				}
 				frame.dispose();
-				LoginMenu loginMenu = new LoginMenu();
+				LoginMenuView loginMenu = new LoginMenuView();
 				loginMenu.loginMenu();	
 			}
 			
@@ -69,7 +71,7 @@ public class DeleteAccountView {
 			
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				LoginMenu loginMenu = new LoginMenu(); 
+				LoginMenuView loginMenu = new LoginMenuView(); 
 				loginMenu.loginMenu();
 			}
 			
