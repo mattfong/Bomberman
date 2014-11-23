@@ -60,7 +60,6 @@ public class GamePanel extends JPanel implements Runnable {
 	addKeyListener(InputListener.getInstance());
 	InputListener.setGamePanel(this);
 	setLayout(null);
-	timer = new CountdownTimer();
 
     }
 
@@ -138,7 +137,7 @@ public class GamePanel extends JPanel implements Runnable {
     /* draw all game stuff in here */
     public void draw(Graphics g) {
 	world.draw(g);
-	HUD.draw(g, timer);
+	HUD.draw(g, world.getTimer());
 	for (GameActor actor : actorList) {
 	    actor.draw(g);
 	}

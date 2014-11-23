@@ -10,13 +10,6 @@ public class CountdownTimer implements ActionListener {
     Timer timer;
     int countdown;
 
-    public static void main(String[] args) {
-	CountdownTimer count = new CountdownTimer();
-	while (count.getcountdown() > 0) {
-	    System.out.println(count.getcountdown());
-	}
-    }
-
     public int getcountdown() {
 	return countdown;
     }

@@ -7,6 +7,7 @@ import gameplay.gameobject.GameObject;
 import gameplay.gameobject.blocks.Bomb;
 import gameplay.gameobject.blocks.Explosion;
 import gameplay.gameobject.blocks.Wall;
+import gameplay.overlays.CountdownTimer;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -22,6 +23,7 @@ import java.util.Stack;
  */
 public class World {
 
+	CountdownTimer gameTimer;
     private int gridWidth;
     private int gridHeight;
     private final int blockSize = 32;
@@ -36,9 +38,12 @@ public class World {
 	gridWidth = widthInBlocks;
 	worldGenerator = new WorldGenerator(this, widthInBlocks, heightInBlocks);
 	grid = worldGenerator.generateGameGrid();
-
+	gameTimer=new CountdownTimer();
     }
 
+    public CountdownTimer getTimer(){
+    	return gameTimer;
+    }
     public void registerBomberman(GameActor bomberman) {
 	this.bomberman = bomberman;
     }
