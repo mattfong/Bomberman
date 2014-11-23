@@ -19,7 +19,9 @@ public class NewAccountView {
 	private JTextField UserTF= new JTextField(30);
 	private JPasswordField PassPF = new JPasswordField(30);
 	private JPasswordField ConfirmPassPF = new JPasswordField(30);
-	private final JFrame frame=new JFrame("Make an account");
+	//private final JFrame frame=new JFrame("Make an account");
+	LoginFrame frame =new LoginFrame();
+
 	
 	public void NewAccountView(){
 		NameTF.setText(null);
@@ -62,7 +64,7 @@ public class NewAccountView {
 						}
 						System.out.println("Entered user is "+User+" and pass is "+Pass);
 						frame.dispose();
-						PlayGame playGame = new PlayGame();
+						PlayGameView playGame = new PlayGameView();
 						playGame.playMenu();
 					} else {
 						System.out.println("Password and confirm password does not match.");
@@ -82,7 +84,7 @@ public class NewAccountView {
 			
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				LoginMenu loginMenu = new LoginMenu(); 
+				LoginMenuView loginMenu = new LoginMenuView(); 
 				loginMenu.loginMenu();
 			}
 			

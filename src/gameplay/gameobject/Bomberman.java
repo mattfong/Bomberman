@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 public class Bomberman extends GameActor implements BombermanInterface {
 
     Queue<Bomb> bombList = new LinkedList<Bomb>();
-    CommandManager inputManager;
+
     protected int bombLimit;
     protected boolean bombPass;
     protected boolean flamePass;
@@ -31,26 +31,22 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	explosionRadius = 1;
     }
 
-    @Override
-    public void update() {
-	inputManager.processCommand();
-    }
-
     /**
      * places bomb at the location where bomberman is standing.
      */
     @Override
     public void placeBomb() {
 
-	Bomb bomb = new Bomb(new Rectangle(gridLocation), this.world, this.explosionRadius);
-	bombList.add(bomb);
-	world.addGameObject(bomb);
-
+	if (!(world.getGameObjectInstanceAt(gridLocation) instanceof Bomb)) {
+	    Bomb bomb = new Bomb(new Rectangle(gridLocation), this.world, this.explosionRadius);
+	    bombList.add(bomb);
+	    world.addGameObject(bomb);
+	}
     }
 
     /**
      * checks if the GameActor has the ability to remote detonate and if true,
-     * detonates the boms in order that they are placed.
+     * detonates the bombs in order that they are placed.
      */
     @Override
     public void detonateBomb() {

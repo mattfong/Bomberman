@@ -17,13 +17,14 @@ import javax.swing.JTextField;
 import savingSystem.SaveLoadView;
 
 
-public class PlayGame {
+public class PlayGameView {
 	
 	
 	static JTextField jt= new JTextField(30);
 	static JTextField ft =new JTextField(30);
-	private final JFrame frame=new JFrame("not yet");
+	//private final JFrame frame=new JFrame("not yet");
 	//static JFrame frame= new LoginFrame();
+	LoginFrame frame =new LoginFrame();
 	
 	public void notYet() {
 		frame.setVisible(true);
@@ -53,7 +54,7 @@ public class PlayGame {
 	
 	public void playMenu()
 	{
-		final JFrame frame=new JFrame("Bomberman");
+		//final JFrame frame=new JFrame("Bomberman");
 		//JFrame frame=new LoginFrame.LoginFrame();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -98,7 +99,7 @@ public class PlayGame {
 		logOut.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				LoginMenu loginMenu = new LoginMenu();
+				LoginMenuView loginMenu = new LoginMenuView();
 				loginMenu.loginMenu();	
 			
 			}

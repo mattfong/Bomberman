@@ -14,14 +14,16 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
-public class LoginMenu {
+public class LoginMenuView {
 	private JTextField jt= new JTextField(30);
 	private JPasswordField pf = new JPasswordField(30);
 	private JFrame controllingFrame;
-	private final JFrame frame=new JFrame("Login");
+
+	LoginFrame frame =new LoginFrame();
+//	private final JFrame frame=new JFrame("Login");
 	private JPanel panel = new JPanel();
 	private final AccountManager accountManager = new AccountManager();
-	
+
 	public void loginMenu(){
 		jt.setText(null);
 		pf.setText(null);
@@ -76,7 +78,7 @@ public class LoginMenu {
 				try {
 					if(accountManager.isUser(jt.getText(), pf.getText())==true){
 						frame.dispose();
-						PlayGame playGame = new PlayGame();
+						PlayGameView playGame = new PlayGameView();
 						playGame.playMenu();
 						System.out.println("Username entered correctly");
 					}
