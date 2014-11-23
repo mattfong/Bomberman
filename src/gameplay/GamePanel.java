@@ -3,6 +3,7 @@ package gameplay;
 import gameplay.gameobject.Bomberman;
 import gameplay.gameobject.GameActor;
 import gameplay.input.InputListener;
+import gameplay.overlays.CountdownTimer;
 import gameplay.overlays.HUD;
 import gameplay.pauseMenu.PauseMenuView;
 
@@ -21,6 +22,7 @@ public class GamePanel extends JPanel implements Runnable {
     int xCoord;
     int yCoord;
     PauseMenuView pauseMenu;
+    CountdownTimer timer;
 
     private long period = 40 * 1000000;
     // Double buffering
@@ -51,12 +53,13 @@ public class GamePanel extends JPanel implements Runnable {
 	addKeyListener(InputListener.getInstance());
 	InputListener.setGamePanel(this);
 	setLayout(null);
+	timer = new CountdownTimer();
 
     }
 
     private void loadGameLevel() {
-	GameActor bomberman = new Bomberman(world, new Rectangle(32, 32, 32, 32));
 	world = new World(31, 13);
+	GameActor bomberman = new Bomberman(world, new Rectangle(32, 32, 32, 32));
 	world.registerBomberman(bomberman);
 	actorList = new ArrayList<GameActor>();
 	actorList.add(bomberman);
@@ -128,7 +131,7 @@ public class GamePanel extends JPanel implements Runnable {
     /* draw all game stuff in here */
     public void draw(Graphics g) {
 	world.draw(g);
-	HUD.draw(g);
+	HUD.draw(g, timer);
 	for (GameActor actor : actorList) {
 	    actor.draw(g);
 	}
