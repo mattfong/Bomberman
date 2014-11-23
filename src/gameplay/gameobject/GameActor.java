@@ -139,4 +139,8 @@ public class GameActor extends GameObject {
 
     }
 
+    public boolean isAtIntersection() {
+	return world.isIntersection(this.getLocation());
+    }
+
 }
