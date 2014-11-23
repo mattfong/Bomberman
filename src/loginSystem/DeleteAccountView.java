@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -17,6 +18,8 @@ public class DeleteAccountView {
 	private JTextField UserTF= new JTextField(30);
 	private JPasswordField PassPF = new JPasswordField(30);
 	//final JFrame frame=new JFrame("Delete your account");
+	private JFrame controllingFrame;
+
 	LoginFrame frame =new LoginFrame();
 
 	
@@ -43,6 +46,10 @@ public class DeleteAccountView {
 			public void actionPerformed(ActionEvent arg0) {
 				String User=UserTF.getText();
 				String Pass=PassPF.getText();
+				if(User.equals(null)||Pass.equals(null)){
+					JOptionPane.showMessageDialog(controllingFrame,
+			                "Username or Password is empty");
+				}
 				AccountManager accountManager = new AccountManager();
 				CSVreader reader = new CSVreader();
 				CSVwriter writer = new CSVwriter();

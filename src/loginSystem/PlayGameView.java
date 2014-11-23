@@ -22,9 +22,10 @@ public class PlayGameView {
 	
 	static JTextField jt= new JTextField(30);
 	static JTextField ft =new JTextField(30);
-	//private final JFrame frame=new JFrame("not yet");
+	private final JFrame frame=new JFrame("not yet");
+	private final JFrame f=new JFrame("Main Menu");
 	//static JFrame frame= new LoginFrame();
-	LoginFrame frame =new LoginFrame();
+	//LoginFrame frame =new LoginFrame();
 	
 	public void notYet() {
 		frame.setVisible(true);
@@ -54,28 +55,24 @@ public class PlayGameView {
 	
 	public void playMenu()
 	{
-		//final JFrame frame=new JFrame("Bomberman");
-		//JFrame frame=new LoginFrame.LoginFrame();
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(992,448);
-		frame.setLocationRelativeTo(null);
-		frame.setResizable(false);
+		f.setVisible(true);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setSize(992,448);
+		f.setLocationRelativeTo(null);
+		f.setResizable(false);
 		
 		
 		JPanel panel = new JPanel();
-		//panel.setBackground(Color.RED);
 
 		
 		panel.setLayout(new GridLayout(4,1,5,10));
 		JButton play =new JButton("Play Game");
-		//play.setBackground(Color.green);
 		play.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("New Game Frame");
 				GameFrame gameplay=new GameFrame();
 				gameplay.setVisible(true);
-				frame.dispose();
+				f.dispose();
 			}
 		});		
 		JButton saved =new JButton("Load Saved game"); 
@@ -83,14 +80,14 @@ public class PlayGameView {
 			public void actionPerformed(ActionEvent arg0) {
 				SaveGameMenuView saveMenu = new SaveGameMenuView();
 				saveMenu.SaveGameMenuView();
-				frame.dispose();
+				f.dispose();
 //				notYet();	
 			}
 		});	
 		JButton high =new JButton("High Scores");
 		high.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose();
+				f.dispose();
 				//notYet();	
 				HighScoreController.displayHighScore();
 			}
@@ -98,7 +95,7 @@ public class PlayGameView {
 		JButton logOut =new JButton("Log Out"); 
 		logOut.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose();
+				f.dispose();
 				LoginMenuView loginMenu = new LoginMenuView();
 				loginMenu.loginMenu();	
 			
@@ -109,7 +106,7 @@ public class PlayGameView {
 		panel.add(saved);
 		panel.add(high);
 		panel.add(logOut);
-		frame.add(panel);
+		f.add(panel);
 		
 		
 	}
