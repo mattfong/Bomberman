@@ -1,5 +1,6 @@
-package gameplay;
+package gameplay.statemanagers;
 
+import gameplay.Level;
 import gameplay.gameobject.GameObject;
 
 import java.util.Stack;
@@ -14,6 +15,14 @@ public class GameState {
     private float timeRemaining;
     private int remainingLives;
 
+    public GameState(String playerName, String userName){
+    	
+    }
+    public GameState(int score){
+    	this.score=score;
+    	
+    }
+    
     public String getUserName() {
 	return userName;
     }
@@ -64,6 +73,9 @@ public class GameState {
 
     public Level getLevel() {
 	return level;
+    }
+    public void increaseScoreBy(int scoreToAdd){
+    	this.score+=scoreToAdd;
     }
 
     public void setLevel(Level level) {

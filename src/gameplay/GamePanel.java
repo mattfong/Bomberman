@@ -6,6 +6,8 @@ import gameplay.input.InputListener;
 import gameplay.overlays.CountdownTimer;
 import gameplay.overlays.HUD;
 import gameplay.pauseMenu.PauseMenuView;
+import gameplay.statemanagers.GameState;
+import gameplay.statemanagers.GameStateManager;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -38,7 +40,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     private Thread game;
     private volatile boolean running = false;
-
+    private GameStateManager stateManager;
+    
+    
     // GameObjects
     World world;
     ArrayList<GameActor> actorList;
@@ -50,6 +54,9 @@ public class GamePanel extends JPanel implements Runnable {
 	requestFocus();
 	loadGameLevel();
 
+	stateManager=GameStateManager.getInstance();
+	stateManager.setCurrentGameState(new GameState(100));
+	
 	addKeyListener(InputListener.getInstance());
 	InputListener.setGamePanel(this);
 	setLayout(null);

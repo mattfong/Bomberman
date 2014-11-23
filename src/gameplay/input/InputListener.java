@@ -12,6 +12,7 @@ public class InputListener extends KeyAdapter implements CommandIssuer {
     private static GamePanel gamePanel;
     private static int queryDelay;
     private static int pollCounter;
+    
     protected InputListener() {
     	pollCounter=0;
     	queryDelay=1;
