@@ -15,13 +15,14 @@ import javax.swing.JTextField;
 
 import loginSystem.Account;
 
+
 public class SaveGameMenuView {
 	private JTextField jt= new JTextField(30);
 	private String savedGameName = "";
 	private SavedGameManager saveManager = new SavedGameManager();
 	private final JFrame frame = new JFrame("Save Game Menu");
 	private String fileName = "";
-
+	
 	public void SaveGameMenuView(){
 		JPanel panel = new JPanel();
 		frame.setVisible(true);
@@ -32,16 +33,16 @@ public class SaveGameMenuView {
 	    
 	    JLabel gameName = new JLabel("Enter a name to save your game");
 	    JButton saveGame = new JButton("Save Game");
-	    JButton playNewGame = new JButton("Play new game");
+	    JButton goBack = new JButton("Go Back");
 	    JButton closeMenu = new JButton("Close Menu");
 		
 	    saveGame.addActionListener(new ActionListener(){
-			
+			Account acc = new Account();
 			public void actionPerformed(ActionEvent arg0) {
 				savedGameName = jt.getText();
-				Account acc =new Account();
 				try {
-					fileName = saveManager.getSaveGameFile(acc.getUserName());
+					fileName = saveManager.getSaveGameFile("Demo11");
+					System.out.println(fileName);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -61,10 +62,12 @@ public class SaveGameMenuView {
 			
 		});
 	    
-	    playNewGame.addActionListener(new ActionListener(){
+	    goBack.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent arg0) {
-				saveManager.newOperation();	
+				SaveLoadView saveLoadMenu = new SaveLoadView();
+				saveLoadMenu.SaveLoadView();
+				frame.dispose();	
 			}
 			
 		});	
@@ -81,7 +84,7 @@ public class SaveGameMenuView {
 	    panel.add(gameName);
 	    panel.add(jt);
 	    panel.add(saveGame);
-	    panel.add(playNewGame);
+	    panel.add(goBack);
 	    panel.add(closeMenu);
 	    frame.add(panel);
 	

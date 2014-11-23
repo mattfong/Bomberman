@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import loginSystem.Account;
+import loginSystem.AccountManager;
+
 public class SavedGameManager {
 	
 	private List<SavedGame> savedGamesList = new ArrayList<SavedGame>();
@@ -48,10 +51,6 @@ public class SavedGameManager {
 			}
 		}*/
 		return gameList;
-	}
-	
-	public void newOperation(){
-	//	GameFrame gameplay=new GameFrame();
 	}
 	
 	public int numberOfSavedGames(){
