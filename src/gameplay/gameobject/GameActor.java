@@ -46,7 +46,7 @@ public class GameActor extends GameObject {
 
     }
 
-    private boolean checkIfBombed() {
+    protected boolean checkIfBombed() {
 
 	if (world.getGameObjectInstanceAt(this.getLocation()) instanceof Explosion) {
 	    return true;
@@ -141,6 +141,14 @@ public class GameActor extends GameObject {
 
     public boolean isAtIntersection() {
 	return world.isIntersection(this.getLocation());
+    }
+
+    public int distanceToBomberman() {
+	return world.distanceToBomberman(this);
+    }
+
+    public boolean bombermanWithinRange(int range) {
+	return world.bombermanWithin(this, range);
     }
 
 }

@@ -12,9 +12,10 @@ public class InputListener extends KeyAdapter implements CommandIssuer {
     private static GamePanel gamePanel;
     private static int queryDelay;
     private static int pollCounter;
+
     protected InputListener() {
-    	pollCounter=0;
-    	queryDelay=1;
+	pollCounter = 0;
+	queryDelay = 1;
     }
 
     public static InputListener getInstance() {
@@ -23,21 +24,22 @@ public class InputListener extends KeyAdapter implements CommandIssuer {
 	}
 	return singleton;
     }
-    
-    public static void setGamePanel(GamePanel panel){
-    	gamePanel=panel;
+
+    public static void setGamePanel(GamePanel panel) {
+	gamePanel = panel;
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-    	if(e.getKeyCode()==KeyEvent.VK_ESCAPE){
-    		gamePanel.openPauseMenu();
-    	}
-    	bufferedKey = e;
-		
+	if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+	    gamePanel.openPauseMenu();
+	}
+	bufferedKey = e;
+
     }
-    public void setQuerySpeed(int speed){
-    	queryDelay=speed;
+
+    public void setQuerySpeed(int speed) {
+	queryDelay = speed;
     }
 
     @Override
@@ -53,35 +55,34 @@ public class InputListener extends KeyAdapter implements CommandIssuer {
     @Override
     public Command getCommand() {
 
-    	
-    	pollCounter++;
-    	if((pollCounter % queryDelay) ==0){
-	if (bufferedKey != null) {
-	    if (bufferedKey.getKeyCode() == KeyEvent.VK_LEFT) {
-		bufferedKey = null;
-		return new CommandLeft();
+	pollCounter++;
+	if ((pollCounter % queryDelay) == 0) {
+	    if (bufferedKey != null) {
+		if (bufferedKey.getKeyCode() == KeyEvent.VK_LEFT) {
+		    bufferedKey = null;
+		    return new CommandLeft();
+		}
+		if (bufferedKey.getKeyCode() == KeyEvent.VK_RIGHT) {
+		    bufferedKey = null;
+		    return new CommandRight();
+		}
+		if (bufferedKey.getKeyCode() == KeyEvent.VK_UP) {
+		    bufferedKey = null;
+		    return new CommandUp();
+		}
+		if (bufferedKey.getKeyCode() == KeyEvent.VK_DOWN) {
+		    bufferedKey = null;
+		    return new CommandDown();
+		}
+		if (bufferedKey.getKeyCode() == KeyEvent.VK_SPACE) {
+		    bufferedKey = null;
+		    return new CommandPlaceBomb();
+		}
+		if (bufferedKey.getKeyCode() == KeyEvent.VK_X) {
+		    bufferedKey = null;
+		    return new CommandDetonateBomb();
+		}
 	    }
-	    if (bufferedKey.getKeyCode() == KeyEvent.VK_RIGHT) {
-		bufferedKey = null;
-		return new CommandRight();
-	    }
-	    if (bufferedKey.getKeyCode() == KeyEvent.VK_UP) {
-		bufferedKey = null;
-		return new CommandUp();
-	    }
-	    if (bufferedKey.getKeyCode() == KeyEvent.VK_DOWN) {
-		bufferedKey = null;
-		return new CommandDown();
-	    }
-	    if (bufferedKey.getKeyCode() == KeyEvent.VK_SPACE) {
-		bufferedKey = null;
-		return new CommandPlaceBomb();
-	    }
-	    if (bufferedKey.getKeyCode() == KeyEvent.VK_X) {
-		bufferedKey = null;
-		return new CommandDetonateBomb();
-	    }
-	}
 	}
 	return null;
     }

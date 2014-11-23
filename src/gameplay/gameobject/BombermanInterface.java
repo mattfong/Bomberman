@@ -24,6 +24,6 @@ public interface BombermanInterface {
 
     public void detonateBomb();
     
-    
+    public void respawn();
 
 }

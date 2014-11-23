@@ -3,7 +3,11 @@ package gameplay;
 import gameplay.gameobject.Bomberman;
 import gameplay.gameobject.GameActor;
 import gameplay.input.InputListener;
+import gameplay.overlays.CountdownTimer;
+import gameplay.overlays.HUD;
 import gameplay.pauseMenu.PauseMenuView;
+import gameplay.statemanagers.GameState;
+import gameplay.statemanagers.GameStateManager;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -21,13 +25,15 @@ public class GamePanel extends JPanel implements Runnable {
     int yCoord;
     PauseMenuView pauseMenu;
 
+    CountdownTimer timer;
+
     private long period = 40 * 1000000;
     // Double buffering
     private Image dbImage;
     private Graphics dbg;
 
     // Jpanel Variables
-    static final int GWIDTH = 992, GHEIGHT = 448;
+    static final int GWIDTH = 992, GHEIGHT = 416;
 
     static final Dimension gameDim = new Dimension(GWIDTH, GHEIGHT);
 
@@ -35,6 +41,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     private Thread game;
     private volatile boolean running = false;
+    private GameStateManager stateManager;
 
     // GameObjects
     World world;
@@ -47,6 +54,9 @@ public class GamePanel extends JPanel implements Runnable {
 	requestFocus();
 	loadGameLevel();
 
+	stateManager = GameStateManager.getInstance();
+	stateManager.setCurrentGameState(new GameState(100));
+
 	addKeyListener(InputListener.getInstance());
 	InputListener.setGamePanel(this);
 	setLayout(null);
@@ -55,8 +65,11 @@ public class GamePanel extends JPanel implements Runnable {
 
     private void loadGameLevel() {
 	world = new World(31, 13);
+
+	GameActor bomberman = new Bomberman(world, new Rectangle(32, 32, 32, 32));
+	world.registerBomberman(bomberman);
 	actorList = new ArrayList<GameActor>();
-	actorList.add(new Bomberman(world, new Rectangle(32, 32, 32, 32)));
+	actorList.add(bomberman);
     }
 
     @Override
@@ -125,7 +138,7 @@ public class GamePanel extends JPanel implements Runnable {
     /* draw all game stuff in here */
     public void draw(Graphics g) {
 	world.draw(g);
-
+	HUD.draw(g, world.getTimer());
 	for (GameActor actor : actorList) {
 	    actor.draw(g);
 	}
