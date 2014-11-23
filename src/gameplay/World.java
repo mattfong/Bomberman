@@ -4,6 +4,7 @@ package gameplay;
 
 import gameplay.gameobject.GameActor;
 import gameplay.gameobject.GameObject;
+import gameplay.gameobject.blocks.Bomb;
 import gameplay.gameobject.blocks.Explosion;
 import gameplay.gameobject.blocks.Wall;
 
@@ -214,6 +215,18 @@ public class World {
 	GameObject temp = grid[xIndex][yIndex].peek();
 
 	return temp;
+    }
+
+    public int numberOfBombsOnMap() {
+	int numberOfBombs = 0;
+	for (int i = 0; i < gridWidth; i++) {
+	    for (int j = 0; j < gridHeight; j++) {
+		if (grid[i][j].peek() instanceof Bomb) {
+		    numberOfBombs++;
+		}
+	    }
+	}
+	return numberOfBombs;
     }
 
 }

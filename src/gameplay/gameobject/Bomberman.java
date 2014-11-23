@@ -29,15 +29,16 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	flamePass = false;
 	detonator = false;
 	explosionRadius = 1;
+	bombLimit = 3;
     }
 
     /**
-     * places bomb at the location where bomberman is standing.
+     * places bomb at the location where Bomberman is standing.
      */
     @Override
     public void placeBomb() {
 
-	if (!(world.getGameObjectInstanceAt(gridLocation) instanceof Bomb)) {
+	if (!(world.getGameObjectInstanceAt(gridLocation) instanceof Bomb) && (world.numberOfBombsOnMap() < bombLimit)) {
 	    Bomb bomb = new Bomb(new Rectangle(gridLocation), this.world, this.explosionRadius);
 	    bombList.add(bomb);
 	    world.addGameObject(bomb);
