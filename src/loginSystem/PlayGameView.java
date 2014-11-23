@@ -81,7 +81,7 @@ public class PlayGameView {
 
 				SaveLoadView saveLoadMenu = new SaveLoadView();
 				saveLoadMenu.SaveLoadView();
-				frame.dispose();
+				f.dispose();
 //				notYet();	
 			}
 		});	
