@@ -143,4 +143,12 @@ public class GameActor extends GameObject {
 	return world.isIntersection(this.getLocation());
     }
 
+    public int distanceToBomberman() {
+	return world.distanceToBomberman(this);
+    }
+
+    public boolean bombermanWithinRange(int range) {
+	return world.bombermanWithin(this, range);
+    }
+
 }

@@ -28,9 +28,10 @@ public class World {
     public Stack<GameObject>[][] grid;
     WorldGenerator worldGenerator;
     private final int explosionLength = 10;
+    GameActor bomberman;
 
-    public World(int widthInBlocks, int heightInBlocks) {
-
+    public World(int widthInBlocks, int heightInBlocks, GameActor bomberman) {
+	this.bomberman = bomberman;
 	gridHeight = heightInBlocks;
 	gridWidth = widthInBlocks;
 	worldGenerator = new WorldGenerator(this, widthInBlocks, heightInBlocks);
@@ -116,10 +117,10 @@ public class World {
 	xIndex = location.x / blockSize;
 	yIndex = location.y / blockSize;
 
-	if ((grid[xIndex - 1][yIndex].peek() instanceof Wall) || (grid[xIndex + 1][yIndex].peek() instanceof Wall)) {
+	if ((grid[xIndex - 1][yIndex].peek() instanceof Wall) && (grid[xIndex + 1][yIndex].peek() instanceof Wall)) {
 	    return false;
 	}
-	if ((grid[xIndex][yIndex + 1].peek() instanceof Wall) || (grid[xIndex][yIndex - 1].peek() instanceof Wall)) {
+	if ((grid[xIndex][yIndex + 1].peek() instanceof Wall) && (grid[xIndex][yIndex - 1].peek() instanceof Wall)) {
 	    return false;
 	}
 
@@ -227,6 +228,24 @@ public class World {
 	    }
 	}
 	return numberOfBombs;
+    }
+
+    public int distanceToBomberman(GameActor actor) {
+	int xDistance = Math.abs(actor.getXCoordinate() - bomberman.getXCoordinate()) / blockSize;
+	int yDistance = Math.abs(actor.getYCoordinate() - bomberman.getYCoordinate()) / blockSize;
+
+	return (xDistance + yDistance);
+    }
+
+    public boolean bombermanWithin(GameActor actor, int radius) {
+	int xDistance = Math.abs(actor.getXCoordinate() - bomberman.getXCoordinate()) / blockSize;
+	int yDistance = Math.abs(actor.getYCoordinate() - bomberman.getYCoordinate()) / blockSize;
+
+	if ((xDistance <= radius) || (yDistance <= radius)) {
+	    return true;
+	}
+	return false;
+
     }
 
 }
