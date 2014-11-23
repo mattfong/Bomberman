@@ -6,8 +6,11 @@ import loginSystem.LoginMenuView;
 public class StartGame {
 		
 	public static void main(String[] args) {
-		LoginMenuView loginMenu = new LoginMenuView();
-		loginMenu.loginMenu();	
+		LoginMenuView loginM = new LoginMenuView();
+		
+		PlayGameView PG = new PlayGameView();
+		PG.playMenu();
+		//loginM.loginMenu();	
 		
 	}
 }

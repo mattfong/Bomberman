@@ -7,9 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import loginSystem.Account;
-import loginSystem.AccountManager;
-
 public class SavedGameManager {
 	
 	private List<SavedGame> savedGamesList = new ArrayList<SavedGame>();
@@ -58,6 +55,17 @@ public class SavedGameManager {
 		return gameList;
 	}
 	
+<<<<<<< HEAD
+=======
+	public void newOperation(){
+	//	GameFrame gameplay=new GameFrame();
+	}
+	
+	public int numberOfSavedGames(){
+		return savedGamesList.size();
+	}
+	
+>>>>>>> 8d27a82ac1847c88ad782a5e7a0edbfcd1ccb6ad
 	public String getSaveGameFile(String userName) throws IOException{
 		String fileName = userName + "SaveGameList.ser";
 		File saveFile = new File(fileName);

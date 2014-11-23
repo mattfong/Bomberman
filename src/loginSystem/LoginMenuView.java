@@ -15,62 +15,35 @@ import javax.swing.JTextField;
 
 
 public class LoginMenuView {
-	private JTextField jt= new JTextField(30);
-	private JPasswordField pf = new JPasswordField(30);
+	//private JTextField jt= new JTextField(30);
+	//private JPasswordField pf = new JPasswordField(30);
+	JTextField jt= new JTextField(30);
+	JPasswordField pf = new JPasswordField(30);
 	private JFrame controllingFrame;
-
-	LoginFrame frame =new LoginFrame();
-//	private final JFrame frame=new JFrame("Login");
-	private JPanel panel = new JPanel();
 	private final AccountManager accountManager = new AccountManager();
-
+	LoginFrame frame =new LoginFrame();
+	
+	
 	public void loginMenu(){
 		jt.setText(null);
 		pf.setText(null);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(992,448);
-		frame.setLocationRelativeTo(null);
-		frame.setResizable(false);
-
+		final JFrame f = new JFrame();
+		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(7,1,5,10));
+		
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setSize(992,448);
+		f.setLocationRelativeTo(null);
+		f.setResizable(false);
+		f.setVisible(true);
 		
 		JLabel enterUser = new JLabel("If you have an account enter your username enter it here");
 		JLabel enterPass = new JLabel("If you have an account enter your Password here");
 		
 		JButton login = new JButton("To Login click here");
+
 		JButton newUser = new JButton("IF you do not have an account click here to create one");
 		JButton deleteUser = new JButton("To delete your Account click here");
-		
-		// Included CSVreader
-		CSVreader reader = new CSVreader();
-		try {
-			accountManager.setAccounts(reader.CSVreader());
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		newUser.addActionListener(new ActionListener(){
-			
-			public void actionPerformed(ActionEvent arg0) {
-			frame.dispose();
-			NewAccountView newAccount = new NewAccountView();
-			newAccount.NewAccountView();	
-			}
-			
-		});	
-		
-		deleteUser.addActionListener(new ActionListener(){
-			
-			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose();
-				DeleteAccountView deleteAccount = new DeleteAccountView();
-				deleteAccount.DeleteAccountView();	
-			}
-			
-		});	
-		
 		login.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -95,7 +68,24 @@ public class LoginMenuView {
 				
 			}
 		});	
-		
+		newUser.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent arg0) {
+			frame.dispose();
+			NewAccountView newAccount = new NewAccountView();
+			newAccount.NewAccountView();	
+			}
+			
+		});	
+		deleteUser.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				DeleteAccountView deleteAccount = new DeleteAccountView();
+				deleteAccount.DeleteAccountView();	
+			}
+			
+		});	
 		
 		panel.add(enterUser);
 		panel.add(jt);
@@ -104,7 +94,13 @@ public class LoginMenuView {
 		panel.add(login);
 		panel.add(newUser);
 		panel.add(deleteUser);
-		frame.add(panel);
+		f.add(panel);
+	}
+		
+	public static void main(String[] args){
+		LoginMenuView LMV = new LoginMenuView();
+		LMV.loginMenu();
+		//LMV.test();
 	}
 	
 }

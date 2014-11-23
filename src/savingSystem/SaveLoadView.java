@@ -1,5 +1,6 @@
 package savingSystem;
 
+<<<<<<< HEAD
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,11 +11,11 @@ import javax.swing.JPanel;
 
 import loginSystem.PlayGameView;
 
+=======
+>>>>>>> 8d27a82ac1847c88ad782a5e7a0edbfcd1ccb6ad
 public class SaveLoadView {
-	private final JFrame frame = new JFrame("Load and Save Menu Options");
-	private JPanel panel = new JPanel();
-	private SaveLoadController controller = new SaveLoadController();
 	
+<<<<<<< HEAD
 	public void SaveLoadView() {
 		frame.setVisible(true);
 	    frame.setSize(992,448);
@@ -63,7 +64,7 @@ public class SaveLoadView {
 	    frame.add(save);
 	    frame.add(load);
 	    frame.add(goBack);
+=======
+>>>>>>> 8d27a82ac1847c88ad782a5e7a0edbfcd1ccb6ad
 
-	}
-	
 }
