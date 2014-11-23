@@ -32,7 +32,7 @@ public class SaveGameMenuView {
 	    
 	    JLabel gameName = new JLabel("Enter a name to save your game");
 	    JButton saveGame = new JButton("Save Game");
-	    JButton playNewGame = new JButton("Play new game");
+	    JButton goBack = new JButton("Go Back");
 	    JButton closeMenu = new JButton("Close Menu");
 		
 	    saveGame.addActionListener(new ActionListener(){
@@ -41,12 +41,8 @@ public class SaveGameMenuView {
 				savedGameName = jt.getText();
 				Account acc =new Account();
 				try {
-<<<<<<< HEAD
 					fileName = saveManager.getSaveGameFile("Demo11");
 					System.out.println("Step 1: " + fileName);
-=======
-					fileName = saveManager.getSaveGameFile(acc.getUserName());
->>>>>>> 8d27a82ac1847c88ad782a5e7a0edbfcd1ccb6ad
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -71,14 +67,16 @@ public class SaveGameMenuView {
 			}
 			
 		});
-	    
-	    playNewGame.addActionListener(new ActionListener(){
+
+	    goBack.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent arg0) {
-				saveManager.newOperation();	
+				SaveLoadView saveLoadView = new SaveLoadView();
+				saveLoadView.SaveLoadView();
+				frame.dispose();	
 			}
 			
-		});	
+		});
 
 	    closeMenu.addActionListener(new ActionListener(){
 			
@@ -92,7 +90,7 @@ public class SaveGameMenuView {
 	    panel.add(gameName);
 	    panel.add(jt);
 	    panel.add(saveGame);
-	    panel.add(playNewGame);
+	    panel.add(goBack);
 	    panel.add(closeMenu);
 	    frame.add(panel);
 	

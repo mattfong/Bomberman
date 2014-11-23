@@ -9,49 +9,15 @@ import javax.swing.JFrame;
 
 
 public class SaveLoadController {
-
-	public static void displaySaveLoadView() {
-		
-		final JFrame frame = new JFrame("Load and Save Menu Options");
-		frame.setVisible(true);
-	    frame.setSize(992,448);
-	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    frame.setLayout(new GridLayout(2,1));
-	    
-	    JButton save = new JButton("Save Game");
-	    frame.add(save);
-	    save.addActionListener(new ActionListener(){
-			
-			public void actionPerformed(ActionEvent arg0) {
-			frame.dispose();
-			//Save Game Menu View	
-			}
-			
-		});	
-	    
-	    JButton load = new JButton("Load Game");
-	    frame.add(load);
-	    load.addActionListener(new ActionListener(){
-			
-			public void actionPerformed(ActionEvent arg0) {
-			frame.dispose();
-			//Load Game Menu View	
-			}
-			
-		});	
+	
+	public void displaySaveGameMenu(){
+		SaveGameMenuController saveController = new SaveGameMenuController();
+		saveController.displaySavedGameMenu();
 	}
 	
-	
-	public static void displaySaveGameMenu(){
-		
+	public void displayLoadGameMenu(){
+		LoadGameMenuController loadController = new LoadGameMenuController();
+		loadController.displayLoadGameMenu();
 	}
 	
-	public static void displayLoadGameMenu(){
-		
-	}
-	
-/*	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		displaySaveLoadView();
-	}*/
 }
