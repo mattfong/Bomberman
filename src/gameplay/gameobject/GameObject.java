@@ -103,7 +103,7 @@ public abstract class GameObject {
     /**
      * Method returns the location of this GameObject as a rectangle populated
      * with the location and size of the gameobject.
-     * 
+     *
      * @return rectangle whose x and y are the same as the top left location of
      *         the game object and whose width and heigh as the same as the
      *         gameobject's sprite.
@@ -117,6 +117,8 @@ public abstract class GameObject {
      * Method which removes GameObject instance from the gamboard.
      */
     public void destroy() {
+	// TODO: Add score management here, add the score before detroying the
+	// game object.
 	world.removeGameObject(this);
     }
 

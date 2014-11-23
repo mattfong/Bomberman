@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 public class Bomberman extends GameActor implements BombermanInterface {
 
     Queue<Bomb> bombList = new LinkedList<Bomb>();
-    CommandManager inputManager;
+
     protected int bombLimit;
     protected boolean bombPass;
     protected boolean flamePass;
@@ -29,11 +29,6 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	flamePass = false;
 	detonator = false;
 	explosionRadius = 3;
-    }
-
-    @Override
-    public void update() {
-	inputManager.processCommand();
     }
 
     /**

@@ -3,6 +3,7 @@ package gameplay.gameobject;
 import gameplay.Direction;
 import gameplay.World;
 import gameplay.gameobject.blocks.Brick;
+import gameplay.gameobject.blocks.Explosion;
 import gameplay.input.CommandManager;
 
 import java.awt.Rectangle;
@@ -17,9 +18,11 @@ import java.awt.Rectangle;
  */
 public class GameActor extends GameObject {
 
+    CommandManager inputManager;
     protected int moveSpeed = 32;
     protected boolean wallPass;
     protected CommandManager driver;
+    protected boolean isDead;
 
     public GameActor(Rectangle location, World world) {
 	super(location, world);
@@ -28,6 +31,7 @@ public class GameActor extends GameObject {
 	wallPass = false;
 	solid = false;
 	destroyable = true;
+	isDead = false;
 
 	// Bomberman specific stuff
 
@@ -35,24 +39,22 @@ public class GameActor extends GameObject {
 
     @Override
     public void update() {
-	// driver.getCommand();
+	inputManager.processCommand();
+	if (checkIfBombed()) {
+	    isDead = true;
+	}
+
     }
 
-    // @Override
-    // public GameActor clone(Rectangle location) {
-    // GameActor clone = new GameActor(location, this.world);
-    //
-    // clone.sprite = this.sprite;
-    // clone.solid = this.solid;
-    // clone.destroyable = this.destroyable;
-    // clone.conductsExplosions = this.conductsExplosions;
-    // clone.score = this.score;
-    // clone.conductsExplosions = this.conductsExplosions;
-    // clone.wallPass = this.wallPass;
-    // clone.sprite = this.sprite;
-    //
-    // return clone;
-    // }
+    private boolean checkIfBombed() {
+
+	if (world.getGameObjectInstanceAt(this.getLocation()) instanceof Explosion) {
+	    return true;
+	} else {
+	    return false;
+	}
+
+    }
 
     public boolean canMove(Direction direction) {
 	return !(world.willCollide(this, direction));
@@ -63,6 +65,10 @@ public class GameActor extends GameObject {
 
 	return world.checkForCollision(this);
 
+    }
+
+    public boolean isDead() {
+	return isDead;
     }
 
     /**
@@ -117,7 +123,7 @@ public class GameActor extends GameObject {
 
     /**
      * Checks if the GameActor can pass through a given GameObject.
-     * 
+     *
      * @param object
      *            GameObject that is being checked
      * @return true if the GameActor can pass through the object, false if the

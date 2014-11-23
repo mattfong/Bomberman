@@ -87,12 +87,20 @@ public class GamePanel extends JPanel implements Runnable {
 
     private void gameUpdate() {
 	if (running && (game != null)) {
-
 	    for (GameActor actor : actorList) {
 		actor.update();
 	    }
-
+	    removeDeadActors(actorList);
 	    world.update();
+	}
+
+    }
+
+    private void removeDeadActors(ArrayList<GameActor> actorList) {
+	for (int i = 0; i < actorList.size(); i++) {
+	    if (actorList.get(i).isDead()) {
+		actorList.remove(i);
+	    }
 	}
 
     }
