@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import savingSystem.SaveGameMenuView;
+import savingSystem.SaveLoadView;
 
 
 public class PlayGameView {
@@ -78,9 +78,10 @@ public class PlayGameView {
 		JButton saved =new JButton("Load Saved game"); 
 		saved.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				SaveGameMenuView saveMenu = new SaveGameMenuView();
-				saveMenu.SaveGameMenuView();
-				f.dispose();
+
+				SaveLoadView saveLoadMenu = new SaveLoadView();
+				saveLoadMenu.SaveLoadView();
+				frame.dispose();
 //				notYet();	
 			}
 		});	
