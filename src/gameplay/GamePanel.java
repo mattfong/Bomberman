@@ -3,6 +3,7 @@ package gameplay;
 import gameplay.gameobject.Bomberman;
 import gameplay.gameobject.GameActor;
 import gameplay.input.InputListener;
+import gameplay.overlays.HUD;
 import gameplay.pauseMenu.PauseMenuView;
 
 import java.awt.Color;
@@ -27,7 +28,7 @@ public class GamePanel extends JPanel implements Runnable {
     private Graphics dbg;
 
     // Jpanel Variables
-    static final int GWIDTH = 992, GHEIGHT = 448;
+    static final int GWIDTH = 992, GHEIGHT = 416;
 
     static final Dimension gameDim = new Dimension(GWIDTH, GHEIGHT);
 
@@ -125,7 +126,7 @@ public class GamePanel extends JPanel implements Runnable {
     /* draw all game stuff in here */
     public void draw(Graphics g) {
 	world.draw(g);
-
+	HUD.draw(g);
 	for (GameActor actor : actorList) {
 	    actor.draw(g);
 	}
