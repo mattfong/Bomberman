@@ -55,9 +55,11 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     private void loadGameLevel() {
+	GameActor bomberman = new Bomberman(world, new Rectangle(32, 32, 32, 32));
 	world = new World(31, 13);
+	world.registerBomberman(bomberman);
 	actorList = new ArrayList<GameActor>();
-	actorList.add(new Bomberman(world, new Rectangle(32, 32, 32, 32)));
+	actorList.add(bomberman);
     }
 
     @Override

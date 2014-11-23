@@ -30,13 +30,17 @@ public class World {
     private final int explosionLength = 10;
     GameActor bomberman;
 
-    public World(int widthInBlocks, int heightInBlocks, GameActor bomberman) {
-	this.bomberman = bomberman;
+    public World(int widthInBlocks, int heightInBlocks) {
+
 	gridHeight = heightInBlocks;
 	gridWidth = widthInBlocks;
 	worldGenerator = new WorldGenerator(this, widthInBlocks, heightInBlocks);
 	grid = worldGenerator.generateGameGrid();
 
+    }
+
+    public void registerBomberman(GameActor bomberman) {
+	this.bomberman = bomberman;
     }
 
     public void update() {
