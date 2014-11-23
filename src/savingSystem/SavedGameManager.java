@@ -41,20 +41,21 @@ public class SavedGameManager {
 		}
 	}
 	
-	public List<SavedGame> getSavedGameByUser(String userName){
-		List<SavedGame> gameList = null;
-		SavedGame savedGame = new SavedGame();
-		gameList.add(new SavedGame(savedGame.getGameState(), savedGame.getUserName(), savedGame.getSavedGameName()));
-		/*for(int i=0; i<savedGames.size(); i++){
-			if(savedGames.get(i).getUserName().equals(userName)){
-				gameList.add(new SavedGame(savedGame.getGameState(), savedGame.getUserName(), savedGame.getSavedGameName()));
-			}
-		}*/
-		return gameList;
-	}
-	
 	public int numberOfSavedGames(){
 		return savedGamesList.size();
+	}
+	
+	public List<SavedGame> getSavedGameByUser(String userName){
+		List<SavedGame> gameList = null;
+		
+		for(int i=0; i<numberOfSavedGames(); i++){
+			SavedGame savedGame = savedGamesList.get(i);
+			if(savedGame.getUserName().equals(userName)){
+				gameList.add(new SavedGame(savedGame.getGameState(), savedGame.getUserName(), savedGame.getSavedGameName()));
+			}
+		}
+		
+		return gameList;
 	}
 	
 	public String getSaveGameFile(String userName) throws IOException{
@@ -67,6 +68,11 @@ public class SavedGameManager {
 		}
 		
 		return fileName;
+	}
+
+	@Override
+	public String toString() {
+		return "SavedGameManager [savedGamesList=" + savedGamesList + "]";
 	}
 	
 }

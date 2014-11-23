@@ -42,22 +42,28 @@ public class SaveGameMenuView {
 				savedGameName = jt.getText();
 				try {
 					fileName = saveManager.getSaveGameFile("Demo11");
-					System.out.println(fileName);
+					System.out.println("Step 1: " + fileName);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				saveManager.addSavedGame(savedGameName);
 				SavedGameSerialization serializeGame = new SavedGameSerialization();
-				System.out.println(savedGameName + ", username: " + acc.getUserName());
+				System.out.println("Step 2:" + savedGameName + ", username: " + acc.getUserName());
 				
 				serializeGame.serializeSaveGameName(saveManager.getSavedGamesList(), fileName);
-				System.out.println("Serialization Done");
+				System.out.println("Step 4: Serialization Done");
 				
 				List<SavedGame> newSavedGames = serializeGame.deserializeSaveGameName(fileName);
-				System.out.println("SaveName: " + newSavedGames.get(0).getGameState() + "," +
-						newSavedGames.get(0).getUserName() + "," + newSavedGames.get(0).getSavedGameName() );
+				System.out.println("Step 5: New List: " + newSavedGames); 
+//				saveManager.setSavedGamesList(newSavedGames);
+/*				System.out.println("Size: " + saveManager.numberOfSavedGames() + ", " + newSavedGames.size());
+				
+				for(int i=0; i<saveManager.numberOfSavedGames(); i++) {
+				System.out.println("SaveName: " + newSavedGames.get(i).getGameState() + "," +
+						newSavedGames.get(i).getUserName() + "," + newSavedGames.get(i).getSavedGameName() );
 				System.out.println("New List: " + newSavedGames);
+				}*/
 			}
 			
 		});
@@ -88,6 +94,11 @@ public class SaveGameMenuView {
 	    panel.add(closeMenu);
 	    frame.add(panel);
 	
+	}
+	
+	public static void main(String[] args) {
+		SaveGameMenuView s = new SaveGameMenuView();
+		s.SaveGameMenuView();
 	}
 	
 }

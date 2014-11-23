@@ -40,7 +40,7 @@ public class AccountManager {
 	public boolean isUsername(String userName) {
 		
 		for(int i=0; i<numberOfAccounts(); i++){
-			Account acc =accounts.get(i);
+			Account acc = accounts.get(i);
 			if(userName.equals(acc.getUserName())){
 				return true;
 			}

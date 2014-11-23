@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import loginSystem.PlayGame;
+import loginSystem.PlayGameView;
 
 public class SaveLoadView {
 	private final JFrame frame = new JFrame("Load and Save Menu Options");
@@ -49,8 +49,8 @@ public class SaveLoadView {
 	    goBack.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent arg0) {
-				PlayGame playGame = new PlayGame();
-				playGame.playMenu();
+				PlayGameView playGameView = new PlayGameView();
+				playGameView.playMenu();
 			}
 			
 		});	
