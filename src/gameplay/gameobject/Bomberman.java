@@ -28,7 +28,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	bombPass = false;
 	flamePass = false;
 	detonator = false;
-	explosionRadius = 3;
+	explosionRadius = 1;
     }
 
     /**
@@ -37,15 +37,16 @@ public class Bomberman extends GameActor implements BombermanInterface {
     @Override
     public void placeBomb() {
 
-	Bomb bomb = new Bomb(new Rectangle(gridLocation), this.world, this.explosionRadius);
-	bombList.add(bomb);
-	world.addGameObject(bomb);
-
+	if (!(world.getGameObjectInstanceAt(gridLocation) instanceof Bomb)) {
+	    Bomb bomb = new Bomb(new Rectangle(gridLocation), this.world, this.explosionRadius);
+	    bombList.add(bomb);
+	    world.addGameObject(bomb);
+	}
     }
 
     /**
      * checks if the GameActor has the ability to remote detonate and if true,
-     * detonates the boms in order that they are placed.
+     * detonates the bombs in order that they are placed.
      */
     @Override
     public void detonateBomb() {
