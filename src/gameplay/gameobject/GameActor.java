@@ -46,7 +46,7 @@ public class GameActor extends GameObject {
 
     }
 
-    private boolean checkIfBombed() {
+    protected boolean checkIfBombed() {
 
 	if (world.getGameObjectInstanceAt(this.getLocation()) instanceof Explosion) {
 	    return true;

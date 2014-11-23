@@ -44,6 +44,7 @@ public class World {
     public CountdownTimer getTimer(){
     	return gameTimer;
     }
+    
     public void registerBomberman(GameActor bomberman) {
 	this.bomberman = bomberman;
     }

@@ -4,6 +4,7 @@ import gameplay.World;
 import gameplay.gameobject.blocks.Bomb;
 import gameplay.input.CommandManager;
 import gameplay.input.InputListener;
+import gameplay.statemanagers.GameStateManager;
 
 import java.awt.Rectangle;
 import java.util.LinkedList;
@@ -21,6 +22,8 @@ public class Bomberman extends GameActor implements BombermanInterface {
     protected boolean detonator;
     protected int explosionRadius;
 
+    private GameStateManager gameStateManager;
+
     public Bomberman(World world, Rectangle location) {
 	super(location, world);
 	sprite = new ImageIcon(Bomberman.class.getResource("/Sprite.png")).getImage();
@@ -29,7 +32,8 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	flamePass = false;
 	detonator = false;
 	explosionRadius = 1;
-	bombLimit = 3;
+	bombLimit = 1;
+	gameStateManager = GameStateManager.getInstance();
     }
 
     /**
@@ -57,6 +61,19 @@ public class Bomberman extends GameActor implements BombermanInterface {
 
 	if (bomb != null) {
 	    bomb.explode();
+	}
+
+    }
+
+    @Override
+    public void update() {
+	inputManager.processCommand();
+	if (checkIfBombed()) {
+	    if (gameStateManager.getCurrentGameState().getRemainingLives() > 0) {
+		respawn();
+	    } else {
+		isDead = true;
+	    }
 	}
 
     }
@@ -120,6 +137,18 @@ public class Bomberman extends GameActor implements BombermanInterface {
     @Override
     public boolean canDetonateBomb() {
 	return detonator;
+
+    }
+
+    @Override
+    public void respawn() {
+	bombPass = false;
+	wallPass = false;
+	wallPass = false;
+	detonator = false;
+	gridLocation.x = 32;
+	gridLocation.y = 32;
+	gameStateManager.getCurrentGameState().decreaseRemainingLives();
 
     }
 
