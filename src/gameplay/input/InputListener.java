@@ -10,8 +10,11 @@ public class InputListener extends KeyAdapter implements CommandIssuer {
     private static InputListener singleton = null;
     private static KeyEvent bufferedKey;
     private static GamePanel gamePanel;
+    private static int queryDelay;
+    private static int pollCounter;
     protected InputListener() {
-
+    	pollCounter=0;
+    	queryDelay=1;
     }
 
     public static InputListener getInstance() {
@@ -33,6 +36,9 @@ public class InputListener extends KeyAdapter implements CommandIssuer {
     	bufferedKey = e;
 		
     }
+    public void setQuerySpeed(int speed){
+    	queryDelay=speed;
+    }
 
     @Override
     public void keyReleased(KeyEvent e) {
@@ -47,6 +53,9 @@ public class InputListener extends KeyAdapter implements CommandIssuer {
     @Override
     public Command getCommand() {
 
+    	
+    	pollCounter++;
+    	if((pollCounter % queryDelay) ==0){
 	if (bufferedKey != null) {
 	    if (bufferedKey.getKeyCode() == KeyEvent.VK_LEFT) {
 		bufferedKey = null;
@@ -72,6 +81,7 @@ public class InputListener extends KeyAdapter implements CommandIssuer {
 		bufferedKey = null;
 		return new CommandDetonateBomb();
 	    }
+	}
 	}
 	return null;
     }

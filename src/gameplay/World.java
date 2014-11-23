@@ -4,6 +4,7 @@ package gameplay;
 
 import gameplay.gameobject.GameActor;
 import gameplay.gameobject.GameObject;
+import gameplay.gameobject.blocks.Explosion;
 import gameplay.gameobject.blocks.Wall;
 
 import java.awt.Graphics;
@@ -25,6 +26,7 @@ public class World {
     private final int blockSize = 32;
     public Stack<GameObject>[][] grid;
     WorldGenerator worldGenerator;
+    private final int explosionLength = 10;
 
     public World(int widthInBlocks, int heightInBlocks) {
 
@@ -80,23 +82,24 @@ public class World {
 
     }
 
+    /**
+     * remove the specified gameobject from the world. Object specified must be
+     * the specific instance that is to be removed and not an equivalent one.
+     *
+     * @param obj
+     *            the game object that is to be add to the game world.
+     */
     public void removeGameObject(GameObject obj) {
-	for (int i = 0; i < gridWidth; i++) {
-	    for (int j = 0; j < gridHeight; j++) {
-		if (grid[i][j].peek() == obj) {
-		    grid[i][j].pop();
+
+	if (obj != null) {
+	    for (int i = 0; i < gridWidth; i++) {
+		for (int j = 0; j < gridHeight; j++) {
+		    if (grid[i][j].peek() == obj) {
+			grid[i][j].pop();
+		    }
 		}
 	    }
 	}
-
-    }
-
-    public int getGridWidth() {
-	return gridWidth;
-    }
-
-    public int getGridHeight() {
-	return gridHeight;
     }
 
     /**
@@ -122,31 +125,39 @@ public class World {
 	return true;
     }
 
-    /**
-     * @param xCoordinate
-     * @param yCoordinate
-     * @param direction
-     * @param radius
-     */
-    public void detonateLine(int xCoordinate, int yCoordinate, Direction direction, int radius) {
+    public void detonateLocation(Rectangle location, int radius) {
+	addGameObject(new Explosion(location, this, explosionLength));
+	for (Direction dir : Direction.values()) {
+	    detonateLine(location, dir, radius);
+	}
+    }
+
+    private void detonateLine(Rectangle location, Direction direction, int radius) {
 
 	if (radius == 0) {
 	    return;
 	}
 
-	int xIndex = (xCoordinate / 32) + direction.getX();
-	int yIndex = (yCoordinate / 32) + direction.getY();
+	int xIndex = (location.x / 32) + direction.getX();
+	int yIndex = (location.y / 32) + direction.getY();
 
-	if ((grid[xIndex][yIndex] != null) && (grid[xIndex][yIndex].peek().isDestroyable() == true)) {
-	    GameObject o;
-	    o = grid[xIndex][yIndex].peek();
+	GameObject o = grid[xIndex][yIndex].peek();
 
-	    if (o.conductsExplosions()) {
-		detonateLine(xIndex * 32, yIndex * 32, direction, radius - 1);
+	if (o.conductsExplosions()) {
+	    addGameObject(new Explosion(new Rectangle(xIndex * 32, yIndex * 32, 32, 32), this, explosionLength));
+	    detonateLine(new Rectangle(xIndex * 32, yIndex * 32, 32, 32), direction, radius - 1);
+	    if (o.isDestroyable()) {
+		o.destroy();
+	    } else if (!o.isDestroyable()) {
+		return;
 	    }
 
-	    o.destroy();
-
+	} else if (!o.conductsExplosions()) {
+	    if (o.isDestroyable()) {
+		o.destroy();
+	    } else if (!o.isDestroyable()) {
+		return;
+	    }
 	}
 
     }
@@ -164,7 +175,7 @@ public class World {
     public boolean checkForCollision(GameObject object) {
 	for (int i = 0; i < gridWidth; i++) {
 	    for (int j = 0; j < gridHeight; j++) {
-		if (grid[i][j].peek().isSolid()) { 
+		if (grid[i][j].peek().isSolid()) {
 		    if (grid[i][j].peek().hasCollided(object)) {
 			return true;
 		    }
@@ -176,19 +187,33 @@ public class World {
     }
 
     /**
-     * Checks a given direction relative to a GameActor to see if the GameActor is able to move onto that space.
-     * @param actor GameActor that is going to be moving
-     * @param direction direction that in which the actor wants to move
-     * @return true if the direction is blocked, false if the direction is free to pass through.
+     * Checks a given direction relative to a GameActor to see if the GameActor
+     * is able to move onto that space.
+     *
+     * @param actor
+     *            GameActor that is going to be moving
+     * @param direction
+     *            direction that in which the actor wants to move
+     * @return true if the direction is blocked, false if the direction is free
+     *         to pass through.
      */
-    public boolean willCollide(GameActor actor, Direction direction){
-    	int indexX=actor.getXCoordinate()/blockSize+direction.getX();
-    	int indexY=actor.getYCoordinate()/blockSize-direction.getY();
-    	
-    	GameObject objectToCheck=grid[indexX][indexY].peek();
-	
-    	boolean bool=actor.canPassThrough(objectToCheck);
-    	return (!bool);
+    public boolean willCollide(GameActor actor, Direction direction) {
+	int indexX = (actor.getXCoordinate() / blockSize) + direction.getX();
+	int indexY = (actor.getYCoordinate() / blockSize) - direction.getY();
+
+	GameObject objectToCheck = grid[indexX][indexY].peek();
+
+	boolean bool = actor.canPassThrough(objectToCheck);
+	return (!bool);
     }
-    
+
+    public GameObject getGameObjectInstanceAt(Rectangle location) {
+	int xIndex = location.x / blockSize;
+	int yIndex = location.y / blockSize;
+
+	GameObject temp = grid[xIndex][yIndex].peek();
+
+	return temp;
+    }
+
 }

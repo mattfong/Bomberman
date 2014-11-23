@@ -1,6 +1,5 @@
 package gameplay.gameobject.blocks;
 
-import gameplay.Direction;
 import gameplay.World;
 import gameplay.gameobject.GameObject;
 
@@ -44,10 +43,8 @@ public class Bomb extends GameObject {
      */
     public void explode() {
 	this.destroy();
-	world.detonateLine(gridLocation.x, gridLocation.y, Direction.UP, explosionRadius);
-	world.detonateLine(gridLocation.x, gridLocation.y, Direction.DOWN, explosionRadius);
-	world.detonateLine(gridLocation.x, gridLocation.y, Direction.LEFT, explosionRadius);
-	world.detonateLine(gridLocation.x, gridLocation.y, Direction.RIGHT, explosionRadius);
+	world.detonateLocation(getLocation(), explosionRadius);
+
     }
 
     private boolean checkBombTimer() {
