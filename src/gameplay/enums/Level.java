@@ -1,4 +1,4 @@
-package gameplay.gameobject;
+package gameplay.enums;
 
 import java.util.ArrayList;
 import java.util.List;
