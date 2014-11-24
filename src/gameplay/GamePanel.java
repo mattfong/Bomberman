@@ -84,13 +84,13 @@ public class GamePanel extends JPanel implements Runnable {
 	    paintScreen();
 	    afterTime = System.nanoTime();
 	    diff = afterTime - beforeTime;
-	    sleepTime = (period - diff) - overSleepTime;
+	    sleepTime = (period - diff);
 	    if ((sleepTime < period) && (sleepTime > 0)) {
 
 		try {
 		    game.sleep(sleepTime / 1000000);
 		} catch (InterruptedException e) {
-		    // TODO Auto-generated catch block
+		    System.out.println("Dam");
 		    e.printStackTrace();
 		}
 	    } else {
