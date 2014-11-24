@@ -3,6 +3,7 @@ package gameplay;
 import gameplay.gameobject.Bomberman;
 import gameplay.gameobject.GameActor;
 import gameplay.input.InputListener;
+import gameplay.overlays.Camera;
 import gameplay.overlays.CountdownTimer;
 import gameplay.overlays.HUD;
 import gameplay.pauseMenu.PauseMenuView;
@@ -12,6 +13,7 @@ import gameplay.statemanagers.GameStateManager;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -30,6 +32,7 @@ public class GamePanel extends JPanel implements Runnable {
     // Double buffering
     private Image dbImage;
     private Graphics dbg;
+    private Camera camera;
 
     // Jpanel Variables
     static final int GWIDTH = 992, GHEIGHT = 416;
@@ -41,8 +44,7 @@ public class GamePanel extends JPanel implements Runnable {
     private Thread game;
     private volatile boolean running = false;
     private GameStateManager stateManager;
-    
-    
+
     // GameObjects
     World world;
     ArrayList<GameActor> actorList;
@@ -54,9 +56,9 @@ public class GamePanel extends JPanel implements Runnable {
 	requestFocus();
 	loadGameLevel();
 
-	stateManager=GameStateManager.getInstance();
+	stateManager = GameStateManager.getInstance();
 	stateManager.setCurrentGameState(new GameState(100));
-	
+
 	addKeyListener(InputListener.getInstance());
 	InputListener.setGamePanel(this);
 	setLayout(null);
@@ -69,6 +71,7 @@ public class GamePanel extends JPanel implements Runnable {
 	world.registerBomberman(bomberman);
 	actorList = new ArrayList<GameActor>();
 	actorList.add(bomberman);
+	camera = new Camera(0, bomberman);
     }
 
     @Override
@@ -104,6 +107,7 @@ public class GamePanel extends JPanel implements Runnable {
 	    }
 	    removeDeadActors(actorList);
 	    world.update();
+	    camera.update();
 	}
 
     }
@@ -136,11 +140,16 @@ public class GamePanel extends JPanel implements Runnable {
 
     /* draw all game stuff in here */
     public void draw(Graphics g) {
+	Graphics2D g2d = (Graphics2D) g;
+
+	g2d.translate(camera.getX(), camera.getY());
 	world.draw(g);
-	HUD.draw(g, world.getTimer());
 	for (GameActor actor : actorList) {
 	    actor.draw(g);
 	}
+	g2d.translate(-camera.getX(), camera.getY());
+	HUD.draw(g, world.getTimer());
+
     }
 
     private void paintScreen() {

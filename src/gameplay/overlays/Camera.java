@@ -24,6 +24,9 @@ public class Camera {
 	if (bomberman.getXCoordinate() > (6 * 32) && bomberman.getXCoordinate() < (24 * 32)) {
 	    x = -bomberman.getXCoordinate() + (7 * 32);
 	}
+	if (bomberman.getXCoordinate() < 6 * 32) {
+	    x = 0;
+	}
     }
 
     public int getY() {
