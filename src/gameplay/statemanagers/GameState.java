@@ -1,21 +1,18 @@
 package gameplay.statemanagers;
 
-import gameplay.enums.Level;
-import gameplay.gameobject.GameActor;
+import gameplay.Level;
 import gameplay.gameobject.GameObject;
 
-import java.util.ArrayList;
 import java.util.Stack;
 
 public class GameState {
     private String userName;
     private String playerName;
+    private Level level;
 
     private Stack<GameObject>[][] grid;
     private int score;
     private int remainingLives;
-    private Level level;
-    private ArrayList<GameActor> actorList;
 
     public GameState(String playerName, String userName) {
 
@@ -62,12 +59,11 @@ public class GameState {
 	return level;
     }
 
-    public void setLevel(Level level) {
-	this.level = level;
-    }
-
     public void increaseScoreBy(int scoreToAdd) {
 	this.score += scoreToAdd;
     }
 
+    public void setLevel(Level level) {
+	this.level = level;
+    }
 }

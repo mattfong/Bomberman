@@ -5,7 +5,7 @@ import gameplay.gameobject.GameActor;
 import gameplay.input.InputListener;
 import gameplay.overlays.CountdownTimer;
 import gameplay.overlays.HUD;
-import gameplay.overlays.PauseMenuView;
+import gameplay.pauseMenu.PauseMenuView;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
 

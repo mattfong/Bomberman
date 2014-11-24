@@ -2,7 +2,6 @@
 
 package gameplay;
 
-import gameplay.enums.Direction;
 import gameplay.gameobject.GameActor;
 import gameplay.gameobject.GameObject;
 import gameplay.gameobject.blocks.Bomb;

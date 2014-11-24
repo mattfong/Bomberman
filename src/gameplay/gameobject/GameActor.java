@@ -1,7 +1,7 @@
 package gameplay.gameobject;
 
+import gameplay.Direction;
 import gameplay.World;
-import gameplay.enums.Direction;
 import gameplay.gameobject.blocks.Brick;
 import gameplay.gameobject.blocks.Explosion;
 import gameplay.input.CommandManager;

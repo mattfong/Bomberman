@@ -1,4 +1,4 @@
-package gameplay.enums;
+package gameplay;
 
 /**
  * @author mfong8 Enum representing directions on the game board. Possible enums

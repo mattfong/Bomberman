@@ -1,4 +1,4 @@
-package gameplay.overlays;
+package gameplay.pauseMenu;
 
 import gameplay.GameFrame;
 import gameplay.GamePanel;
