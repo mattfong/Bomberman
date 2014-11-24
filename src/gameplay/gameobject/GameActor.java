@@ -5,6 +5,7 @@ import gameplay.World;
 import gameplay.gameobject.blocks.Brick;
 import gameplay.gameobject.blocks.Explosion;
 import gameplay.input.CommandManager;
+import gameplay.statemanagers.ScoreManager;
 
 import java.awt.Rectangle;
 
@@ -33,8 +34,6 @@ public class GameActor extends GameObject {
 	destroyable = true;
 	isDead = false;
 
-	// Bomberman specific stuff
-
     }
 
     @Override
@@ -42,6 +41,7 @@ public class GameActor extends GameObject {
 	inputManager.processCommand();
 	if (checkIfBombed()) {
 	    isDead = true;
+	    ScoreManager.addToScore(score);
 	}
 
     }

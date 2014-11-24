@@ -2,19 +2,16 @@ package gameplay.gameobject;
 
 import gameplay.World;
 import gameplay.gameobject.blocks.Bomb;
+import gameplay.gameobject.powerups.Powerup;
 import gameplay.input.CommandManager;
 import gameplay.input.InputListener;
 import gameplay.statemanagers.GameStateManager;
 
 import java.awt.Rectangle;
-import java.util.LinkedList;
-import java.util.Queue;
 
 import javax.swing.ImageIcon;
 
 public class Bomberman extends GameActor implements BombermanInterface {
-
-    Queue<Bomb> bombList = new LinkedList<Bomb>();
 
     protected int bombLimit;
     protected boolean bombPass;
@@ -43,12 +40,22 @@ public class Bomberman extends GameActor implements BombermanInterface {
     @Override
     public void placeBomb() {
 
-	if (!(world.getGameObjectInstanceAt(gridLocation) instanceof Bomb) && (world.numberOfBombsOnMap() < bombLimit)) {
-
+	if (!(world.getGameObjectInstanceAt(gridLocation) instanceof Bomb) && (Bomb.numberOfBombOnBoard() < bombLimit)) {
 	    Bomb bomb = new Bomb(new Rectangle(gridLocation), this.world, this.explosionRadius);
-	    bombList.add(bomb);
+	    Bomb.addBomb(bomb); // This is the culprit if it all goes to shit...
 	    world.addGameObject(bomb);
+
 	}
+    }
+
+    private void checkForPowerup() {
+	if (world.getGameObjectInstanceAt(this.getLocation()) instanceof Powerup) {
+	    Powerup bacon = (Powerup) world.getGameObjectInstanceAt(this.getLocation());
+	    bacon.applyPowerup(this);
+	    GameObject eggs = world.getGameObjectInstanceAt(this.getLocation());
+	    eggs.destroy();
+	}
+
     }
 
     /**
@@ -58,11 +65,8 @@ public class Bomberman extends GameActor implements BombermanInterface {
     @Override
     public void detonateBomb() {
 
-	Bomb bomb;
-	bomb = bombList.poll();
-
-	if (bomb != null) {
-	    bomb.explode();
+	if (detonator) {
+	    Bomb.detonateBomb();
 	}
 
     }
@@ -70,6 +74,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
     @Override
     public void update() {
 	inputManager.processCommand();
+	checkForPowerup();
 	if (checkIfBombed()) {
 	    if (gameStateManager.getCurrentGameState().getRemainingLives() > 0) {
 		respawn();
@@ -151,6 +156,14 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	gridLocation.x = 32;
 	gridLocation.y = 32;
 	gameStateManager.getCurrentGameState().decreaseRemainingLives();
+
+    }
+
+    @Override
+    public void moveToNextLevel() {
+	gridLocation.x = 32;
+	gridLocation.y = 32;
+	world.loadNextLevel();
 
     }
 

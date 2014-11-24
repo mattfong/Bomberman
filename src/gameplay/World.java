@@ -4,6 +4,7 @@ package gameplay;
 
 import gameplay.gameobject.GameActor;
 import gameplay.gameobject.GameObject;
+import gameplay.gameobject.blocks.Background;
 import gameplay.gameobject.blocks.Bomb;
 import gameplay.gameobject.blocks.Explosion;
 import gameplay.gameobject.blocks.Wall;
@@ -223,11 +224,14 @@ public class World {
 	int xIndex = location.x / blockSize;
 	int yIndex = location.y / blockSize;
 
-	GameObject temp = grid[xIndex][yIndex].peek();
-
-	return temp;
+	if (!grid[xIndex][yIndex].empty()) {
+	    GameObject temp = grid[xIndex][yIndex].peek();
+	    return temp;
+	}
+	return new Background(location, this);
     }
 
+    @Deprecated
     public int numberOfBombsOnMap() {
 	int numberOfBombs = 0;
 	for (int i = 0; i < gridWidth; i++) {
@@ -257,4 +261,13 @@ public class World {
 	return false;
 
     }
+
+    public void loadNextLevel() {
+	Stack<GameObject>[][] bufferedGrid;
+	bufferedGrid = worldGenerator.generateGameGrid();
+	gameTimer.reset();
+	grid = bufferedGrid;
+
+    }
+
 }
