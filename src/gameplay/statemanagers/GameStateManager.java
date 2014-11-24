@@ -9,7 +9,15 @@ public class GameStateManager {
 	
 	protected GameStateManager() {
 	}
-    
+
+	
+	public static void createNewGameState(String playerName, String userName){
+		currentGameState=new GameState(playerName,userName);
+	}
+	
+	public static void createNewGameState(String userName){
+		currentGameState=new GameState(userName);
+	}
 	public static void setCurrentGameState(GameState state){
 		currentGameState=state;
 	}
@@ -24,6 +32,7 @@ public class GameStateManager {
 	}
 	return singleton;
     }
+	
 	
 	
 }

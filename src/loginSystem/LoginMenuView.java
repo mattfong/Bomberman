@@ -1,4 +1,6 @@
 package loginSystem;
+import gameplay.statemanagers.GameStateManager;
+
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -54,6 +56,7 @@ public class LoginMenuView {
 						f.dispose();
 						//PlayGameView playGame = new PlayGameView();
 						//playGame.playMenu();
+						GameStateManager.createNewGameState(justUsername);
 						PlayGameView.main(null);
 						System.out.println("Username entered correctly");
 						

@@ -1,5 +1,6 @@
 package loginSystem;
 import gameplay.GameFrame;
+import gameplay.statemanagers.GameStateManager;
 import highscore.HighScoreController;
 
 import java.awt.Color;
@@ -23,7 +24,7 @@ public class PlayGameView {
 	
 	public void playMenu()
 	{
-		String user= LoginMenuView.justUsername;
+		final String user= LoginMenuView.justUsername;
 		
 		final JFrame f=new JFrame("Main Menu");
 		JPanel panel = new JPanel();
@@ -34,6 +35,7 @@ public class PlayGameView {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("New Game Frame");
 				
+				//GameStateManager.createNewGameState(user);
 				GameFrame gameplay=new GameFrame();
 				gameplay.setVisible(true);
 				f.dispose();

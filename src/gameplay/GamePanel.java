@@ -57,8 +57,8 @@ public class GamePanel extends JPanel implements Runnable {
 	requestFocus();
 	loadGameLevel();
 
-	stateManager = GameStateManager.getInstance();
-	stateManager.setCurrentGameState(new GameState(100));
+//	stateManager = GameStateManager.getInstance();
+//	stateManager.setCurrentGameState(new GameState(100));
 
 	addKeyListener(InputListener.getInstance());
 	InputListener.setGamePanel(this);

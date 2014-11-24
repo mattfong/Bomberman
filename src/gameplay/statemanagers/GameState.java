@@ -15,13 +15,26 @@ public class GameState {
     private int remainingLives;
 
     public GameState(String playerName, String userName) {
-
+    	this.score=0;
+    	this.level=Level.L1;
+    	this.playerName=playerName;
+    	this.userName=userName;
+    	this.remainingLives=3;
+    	
     }
 
+    public GameState(String userName){
+    	this.score=0;
+    	this.level=Level.L1;
+    	this.userName=userName;
+    	this.remainingLives=3;
+    	    }
     public GameState(int score) {
 	this.score = score;
 	remainingLives = 3;
     }
+    
+    
 
     public String getUserName() {
 	return userName;
