@@ -23,7 +23,7 @@ import java.util.Stack;
  */
 public class World {
 
-	CountdownTimer gameTimer;
+    CountdownTimer gameTimer;
     private int gridWidth;
     private int gridHeight;
     private final int blockSize = 32;
@@ -38,13 +38,13 @@ public class World {
 	gridWidth = widthInBlocks;
 	worldGenerator = new WorldGenerator(this, widthInBlocks, heightInBlocks);
 	grid = worldGenerator.generateGameGrid();
-	gameTimer=new CountdownTimer();
+	gameTimer = new CountdownTimer();
     }
 
-    public CountdownTimer getTimer(){
-    	return gameTimer;
+    public CountdownTimer getTimer() {
+	return gameTimer;
     }
-    
+
     public void registerBomberman(GameActor bomberman) {
 	this.bomberman = bomberman;
     }
@@ -228,6 +228,7 @@ public class World {
 	return temp;
     }
 
+    @Deprecated
     public int numberOfBombsOnMap() {
 	int numberOfBombs = 0;
 	for (int i = 0; i < gridWidth; i++) {

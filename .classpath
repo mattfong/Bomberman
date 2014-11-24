@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="res"/>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="gameplay/gameobject/powerups/Door.java" kind="src" path="src"/>
 	<classpathentry kind="src" path="tests"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="lib/opencsv-3.0.jar"/>

@@ -8,14 +8,10 @@ import gameplay.input.InputListener;
 import gameplay.statemanagers.GameStateManager;
 
 import java.awt.Rectangle;
-import java.util.LinkedList;
-import java.util.Queue;
 
 import javax.swing.ImageIcon;
 
 public class Bomberman extends GameActor implements BombermanInterface {
-
-    Queue<Bomb> bombList = new LinkedList<Bomb>();
 
     protected int bombLimit;
     protected boolean bombPass;
@@ -43,10 +39,11 @@ public class Bomberman extends GameActor implements BombermanInterface {
     @Override
     public void placeBomb() {
 
-	if (!(world.getGameObjectInstanceAt(gridLocation) instanceof Bomb) && (world.numberOfBombsOnMap() < bombLimit)) {
+	if (!(world.getGameObjectInstanceAt(gridLocation) instanceof Bomb) && (Bomb.numberOfBombOnBoard() < bombLimit)) {
 	    Bomb bomb = new Bomb(new Rectangle(gridLocation), this.world, this.explosionRadius);
-	    bombList.add(bomb);
+	    Bomb.addBomb(bomb); //This is the culprit if it all goes to shit...
 	    world.addGameObject(bomb);
+
 	}
     }
 
@@ -67,11 +64,8 @@ public class Bomberman extends GameActor implements BombermanInterface {
     @Override
     public void detonateBomb() {
 
-	Bomb bomb;
-	bomb = bombList.poll();
-
-	if (bomb != null) {
-	    bomb.explode();
+	if (detonator) {
+	    Bomb.detonateBomb();
 	}
 
     }
