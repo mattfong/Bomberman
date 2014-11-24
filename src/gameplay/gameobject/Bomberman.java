@@ -21,7 +21,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
 
     private GameStateManager gameStateManager;
 
-    public Bomberman(World world, Rectangle location) {
+    public Bomberman(Rectangle location, World world) {
 	super(location, world);
 	sprite = new ImageIcon(Bomberman.class.getResource("/Sprite.png")).getImage();
 	inputManager = new CommandManager(this, InputListener.getInstance());

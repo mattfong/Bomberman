@@ -1,6 +1,5 @@
 package gameplay;
 
-import gameplay.gameobject.Bomberman;
 import gameplay.gameobject.GameActor;
 import gameplay.input.InputListener;
 import gameplay.overlays.Camera;
@@ -15,7 +14,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 
@@ -67,11 +65,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     private void loadGameLevel() {
 	world = new World(31, 13);
-	GameActor bomberman = new Bomberman(world, new Rectangle(32, 32, 32, 32));
-	world.registerBomberman(bomberman);
-	actorList = new ArrayList<GameActor>();
-	actorList.add(bomberman);
-	camera = new Camera(0, bomberman);
+	camera = new Camera(0, world.getBomberman());
+	actorList = world.getActorList();
     }
 
     @Override
