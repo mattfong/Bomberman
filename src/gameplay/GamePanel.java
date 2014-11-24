@@ -207,7 +207,7 @@ public class GamePanel extends JPanel implements Runnable {
 	stopGame();
 	pauseMenu = new PauseMenuView(this);
 	this.add(pauseMenu);
-	pauseMenu.setBounds(GWIDTH / 3, 30, 311, 358);
+	pauseMenu.setBounds((GWIDTH / 7) / 2, 30, 311, 358);
 
 	this.revalidate();
 	this.repaint();
