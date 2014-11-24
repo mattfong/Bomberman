@@ -17,7 +17,6 @@ public class Brick extends GameObject {
 	super(location, world);
 	sprite = new ImageIcon(Brick.class.getResource("/SoftBlock.png")).getImage();
 
-	score = 100;
 	solid = true;
 	destroyable = true;
 	conductsExplosions = false;

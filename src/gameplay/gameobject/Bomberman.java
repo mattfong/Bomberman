@@ -47,7 +47,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	}
     }
 
-    private void checkForPowerup() {
+    private void checkForAndApplyPowerup() {
 	if (world.getGameObjectInstanceAt(this.getLocation()) instanceof Powerup) {
 	    Powerup bacon = (Powerup) world.getGameObjectInstanceAt(this.getLocation());
 	    bacon.applyPowerup(this);
@@ -73,7 +73,8 @@ public class Bomberman extends GameActor implements BombermanInterface {
     @Override
     public void update() {
 	inputManager.processCommand();
-	checkForPowerup();
+	checkForAndApplyPowerup();
+
 	if (checkIfBombed()) {
 	    if (gameStateManager.getCurrentGameState().getRemainingLives() > 0) {
 		respawn();
