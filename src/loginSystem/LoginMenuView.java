@@ -32,7 +32,13 @@ public class LoginMenuView {
 		panel.setLayout(new GridLayout(7,1,5,10));
 		
 		
-		
+		CSVreader reader = new CSVreader();
+		try {
+			accountManager.setAccounts(reader.CSVreader());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		JLabel enterUser = new JLabel("If you have an account enter your username enter it here");
 		JLabel enterPass = new JLabel("If you have an account enter your Password here");
 		
