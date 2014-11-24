@@ -21,7 +21,7 @@ public class NewAccountView {
 	private JPasswordField PassPF = new JPasswordField(30);
 	private JPasswordField ConfirmPassPF = new JPasswordField(30);
 	//private final JFrame frame=new JFrame("Make an account");
-
+	private AccountManager accountManager = new AccountManager();
 	
 	public void NewAccountView(){
 		final JFrame frame=new JFrame("Make an account");
@@ -39,6 +39,14 @@ public class NewAccountView {
 
 		panel.setLayout(new GridLayout(10,1,5,10));
 		
+		CSVreader reader = new CSVreader();
+		try {
+			accountManager.setAccounts(reader.CSVreader());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		JLabel enterName = new JLabel("          Enter your name");
 		JLabel enterUser = new JLabel("			Enter your desired username");
 		JLabel enterPass = new JLabel("			Enter your desired Password");
@@ -54,22 +62,31 @@ public class NewAccountView {
 				String Pass = PassPF.getText();
 				String confirmPass = ConfirmPassPF.getText();
 				
+				System.out.println("List of accounts: " + accountManager.getAccounts());
 				try {
-					if(UsernameAndPasswordValid.valid(User, Pass) & Pass.equals(confirmPass)){
-						try {
-							CSVwriter writer = new CSVwriter();
-							writer.CSVwriter(Name, User, Pass);
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+					if(accountManager.isUsername(User) == false) {
+						if(UsernameAndPasswordValid.valid(User, Pass) & Pass.equals(confirmPass)){
+							try {
+								CSVwriter writer = new CSVwriter();
+								writer.CSVwriter(Name, User, Pass);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							System.out.println("Entered user is "+User+" and pass is "+Pass);
+							frame.dispose();
+							//PlayGameView playGame = new PlayGameView();
+							//playGame.playMenu();
+							PlayGameView.main(null);
+						} else {
+							System.out.println("Password and confirm password does not match.");
 						}
-						System.out.println("Entered user is "+User+" and pass is "+Pass);
-						frame.dispose();
-						//PlayGameView playGame = new PlayGameView();
-						//playGame.playMenu();
-						PlayGameView.main(null);
 					} else {
-						System.out.println("Password and confirm password does not match.");
+						System.out.println("Username " + User + " is taken!");
+						NameTF.setText(null);
+						UserTF.setText(null);
+						PassPF.setText(null);
+						ConfirmPassPF.setText(null);
 					}
 				} catch (HeadlessException | IOException e) {
 					// TODO Auto-generated catch block
