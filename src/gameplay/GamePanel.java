@@ -3,6 +3,7 @@ package gameplay;
 import gameplay.gameobject.Bomberman;
 import gameplay.gameobject.GameActor;
 import gameplay.input.InputListener;
+import gameplay.overlays.Camera;
 import gameplay.overlays.CountdownTimer;
 import gameplay.overlays.HUD;
 import gameplay.pauseMenu.PauseMenuView;
@@ -12,6 +13,7 @@ import gameplay.statemanagers.GameStateManager;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -31,6 +33,7 @@ public class GamePanel extends JPanel implements Runnable {
     // Double buffering
     private Image dbImage;
     private Graphics dbg;
+    private Camera camera;
 
     // Jpanel Variables
     static final int GWIDTH = 992, GHEIGHT = 416;
@@ -70,6 +73,7 @@ public class GamePanel extends JPanel implements Runnable {
 	world.registerBomberman(bomberman);
 	actorList = new ArrayList<GameActor>();
 	actorList.add(bomberman);
+	camera = new Camera(0, bomberman);
     }
 
     @Override
@@ -82,13 +86,13 @@ public class GamePanel extends JPanel implements Runnable {
 	    paintScreen();
 	    afterTime = System.nanoTime();
 	    diff = afterTime - beforeTime;
-	    sleepTime = (period - diff) - overSleepTime;
+	    sleepTime = (period - diff);
 	    if ((sleepTime < period) && (sleepTime > 0)) {
 
 		try {
 		    game.sleep(sleepTime / 1000000);
 		} catch (InterruptedException e) {
-		    // TODO Auto-generated catch block
+		    System.out.println("Dam");
 		    e.printStackTrace();
 		}
 	    } else {
@@ -105,6 +109,7 @@ public class GamePanel extends JPanel implements Runnable {
 	    }
 	    removeDeadActors(actorList);
 	    world.update();
+	    camera.update();
 	}
 
     }
@@ -137,11 +142,16 @@ public class GamePanel extends JPanel implements Runnable {
 
     /* draw all game stuff in here */
     public void draw(Graphics g) {
+	Graphics2D g2d = (Graphics2D) g;
+
+	g2d.translate(camera.getX(), camera.getY());
 	world.draw(g);
-	HUD.draw(g, world.getTimer());
 	for (GameActor actor : actorList) {
 	    actor.draw(g);
 	}
+	g2d.translate(-camera.getX(), camera.getY());
+	HUD.draw(g, world.getTimer());
+
     }
 
     private void paintScreen() {
@@ -199,7 +209,7 @@ public class GamePanel extends JPanel implements Runnable {
 	stopGame();
 	pauseMenu = new PauseMenuView(this);
 	this.add(pauseMenu);
-	pauseMenu.setBounds(GWIDTH / 3, 30, 311, 358);
+	pauseMenu.setBounds((GWIDTH / 7) / 2, 30, 311, 358);
 
 	this.revalidate();
 	this.repaint();

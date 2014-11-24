@@ -13,7 +13,7 @@ public class HUD {
 	g.setFont(new Font("Arial", Font.BOLD, 24));
 	g.setColor(Color.YELLOW);
 	// int score = player.getScore();
-	g.drawString("Score: " + ScoreManager.getScore(), 30, 23);
+	g.drawString("Score: " + ScoreManager.getInstance().getScore(), 30, 23);
 	g.drawString("Lives: " + GameStateManager.getCurrentGameState().getRemainingLives(), 240, 23);
 	g.drawString("Time: " + timer.getcountdown(), 350, 23);
     }
