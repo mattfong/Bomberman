@@ -13,68 +13,34 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 import savingSystem.SaveLoadView;
 
 
 public class PlayGameView {
-	
-	
-	static JTextField jt= new JTextField(30);
-	static JTextField ft =new JTextField(30);
-	private final JFrame frame=new JFrame("not yet");
-	private final JFrame f=new JFrame("Main Menu");
-	//static JFrame frame= new LoginFrame();
-	//LoginFrame frame =new LoginFrame();
-	
-	public void notYet() {
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(992,448);
-		frame.setLocationRelativeTo(null);
-		frame.setResizable(false);
-		
-		JPanel comingSoon = new JPanel();
-		comingSoon.setLayout(new GridLayout(2,1,5,10));
-		JLabel myLabel = new JLabel("This feature is not avalibe yet");
-		myLabel.setVisible(true);
-		JButton goBack = new JButton("Go back to the Play menu");
-		goBack.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose();
-				playMenu();	
-			}
-		});	
-		comingSoon.add(myLabel);
-		comingSoon.add(goBack);
-		frame.add(comingSoon);
-		
-		
-	}
-	
+
 	
 	public void playMenu()
 	{
-		f.setVisible(true);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(992,448);
-		f.setLocationRelativeTo(null);
-		f.setResizable(false);
+		String user= LoginMenuView.justUsername;
 		
-		
+		final JFrame f=new JFrame("Main Menu");
 		JPanel panel = new JPanel();
-
-		
 		panel.setLayout(new GridLayout(4,1,5,10));
+		
 		JButton play =new JButton("Play Game");
 		play.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("New Game Frame");
+				
 				GameFrame gameplay=new GameFrame();
 				gameplay.setVisible(true);
 				f.dispose();
+				
 			}
-		});		
+		});	
+		
 		JButton saved =new JButton("Load Saved game"); 
 		saved.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
@@ -82,17 +48,18 @@ public class PlayGameView {
 				SaveLoadView saveLoadMenu = new SaveLoadView();
 				saveLoadMenu.SaveLoadView();
 				f.dispose();
-//				notYet();	
 			}
 		});	
+		
 		JButton high =new JButton("High Scores");
 		high.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				f.dispose();
-				//notYet();	
+				
 				HighScoreController.displayHighScore();
+				f.dispose();
 			}
 		});	
+		
 		JButton logOut =new JButton("Log Out"); 
 		logOut.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
@@ -102,14 +69,31 @@ public class PlayGameView {
 			
 			}
 		});	
+		
 		panel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		panel.add(play);
 		panel.add(saved);
 		panel.add(high);
 		panel.add(logOut);
 		f.add(panel);
-		
+		f.setVisible(true);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setSize(992,448);
+		f.setLocationRelativeTo(null);
+		f.setResizable(false);
 		
 	}
-	 
+	
+	public static void main(String[] args){
+		SwingUtilities.invokeLater(new Runnable(){
+			@Override
+			public void run(){
+				PlayGameView PMV = new PlayGameView();
+				
+				
+				PMV.playMenu();
+			}
+		});
+	}
 }
+	

@@ -21,6 +21,7 @@ public class LoginMenuView {
 	private JFrame controllingFrame;
 	private final AccountManager accountManager = new AccountManager();
 	//LoginFrame frame =new LoginFrame();
+	public static String justUsername=null;
 	
 	
 	public void loginMenu(){
@@ -43,10 +44,15 @@ public class LoginMenuView {
 			public void actionPerformed(ActionEvent arg0) {				
 				try {
 					if(accountManager.isUser(jt.getText(), pf.getText())==true){
+						justUsername=jt.getText();
 						f.dispose();
-						PlayGameView playGame = new PlayGameView();
-						playGame.playMenu();
+						//PlayGameView playGame = new PlayGameView();
+						//playGame.playMenu();
+						PlayGameView.main(null);
 						System.out.println("Username entered correctly");
+						
+						
+						
 					}
 					else{
 						 JOptionPane.showMessageDialog(controllingFrame,

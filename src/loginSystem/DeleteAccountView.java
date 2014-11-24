@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 public class DeleteAccountView {
 
 	private JTextField UserTF= new JTextField(30);
 	private JPasswordField PassPF = new JPasswordField(30);
-	//final JFrame frame=new JFrame("Delete your account");
 	private JFrame controllingFrame;
 
 	LoginFrame frame =new LoginFrame();
@@ -93,6 +93,18 @@ public class DeleteAccountView {
 		panel.add(deleteUser);
 		panel.add(goBack);
 		frame.add(panel);
+	}
+	
+	public static void main(String[] args){
+		SwingUtilities.invokeLater(new Runnable(){
+			@Override
+			public void run(){
+				DeleteAccountView LMV = new DeleteAccountView();
+				
+				
+				LMV.DeleteAccountView();
+			}
+		});
 	}
 	
 }

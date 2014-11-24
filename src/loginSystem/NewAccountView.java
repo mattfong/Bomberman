@@ -19,8 +19,8 @@ public class NewAccountView {
 	private JTextField UserTF= new JTextField(30);
 	private JPasswordField PassPF = new JPasswordField(30);
 	private JPasswordField ConfirmPassPF = new JPasswordField(30);
-	//private final JFrame frame=new JFrame("Make an account");
-	LoginFrame frame =new LoginFrame();
+	private final JFrame frame=new JFrame("Make an account");
+	//LoginFrame frame =new LoginFrame();
 
 	
 	public void NewAccountView(){
