@@ -10,11 +10,11 @@ public class GameStateManager {
 	protected GameStateManager() {
 	}
     
-	public static void setCurrentGameState(GameState state){
+	public void setCurrentGameState(GameState state){
 		currentGameState=state;
 	}
 	
-	public static GameState getCurrentGameState(){
+	public GameState getCurrentGameState(){
 		return currentGameState;
 	}
 	

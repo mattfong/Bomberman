@@ -1,5 +1,7 @@
 package savingSystem;
 
+import gameplay.statemanagers.GameStateManager;
+
 import java.awt.GridLayout;
 import java.util.List;
 import java.awt.event.ActionEvent;
@@ -18,10 +20,11 @@ import loginSystem.Account;
 public class SaveGameMenuView {
 	private JTextField jt= new JTextField(30);
 	private String savedGameName = "";
-	private SavedGameManager saveManager = new SavedGameManager();
-	private SavedGame savedGame = new SavedGame(); 
+//	private SavedGameManager saveManager = new SavedGameManager();
+//	private SavedGame savedGame = new SavedGame(); 
+	private SaveGameMenuController saveController = new SaveGameMenuController();
 	private final JFrame frame = new JFrame("Save Game Menu");
-	private String fileName = "";
+//	private String fileName = "";
 
 	public void SaveGameMenuView(){
 		JPanel panel = new JPanel();
@@ -40,35 +43,40 @@ public class SaveGameMenuView {
 			
 			public void actionPerformed(ActionEvent arg0) {
 				savedGameName = jt.getText();
-				Account acc =new Account();
-				try {
-					fileName = saveManager.getSaveGameFile("Demo22");
-					System.out.println("Step 1: " + fileName);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				savedGame = saveManager.addSavedGame(savedGameName);
-				SavedGameSerialization serializeGame = new SavedGameSerialization();
-				System.out.println("Step 2: Save Game Name: " + savedGameName + ", username: " + acc.getUserName());
-				
-				try {
-					serializeGame.serializeSaveGameName(savedGame, fileName);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				System.out.println("Step 4: Serialization Done");
-				
-				try {
-					List<SavedGame> allSavedGames = serializeGame.deserializeSaveGameName(fileName);
-
-					System.out.println("Step 5: Deserialized List: " + allSavedGames); 
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
+//				Account acc =new Account();
+//				try {
+//			//		fileName = saveManager.getSaveGameFile("GameStateManager.getInstance().getCurrentGameState().getUserName()");
+//					fileName = saveManager.getSaveGameFile("Demo33");
+//					System.out.println("Step 1: " + fileName);
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				savedGame = saveManager.addSavedGame(savedGameName);
+//				savedGame.setGameState(GameStateManager.getInstance().getCurrentGameState());
+//				savedGame.setSavedGameName(savedGameName);
+//				savedGame.setUserName("GameStateManager.getInstance().getCurrentGameState().getUserName()");
+//				SavedGameSerialization serializeGame = new SavedGameSerialization();
+//				System.out.println("Line before Step 2 SavedGame: " + savedGame);
+//				System.out.println("Step 2: Save Game Name: " + savedGameName + ", username: " + "GameStateManager.getInstance().getCurrentGameState().getUserName()");
+//				
+//				try {
+//					serializeGame.serializeSaveGameName(savedGame, fileName);
+//				} catch (IOException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//				System.out.println("Step 4: Serialization Done");
+//				
+//				try {
+//					List<SavedGame> allSavedGames = serializeGame.deserializeSaveGameName(fileName);
+//
+//					System.out.println("Step 5: Deserialized List: " + allSavedGames); 
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+				saveController.saveGame(savedGameName);
 			}
 			
 		});

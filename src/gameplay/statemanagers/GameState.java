@@ -3,9 +3,10 @@ package gameplay.statemanagers;
 import gameplay.Level;
 import gameplay.gameobject.GameObject;
 
+import java.io.Serializable;
 import java.util.Stack;
 
-public class GameState {
+public class GameState implements Serializable{
     private String userName;
     private String playerName;
     private Level level;
