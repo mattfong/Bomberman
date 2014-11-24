@@ -28,4 +28,11 @@ public class CountdownTimer implements ActionListener {
 	}
     }
 
+    /**
+     * Resets the gametimer back to 200 seconds
+     */
+    public void reset() {
+	countdown = 200;
+    }
+
 }
