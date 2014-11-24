@@ -23,10 +23,11 @@ public class SavedGameManager {
 		this.savedGamesList = savedGamesList;
 	}
 
-	public void addSavedGame(String savedGameName){
+	public SavedGame addSavedGame(String savedGameName){
 		SavedGame savedGame = new SavedGame();
 		savedGame.setSavedGameName(savedGameName);
 		savedGamesList.add(new SavedGame(savedGame.getGameState(), savedGame.getUserName(), savedGame.getSavedGameName()));
+		return savedGame;
 	}
 	
 	public void removeSavedGame(String userName, String removeSavedGame){

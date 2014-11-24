@@ -1,6 +1,8 @@
 package savingSystem;
 
+import java.io.EOFException;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -11,10 +13,15 @@ import java.util.List;
 
 public class SavedGameSerialization {
 	
-	public void serializeSaveGameName(List<SavedGame> savedGames, String fileName) {
-		try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName, true))) {
-			out.writeObject(savedGames);
-			System.out.println("Step 3 In serialize:" + savedGames+ ", " + savedGames.size());
+	private SavedGameManager saveManager = new SavedGameManager();
+	
+	public void serializeSaveGameName(SavedGame games, String fileName) throws IOException {
+		List<SavedGame> allSavedGames = this.deserializeSaveGameName(fileName);
+		allSavedGames.add(games);
+		try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName))) {
+			for(SavedGame game: allSavedGames)
+			out.writeObject(game);
+			System.out.println("Step 3 In serialize:");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -22,19 +29,31 @@ public class SavedGameSerialization {
 		}
 	}
 	
-	public List<SavedGame> deserializeSaveGameName(String fileName) {
-		List<SavedGame> savedGames = null;
+	public List<SavedGame> deserializeSaveGameName(String fileName) throws IOException {
 		
-		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName))) {
-			savedGames = (List<SavedGame>) in.readObject();
-//			SavedGame game = (SavedGame) in.readObject();
-//			savedGames.add(game);
-		} catch (ClassNotFoundException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("Problem when deserializing :" + fileName);
-		}	
-		return savedGames;
+		List<SavedGame> allSavedGames = new ArrayList<SavedGame>();
+		SavedGame game = null;
+		try(ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName))) {
+			boolean done = false;
+			while (!done){
+				try {
+					game = (SavedGame) in.readObject();
+					allSavedGames.add(game);
+				} catch (EOFException e) {
+					// TODO Auto-generated catch block
+					done = true;
+					System.out.println("Deserialized Game List: " + allSavedGames);
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("Problem when deserializing :" + fileName);
+				}
+			}
+		} catch (EOFException e) {
+			
+		}
+		
+		return allSavedGames;
 	}
 	
 }

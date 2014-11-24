@@ -19,6 +19,7 @@ public class SaveGameMenuView {
 	private JTextField jt= new JTextField(30);
 	private String savedGameName = "";
 	private SavedGameManager saveManager = new SavedGameManager();
+	private SavedGame savedGame = new SavedGame(); 
 	private final JFrame frame = new JFrame("Save Game Menu");
 	private String fileName = "";
 
@@ -41,29 +42,33 @@ public class SaveGameMenuView {
 				savedGameName = jt.getText();
 				Account acc =new Account();
 				try {
-					fileName = saveManager.getSaveGameFile("Demo11");
+					fileName = saveManager.getSaveGameFile("Demo22");
 					System.out.println("Step 1: " + fileName);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				saveManager.addSavedGame(savedGameName);
+				savedGame = saveManager.addSavedGame(savedGameName);
 				SavedGameSerialization serializeGame = new SavedGameSerialization();
-				System.out.println("Step 2:" + savedGameName + ", username: " + acc.getUserName());
+				System.out.println("Step 2: Save Game Name: " + savedGameName + ", username: " + acc.getUserName());
 				
-				serializeGame.serializeSaveGameName(saveManager.getSavedGamesList(), fileName);
+				try {
+					serializeGame.serializeSaveGameName(savedGame, fileName);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				System.out.println("Step 4: Serialization Done");
 				
-				List<SavedGame> newSavedGames = serializeGame.deserializeSaveGameName(fileName);
-				System.out.println("Step 5: New List: " + newSavedGames); 
-//				saveManager.setSavedGamesList(newSavedGames);
-/*				System.out.println("Size: " + saveManager.numberOfSavedGames() + ", " + newSavedGames.size());
+				try {
+					List<SavedGame> allSavedGames = serializeGame.deserializeSaveGameName(fileName);
+
+					System.out.println("Step 5: Deserialized List: " + allSavedGames); 
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
-				for(int i=0; i<saveManager.numberOfSavedGames(); i++) {
-				System.out.println("SaveName: " + newSavedGames.get(i).getGameState() + "," +
-						newSavedGames.get(i).getUserName() + "," + newSavedGames.get(i).getSavedGameName() );
-				System.out.println("New List: " + newSavedGames);
-				}*/
 			}
 			
 		});
