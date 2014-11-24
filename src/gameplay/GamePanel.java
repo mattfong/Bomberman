@@ -49,13 +49,11 @@ public class GamePanel extends JPanel implements Runnable {
 
     public GamePanel() {
 
+	stateManager = GameStateManager.getInstance();
 	setPreferredSize(gameDim);
 	setFocusable(true);
 	requestFocus();
 	loadGameLevel();
-
-	stateManager = GameStateManager.getInstance();
-	stateManager.setCurrentGameState(new GameState(100));
 
 	addKeyListener(InputListener.getInstance());
 	InputListener.setGamePanel(this);
@@ -64,9 +62,20 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     private void loadGameLevel() {
-	world = new World(31, 13);
-	camera = new Camera(0, world.getBomberman());
-	actorList = world.getActorList();
+	if (loadingSavedGame()) {
+	} else {
+	    world = new World(31, 13);
+	    camera = new Camera(0, world.getBomberman());
+	    actorList = world.getActorList();
+	}
+    }
+
+    private boolean loadingSavedGame() {
+	GameState state = stateManager.getCurrentGameState();
+	// if (potentialWorld != null) { // if there is no cached world in gamestate then we are loading a game
+	// return true;
+	// }
+	return false; // we are not loading a game
     }
 
     @Override
