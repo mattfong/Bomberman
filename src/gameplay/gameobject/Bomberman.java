@@ -41,7 +41,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
 
 	if (!(world.getGameObjectInstanceAt(gridLocation) instanceof Bomb) && (Bomb.numberOfBombOnBoard() < bombLimit)) {
 	    Bomb bomb = new Bomb(new Rectangle(gridLocation), this.world, this.explosionRadius);
-	    Bomb.addBomb(bomb); //This is the culprit if it all goes to shit...
+	    Bomb.addBomb(bomb); // This is the culprit if it all goes to shit...
 	    world.addGameObject(bomb);
 
 	}
@@ -155,6 +155,14 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	gridLocation.x = 32;
 	gridLocation.y = 32;
 	gameStateManager.getCurrentGameState().decreaseRemainingLives();
+
+    }
+
+    @Override
+    public void moveToNextLevel() {
+	gridLocation.x = 32;
+	gridLocation.y = 32;
+	world.loadNextLevel();
 
     }
 
