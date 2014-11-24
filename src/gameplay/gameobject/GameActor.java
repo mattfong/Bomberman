@@ -5,6 +5,7 @@ import gameplay.World;
 import gameplay.gameobject.blocks.Brick;
 import gameplay.gameobject.blocks.Explosion;
 import gameplay.input.CommandManager;
+import gameplay.statemanagers.ScoreManager;
 
 import java.awt.Rectangle;
 
@@ -33,8 +34,6 @@ public class GameActor extends GameObject {
 	destroyable = true;
 	isDead = false;
 
-	// Bomberman specific stuff
-
     }
 
     @Override
@@ -42,11 +41,12 @@ public class GameActor extends GameObject {
 	inputManager.processCommand();
 	if (checkIfBombed()) {
 	    isDead = true;
+	    ScoreManager.addToScore(score);
 	}
 
     }
 
-    private boolean checkIfBombed() {
+    protected boolean checkIfBombed() {
 
 	if (world.getGameObjectInstanceAt(this.getLocation()) instanceof Explosion) {
 	    return true;
@@ -141,6 +141,14 @@ public class GameActor extends GameObject {
 
     public boolean isAtIntersection() {
 	return world.isIntersection(this.getLocation());
+    }
+
+    public int distanceToBomberman() {
+	return world.distanceToBomberman(this);
+    }
+
+    public boolean bombermanWithinRange(int range) {
+	return world.bombermanWithin(this, range);
     }
 
 }

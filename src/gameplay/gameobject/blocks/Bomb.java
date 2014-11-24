@@ -4,6 +4,8 @@ import gameplay.World;
 import gameplay.gameobject.GameObject;
 
 import java.awt.Rectangle;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import javax.swing.ImageIcon;
 
@@ -13,6 +15,8 @@ import javax.swing.ImageIcon;
 public class Bomb extends GameObject {
     private int explosionRadius;
     private int bombCountdown;
+
+    private static Queue<Bomb> bombList = new LinkedList<Bomb>();
 
     public Bomb(Rectangle location, World world, int radius) {
 	super(location, world);
@@ -26,6 +30,23 @@ public class Bomb extends GameObject {
 	explosionRadius = radius;
     }
 
+    public static int numberOfBombOnBoard() {
+	return bombList.size();
+    }
+
+    public static void detonateBomb() {
+	Bomb bomb;
+	bomb = bombList.peek();
+	if (bomb != null) {
+	    bomb.explode();
+	}
+
+    }
+
+    public static void addBomb(Bomb bomb) {
+	bombList.add(bomb);
+    }
+
     @Override
     public void update() {
 	super.update();
@@ -37,11 +58,8 @@ public class Bomb extends GameObject {
 
     }
 
-    /**
-     * detonates the bomb it's called on which causes objects on the gamemap
-     * that are within the explosion radius to be destroyed.
-     */
-    public void explode() {
+    private void explode() {
+	bombList.remove();
 	this.destroy();
 	world.detonateLocation(getLocation(), explosionRadius);
 

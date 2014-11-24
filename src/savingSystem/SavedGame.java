@@ -1,6 +1,6 @@
 package savingSystem;
 
-import gameplay.GameState;
+import gameplay.statemanagers.GameState;
 
 import java.io.Serializable;
 

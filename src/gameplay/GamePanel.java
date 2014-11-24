@@ -3,11 +3,17 @@ package gameplay;
 import gameplay.gameobject.Bomberman;
 import gameplay.gameobject.GameActor;
 import gameplay.input.InputListener;
+import gameplay.overlays.Camera;
+import gameplay.overlays.CountdownTimer;
+import gameplay.overlays.HUD;
 import gameplay.pauseMenu.PauseMenuView;
+import gameplay.statemanagers.GameState;
+import gameplay.statemanagers.GameStateManager;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -21,13 +27,16 @@ public class GamePanel extends JPanel implements Runnable {
     int yCoord;
     PauseMenuView pauseMenu;
 
+    CountdownTimer timer;
+
     private long period = 40 * 1000000;
     // Double buffering
     private Image dbImage;
     private Graphics dbg;
+    private Camera camera;
 
     // Jpanel Variables
-    static final int GWIDTH = 992, GHEIGHT = 448;
+    static final int GWIDTH = 992, GHEIGHT = 416;
 
     static final Dimension gameDim = new Dimension(GWIDTH, GHEIGHT);
 
@@ -35,6 +44,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     private Thread game;
     private volatile boolean running = false;
+    private GameStateManager stateManager;
 
     // GameObjects
     World world;
@@ -47,6 +57,9 @@ public class GamePanel extends JPanel implements Runnable {
 	requestFocus();
 	loadGameLevel();
 
+	stateManager = GameStateManager.getInstance();
+	stateManager.setCurrentGameState(new GameState(100));
+
 	addKeyListener(InputListener.getInstance());
 	InputListener.setGamePanel(this);
 	setLayout(null);
@@ -55,8 +68,12 @@ public class GamePanel extends JPanel implements Runnable {
 
     private void loadGameLevel() {
 	world = new World(31, 13);
+
+	GameActor bomberman = new Bomberman(world, new Rectangle(32, 32, 32, 32));
+	world.registerBomberman(bomberman);
 	actorList = new ArrayList<GameActor>();
-	actorList.add(new Bomberman(world, new Rectangle(32, 32, 32, 32)));
+	actorList.add(bomberman);
+	camera = new Camera(0, bomberman);
     }
 
     @Override
@@ -69,13 +86,13 @@ public class GamePanel extends JPanel implements Runnable {
 	    paintScreen();
 	    afterTime = System.nanoTime();
 	    diff = afterTime - beforeTime;
-	    sleepTime = (period - diff) - overSleepTime;
+	    sleepTime = (period - diff);
 	    if ((sleepTime < period) && (sleepTime > 0)) {
 
 		try {
 		    game.sleep(sleepTime / 1000000);
 		} catch (InterruptedException e) {
-		    // TODO Auto-generated catch block
+		    System.out.println("Dam");
 		    e.printStackTrace();
 		}
 	    } else {
@@ -92,6 +109,7 @@ public class GamePanel extends JPanel implements Runnable {
 	    }
 	    removeDeadActors(actorList);
 	    world.update();
+	    camera.update();
 	}
 
     }
@@ -124,11 +142,16 @@ public class GamePanel extends JPanel implements Runnable {
 
     /* draw all game stuff in here */
     public void draw(Graphics g) {
-	world.draw(g);
+	Graphics2D g2d = (Graphics2D) g;
 
+	g2d.translate(camera.getX(), camera.getY());
+	world.draw(g);
 	for (GameActor actor : actorList) {
 	    actor.draw(g);
 	}
+	g2d.translate(-camera.getX(), camera.getY());
+	HUD.draw(g, world.getTimer());
+
     }
 
     private void paintScreen() {
@@ -186,7 +209,7 @@ public class GamePanel extends JPanel implements Runnable {
 	stopGame();
 	pauseMenu = new PauseMenuView(this);
 	this.add(pauseMenu);
-	pauseMenu.setBounds(GWIDTH / 3, 30, 311, 358);
+	pauseMenu.setBounds((GWIDTH / 7) / 2, 30, 311, 358);
 
 	this.revalidate();
 	this.repaint();

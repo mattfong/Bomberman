@@ -4,8 +4,11 @@ package gameplay;
 
 import gameplay.gameobject.GameActor;
 import gameplay.gameobject.GameObject;
+import gameplay.gameobject.blocks.Background;
+import gameplay.gameobject.blocks.Bomb;
 import gameplay.gameobject.blocks.Explosion;
 import gameplay.gameobject.blocks.Wall;
+import gameplay.overlays.CountdownTimer;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -21,12 +24,14 @@ import java.util.Stack;
  */
 public class World {
 
+    CountdownTimer gameTimer;
     private int gridWidth;
     private int gridHeight;
     private final int blockSize = 32;
     public Stack<GameObject>[][] grid;
     WorldGenerator worldGenerator;
     private final int explosionLength = 10;
+    GameActor bomberman;
 
     public World(int widthInBlocks, int heightInBlocks) {
 
@@ -34,7 +39,15 @@ public class World {
 	gridWidth = widthInBlocks;
 	worldGenerator = new WorldGenerator(this, widthInBlocks, heightInBlocks);
 	grid = worldGenerator.generateGameGrid();
+	gameTimer = new CountdownTimer();
+    }
 
+    public CountdownTimer getTimer() {
+	return gameTimer;
+    }
+
+    public void registerBomberman(GameActor bomberman) {
+	this.bomberman = bomberman;
     }
 
     public void update() {
@@ -115,10 +128,10 @@ public class World {
 	xIndex = location.x / blockSize;
 	yIndex = location.y / blockSize;
 
-	if ((grid[xIndex - 1][yIndex].peek() instanceof Wall) || (grid[xIndex + 1][yIndex].peek() instanceof Wall)) {
+	if ((grid[xIndex - 1][yIndex].peek() instanceof Wall) && (grid[xIndex + 1][yIndex].peek() instanceof Wall)) {
 	    return false;
 	}
-	if ((grid[xIndex][yIndex + 1].peek() instanceof Wall) || (grid[xIndex][yIndex - 1].peek() instanceof Wall)) {
+	if ((grid[xIndex][yIndex + 1].peek() instanceof Wall) && (grid[xIndex][yIndex - 1].peek() instanceof Wall)) {
 	    return false;
 	}
 
@@ -211,9 +224,50 @@ public class World {
 	int xIndex = location.x / blockSize;
 	int yIndex = location.y / blockSize;
 
-	GameObject temp = grid[xIndex][yIndex].peek();
+	if (!grid[xIndex][yIndex].empty()) {
+	    GameObject temp = grid[xIndex][yIndex].peek();
+	    return temp;
+	}
+	return new Background(location, this);
+    }
 
-	return temp;
+    @Deprecated
+    public int numberOfBombsOnMap() {
+	int numberOfBombs = 0;
+	for (int i = 0; i < gridWidth; i++) {
+	    for (int j = 0; j < gridHeight; j++) {
+		if (grid[i][j].peek() instanceof Bomb) {
+		    numberOfBombs++;
+		}
+	    }
+	}
+	return numberOfBombs;
+    }
+
+    public int distanceToBomberman(GameActor actor) {
+	int xDistance = Math.abs(actor.getXCoordinate() - bomberman.getXCoordinate()) / blockSize;
+	int yDistance = Math.abs(actor.getYCoordinate() - bomberman.getYCoordinate()) / blockSize;
+
+	return (xDistance + yDistance);
+    }
+
+    public boolean bombermanWithin(GameActor actor, int radius) {
+	int xDistance = Math.abs(actor.getXCoordinate() - bomberman.getXCoordinate()) / blockSize;
+	int yDistance = Math.abs(actor.getYCoordinate() - bomberman.getYCoordinate()) / blockSize;
+
+	if ((xDistance <= radius) || (yDistance <= radius)) {
+	    return true;
+	}
+	return false;
+
+    }
+
+    public void loadNextLevel() {
+	Stack<GameObject>[][] bufferedGrid;
+	bufferedGrid = worldGenerator.generateGameGrid();
+	gameTimer.reset();
+	grid = bufferedGrid;
+
     }
 
 }

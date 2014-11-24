@@ -1,6 +1,7 @@
 package gameplay.gameobject;
 
 import gameplay.World;
+import gameplay.statemanagers.ScoreManager;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -117,8 +118,7 @@ public abstract class GameObject {
      * Method which removes GameObject instance from the gamboard.
      */
     public void destroy() {
-	// TODO: Add score management here, add the score before detroying the
-	// game object.
+	ScoreManager.addToScore(score);
 	world.removeGameObject(this);
     }
 

@@ -23,7 +23,9 @@ public interface BombermanInterface {
     public void placeBomb();
 
     public void detonateBomb();
-    
-    
+
+    public void respawn();
+
+    public void moveToNextLevel();
 
 }
