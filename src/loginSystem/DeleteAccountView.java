@@ -20,10 +20,11 @@ public class DeleteAccountView {
 	private JPasswordField PassPF = new JPasswordField(30);
 	private JFrame controllingFrame;
 
-	LoginFrame frame =new LoginFrame();
+	//LoginFrame frame =new LoginFrame();
 
 	
 	public void DeleteAccountView(){
+		final JFrame frame = new JFrame();
 		UserTF.setText(null);
 		PassPF.setText(null);
 		
@@ -65,8 +66,9 @@ public class DeleteAccountView {
 					e.printStackTrace();
 				}
 				frame.dispose();
-				LoginMenuView loginMenu = new LoginMenuView();
-				loginMenu.loginMenu();	
+				//LoginMenuView loginMenu = new LoginMenuView();
+				//loginMenu.loginMenu();	
+				LoginMenuView.main(null);
 			}
 			
 		});	
@@ -78,8 +80,9 @@ public class DeleteAccountView {
 			
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				LoginMenuView loginMenu = new LoginMenuView(); 
-				loginMenu.loginMenu();
+				//LoginMenuView loginMenu = new LoginMenuView(); 
+				//loginMenu.loginMenu();
+				LoginMenuView.main(null);
 			}
 			
 		});
@@ -100,7 +103,6 @@ public class DeleteAccountView {
 			@Override
 			public void run(){
 				DeleteAccountView LMV = new DeleteAccountView();
-				
 				
 				LMV.DeleteAccountView();
 			}

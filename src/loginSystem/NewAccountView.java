@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 
 public class NewAccountView {
@@ -19,11 +20,11 @@ public class NewAccountView {
 	private JTextField UserTF= new JTextField(30);
 	private JPasswordField PassPF = new JPasswordField(30);
 	private JPasswordField ConfirmPassPF = new JPasswordField(30);
-	private final JFrame frame=new JFrame("Make an account");
-	//LoginFrame frame =new LoginFrame();
+	//private final JFrame frame=new JFrame("Make an account");
 
 	
 	public void NewAccountView(){
+		final JFrame frame=new JFrame("Make an account");
 		NameTF.setText(null);
 		UserTF.setText(null);
 		PassPF.setText(null);
@@ -64,8 +65,9 @@ public class NewAccountView {
 						}
 						System.out.println("Entered user is "+User+" and pass is "+Pass);
 						frame.dispose();
-						PlayGameView playGame = new PlayGameView();
-						playGame.playMenu();
+						//PlayGameView playGame = new PlayGameView();
+						//playGame.playMenu();
+						PlayGameView.main(null);
 					} else {
 						System.out.println("Password and confirm password does not match.");
 					}
@@ -84,8 +86,9 @@ public class NewAccountView {
 			
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				LoginMenuView loginMenu = new LoginMenuView(); 
-				loginMenu.loginMenu();
+				//LoginMenuView loginMenu = new LoginMenuView(); 
+				//loginMenu.loginMenu();
+				LoginMenuView.main(null);
 			}
 			
 		});
@@ -103,6 +106,17 @@ public class NewAccountView {
 		panel.add(goBack);
 		frame.add(panel);
 		
+	}
+	
+	public static void main(String[] args){
+		SwingUtilities.invokeLater(new Runnable(){
+			@Override
+			public void run(){
+				NewAccountView NAV = new NewAccountView();
+				
+				NAV.NewAccountView();
+			}
+		});
 	}
 
 }

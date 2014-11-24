@@ -64,8 +64,7 @@ public class PlayGameView {
 		logOut.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				f.dispose();
-				LoginMenuView loginMenu = new LoginMenuView();
-				loginMenu.loginMenu();	
+				LoginMenuView.main(null);
 			
 			}
 		});	

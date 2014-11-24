@@ -71,17 +71,16 @@ public class LoginMenuView {
 			
 			public void actionPerformed(ActionEvent arg0) {
 			f.dispose();
-			NewAccountView newAccount = new NewAccountView();
-			newAccount.NewAccountView();	
+			NewAccountView.main(null);
 			}
 			
 		});	
+		
 		deleteUser.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent arg0) {
 				f.dispose();
-				DeleteAccountView deleteAccount = new DeleteAccountView();
-				deleteAccount.DeleteAccountView();	
+				DeleteAccountView.main(null);	
 			}
 			
 		});	
