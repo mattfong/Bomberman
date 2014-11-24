@@ -2,6 +2,7 @@ package gameplay.gameobject;
 
 import gameplay.World;
 import gameplay.gameobject.blocks.Bomb;
+import gameplay.gameobject.powerups.Powerup;
 import gameplay.input.CommandManager;
 import gameplay.input.InputListener;
 import gameplay.statemanagers.GameStateManager;
@@ -49,6 +50,16 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	}
     }
 
+    private void checkForPowerup() {
+	if (world.getGameObjectInstanceAt(this.getLocation()) instanceof Powerup) {
+	    Powerup bacon = (Powerup) world.getGameObjectInstanceAt(this.getLocation());
+	    bacon.applyPowerup(this);
+	    GameObject eggs = world.getGameObjectInstanceAt(this.getLocation());
+	    eggs.destroy();
+	}
+
+    }
+
     /**
      * checks if the GameActor has the ability to remote detonate and if true,
      * detonates the bombs in order that they are placed.
@@ -68,6 +79,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
     @Override
     public void update() {
 	inputManager.processCommand();
+	checkForPowerup();
 	if (checkIfBombed()) {
 	    if (gameStateManager.getCurrentGameState().getRemainingLives() > 0) {
 		respawn();

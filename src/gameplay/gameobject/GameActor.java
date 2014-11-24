@@ -34,8 +34,6 @@ public class GameActor extends GameObject {
 	destroyable = true;
 	isDead = false;
 
-	// Bomberman specific stuff
-
     }
 
     @Override

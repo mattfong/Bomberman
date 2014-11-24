@@ -5,6 +5,7 @@ import gameplay.gameobject.GameObject;
 import gameplay.gameobject.blocks.Background;
 import gameplay.gameobject.blocks.Brick;
 import gameplay.gameobject.blocks.Wall;
+import gameplay.gameobject.powerups.DetonatorPowerup;
 
 import java.awt.Rectangle;
 import java.util.Random;
@@ -46,9 +47,10 @@ public class WorldGenerator {
 	initStack();
 	fillBackground();
 	concreteFill();
-	placeBricks();
-	clearTopLeftCorner();
+	// placeBricks();
+	// clearTopLeftCorner();
 	// placePowerup();
+	addGameObject(new DetonatorPowerup(new Rectangle(3 * 32, 4 * 32, 32, 32), world));
     }
 
     private void placeEnemie(GameActor enemy) {
