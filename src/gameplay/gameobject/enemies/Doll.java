@@ -1,7 +1,9 @@
 package gameplay.gameobject.enemies;
 
 import gameplay.World;
+import gameplay.ai.DumbAI;
 import gameplay.gameobject.GameActor;
+import gameplay.input.CommandManager;
 
 import java.awt.Rectangle;
 
@@ -15,7 +17,7 @@ public class Doll extends GameActor implements Cloneable {
 	// inputManager = new CommandManager(this, InputListener.getInstance());
 	score = 400;
 	wallPass = false;
-
+	inputManager = new CommandManager(this, new DumbAI(this));
     }
 
 }

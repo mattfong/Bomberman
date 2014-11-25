@@ -1,7 +1,9 @@
 package gameplay.gameobject.enemies;
 
 import gameplay.World;
+import gameplay.ai.DumbAI;
 import gameplay.gameobject.GameActor;
+import gameplay.input.CommandManager;
 
 import java.awt.Rectangle;
 
@@ -15,6 +17,7 @@ public class Ovapi extends GameActor {
 	// inputManager = new CommandManager(this, InputListener.getInstance());
 	score = 2000;
 	wallPass = false;
+	inputManager = new CommandManager(this, new DumbAI(this));
     }
 
 }
