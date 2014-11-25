@@ -5,7 +5,6 @@ import gameplay.World;
 
 import java.io.Serializable;
 
-
 public class GameState implements Serializable {
     private String userName;
     private String playerName;
@@ -15,12 +14,14 @@ public class GameState implements Serializable {
     private int remainingLives;
 
     public GameState(String userName, String playerName) {
-		super();
-		this.userName = userName;
-		this.playerName = playerName;
-	}
+	super();
+	this.userName = userName;
+	this.playerName = playerName;
+	this.level = Level.L1;
+	remainingLives = 3;
+    }
 
-	public GameState(int score) {
+    public GameState(int score) {
 	this.score = score;
 	remainingLives = 3;
 	world = null;
