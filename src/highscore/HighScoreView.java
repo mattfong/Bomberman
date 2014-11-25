@@ -1,6 +1,7 @@
 package highscore;
 
 import gameplay.pauseMenu.PanelManager;
+import gameplay.statemanagers.ScoreManager;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -53,7 +54,8 @@ public class HighScoreView extends JFrame implements ActionListener {
 	String player8 = "Demo08        9,000";
 
 	String rogue = "Demo11        ";
-	Integer rogueScore = 11001;
+	ScoreManager.getInstance();
+	Integer rogueScore = ScoreManager.getScore() ;
 	String s = NumberFormat.getNumberInstance(Locale.US).format(rogueScore);
 	// System.out.println(NumberFormat.getNumberInstance(Locale.US).format(rogueScore));
 
