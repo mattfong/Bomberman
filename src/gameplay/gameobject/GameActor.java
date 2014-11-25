@@ -46,6 +46,10 @@ public class GameActor extends GameObject {
 
     }
 
+    public void setLocation(Rectangle location) {
+	this.gridLocation = location;
+    }
+
     protected boolean checkIfBombed() {
 
 	if (world.getGameObjectInstanceAt(this.getLocation()) instanceof Explosion) {
@@ -72,16 +76,14 @@ public class GameActor extends GameObject {
     }
 
     /**
-     * @return true if the GameActor can walk through brick elements, false if
-     *         the GameActor cannot.
+     * @return true if the GameActor can walk through brick elements, false if the GameActor cannot.
      */
     public boolean canWallPass() {
 	return wallPass;
     }
 
     /**
-     * @return true if the GameActor can be move through bombs, false if the
-     *         game actor cannot move through bombs.
+     * @return true if the GameActor can be move through bombs, false if the game actor cannot move through bombs.
      */
 
     /**
@@ -126,8 +128,7 @@ public class GameActor extends GameObject {
      *
      * @param object
      *            GameObject that is being checked
-     * @return true if the GameActor can pass through the object, false if the
-     *         object is solid to the GameActor
+     * @return true if the GameActor can pass through the object, false if the object is solid to the GameActor
      */
     public boolean canPassThrough(GameObject object) {
 	if (object instanceof Brick) {

@@ -6,7 +6,6 @@ import gameplay.gameobject.GameObject;
 import gameplay.gameobject.blocks.Background;
 import gameplay.gameobject.blocks.Brick;
 import gameplay.gameobject.blocks.Wall;
-
 import gameplay.gameobject.enemies.Balloon;
 import gameplay.gameobject.powerups.DetonatorPowerup;
 import gameplay.gameobject.powerups.Door;
@@ -17,8 +16,7 @@ import java.util.Random;
 import java.util.Stack;
 
 /**
- * @author mfong8 WorldGenerator's role is to take in a level configuration and
- *         generate a populated grid based on the given level specifications.
+ * @author mfong8 WorldGenerator's role is to take in a level configuration and generate a populated grid based on the given level specifications.
  */
 public class WorldGenerator {
 
@@ -28,6 +26,7 @@ public class WorldGenerator {
     private World world;
     private int gridWidth;
     private int gridHeight;
+    private Stack<GameObject>[][] grid;
 
     public WorldGenerator(World world, int gridWidth, int gridHeight) {
 	this.world = world;
@@ -37,13 +36,12 @@ public class WorldGenerator {
     }
 
     /**
-     * Created a game grid populated with the GameObjects specifies in the level
-     * generation
+     * Created a game grid populated with the GameObjects specifies in the level generation
      *
      * @return a fully populated grid.
      */
     public Stack<GameObject>[][] generateGameGrid() {
-	Stack<GameObject>[][] grid;
+
 	grid = new Stack[gridWidth][gridHeight];
 	populateGrid(grid);
 	return grid;
@@ -53,9 +51,38 @@ public class WorldGenerator {
 	ArrayList<GameActor> actorList;
 
 	actorList = new ArrayList<GameActor>();
-	actorList.add(new Balloon(new Rectangle(32 * 3, 32 * 3, 32, 32), world));
+	actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
+	actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
+	actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
+	actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
+	actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
+	actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
+
+	placeEnemiesInEmptySpot(actorList, this.grid);
+
 	actorList.add(new Bomberman(new Rectangle(32, 32, 32, 32), world));
 	return actorList;
+
+    }
+
+    private void placeEnemiesInEmptySpot(ArrayList<GameActor> enemiesList, Stack<GameObject>[][] grid) {
+	ArrayList<Stack<GameObject>> emptyStacks = new ArrayList<Stack<GameObject>>();
+	rng = new Random();
+
+	for (int i = 1; i < gridWidth-1; i++) {
+	    for (int j = 1; j < gridHeight-1; j++) {
+		if (!((grid[i][j].peek() instanceof Brick) && !(grid[i][j].peek() instanceof Wall))) {
+		    emptyStacks.add(grid[i][j]);
+		}
+	    }
+	}
+	int randomNumber;
+	for (GameActor enemy : enemiesList) {
+	    randomNumber = rng.nextInt(emptyStacks.size());
+	    enemy.setLocation(emptyStacks.get(randomNumber).peek().getLocation());
+	    emptyStacks.remove(randomNumber);
+
+	}
 
     }
 
@@ -69,10 +96,6 @@ public class WorldGenerator {
 	addGameObject(new Background(new Rectangle(32, 32, 32, 32), world), grid);
 	addGameObject(new DetonatorPowerup(new Rectangle(3 * 32, 4 * 32, 32, 32), world), grid);
 	addGameObject(new Door(new Rectangle(3 * 32, 6 * 32, 32, 32), world), grid);
-    }
-
-    private void placeEnemie(GameActor enemy) {
-
     }
 
     private void initStack(Stack<GameObject>[][] grid) {
