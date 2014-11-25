@@ -24,6 +24,10 @@ public abstract class GameObject {
 	return score;
     }
 
+    public void setLocation(Rectangle location) {
+	this.gridLocation = location;
+    }
+
     public GameObject(Rectangle location, World world) {
 	gridLocation = location;
 	this.world = world;
@@ -50,8 +54,7 @@ public abstract class GameObject {
 
     // Property Inquiries
     /**
-     * @return true if the object can be destroyed, false if the object cannot
-     *         be destroyed.
+     * @return true if the object can be destroyed, false if the object cannot be destroyed.
      */
     public boolean isDestroyable() {
 	return destroyable;
@@ -67,21 +70,18 @@ public abstract class GameObject {
     /**
      * Returns if the game object conducts explosions through it.
      *
-     * @return a boolean true if explosions should pass through the object,
-     *         false if object stops explosions.
+     * @return a boolean true if explosions should pass through the object, false if object stops explosions.
      */
     public boolean conductsExplosions() {
 	return conductsExplosions;
     }
 
     /**
-     * Checks if the current gameobject has collided with another gameobject
-     * obj.
+     * Checks if the current gameobject has collided with another gameobject obj.
      *
      * @param obj
      *            -GameObject to check against
-     * @return true if the instance collides with obj, false if they do not
-     *         collide.
+     * @return true if the instance collides with obj, false if they do not collide.
      */
     public boolean hasCollided(GameObject obj) {
 	if (gridLocation.intersects(obj.getCollisionBoundaries())) {
@@ -91,23 +91,18 @@ public abstract class GameObject {
     }
 
     /**
-     * Method generates a rectangle which represents the collision boundaries of
-     * the instance of GameObject
+     * Method generates a rectangle which represents the collision boundaries of the instance of GameObject
      *
-     * @return a Rectangle which represents the collision boundaries of the
-     *         GameObject.
+     * @return a Rectangle which represents the collision boundaries of the GameObject.
      */
     public Rectangle getCollisionBoundaries() {
 	return new Rectangle(this.gridLocation.x, this.gridLocation.y, pictureSize, pictureSize);
     }
 
     /**
-     * Method returns the location of this GameObject as a rectangle populated
-     * with the location and size of the gameobject.
+     * Method returns the location of this GameObject as a rectangle populated with the location and size of the gameobject.
      *
-     * @return rectangle whose x and y are the same as the top left location of
-     *         the game object and whose width and heigh as the same as the
-     *         gameobject's sprite.
+     * @return rectangle whose x and y are the same as the top left location of the game object and whose width and heigh as the same as the gameobject's sprite.
      */
     public Rectangle getLocation() {
 	return new Rectangle(this.gridLocation.x, this.gridLocation.y, pictureSize, pictureSize);
