@@ -2,6 +2,7 @@
 
 package gameplay;
 
+import gameplay.gameobject.Bomberman;
 import gameplay.gameobject.GameActor;
 import gameplay.gameobject.GameObject;
 import gameplay.gameobject.blocks.Background;
@@ -12,6 +13,7 @@ import gameplay.overlays.CountdownTimer;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.util.Stack;
 
 /**
@@ -32,22 +34,45 @@ public class World {
     WorldGenerator worldGenerator;
     private final int explosionLength = 10;
     GameActor bomberman;
+    ArrayList<GameActor> actorList;
 
     public World(int widthInBlocks, int heightInBlocks) {
 
 	gridHeight = heightInBlocks;
 	gridWidth = widthInBlocks;
+
+	// prep the world
 	worldGenerator = new WorldGenerator(this, widthInBlocks, heightInBlocks);
 	grid = worldGenerator.generateGameGrid();
+	actorList = worldGenerator.populateActors(Level.L1);
+	registerBomberman(actorList); // add register bomberman to the world so
+	// that we can interact wit him
+
+	// prep the timer
 	gameTimer = new CountdownTimer();
+
     }
 
     public CountdownTimer getTimer() {
 	return gameTimer;
     }
 
-    public void registerBomberman(GameActor bomberman) {
-	this.bomberman = bomberman;
+    public ArrayList<GameActor> getActorList() {
+	return actorList;
+    }
+
+    public GameActor getBomberman() {
+	return bomberman;
+    }
+
+    private void registerBomberman(ArrayList<GameActor> actorList) {
+
+	for (GameActor actor : actorList) {
+
+	    if (actor instanceof Bomberman) {
+		this.bomberman = actor;
+	    }
+	}
     }
 
     public void update() {

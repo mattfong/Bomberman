@@ -19,7 +19,7 @@ import java.awt.Rectangle;
  */
 public class GameActor extends GameObject {
 
-    CommandManager inputManager;
+    protected CommandManager inputManager;
     protected int moveSpeed = 32;
     protected boolean wallPass;
     protected CommandManager driver;
@@ -38,7 +38,7 @@ public class GameActor extends GameObject {
 
     @Override
     public void update() {
-	inputManager.processCommand();
+	// inputManager.processCommand(); TODO: Remove when placing the new AI
 	if (checkIfBombed()) {
 	    isDead = true;
 	    ScoreManager.addToScore(score);

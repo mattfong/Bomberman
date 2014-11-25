@@ -1,14 +1,18 @@
 package gameplay;
 
+import gameplay.gameobject.Bomberman;
 import gameplay.gameobject.GameActor;
 import gameplay.gameobject.GameObject;
 import gameplay.gameobject.blocks.Background;
 import gameplay.gameobject.blocks.Brick;
 import gameplay.gameobject.blocks.Wall;
+
+import gameplay.gameobject.enemies.Balloon;
 import gameplay.gameobject.powerups.DetonatorPowerup;
 import gameplay.gameobject.powerups.Door;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
 
@@ -43,6 +47,16 @@ public class WorldGenerator {
 	grid = new Stack[gridWidth][gridHeight];
 	populateGrid(grid);
 	return grid;
+    }
+
+    public ArrayList<GameActor> populateActors(Level level) {
+	ArrayList<GameActor> actorList;
+
+	actorList = new ArrayList<GameActor>();
+	actorList.add(new Balloon(new Rectangle(32 * 3, 32 * 3, 32, 32), world));
+	actorList.add(new Bomberman(new Rectangle(32, 32, 32, 32), world));
+	return actorList;
+
     }
 
     private void populateGrid(Stack<GameObject>[][] grid) {

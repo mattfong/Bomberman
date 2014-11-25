@@ -1,17 +1,16 @@
 package gameplay.statemanagers;
 
 import gameplay.Level;
-import gameplay.gameobject.GameObject;
+import gameplay.World;
 
 import java.io.Serializable;
-import java.util.Stack;
 
-public class GameState implements Serializable{
+
+public class GameState implements Serializable {
     private String userName;
     private String playerName;
     private Level level;
-
-    private Stack<GameObject>[][] grid;
+    private World world;
     private int score;
     private int remainingLives;
 
@@ -22,6 +21,16 @@ public class GameState implements Serializable{
     public GameState(int score) {
 	this.score = score;
 	remainingLives = 3;
+	world = null;
+	level = Level.L1;
+    }
+
+    public World getWorld() {
+	return world;
+    }
+
+    public void setWorld(World world) {
+	this.world = world;
     }
 
     public String getUserName() {
@@ -34,14 +43,6 @@ public class GameState implements Serializable{
 
     public String getPlayerName() {
 	return playerName;
-    }
-
-    public Stack<GameObject>[][] getGrid() {
-	return grid;
-    }
-
-    public void setGrid(Stack<GameObject>[][] grid) {
-	this.grid = grid;
     }
 
     public int getScore() {

@@ -13,15 +13,16 @@ public class ScoreManager {
     }
 
     protected ScoreManager() {
+	gameStateManager = GameStateManager.getInstance();
     }
 
     public static void addToScore(int score) {
-	GameState currentGameState = GameStateManager.getCurrentGameState();
+	GameState currentGameState = gameStateManager.getCurrentGameState();
 	currentGameState.increaseScoreBy(score);
     }
 
     public static int getScore() {
-	GameState currentGameState = GameStateManager.getCurrentGameState();
+	GameState currentGameState = gameStateManager.getCurrentGameState();
 	return currentGameState.getScore();
     }
 

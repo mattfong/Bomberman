@@ -2,6 +2,7 @@ package gameplay.gameobject.enemies;
 
 import gameplay.World;
 import gameplay.gameobject.GameActor;
+import gameplay.input.CommandManager;
 
 import java.awt.Rectangle;
 
@@ -11,8 +12,9 @@ public class Balloon extends GameActor {
 
     public Balloon(Rectangle location, World world) {
 	super(location, world);
+
 	sprite = new ImageIcon(Balloon.class.getResource("/Balloon.jpg")).getImage();
-	// inputManager = new CommandManager(this, InputListener.getInstance());
+	inputManager = new CommandManager(this, null);
 	score = 100;
 	wallPass = false;
 

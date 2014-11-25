@@ -1,5 +1,8 @@
 package gameplay;
 
+import gameplay.statemanagers.GameState;
+import gameplay.statemanagers.GameStateManager;
+
 import javax.swing.JFrame;
 
 public class GameFrame extends JFrame {
@@ -19,6 +22,9 @@ public class GameFrame extends JFrame {
     }
 
     public static void main(String[] args) {
+
+	GameStateManager manager = GameStateManager.getInstance();
+	manager.setCurrentGameState(new GameState(100));
 
 	GameFrame gameFrame = new GameFrame();
 	gameFrame.setVisible(true);
