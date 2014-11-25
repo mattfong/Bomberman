@@ -1,5 +1,6 @@
 package highscore;
 
+import gameplay.pauseMenu.PanelManager;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,16 +9,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.border.Border;
-import javax.swing.JButton;
 
 import loginSystem.PlayGameView;
 
-public class HighScoreView extends JFrame implements ActionListener{
+public class HighScoreView extends JFrame implements ActionListener {
 
-	JFrame f;
+    JFrame f;
 
     public HighScoreView() {
 
@@ -36,9 +37,8 @@ public class HighScoreView extends JFrame implements ActionListener{
 	label.setText("HIGH SCORE: ");
 	label.setHorizontalAlignment(JLabel.LEFT);
 	label.setVerticalAlignment(JLabel.TOP);
-	
-	
-	//;)
+
+	// ;)
 	String player5 = "Demo05        16,000";
 	String player6 = "Demo06        16,000";
 	String player7 = "Demo07        16,000";
@@ -49,10 +49,10 @@ public class HighScoreView extends JFrame implements ActionListener{
 	String player1 = "Demo01        10,000";
 	String player2 = "Demo02        10,000";
 	String player8 = "Demo08        9,000";
-	
+
 	String rogue = "Demo11        ";
 	Integer rogueScore = 16000;
-	
+
 	if (rogueScore > 16000) {
 	    player5 = "Demo05        16,000";
 	    player6 = "Demo06        16,000";
@@ -65,8 +65,7 @@ public class HighScoreView extends JFrame implements ActionListener{
 	    player2 = "Demo02        10,000";
 	    player8 = "Demo08        9,000";
 	}
-	
-	
+
 	if (rogueScore == 16000) {
 	    player5 = "Demo05        16,000";
 	    player6 = "Demo06        16,000";
@@ -79,7 +78,7 @@ public class HighScoreView extends JFrame implements ActionListener{
 	    player2 = "Demo02        10,000";
 	    player8 = "Demo08        9,000";
 	}
-	
+
 	if ((rogueScore < 16000) && (rogueScore > 14000)) {
 	    player5 = "Demo05        16,000";
 	    player6 = "Demo06        16,000";
@@ -92,7 +91,7 @@ public class HighScoreView extends JFrame implements ActionListener{
 	    player2 = "Demo02        10,000";
 	    player8 = "Demo08        9,000";
 	}
-	
+
 	if (rogueScore == 14000) {
 	    player5 = "Demo05        16,000";
 	    player6 = "Demo06        16,000";
@@ -105,8 +104,7 @@ public class HighScoreView extends JFrame implements ActionListener{
 	    player2 = "Demo02        10,000";
 	    player8 = "Demo08        9,000";
 	}
-	
-	
+
 	if ((rogueScore < 14000) && (rogueScore > 13000)) {
 	    player5 = "Demo05        16,000";
 	    player6 = "Demo06        16,000";
@@ -119,7 +117,7 @@ public class HighScoreView extends JFrame implements ActionListener{
 	    player2 = "Demo02        10,000";
 	    player8 = "Demo08        9,000";
 	}
-	
+
 	if (rogueScore == 13000) {
 	    player5 = "Demo05        16,000";
 	    player6 = "Demo06        16,000";
@@ -132,7 +130,7 @@ public class HighScoreView extends JFrame implements ActionListener{
 	    player2 = "Demo02        10,000";
 	    player8 = "Demo08        9,000";
 	}
-	
+
 	if ((rogueScore < 13000) && (rogueScore > 12000)) {
 	    player5 = "Demo05        16,000";
 	    player6 = "Demo06        16,000";
@@ -145,7 +143,7 @@ public class HighScoreView extends JFrame implements ActionListener{
 	    player2 = "Demo02        10,000";
 	    player8 = "Demo08        9,000";
 	}
-	
+
 	if (rogueScore == 12000) {
 	    player5 = "Demo05        16,000";
 	    player6 = "Demo06        16,000";
@@ -158,7 +156,7 @@ public class HighScoreView extends JFrame implements ActionListener{
 	    player2 = "Demo02        10,000";
 	    player8 = "Demo08        9,000";
 	}
-	
+
 	if ((rogueScore < 12000) && (rogueScore > 11000)) {
 	    player5 = "Demo05        16,000";
 	    player6 = "Demo06        16,000";
@@ -171,7 +169,7 @@ public class HighScoreView extends JFrame implements ActionListener{
 	    player2 = "Demo02        10,000";
 	    player8 = "Demo08        9,000";
 	}
-	
+
 	if (rogueScore == 11000) {
 	    player5 = "Demo05        16,000";
 	    player6 = "Demo06        16,000";
@@ -184,7 +182,7 @@ public class HighScoreView extends JFrame implements ActionListener{
 	    player2 = "Demo02        10,000";
 	    player8 = "Demo08        9,000";
 	}
-	
+
 	if ((rogueScore < 11000) && (rogueScore > 10000)) {
 	    player5 = "Demo05        16,000";
 	    player6 = "Demo06        16,000";
@@ -197,7 +195,7 @@ public class HighScoreView extends JFrame implements ActionListener{
 	    player2 = "Demo02        10,000";
 	    player8 = "Demo08        9,000";
 	}
-	
+
 	if (rogueScore == 10000) {
 	    player5 = "Demo05        16,000";
 	    player6 = "Demo06        16,000";
@@ -210,7 +208,7 @@ public class HighScoreView extends JFrame implements ActionListener{
 	    player2 = "Demo02        10,000";
 	    player8 = "Demo08        9,000";
 	}
-	
+
 	if ((rogueScore < 10000) && (rogueScore > 9000)) {
 	    player5 = "Demo05        16,000";
 	    player6 = "Demo06        16,000";
@@ -223,7 +221,7 @@ public class HighScoreView extends JFrame implements ActionListener{
 	    player2 = "Demo02        10,000";
 	    player8 = "Demo08        9,000";
 	}
-	
+
 	if (rogueScore == 9000) {
 	    player5 = "Demo05        16,000";
 	    player6 = "Demo06        16,000";
@@ -236,7 +234,7 @@ public class HighScoreView extends JFrame implements ActionListener{
 	    player2 = "Demo02        10,000";
 	    player8 = "Demo08        9,000";
 	}
-	
+
 	if (rogueScore < 9000) {
 	    player5 = "Demo05        16,000";
 	    player6 = "Demo06        16,000";
@@ -249,7 +247,6 @@ public class HighScoreView extends JFrame implements ActionListener{
 	    player2 = "Demo02        10,000";
 	    player8 = "Demo08        9,000";
 	}
-	
 
 	// 10 Players --NOTE EACH SCORE HAS IT'S BORDER, IT'S TO CUSTOMIZE THE
 	// COLORS LATER ON
@@ -362,8 +359,15 @@ public class HighScoreView extends JFrame implements ActionListener{
 	    public void actionPerformed(ActionEvent arg0) {
 		f.dispose();
 		// notYet();
-		PlayGameView playGameView = new PlayGameView();
-		playGameView.playMenu();
+
+		// Won't work if called from the pause menu.
+		PanelManager manager = PanelManager.getInstance();
+
+		if (manager.getParentPanel() == null) {
+		    PlayGameView playGameView = new PlayGameView();
+		    playGameView.playMenu();
+		}
+
 	    }
 	});
 	// The following will be used to execute any commands related to the
