@@ -1,36 +1,34 @@
 package gameplay.gameobject.enemies;
 
+import gameplay.Level;
+import gameplay.World;
+import gameplay.gameobject.GameActor;
+
 import java.util.ArrayList;
 
 public class MonsterFactory {
 
-    private static MonsterFactory singleton = null;
+    private World world;
 
-    protected MonsterFactory() {
-
+    public MonsterFactory(World world) {
+	this.world = world;
     }
 
-    public static MonsterFactory getInstance() {
-	if (singleton == null) {
-	    return new MonsterFactory();
-	}
-	return singleton;
-    }
+    public ArrayList<GameActor> createClassList(Level level) {
 
-    private ArrayList<Class> createClassList(ArrayList<String> enemyTypes) {
+	ArrayList<GameActor> actorList = new ArrayList<GameActor>();
+	Class[] classArray = level.getClassList();
 
-	ArrayList<Class> classList = new ArrayList<Class>();
-
-	for (String s : enemyTypes) {
-	    try {
-		classList.add(Class.forName(s));
-	    } catch (ClassNotFoundException e) {
-		e.printStackTrace();
+	for (Class c : classArray) {
+	    if (c == Balloon.class) {
+		actorList.add(new Balloon(world));
 	    }
-
+	    if (c == Oneal.class) {
+		actorList.add(new Oneal(world));
+	    }
 	}
+	return actorList;
 
-	return classList;
     }
 
 }
