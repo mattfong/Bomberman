@@ -83,7 +83,7 @@ public class WorldGenerator {
 
 	for (int i = 1; i < (gridWidth - 1); i++) {
 	    for (int j = 1; j < (gridHeight - 1); j++) {
-		if (!((grid[i][j].peek() instanceof Brick) && !(grid[i][j].peek() instanceof Wall))) {
+		if (!(grid[i][j].peek() instanceof Brick) && !(grid[i][j].peek() instanceof Wall)) {
 		    emptyStacks.add(grid[i][j]);
 		}
 	    }
