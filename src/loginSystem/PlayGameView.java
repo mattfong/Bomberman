@@ -1,5 +1,6 @@
 package loginSystem;
 import gameplay.GameFrame;
+import gameplay.statemanagers.GameStateManager;
 import highscore.HighScoreController;
 
 import java.awt.Color;

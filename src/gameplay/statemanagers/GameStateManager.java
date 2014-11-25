@@ -6,7 +6,8 @@ public class GameStateManager {
     private static GameStateManager singleton = null;
     private GameState currentGameState;
 
-    protected GameStateManager() {
+    public GameStateManager() {
+    
     }
 
     public void setCurrentGameState(GameState state) {

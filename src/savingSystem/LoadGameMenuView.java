@@ -18,6 +18,7 @@ public class LoadGameMenuView {
 	private final JFrame frame = new JFrame("Load Game Menu");
 	private JPanel panel = new JPanel();
 	private final JTextField deleteGame= new JTextField(30);
+	private LoadGameMenuController controller = new LoadGameMenuController();
 	
 	public void LoadGameMenuView(){
 		frame.setVisible(true);
@@ -28,21 +29,29 @@ public class LoadGameMenuView {
 	    
 	    panel.setLayout(new GridLayout(7,1,5,10));
 	    
-	    JLabel loadGame = new JLabel("Load Game");
+//	    JLabel loadGame = new JLabel("Load Game");
+	    JButton loadGame = new JButton("Load Game");
 	    JLabel delete = new JLabel("Delete saved game");
 
 	    JButton deleteSavedGame = new JButton("Delete Saved Game");
 	    JButton goBack = new JButton("Go Back");
 	    JButton closeMenu = new JButton("Close Menu");
 	    
-	    
+	    loadGame.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent arg0) {
+				controller.loadGame();
+				frame.dispose();
+			}
+			
+		});
+
 	    deleteSavedGame.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent arg0) {
-				SavedGameManager savedGameManager = new SavedGameManager();
-				savedGameManager.removeSavedGame("userName", deleteGame.getText());
+				controller.deleteSavedGame(deleteGame.getText());
 				System.out.println("Deleted Saved Game: " + deleteGame.getText());
-				frame.dispose();	
+		//		frame.dispose();	
 			}
 			
 		});

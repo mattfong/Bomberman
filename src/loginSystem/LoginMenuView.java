@@ -1,4 +1,7 @@
 package loginSystem;
+import gameplay.statemanagers.GameState;
+import gameplay.statemanagers.GameStateManager;
+
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -46,6 +49,7 @@ public class LoginMenuView {
 
 		JButton newUser = new JButton("IF you do not have an account click here to create one");
 		JButton deleteUser = new JButton("To delete your Account click here");
+		
 		login.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {				
 				try {
@@ -54,10 +58,14 @@ public class LoginMenuView {
 						f.dispose();
 						//PlayGameView playGame = new PlayGameView();
 						//playGame.playMenu();
+						Account acc = accountManager.getOneAccount(justUsername); 
+						
+						GameStateManager manager = GameStateManager.getInstance();
+						
+						GameState gameState = new GameState(acc.getUserName(), acc.getName());
+						manager.setCurrentGameState(gameState);
 						PlayGameView.main(null);
 						System.out.println("Username entered correctly");
-						
-						
 						
 					}
 					else{

@@ -30,8 +30,8 @@ public class SavedGameManager {
 		return savedGame;
 	}
 	
-	public void removeSavedGame(String userName, String removeSavedGame){
-		for(int i=0; i<savedGamesList.size(); i++){
+	public void removeSavedGame(String removeSavedGame){
+		for(int i=0; i<numberOfSavedGames(); i++){
 			SavedGame savedGame = savedGamesList.get(i);
 			if(savedGame.getSavedGameName().equals(removeSavedGame)){
 				savedGamesList.remove(i);

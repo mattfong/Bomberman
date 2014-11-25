@@ -14,11 +14,13 @@ public class GameState implements Serializable {
     private int score;
     private int remainingLives;
 
-    public GameState(String playerName, String userName) {
+    public GameState(String userName, String playerName) {
+		super();
+		this.userName = userName;
+		this.playerName = playerName;
+	}
 
-    }
-
-    public GameState(int score) {
+	public GameState(int score) {
 	this.score = score;
 	remainingLives = 3;
 	world = null;

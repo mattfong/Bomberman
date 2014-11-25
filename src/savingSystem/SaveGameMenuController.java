@@ -1,15 +1,13 @@
 package savingSystem;
 
+import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
 
 import java.io.IOException;
-import java.util.List;
-
-import loginSystem.Account;
 
 public class SaveGameMenuController {
 	
-//	private String savedGameName = "";
+	private SavedGameSerialization serializeGame = new SavedGameSerialization();
 	private SavedGameManager saveManager = new SavedGameManager();
 	private SavedGame savedGame = new SavedGame();
 	private String fileName = "";
@@ -20,22 +18,24 @@ public class SaveGameMenuController {
 	}
 	
 	public void saveGame(String savedGameName){
-		Account acc =new Account();
+
+		GameStateManager gameStateManager = GameStateManager.getInstance();
+		GameState currentGame = gameStateManager.getCurrentGameState();
+		
 		try {
-	//		fileName = saveManager.getSaveGameFile("GameStateManager.getInstance().getCurrentGameState().getUserName()");
-			fileName = saveManager.getSaveGameFile("Demo44");
+			fileName = saveManager.getSaveGameFile(currentGame.getUserName());
 			System.out.println("Step 1: " + fileName);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		savedGame = saveManager.addSavedGame(savedGameName);
-		savedGame.setGameState(GameStateManager.getInstance().getCurrentGameState());
+		savedGame.setGameState(currentGame);
 		savedGame.setSavedGameName(savedGameName);
-		savedGame.setUserName("GameStateManager.getInstance().getCurrentGameState().getUserName()");
-		SavedGameSerialization serializeGame = new SavedGameSerialization();
+		savedGame.setUserName(currentGame.getUserName());
+
 		System.out.println("Line before Step 2 SavedGame: " + savedGame);
-		System.out.println("Step 2: Save Game Name: " + savedGameName + ", username: " + "GameStateManager.getInstance().getCurrentGameState().getUserName()");
+		System.out.println("Step 2: Save Game Name: " + savedGameName + ", username: " + currentGame.getUserName());
 		
 		try {
 			serializeGame.serializeSaveGameName(savedGame, fileName);
@@ -45,13 +45,5 @@ public class SaveGameMenuController {
 		}
 		System.out.println("Step 4: Serialization Done");
 		
-		try {
-			List<SavedGame> allSavedGames = serializeGame.deserializeSaveGameName(fileName);
-
-			System.out.println("Step 5: Deserialized List: " + allSavedGames); 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }
