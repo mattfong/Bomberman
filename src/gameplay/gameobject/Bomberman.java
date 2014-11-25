@@ -164,7 +164,6 @@ public class Bomberman extends GameActor implements BombermanInterface {
 
     @Override
     public void respawn() {
-	Bomb.resetBombList();
 	bombPass = false;
 	wallPass = false;
 	wallPass = false;
@@ -177,6 +176,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
 
     @Override
     public void moveToNextLevel() {
+	Bomb.resetBombList();
 	gridLocation.x = 32;
 	gridLocation.y = 32;
 	world.loadNextLevel();
