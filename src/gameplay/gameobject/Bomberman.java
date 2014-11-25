@@ -8,6 +8,7 @@ import gameplay.input.InputListener;
 import gameplay.statemanagers.GameStateManager;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
@@ -73,8 +74,21 @@ public class Bomberman extends GameActor implements BombermanInterface {
 
     @Override
     public void update() {
+	ArrayList<GameActor> actorList = world.getActorList();
 	inputManager.processCommand();
 	checkForAndApplyPowerup();
+
+	for (GameActor actor : actorList) {
+	    if (actor != this) {
+		if (actor.hasCollided(this)) {
+		    if (gameStateManager.getCurrentGameState().getRemainingLives() > 0) {
+			respawn();
+		    } else {
+			isDead = true;
+		    }
+		}
+	    }
+	}
 
 	if (checkIfBombed()) {
 	    if (gameStateManager.getCurrentGameState().getRemainingLives() > 0) {
@@ -167,6 +181,15 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	gridLocation.y = 32;
 	world.loadNextLevel();
 
+    }
+
+    @Override
+    public void die() {
+	if (gameStateManager.getCurrentGameState().getRemainingLives() > 0) {
+	    respawn();
+	} else {
+	    isDead = true;
+	}
     }
 
 }

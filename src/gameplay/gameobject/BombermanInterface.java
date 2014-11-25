@@ -28,4 +28,6 @@ public interface BombermanInterface {
 
     public void moveToNextLevel();
 
+    public void die();
+
 }

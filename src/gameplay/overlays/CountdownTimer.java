@@ -1,5 +1,8 @@
 package gameplay.overlays;
 
+import gameplay.World;
+import gameplay.gameobject.Bomberman;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,9 +12,14 @@ public class CountdownTimer implements ActionListener {
 
     Timer timer;
     int countdown;
+    private World world;
 
     public int getcountdown() {
 	return countdown;
+    }
+
+    public void registerOntoWorld(World world) {
+	this.world = world;
     }
 
     public CountdownTimer() {
@@ -24,6 +32,10 @@ public class CountdownTimer implements ActionListener {
     public void actionPerformed(ActionEvent arg0) {
 	countdown--;
 	if (countdown == 0) {
+	    if (world != null) {
+		Bomberman bomberman = (Bomberman) world.getBomberman();
+		bomberman.die();
+	    }
 	    countdown = 200;
 	}
     }
