@@ -43,7 +43,7 @@ public class World {
 
 	// prep the world
 	worldGenerator = new WorldGenerator(this, widthInBlocks, heightInBlocks);
-	worldGenerator.generateLevel(Level.L1);
+	worldGenerator.generateLevel(Level.L2);
 	grid = worldGenerator.getGrid();
 	actorList = worldGenerator.getActorList();
 
@@ -88,7 +88,8 @@ public class World {
     }
 
     /**
-     * draw method which draws the gameworld onto a Graphics object that is later rendered.
+     * draw method which draws the gameworld onto a Graphics object that is
+     * later rendered.
      *
      * @param g
      *            graphics object to be drawn on.
@@ -104,7 +105,8 @@ public class World {
     }
 
     /**
-     * takes in a gameobject and places it on the grid at the location specified by the object itself.
+     * takes in a gameobject and places it on the grid at the location specified
+     * by the object itself.
      *
      * @param gameObject
      *            object that is to be added to the game world.
@@ -121,7 +123,8 @@ public class World {
     }
 
     /**
-     * remove the specified gameobject from the world. Object specified must be the specific instance that is to be removed and not an equivalent one.
+     * remove the specified gameobject from the world. Object specified must be
+     * the specific instance that is to be removed and not an equivalent one.
      *
      * @param obj
      *            the game object that is to be add to the game world.
@@ -142,7 +145,8 @@ public class World {
     /**
      * @param location
      *            rectangle representing a location on the game grid
-     * @return returns true if the rectangle is at an intersection of walls, returns false if it's not at an intersection of walls
+     * @return returns true if the rectangle is at an intersection of walls,
+     *         returns false if it's not at an intersection of walls
      */
     public boolean isIntersection(Rectangle location) {
 	int xIndex;
@@ -199,11 +203,14 @@ public class World {
     }
 
     /**
-     * checks if the given GameObject object has collided with any other GameObject on the board
+     * checks if the given GameObject object has collided with any other
+     * GameObject on the board
      *
      * @param object
-     *            GameObject that is being checked if has collided with something.
-     * @return true if the object has collided with another GameObject, false if it has not.
+     *            GameObject that is being checked if has collided with
+     *            something.
+     * @return true if the object has collided with another GameObject, false if
+     *         it has not.
      */
     public boolean checkForCollision(GameObject object) {
 	for (int i = 0; i < gridWidth; i++) {
@@ -220,13 +227,15 @@ public class World {
     }
 
     /**
-     * Checks a given direction relative to a GameActor to see if the GameActor is able to move onto that space.
+     * Checks a given direction relative to a GameActor to see if the GameActor
+     * is able to move onto that space.
      *
      * @param actor
      *            GameActor that is going to be moving
      * @param direction
      *            direction that in which the actor wants to move
-     * @return true if the direction is blocked, false if the direction is free to pass through.
+     * @return true if the direction is blocked, false if the direction is free
+     *         to pass through.
      */
     public boolean willCollide(GameActor actor, Direction direction) {
 	int indexX = (actor.getXCoordinate() / blockSize) + direction.getX();

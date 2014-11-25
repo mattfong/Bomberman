@@ -6,7 +6,7 @@ import gameplay.gameobject.GameObject;
 import gameplay.gameobject.blocks.Background;
 import gameplay.gameobject.blocks.Brick;
 import gameplay.gameobject.blocks.Wall;
-import gameplay.gameobject.enemies.Balloon;
+import gameplay.gameobject.enemies.MonsterFactory;
 import gameplay.gameobject.powerups.BombPowerup;
 import gameplay.gameobject.powerups.Door;
 import gameplay.gameobject.powerups.Powerup;
@@ -17,7 +17,8 @@ import java.util.Random;
 import java.util.Stack;
 
 /**
- * @author mfong8 WorldGenerator's role is to take in a level configuration and generate a populated grid based on the given level specifications.
+ * @author mfong8 WorldGenerator's role is to take in a level configuration and
+ *         generate a populated grid based on the given level specifications.
  */
 public class WorldGenerator {
 
@@ -30,11 +31,13 @@ public class WorldGenerator {
 
     private Stack<GameObject>[][] grid;
     private ArrayList<GameActor> actorList;
+    private MonsterFactory factory;
 
     public WorldGenerator(World world, int gridWidth, int gridHeight) {
 	this.world = world;
 	this.gridHeight = gridHeight;
 	this.gridWidth = gridWidth;
+	factory = new MonsterFactory(world);
 
     }
 
@@ -48,12 +51,14 @@ public class WorldGenerator {
 
     public void generateLevel(Level level) {
 	generateGameGrid(); // sets grid to the proper setup
-	populateActors(level); // sets the ArrayList actorList to the proper setup
+	populateActors(level); // sets the ArrayList actorList to the proper
+			       // setup
 
     }
 
     /**
-     * Created a game grid populated with the GameObjects specifies in the level generation
+     * Created a game grid populated with the GameObjects specifies in the level
+     * generation
      *
      * @return a fully populated grid.
      */
@@ -65,14 +70,15 @@ public class WorldGenerator {
 
     private void populateActors(Level level) {
 
-	actorList = new ArrayList<GameActor>();
-	actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
-	actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
-	actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
-	actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
-	actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
-	actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
+	// actorList = new ArrayList<GameActor>();
+	// actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
+	// actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
+	// actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
+	// actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
+	// actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
+	// actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
 
+	actorList = factory.createClassList(level);
 	placeEnemiesInEmptySpot(actorList, this.grid);
 
 	actorList.add(new Bomberman(new Rectangle(32, 32, 32, 32), world));
@@ -117,7 +123,11 @@ public class WorldGenerator {
 	GameObject tempObject;
 	GameObject powerupObject = (GameObject) powerup;
 
-	temp = brickLocations.get(rng.nextInt(brickLocations.size())); // get the object at the index
+	temp = brickLocations.get(rng.nextInt(brickLocations.size())); // get
+								       // the
+								       // object
+								       // at the
+								       // index
 	tempObject = temp.pop();
 	addGameObject(new Door(tempObject.getLocation(), world), grid);
 	// System.out.println(tempObject.getLocation().toString()); TODO: remove
@@ -140,8 +150,10 @@ public class WorldGenerator {
 	clearTopLeftCorner(grid);
 	// placePowerup(grid);
 	addGameObject(new Background(new Rectangle(32, 32, 32, 32), world), grid);
-	// addGameObject(new DetonatorPowerup(new Rectangle(3 * 32, 4 * 32, 32, 32), world), grid);
-	// addGameObject(new Door(new Rectangle(3 * 32, 6 * 32, 32, 32), world), grid);
+	// addGameObject(new DetonatorPowerup(new Rectangle(3 * 32, 4 * 32, 32,
+	// 32), world), grid);
+	// addGameObject(new Door(new Rectangle(3 * 32, 6 * 32, 32, 32), world),
+	// grid);
     }
 
     private void initStack(Stack<GameObject>[][] grid) {
