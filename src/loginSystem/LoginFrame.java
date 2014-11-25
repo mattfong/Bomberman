@@ -14,7 +14,7 @@ public class LoginFrame extends JFrame{
 	}
 	private void initUI(){
 		//add(new GamePanel());
-		setSize(992,448);
+		setSize(480, 440);
 		setTitle("Bomberman");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);

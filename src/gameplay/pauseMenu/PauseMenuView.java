@@ -12,9 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
+import savingSystem.SaveLoadController;
+
 public class PauseMenuView extends JPanel{
 
 	private GamePanel parentPanel;
+	private SaveLoadController saveLoadController = new SaveLoadController();
 	
 	public PauseMenuView(GamePanel panel) {
 	
@@ -33,6 +36,11 @@ public class PauseMenuView extends JPanel{
 		
 
 		JButton saveGameButton = new JButton("Save Game");
+		saveGameButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				saveLoadController.displaySaveGameMenu();
+			}
+		});
 		saveGameButton.setBounds(85, 180, 134, 25);
 		add(saveGameButton);
 		
@@ -60,6 +68,11 @@ public class PauseMenuView extends JPanel{
 		add(exitButton);
 		
 		JButton loadGameButton = new JButton("Load Game");
+		loadGameButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				saveLoadController.displayLoadGameMenu();
+			}
+		});
 		loadGameButton.setBounds(85, 226, 134, 25);
 		add(loadGameButton);
 

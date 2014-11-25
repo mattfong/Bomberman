@@ -78,7 +78,7 @@ public class PlayGameView {
 		f.add(panel);
 		f.setVisible(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(992,448);
+		f.setSize(480, 440);
 		f.setLocationRelativeTo(null);
 		f.setResizable(false);
 		

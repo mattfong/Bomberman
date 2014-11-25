@@ -31,7 +31,7 @@ public class DeleteAccountView {
 		JPanel panel = new JPanel();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(992,448);
+		frame.setSize(480, 440);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 

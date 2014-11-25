@@ -17,7 +17,7 @@ public class SaveLoadView {
 
 	public void SaveLoadView() {
 		frame.setVisible(true);
-	    frame.setSize(992,448);
+	    frame.setSize(480, 440);
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
@@ -28,31 +28,24 @@ public class SaveLoadView {
 	    JButton goBack = new JButton("Go back");
 	    
 	    save.addActionListener(new ActionListener(){
-			
 			public void actionPerformed(ActionEvent arg0) {
 				controller.displaySaveGameMenu();
 				frame.dispose();
-	
 			}
-			
 		});	
 	    
 	    load.addActionListener(new ActionListener(){
-			
 			public void actionPerformed(ActionEvent arg0) {
 				controller.displayLoadGameMenu();
 				frame.dispose();
 			}
-			
 		});	
 	    
 	    goBack.addActionListener(new ActionListener(){
-			
 			public void actionPerformed(ActionEvent arg0) {
 				PlayGameView playGameView = new PlayGameView();
 				playGameView.playMenu();
-			}
-			
+			}	
 		});	
 
 	    

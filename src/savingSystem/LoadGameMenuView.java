@@ -22,64 +22,57 @@ public class LoadGameMenuView {
 	
 	public void LoadGameMenuView(){
 		frame.setVisible(true);
-	    frame.setSize(992,448);
+	    frame.setSize(480, 440);
 	    frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    panel.setLayout(new GridLayout(7,1,5,10));
 	    
-//	    JLabel loadGame = new JLabel("Load Game");
-	    JButton loadGame = new JButton("Load Game");
-	    JLabel delete = new JLabel("Delete saved game");
-
-	    JButton deleteSavedGame = new JButton("Delete Saved Game");
-	    JButton goBack = new JButton("Go Back");
-	    JButton closeMenu = new JButton("Close Menu");
+	    JLabel loadGameLabel = new JLabel("Load Game");
+	    JLabel deleteGameLabel = new JLabel("Delete saved game");
 	    
-	    loadGame.addActionListener(new ActionListener(){
-			
+	    JButton loadGameButton = new JButton("Load Game");
+	    JButton deleteSavedGameButton = new JButton("Delete Saved Game");
+	    JButton goBackButton = new JButton("Go Back");
+	    JButton closeMenuButton = new JButton("Close Menu");
+	    
+	    loadGameButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				controller.loadGame();
 				frame.dispose();
 			}
-			
 		});
 
-	    deleteSavedGame.addActionListener(new ActionListener(){
-			
+	    deleteSavedGameButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				controller.deleteSavedGame(deleteGame.getText());
 				System.out.println("Deleted Saved Game: " + deleteGame.getText());
 		//		frame.dispose();	
 			}
-			
 		});
 
-	    goBack.addActionListener(new ActionListener(){
-			
+	    goBackButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				SaveLoadView saveLoadView = new SaveLoadView();
 				saveLoadView.SaveLoadView();
 				frame.dispose();	
 			}
-			
 		});
 
-	    closeMenu.addActionListener(new ActionListener(){
-			
+	    closeMenuButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();	
 			}
-			
 		});
 
-	    panel.add(loadGame);
-	    panel.add(delete);
+	    panel.add(loadGameLabel);
+	    panel.add(deleteGameLabel);
 	    panel.add(deleteGame);
-	    panel.add(deleteSavedGame);
-	    panel.add(goBack);
-	    panel.add(closeMenu);
+	    panel.add(loadGameButton);
+	    panel.add(deleteSavedGameButton);
+	    panel.add(goBackButton);
+	    panel.add(closeMenuButton);
 	    frame.add(panel);
 	    
 	}

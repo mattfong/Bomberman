@@ -20,7 +20,7 @@ public class LoadGameMenuController {
     }
 
     public void loadGame() {
-
+    	SavedGame game = null;
 	try {
 	    fileName = saveManager.getSaveGameFile(currentGame.getUserName());
 	    System.out.println("Load Controller:" + fileName);
@@ -29,9 +29,14 @@ public class LoadGameMenuController {
 
 	    System.out.println("Step 5: Deserialized List: " + allSavedGames);
 	    for (int i = 0; i < allSavedGames.size(); i++) {
-		SavedGame game = allSavedGames.get(i);
+		game = allSavedGames.get(i);
 		game.getGameState();
-		System.out.println("GameState parse: " + game.getGameState().getPlayerName());
+		System.out.println("GameState parsed Information: \n Name: " + game.getGameState().getPlayerName() +
+				"\n Username: " + game.getGameState().getUserName() + 
+				"\n World: " + game.getGameState().getWorld() +
+				"\n Level: " + game.getGameState().getLevel() +
+				"\n Score: " + game.getGameState().getScore() +
+				"\n Remaining Lives: " + game.getGameState().getRemainingLives());
 	    }
 	} catch (IOException e) {
 	    // TODO Auto-generated catch block
@@ -40,17 +45,17 @@ public class LoadGameMenuController {
     }
 
     public List<SavedGame> deleteSavedGame(String deleteGame) {
-	List<SavedGame> gamesList = null;
+    	List<SavedGame> allSavedGames = null;
 	try {
 	    fileName = saveManager.getSaveGameFile(currentGame.getUserName());
-	    List<SavedGame> allSavedGames = serializeGame.deserializeSaveGameName(fileName);
+	    allSavedGames = serializeGame.deserializeSaveGameName(fileName);
 	    saveManager.setSavedGamesList(allSavedGames);
 	} catch (IOException e) {
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	}
-	System.out.println(saveManager.numberOfSavedGames());
-	saveManager.removeSavedGame(deleteGame);
-	return gamesList;
+		System.out.println(saveManager.numberOfSavedGames());
+		saveManager.removeSavedGame(deleteGame);
+	return allSavedGames;
     }
 }

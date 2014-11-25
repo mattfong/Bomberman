@@ -20,7 +20,7 @@ public class SaveGameMenuView {
 	public void SaveGameMenuView(){
 		JPanel panel = new JPanel();
 		frame.setVisible(true);
-	    frame.setSize(992,448);
+	    frame.setSize(480, 440);
 	    frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,30 +31,24 @@ public class SaveGameMenuView {
 	    JButton closeMenu = new JButton("Close Menu");
 		
 	    saveGame.addActionListener(new ActionListener(){
-			
 			public void actionPerformed(ActionEvent arg0) {
 				savedGameName = jt.getText();
 				saveController.saveGame(savedGameName);
 			}
-			
 		});
 
 	    goBack.addActionListener(new ActionListener(){
-			
 			public void actionPerformed(ActionEvent arg0) {
 				SaveLoadView saveLoadView = new SaveLoadView();
 				saveLoadView.SaveLoadView();
 				frame.dispose();	
 			}
-			
 		});
 
 	    closeMenu.addActionListener(new ActionListener(){
-			
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();	
 			}
-			
 		});	
 
 	    panel.setLayout(new GridLayout(5,1,5,10));
@@ -65,11 +59,6 @@ public class SaveGameMenuView {
 	    panel.add(closeMenu);
 	    frame.add(panel);
 	
-	}
-	
-	public static void main(String[] args) {
-		SaveGameMenuView s = new SaveGameMenuView();
-		s.SaveGameMenuView();
 	}
 	
 }

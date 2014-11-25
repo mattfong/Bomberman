@@ -109,7 +109,7 @@ public class LoginMenuView {
 		f.add(panel);
 		
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(992,448);
+		f.setSize(480, 440);
 		f.setLocationRelativeTo(null);
 		f.setResizable(false);
 		f.setVisible(true);
