@@ -47,6 +47,10 @@ public class Bomb extends GameObject {
 	bombList.add(bomb);
     }
 
+    public static void resetBombList() {
+	bombList.clear();
+    }
+
     @Override
     public void update() {
 	super.update();
