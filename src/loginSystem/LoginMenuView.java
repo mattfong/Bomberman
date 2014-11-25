@@ -2,11 +2,14 @@ package loginSystem;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
 
+import java.awt.Desktop;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,7 +35,7 @@ public class LoginMenuView {
 		pf.setText(null);
 		final JFrame f = new JFrame("Login menu");
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(7,1,5,10));
+		panel.setLayout(new GridLayout(8,1,5,10));
 		
 		
 		CSVreader reader = new CSVreader();
@@ -49,6 +52,7 @@ public class LoginMenuView {
 
 		JButton newUser = new JButton("IF you do not have an account click here to create one");
 		JButton deleteUser = new JButton("To delete your Account click here");
+		JButton suprise=new JButton("Click here for a suprise");
 		
 		login.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {				
@@ -99,6 +103,24 @@ public class LoginMenuView {
 			
 		});	
 		
+		suprise.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent arg0) {
+				String url="https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+		    	Desktop d=Desktop.getDesktop();
+		    	try {
+					d.browse(new URI(url));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (URISyntaxException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+		});	
+		
 		panel.add(enterUser);
 		panel.add(jt);
 		panel.add(enterPass);
@@ -106,6 +128,7 @@ public class LoginMenuView {
 		panel.add(login);
 		panel.add(newUser);
 		panel.add(deleteUser);
+		panel.add(suprise);
 		f.add(panel);
 		
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
