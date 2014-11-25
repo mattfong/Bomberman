@@ -20,4 +20,8 @@ public class Pass extends GameActor {
 	inputManager = new CommandManager(this, new DumbAI(this));
     }
 
+    public Pass(World world) {
+	this(new Rectangle(0, 0, 32, 32), world);
+
+    }
 }

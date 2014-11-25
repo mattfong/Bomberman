@@ -19,4 +19,9 @@ public class Kondoria extends GameActor {
 	wallPass = true;
 	inputManager = new CommandManager(this, new DumbAI(this));
     }
+
+    public Kondoria(World world) {
+	this(new Rectangle(0, 0, 32, 32), world);
+
+    }
 }

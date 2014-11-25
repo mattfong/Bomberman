@@ -20,4 +20,8 @@ public class Pontan extends GameActor {
 	inputManager = new CommandManager(this, new DumbAI(this));
     }
 
+    public Pontan(World world) {
+	this(new Rectangle(0, 0, 32, 32), world);
+
+    }
 }

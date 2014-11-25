@@ -21,4 +21,9 @@ public class Minvo extends GameActor {
 	inputManager = new CommandManager(this, new DumbAI(this));
     }
 
+    public Minvo(World world) {
+	this(new Rectangle(0, 0, 32, 32), world);
+
+    }
+
 }

@@ -20,4 +20,9 @@ public class Balloon extends GameActor {
 	wallPass = false;
 	inputManager = new CommandManager(this, new DumbAI(this));
     }
+
+    public Balloon(World world) {
+	this(new Rectangle(0, 0, 32, 32), world);
+
+    }
 }
