@@ -183,4 +183,13 @@ public class Bomberman extends GameActor implements BombermanInterface {
 
     }
 
+    @Override
+    public void die() {
+	if (gameStateManager.getCurrentGameState().getRemainingLives() > 0) {
+	    respawn();
+	} else {
+	    isDead = true;
+	}
+    }
+
 }

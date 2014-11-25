@@ -52,6 +52,7 @@ public class World {
 
 	// prep the timer
 	gameTimer = new CountdownTimer();
+	gameTimer.registerOntoWorld(this);
 
     }
 
