@@ -7,8 +7,9 @@ import gameplay.gameobject.blocks.Background;
 import gameplay.gameobject.blocks.Brick;
 import gameplay.gameobject.blocks.Wall;
 import gameplay.gameobject.enemies.Balloon;
-import gameplay.gameobject.powerups.DetonatorPowerup;
+import gameplay.gameobject.powerups.BombPowerup;
 import gameplay.gameobject.powerups.Door;
+import gameplay.gameobject.powerups.Powerup;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -59,6 +60,7 @@ public class WorldGenerator {
     private void generateGameGrid() {
 	grid = new Stack[gridWidth][gridHeight];
 	populateGrid(grid);
+	placePowerupAndDoor(grid, new BombPowerup(new Rectangle(0, 0, 32, 32), world));
     }
 
     private void populateActors(Level level) {
@@ -98,6 +100,38 @@ public class WorldGenerator {
 
     }
 
+    private void placePowerupAndDoor(Stack<GameObject>[][] grid, Powerup powerup) {
+	ArrayList<Stack<GameObject>> brickLocations = new ArrayList<Stack<GameObject>>();
+	rng = new Random();
+
+	for (int i = 1; i < (gridWidth - 1); i++) {
+	    for (int j = 1; j < (gridHeight - 1); j++) {
+		if (grid[i][j].peek() instanceof Brick) {
+		    brickLocations.add(grid[i][j]);
+		}
+	    }
+	}
+	int randomNumber;
+
+	Stack<GameObject> temp;
+	GameObject tempObject;
+	GameObject powerupObject = (GameObject) powerup;
+
+	temp = brickLocations.get(rng.nextInt(brickLocations.size())); // get the object at the index
+	tempObject = temp.pop();
+	addGameObject(new Door(tempObject.getLocation(), world), grid);
+	// System.out.println(tempObject.getLocation().toString()); TODO: remove
+	temp.push(tempObject);
+
+	temp = brickLocations.get(rng.nextInt(brickLocations.size()));
+	tempObject = temp.pop();
+	powerupObject.setLocation(tempObject.getLocation());
+	// System.out.println(tempObject.getLocation().toString()); TODO: remove
+	addGameObject(powerupObject, grid);
+	temp.push(tempObject);
+
+    }
+
     private void populateGrid(Stack<GameObject>[][] grid) {
 	initStack(grid);
 	fillBackground(grid);
@@ -106,8 +140,8 @@ public class WorldGenerator {
 	clearTopLeftCorner(grid);
 	// placePowerup(grid);
 	addGameObject(new Background(new Rectangle(32, 32, 32, 32), world), grid);
-	addGameObject(new DetonatorPowerup(new Rectangle(3 * 32, 4 * 32, 32, 32), world), grid);
-	addGameObject(new Door(new Rectangle(3 * 32, 6 * 32, 32, 32), world), grid);
+	// addGameObject(new DetonatorPowerup(new Rectangle(3 * 32, 4 * 32, 32, 32), world), grid);
+	// addGameObject(new Door(new Rectangle(3 * 32, 6 * 32, 32, 32), world), grid);
     }
 
     private void initStack(Stack<GameObject>[][] grid) {

@@ -46,10 +46,6 @@ public class GameActor extends GameObject {
 
     }
 
-    public void setLocation(Rectangle location) {
-	this.gridLocation = location;
-    }
-
     protected boolean checkIfBombed() {
 
 	if (world.getGameObjectInstanceAt(this.getLocation()) instanceof Explosion) {

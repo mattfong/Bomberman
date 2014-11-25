@@ -29,7 +29,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	flamePass = false;
 	detonator = false;
 	explosionRadius = 1;
-	bombLimit = 1;
+	bombLimit = 100;
 	gameStateManager = GameStateManager.getInstance();
 
     }
@@ -48,7 +48,6 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	}
     }
 
-
     private void checkForAndApplyPowerup() {
 	if (world.getGameObjectInstanceAt(this.getLocation()) instanceof Powerup) {
 	    Powerup bacon = (Powerup) world.getGameObjectInstanceAt(this.getLocation());
@@ -60,8 +59,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
     }
 
     /**
-     * checks if the GameActor has the ability to remote detonate and if true,
-     * detonates the bombs in order that they are placed.
+     * checks if the GameActor has the ability to remote detonate and if true, detonates the bombs in order that they are placed.
      */
     @Override
     public void detonateBomb() {
@@ -101,8 +99,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
     }
 
     /**
-     * Increases the amount of bombs that can be placed on the board at a given
-     * time by 1.
+     * Increases the amount of bombs that can be placed on the board at a given time by 1.
      */
     @Override
     public void increaseBombLimit() {
@@ -112,8 +109,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
     /**
      * returns if the gameactor is immune to bomb fire.
      *
-     * @return true if the actor can "take the heat", false if he turns into
-     *         jerky.
+     * @return true if the actor can "take the heat", false if he turns into jerky.
      */
     @Override
     public boolean canTakeTheHeat() {
