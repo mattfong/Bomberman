@@ -13,7 +13,7 @@ public class Kondoria extends GameActor {
 
     public Kondoria(Rectangle location, World world) {
 	super(location, world);
-	sprite = new ImageIcon(Kondoria.class.getResource("/Kondogira.jpg")).getImage();
+	sprite = new ImageIcon(Kondoria.class.getResource("/Kondoria.jpg")).getImage();
 	// inputManager = new CommandManager(this, InputListener.getInstance());
 	score = 1000;
 	wallPass = true;

@@ -43,7 +43,7 @@ public class World {
 
 	// prep the world
 	worldGenerator = new WorldGenerator(this, widthInBlocks, heightInBlocks);
-	worldGenerator.generateLevel(Level.L2);
+	worldGenerator.generateLevel(Level.L11);
 	grid = worldGenerator.getGrid();
 	actorList = worldGenerator.getActorList();
 
