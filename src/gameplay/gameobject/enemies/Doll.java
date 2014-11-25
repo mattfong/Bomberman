@@ -20,4 +20,8 @@ public class Doll extends GameActor implements Cloneable {
 	inputManager = new CommandManager(this, new DumbAI(this));
     }
 
+    public Doll(World world) {
+	this(new Rectangle(0, 0, 32, 32), world);
+
+    }
 }
