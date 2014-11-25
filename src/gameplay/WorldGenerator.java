@@ -26,7 +26,9 @@ public class WorldGenerator {
     private World world;
     private int gridWidth;
     private int gridHeight;
+
     private Stack<GameObject>[][] grid;
+    private ArrayList<GameActor> actorList;
 
     public WorldGenerator(World world, int gridWidth, int gridHeight) {
 	this.world = world;
@@ -35,20 +37,31 @@ public class WorldGenerator {
 
     }
 
+    public ArrayList<GameActor> getActorList() {
+	return actorList;
+    }
+
+    public Stack<GameObject>[][] getGrid() {
+	return grid;
+    }
+
+    public void generateLevel(Level level) {
+	generateGameGrid(); // sets grid to the proper setup
+	populateActors(level); // sets the ArrayList actorList to the proper setup
+
+    }
+
     /**
      * Created a game grid populated with the GameObjects specifies in the level generation
      *
      * @return a fully populated grid.
      */
-    public Stack<GameObject>[][] generateGameGrid() {
-
+    private void generateGameGrid() {
 	grid = new Stack[gridWidth][gridHeight];
 	populateGrid(grid);
-	return grid;
     }
 
-    public ArrayList<GameActor> populateActors(Level level) {
-	ArrayList<GameActor> actorList;
+    private void populateActors(Level level) {
 
 	actorList = new ArrayList<GameActor>();
 	actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
@@ -61,7 +74,6 @@ public class WorldGenerator {
 	placeEnemiesInEmptySpot(actorList, this.grid);
 
 	actorList.add(new Bomberman(new Rectangle(32, 32, 32, 32), world));
-	return actorList;
 
     }
 
@@ -69,8 +81,8 @@ public class WorldGenerator {
 	ArrayList<Stack<GameObject>> emptyStacks = new ArrayList<Stack<GameObject>>();
 	rng = new Random();
 
-	for (int i = 1; i < gridWidth-1; i++) {
-	    for (int j = 1; j < gridHeight-1; j++) {
+	for (int i = 1; i < (gridWidth - 1); i++) {
+	    for (int j = 1; j < (gridHeight - 1); j++) {
 		if (!((grid[i][j].peek() instanceof Brick) && !(grid[i][j].peek() instanceof Wall))) {
 		    emptyStacks.add(grid[i][j]);
 		}
