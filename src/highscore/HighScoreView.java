@@ -51,10 +51,204 @@ public class HighScoreView extends JFrame implements ActionListener{
 	String player8 = "Demo08        9,000";
 	
 	String rogue = "Demo11        ";
+	Integer rogueScore = 16000;
 	
-	//if()
+	if (rogueScore > 16000) {
+	    player5 = "Demo05        16,000";
+	    player6 = "Demo06        16,000";
+	    player7 = "Demo07        16,000";
+	    player4 = "Demo04        14,000";
+	    player3 = "Demo03        13,000";
+	    player10 = "Demo10        12,000";
+	    player9 = "Demo09        11,000";
+	    player1 = "Demo01        10,000";
+	    player2 = "Demo02        10,000";
+	    player8 = "Demo08        9,000";
+	}
 	
 	
+	if (rogueScore == 16000) {
+	    player5 = "Demo05        16,000";
+	    player6 = "Demo06        16,000";
+	    player7 = "Demo07        16,000";
+	    player4 = "Demo04        14,000";
+	    player3 = "Demo03        13,000";
+	    player10 = "Demo10        12,000";
+	    player9 = "Demo09        11,000";
+	    player1 = "Demo01        10,000";
+	    player2 = "Demo02        10,000";
+	    player8 = "Demo08        9,000";
+	}
+	
+	if ((rogueScore < 16000) && (rogueScore > 14000)) {
+	    player5 = "Demo05        16,000";
+	    player6 = "Demo06        16,000";
+	    player7 = "Demo07        16,000";
+	    player4 = "Demo04        14,000";
+	    player3 = "Demo03        13,000";
+	    player10 = "Demo10        12,000";
+	    player9 = "Demo09        11,000";
+	    player1 = "Demo01        10,000";
+	    player2 = "Demo02        10,000";
+	    player8 = "Demo08        9,000";
+	}
+	
+	if (rogueScore == 14000) {
+	    player5 = "Demo05        16,000";
+	    player6 = "Demo06        16,000";
+	    player7 = "Demo07        16,000";
+	    player4 = "Demo04        14,000";
+	    player3 = "Demo03        13,000";
+	    player10 = "Demo10        12,000";
+	    player9 = "Demo09        11,000";
+	    player1 = "Demo01        10,000";
+	    player2 = "Demo02        10,000";
+	    player8 = "Demo08        9,000";
+	}
+	
+	
+	if ((rogueScore < 14000) && (rogueScore > 13000)) {
+	    player5 = "Demo05        16,000";
+	    player6 = "Demo06        16,000";
+	    player7 = "Demo07        16,000";
+	    player4 = "Demo04        14,000";
+	    player3 = "Demo03        13,000";
+	    player10 = "Demo10        12,000";
+	    player9 = "Demo09        11,000";
+	    player1 = "Demo01        10,000";
+	    player2 = "Demo02        10,000";
+	    player8 = "Demo08        9,000";
+	}
+	
+	if (rogueScore == 13000) {
+	    player5 = "Demo05        16,000";
+	    player6 = "Demo06        16,000";
+	    player7 = "Demo07        16,000";
+	    player4 = "Demo04        14,000";
+	    player3 = "Demo03        13,000";
+	    player10 = "Demo10        12,000";
+	    player9 = "Demo09        11,000";
+	    player1 = "Demo01        10,000";
+	    player2 = "Demo02        10,000";
+	    player8 = "Demo08        9,000";
+	}
+	
+	if ((rogueScore < 13000) && (rogueScore > 12000)) {
+	    player5 = "Demo05        16,000";
+	    player6 = "Demo06        16,000";
+	    player7 = "Demo07        16,000";
+	    player4 = "Demo04        14,000";
+	    player3 = "Demo03        13,000";
+	    player10 = "Demo10        12,000";
+	    player9 = "Demo09        11,000";
+	    player1 = "Demo01        10,000";
+	    player2 = "Demo02        10,000";
+	    player8 = "Demo08        9,000";
+	}
+	
+	if (rogueScore == 12000) {
+	    player5 = "Demo05        16,000";
+	    player6 = "Demo06        16,000";
+	    player7 = "Demo07        16,000";
+	    player4 = "Demo04        14,000";
+	    player3 = "Demo03        13,000";
+	    player10 = "Demo10        12,000";
+	    player9 = "Demo09        11,000";
+	    player1 = "Demo01        10,000";
+	    player2 = "Demo02        10,000";
+	    player8 = "Demo08        9,000";
+	}
+	
+	if ((rogueScore < 12000) && (rogueScore > 11000)) {
+	    player5 = "Demo05        16,000";
+	    player6 = "Demo06        16,000";
+	    player7 = "Demo07        16,000";
+	    player4 = "Demo04        14,000";
+	    player3 = "Demo03        13,000";
+	    player10 = "Demo10        12,000";
+	    player9 = "Demo09        11,000";
+	    player1 = "Demo01        10,000";
+	    player2 = "Demo02        10,000";
+	    player8 = "Demo08        9,000";
+	}
+	
+	if (rogueScore == 11000) {
+	    player5 = "Demo05        16,000";
+	    player6 = "Demo06        16,000";
+	    player7 = "Demo07        16,000";
+	    player4 = "Demo04        14,000";
+	    player3 = "Demo03        13,000";
+	    player10 = "Demo10        12,000";
+	    player9 = "Demo09        11,000";
+	    player1 = "Demo01        10,000";
+	    player2 = "Demo02        10,000";
+	    player8 = "Demo08        9,000";
+	}
+	
+	if ((rogueScore < 11000) && (rogueScore > 10000)) {
+	    player5 = "Demo05        16,000";
+	    player6 = "Demo06        16,000";
+	    player7 = "Demo07        16,000";
+	    player4 = "Demo04        14,000";
+	    player3 = "Demo03        13,000";
+	    player10 = "Demo10        12,000";
+	    player9 = "Demo09        11,000";
+	    player1 = "Demo01        10,000";
+	    player2 = "Demo02        10,000";
+	    player8 = "Demo08        9,000";
+	}
+	
+	if (rogueScore == 10000) {
+	    player5 = "Demo05        16,000";
+	    player6 = "Demo06        16,000";
+	    player7 = "Demo07        16,000";
+	    player4 = "Demo04        14,000";
+	    player3 = "Demo03        13,000";
+	    player10 = "Demo10        12,000";
+	    player9 = "Demo09        11,000";
+	    player1 = "Demo01        10,000";
+	    player2 = "Demo02        10,000";
+	    player8 = "Demo08        9,000";
+	}
+	
+	if ((rogueScore < 10000) && (rogueScore > 9000)) {
+	    player5 = "Demo05        16,000";
+	    player6 = "Demo06        16,000";
+	    player7 = "Demo07        16,000";
+	    player4 = "Demo04        14,000";
+	    player3 = "Demo03        13,000";
+	    player10 = "Demo10        12,000";
+	    player9 = "Demo09        11,000";
+	    player1 = "Demo01        10,000";
+	    player2 = "Demo02        10,000";
+	    player8 = "Demo08        9,000";
+	}
+	
+	if (rogueScore == 9000) {
+	    player5 = "Demo05        16,000";
+	    player6 = "Demo06        16,000";
+	    player7 = "Demo07        16,000";
+	    player4 = "Demo04        14,000";
+	    player3 = "Demo03        13,000";
+	    player10 = "Demo10        12,000";
+	    player9 = "Demo09        11,000";
+	    player1 = "Demo01        10,000";
+	    player2 = "Demo02        10,000";
+	    player8 = "Demo08        9,000";
+	}
+	
+	if (rogueScore < 9000) {
+	    player5 = "Demo05        16,000";
+	    player6 = "Demo06        16,000";
+	    player7 = "Demo07        16,000";
+	    player4 = "Demo04        14,000";
+	    player3 = "Demo03        13,000";
+	    player10 = "Demo10        12,000";
+	    player9 = "Demo09        11,000";
+	    player1 = "Demo01        10,000";
+	    player2 = "Demo02        10,000";
+	    player8 = "Demo08        9,000";
+	}
 	
 
 	// 10 Players --NOTE EACH SCORE HAS IT'S BORDER, IT'S TO CUSTOMIZE THE
