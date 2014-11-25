@@ -1,16 +1,8 @@
 package gameplay.ai;
 
 import gameplay.Direction;
-import gameplay.GameFrame;
-import gameplay.gameobject.Creep;
 import gameplay.gameobject.GameActor;
-import gameplay.gameobject.GameObject;
 import gameplay.input.Command;
-import gameplay.input.CommandDown;
-import gameplay.input.CommandLeft;
-import gameplay.input.CommandRight;
-import gameplay.input.CommandUp;
-import gameplay.*;
 
 public class DumbAI extends AI {
 
@@ -42,13 +34,11 @@ public class DumbAI extends AI {
 	Boolean cantMoveDown = !canMoveDown;
 
 	/*
-	 * System.out.println("Move Down: " + canMoveDown);
-	 * System.out.println("Move Up: " + canMoveUp);
-	 * System.out.println("Move Right: " + canMoveRight);
-	 * System.out.println("Move Left: " + canMoveLeft);
+	 * System.out.println("Move Down: " + canMoveDown); System.out.println("Move Up: " + canMoveUp); System.out.println("Move Right: " + canMoveRight); System.out.println("Move Left: " +
+	 * canMoveLeft);
 	 */
 
-	if (counter > 5) {
+	if (counter > 10) {
 	    counter = 0;
 
 	    if (wentDownOnce == true) {

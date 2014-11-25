@@ -288,4 +288,7 @@ public class World {
 
     }
 
+    public Rectangle getBombermanCoordinates() {
+	return bomberman.getLocation();
+    }
 }

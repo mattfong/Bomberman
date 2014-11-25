@@ -38,12 +38,16 @@ public class GameActor extends GameObject {
 
     @Override
     public void update() {
-	// inputManager.processCommand(); TODO: Remove when placing the new AI
+	inputManager.processCommand(); // TODO: Remove when placing the new AI
 	if (checkIfBombed()) {
 	    isDead = true;
 	    ScoreManager.addToScore(score);
 	}
 
+    }
+
+    public Rectangle getBombermanCoordinates() {
+	return world.getBombermanCoordinates();
     }
 
     protected boolean checkIfBombed() {
