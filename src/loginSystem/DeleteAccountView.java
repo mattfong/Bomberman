@@ -20,7 +20,6 @@ public class DeleteAccountView {
 	private JPasswordField PassPF = new JPasswordField(30);
 	private JFrame controllingFrame;
 
-	//LoginFrame frame =new LoginFrame();
 
 	
 	public void DeleteAccountView(){
