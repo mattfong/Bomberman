@@ -12,6 +12,7 @@ import gameplay.gameobject.powerups.Door;
 import gameplay.gameobject.powerups.Powerup;
 
 import java.awt.Rectangle;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
@@ -20,7 +21,7 @@ import java.util.Stack;
  * @author mfong8 WorldGenerator's role is to take in a level configuration and
  *         generate a populated grid based on the given level specifications.
  */
-public class WorldGenerator {
+public class WorldGenerator implements Serializable{
 
     private Random rng;
     private final int probabilityConstant = 20;

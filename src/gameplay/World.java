@@ -13,6 +13,7 @@ import gameplay.overlays.CountdownTimer;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -24,7 +25,7 @@ import java.util.Stack;
  * @author MF
  *
  */
-public class World {
+public class World implements Serializable {
 
     CountdownTimer gameTimer;
     private int gridWidth;

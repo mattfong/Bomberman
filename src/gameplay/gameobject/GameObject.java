@@ -6,8 +6,9 @@ import gameplay.statemanagers.ScoreManager;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.io.Serializable;
 
-public abstract class GameObject {
+public abstract class GameObject implements Serializable {
 
     protected final int pictureSize = 32;
 

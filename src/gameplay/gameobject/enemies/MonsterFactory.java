@@ -4,13 +4,14 @@ import gameplay.Level;
 import gameplay.World;
 import gameplay.gameobject.GameActor;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * @author MF Credit to TA Dominique for telling me how to implment this black
+ * @author MF Credit to TA Dominique for telling me how to implement this black
  *         magic with meta classes.
  */
-public class MonsterFactory {
+public class MonsterFactory implements Serializable {
 
     private World world;
 
@@ -19,7 +20,7 @@ public class MonsterFactory {
     }
 
     /**
-     * Creates a list of game actors that is accosiated with the given level.
+     * Creates a list of game actors that is associated with the given level.
      * 
      * @param level
      *            the level which is to be configured.
