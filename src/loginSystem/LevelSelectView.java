@@ -14,46 +14,62 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * @author      Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>
+ * @version     1.5                 (current version number of program)
+ * @since       2014-11-27          (the version of the package this class was first added to)
+ */
+
 public class LevelSelectView {
     JTextField jt = new JTextField(30);
 
     public int intoInt(String number) {
-	return Integer.parseInt(number);
+    	return Integer.parseInt(number);
     }
 
     public LevelSelectView() {
-	jt.setText(null);
-	final JFrame f = new JFrame("Enter Level");
-	JPanel panel = new JPanel();
-	panel.setLayout(new GridLayout(2, 1, 5, 10));
-	f.setVisible(true);
+    	jt.setText(null);
+    	final JFrame f = new JFrame("Enter Level");
+    	JPanel panel = new JPanel();
+    	panel.setLayout(new GridLayout(2, 1, 5, 10));
 
-	JButton goToLevel = new JButton("Enter your desired level and click here. Only enter numbers.");
-	goToLevel.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent arg0) {
-		String toInt;
-		int levelSelected = 0;
-		toInt = jt.getText();
-		levelSelected = intoInt(toInt);
-		if (levelSelected == 11) {
-		    GameStateManager manager = GameStateManager.getInstance();
-		    GameState state = manager.getCurrentGameState();
-		    state.setLevel(Level.L11);
-		}
-		GameFrame gameplay = new GameFrame();
-		gameplay.setVisible(true);
-		f.dispose();
-
-	    }
-	});
-	panel.add(jt);
-	panel.add(goToLevel);
-	f.add(panel);
-	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	f.setSize(480, 440);
-	f.setLocationRelativeTo(null);
-	f.setResizable(false);
-	f.setVisible(true);
+    	JButton goToLevel = new JButton("Enter your desired level and click here. Only enter numbers.");
+    	
+    	goToLevel.addActionListener(new ActionListener() {
+    		public void actionPerformed(ActionEvent arg0) {
+    			String toInt;
+    			int levelSelected = 0;
+    			toInt = jt.getText();
+    			levelSelected = intoInt(toInt);
+    			if (levelSelected == 11) {
+    				GameStateManager manager = GameStateManager.getInstance();
+    				GameState state = manager.getCurrentGameState();
+    				state.setLevel(Level.L11);
+    			}
+    			GameFrame gameplay = new GameFrame();
+    			gameplay.setVisible(true);
+    			f.dispose();
+    		}
+    	});
+    	
+    	JButton goBack = new JButton("Click to go back");
+    	
+    	goBack.addActionListener(new ActionListener() {
+    		public void actionPerformed(ActionEvent arg0) {
+    			f.dispose();
+    			PlayGameView.main(null);
+    		}
+    	});
+	
+	
+    	panel.add(jt);
+    	panel.add(goToLevel);
+    	f.add(panel);
+    	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	f.setSize(480, 440);
+    	f.setLocationRelativeTo(null);
+    	f.setResizable(false);
+    	f.setVisible(true);
 
     }
 

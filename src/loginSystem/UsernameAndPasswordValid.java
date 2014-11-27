@@ -5,9 +5,29 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
+/**
+ * @author      Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>
+ * @version     1.5                 (current version number of program)
+ * @since       2014-11-27          (the version of the package this class was first added to)
+ */
 public class UsernameAndPasswordValid {
+	
 	private static JFrame controllingFrame;
+	/**
+	 * This checks if the username and password match the requierments.                       (1)
+	 * <p>
+	 * This sends the username and password through a string of if/else statments. 
+	 * They check that all the requierments are met. If a requiemtn is not met it will return false and display 
+	 * a controlling frame with a message about what is wrong. 
+	 * <p>
+	 * And even more explanations to follow in consecutive
+	 * paragraphs separated by HTML paragraph breaks.
+	 *
+	 * @param  This is sent the username and password for an account the user wants to create          (3)
+	 * @return This returns true or false, depending on the username and password.
+	 * It will also summon a controlling frame that tells the user what is wrong
+	 *
+	 */
 	public static boolean valid(String User, String Pass) throws HeadlessException, IOException{
 		int passLength=Pass.length();
 		int userLength=User.length();

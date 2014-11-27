@@ -138,6 +138,7 @@ public class NewAccountView {
     	panel.add(makeUser);
     	panel.add(goBack);
     	frame.add(panel);
+    	//Note: it is important that these operations always be at the bottem, to ensure that the frame display properly.
     	frame.setVisible(true);
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	frame.setSize(480, 440);

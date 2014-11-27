@@ -173,7 +173,7 @@ public class LoginMenuView {
 		panel.add(deleteUser);
 		panel.add(suprise);
 		f.add(panel);
-		
+		//Note: it is important that these operations always be at the bottem, to ensure that the frame display properly.
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(480, 440);
 		f.setLocationRelativeTo(null);
