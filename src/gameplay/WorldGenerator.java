@@ -49,6 +49,14 @@ public class WorldGenerator {
 	return grid;
     }
 
+    /**
+     * Generates a grid and game actor list associated with the level called on
+     * generate. Once this method is called call getGrid and getActorList to
+     * return the grid and list containing enemies
+     * 
+     * @param level
+     *            the level that is to be loaded as an enum Level
+     */
     public void generateLevel(Level level) {
 	generateGameGrid(); // sets grid to the proper setup
 	populateActors(level); // sets the ArrayList actorList to the proper

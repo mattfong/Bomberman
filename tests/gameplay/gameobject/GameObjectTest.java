@@ -1,4 +1,4 @@
-package gameplay;
+package gameplay.gameobject;
 
 import static org.junit.Assert.*;
 import gameplay.gameobject.blocks.MockGameObject;

@@ -18,6 +18,13 @@ public class MonsterFactory {
 	this.world = world;
     }
 
+    /**
+     * Creates a list of game actors that is accosiated with the given level.
+     * 
+     * @param level
+     *            the level which is to be configured.
+     * @return an array list populated with game actors set to the location 0,0.
+     */
     public ArrayList<GameActor> createClassList(Level level) {
 
 	ArrayList<GameActor> actorList = new ArrayList<GameActor>();
