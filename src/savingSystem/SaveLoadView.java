@@ -1,5 +1,7 @@
 package savingSystem;
 
+import gameplay.statemanagers.GameStateManager;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,6 +28,10 @@ public class SaveLoadView {
 	    JButton save = new JButton("Save Game");
 	    JButton load = new JButton("Load Game");
 	    JButton goBack = new JButton("Go back");
+	    
+	    SavedGameManager saveManager = SavedGameManager.getInstance();
+	    SavedGame game = new SavedGame(GameStateManager.getInstance().getCurrentGameState(), GameStateManager.getInstance().getCurrentGameState().getUserName());
+	    saveManager.setCurrentSavedGame(game);
 	    
 	    save.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {

@@ -34,9 +34,9 @@ public class SaveLoadController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		savedGame = saveManager.addSavedGame(savedGameName);
+		savedGame = saveManager.addSavedGameName(savedGameName);
 		savedGame.setGameState(currentGame);
-		savedGame.setSavedGameName(savedGameName);
+//		savedGame.setSavedGameName(savedGameName);
 		savedGame.setUserName(currentGame.getUserName());
 		
 		System.out.println("Line before Step 2 SavedGame: " + savedGame);
@@ -72,7 +72,8 @@ public class SaveLoadController {
 						+ game.getGameState().getLevel() + "\n Score: "
 						+ game.getGameState().getScore()
 						+ "\n Remaining Lives: "
-						+ game.getGameState().getRemainingLives());
+						+ game.getGameState().getRemainingLives()
+						+ "\n Size of list: " + allSavedGames.size());
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -81,7 +82,7 @@ public class SaveLoadController {
 	}
 	
 	public void deleteGame(String deleteGame) {
-		System.out.println(saveManager.getSavedGamesList() + "Size:"+ saveManager.numberOfSavedGames());
+		System.out.println(saveManager.getSavedGamesList() + "\n Size:"+ saveManager.numberOfSavedGames());
 		saveManager.removeSavedGame(deleteGame);
 	}
 

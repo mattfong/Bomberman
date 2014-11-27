@@ -13,7 +13,7 @@ import java.util.List;
 
 public class SavedGameSerialization {
 	
-	private SavedGameManager saveManager = new SavedGameManager();
+	private SavedGameManager saveManager = SavedGameManager.getInstance();
 	
 	public void serializeSaveGameName(SavedGame games, String fileName) throws IOException {
 		List<SavedGame> allSavedGames = this.deserializeSaveGameName(fileName);
