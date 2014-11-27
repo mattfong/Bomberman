@@ -41,6 +41,8 @@ public class HighScoreView extends JFrame implements ActionListener {
 	label.setHorizontalAlignment(JLabel.LEFT);
 	label.setVerticalAlignment(JLabel.TOP);
 
+	
+	/*
 	// ;)
 	String player5 = "Demo05        16,000";
 	String player6 = "Demo06        16,000";
@@ -253,6 +255,8 @@ public class HighScoreView extends JFrame implements ActionListener {
 	    player2 = "Demo02        10,000";
 	    player8 = "Demo08        9,000";
 	}
+	
+	*/
 
 	// 10 Players --NOTE EACH SCORE HAS IT'S BORDER, IT'S TO CUSTOMIZE THE
 	// COLORS LATER ON
@@ -263,7 +267,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreOne.setBorder(borderOne);
 	highScoreOne.setPreferredSize(new Dimension(950, 25));
 
-	highScoreOne.setText(player5);
+	highScoreOne.setText("Player1");
 	highScoreOne.setHorizontalAlignment(JLabel.LEFT);
 	highScoreOne.setVerticalAlignment(JLabel.TOP);
 
@@ -273,7 +277,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreTwo.setBorder(borderTwo);
 	highScoreTwo.setPreferredSize(new Dimension(950, 25));
 
-	highScoreTwo.setText(player6);
+	highScoreTwo.setText("Player2");
 	highScoreTwo.setHorizontalAlignment(JLabel.LEFT);
 	highScoreTwo.setVerticalAlignment(JLabel.TOP);
 
@@ -283,7 +287,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreThree.setBorder(borderThree);
 	highScoreThree.setPreferredSize(new Dimension(950, 25));
 
-	highScoreThree.setText(player7);
+	highScoreThree.setText("Player3");
 	highScoreThree.setHorizontalAlignment(JLabel.LEFT);
 	highScoreThree.setVerticalAlignment(JLabel.TOP);
 
@@ -293,7 +297,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreFour.setBorder(borderFour);
 	highScoreFour.setPreferredSize(new Dimension(950, 25));
 
-	highScoreFour.setText(player4);
+	highScoreFour.setText("Player4");
 	highScoreFour.setHorizontalAlignment(JLabel.LEFT);
 	highScoreFour.setVerticalAlignment(JLabel.TOP);
 
@@ -303,7 +307,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreFive.setBorder(borderFive);
 	highScoreFive.setPreferredSize(new Dimension(950, 25));
 
-	highScoreFive.setText(player3);
+	highScoreFive.setText("Player5");
 	highScoreFive.setHorizontalAlignment(JLabel.LEFT);
 	highScoreFive.setVerticalAlignment(JLabel.TOP);
 
@@ -313,7 +317,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreSix.setBorder(borderSix);
 	highScoreSix.setPreferredSize(new Dimension(950, 25));
 
-	highScoreSix.setText(player10);
+	highScoreSix.setText("Player6");
 	highScoreSix.setHorizontalAlignment(JLabel.LEFT);
 	highScoreSix.setVerticalAlignment(JLabel.TOP);
 
@@ -323,7 +327,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreSeven.setBorder(borderSeven);
 	highScoreSeven.setPreferredSize(new Dimension(950, 25));
 
-	highScoreSeven.setText(player9);
+	highScoreSeven.setText("Player7");
 	highScoreSeven.setHorizontalAlignment(JLabel.LEFT);
 	highScoreSeven.setVerticalAlignment(JLabel.TOP);
 
@@ -333,7 +337,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreEight.setBorder(borderEight);
 	highScoreEight.setPreferredSize(new Dimension(950, 25));
 
-	highScoreEight.setText(player1);
+	highScoreEight.setText("Player8");
 	highScoreEight.setHorizontalAlignment(JLabel.LEFT);
 	highScoreEight.setVerticalAlignment(JLabel.TOP);
 
@@ -343,7 +347,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreNine.setBorder(borderNine);
 	highScoreNine.setPreferredSize(new Dimension(950, 25));
 
-	highScoreNine.setText(player2);
+	highScoreNine.setText("Player9");
 	highScoreNine.setHorizontalAlignment(JLabel.LEFT);
 	highScoreNine.setVerticalAlignment(JLabel.TOP);
 
@@ -353,7 +357,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreTen.setBorder(borderTen);
 	highScoreTen.setPreferredSize(new Dimension(950, 25));
 
-	highScoreTen.setText(player8);
+	highScoreTen.setText("Player10");
 	highScoreTen.setHorizontalAlignment(JLabel.LEFT);
 	highScoreTen.setVerticalAlignment(JLabel.TOP);
 
