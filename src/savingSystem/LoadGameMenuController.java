@@ -10,8 +10,7 @@ public class LoadGameMenuController {
 
     private SavedGameSerialization serializeGame = new SavedGameSerialization();
     private SavedGameManager saveManager = new SavedGameManager();
-    private GameStateManager gameStateManager = GameStateManager.getInstance();
-    private GameState currentGame = gameStateManager.getCurrentGameState();
+    private GameState currentGame = GameStateManager.getInstance().getCurrentGameState();
     private String fileName = "";
 
     public void displayLoadGameMenu() {
