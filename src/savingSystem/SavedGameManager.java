@@ -9,10 +9,18 @@ import java.util.List;
 
 public class SavedGameManager {
 	
+	private static SavedGameManager singleton = null;
 	private List<SavedGame> savedGamesList = new ArrayList<SavedGame>();
 	
 	public SavedGameManager() {
 		super();
+	}
+	
+	public static SavedGameManager getInstance() {
+		if(singleton == null) {
+			singleton = new SavedGameManager();
+		}
+		return singleton;
 	}
 
 	public List<SavedGame> getSavedGamesList() {
@@ -24,14 +32,14 @@ public class SavedGameManager {
 	}
 
 	public SavedGame addSavedGame(String savedGameName){
-		SavedGame savedGame = new SavedGame();
-		savedGame.setSavedGameName(savedGameName);
-		savedGamesList.add(new SavedGame(savedGame.getGameState(), savedGame.getUserName(), savedGame.getSavedGameName()));
-		return savedGame;
+		SavedGame currentSavedGame = new SavedGame();
+		currentSavedGame.setSavedGameName(savedGameName);
+		savedGamesList.add(new SavedGame(currentSavedGame.getGameState(), currentSavedGame.getUserName(), currentSavedGame.getSavedGameName()));
+		return currentSavedGame;
 	}
 	
 	public void removeSavedGame(String removeSavedGame){
-		for(int i=0; i<numberOfSavedGames(); i++){
+		for(int i=0; i<savedGamesList.size(); i++){
 			SavedGame savedGame = savedGamesList.get(i);
 			if(savedGame.getSavedGameName().equals(removeSavedGame)){
 				savedGamesList.remove(i);

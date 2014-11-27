@@ -17,8 +17,8 @@ public class LoadGameMenuView {
 	private List<SavedGame> savedGames = new ArrayList<SavedGame>();
 	private final JFrame frame = new JFrame("Load Game Menu");
 	private JPanel panel = new JPanel();
-	private final JTextField deleteGame= new JTextField(30);
-	private LoadGameMenuController controller = new LoadGameMenuController();
+	private final JTextField deleteGame = new JTextField(30);
+	private SaveLoadController controller = new SaveLoadController();
 	
 	public void LoadGameMenuView(){
 		frame.setVisible(true);
@@ -46,7 +46,7 @@ public class LoadGameMenuView {
 
 	    deleteSavedGameButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				controller.deleteSavedGame(deleteGame.getText());
+				controller.deleteGame(deleteGame.getText());
 				System.out.println("Deleted Saved Game: " + deleteGame.getText());
 		//		frame.dispose();	
 			}
