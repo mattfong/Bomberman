@@ -12,7 +12,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class BombTest {
-    private Bomb bomb;
     private World world;
     private GameStateManager manager;
 
@@ -27,6 +26,7 @@ public class BombTest {
 
     @Test
     public void testBombCount() {
+
 	new Bomb(new Rectangle(32, 32, 32, 32), world, 1);
 	new Bomb(new Rectangle(32, 32, 32, 32), world, 1);
 	new Bomb(new Rectangle(32, 32, 32, 32), world, 1);
@@ -37,8 +37,8 @@ public class BombTest {
 
     @Test
     public void testDetonateBomb() {
-
-	bomb = new Bomb(new Rectangle(32, 32, 32, 32), null, 10);
+	Bomb.resetBombList();
+	new Bomb(new Rectangle(32, 32, 32, 32), world, 10);
 	Bomb.detonateBomb();
 	assertEquals(0, Bomb.numberOfBombOnBoard());
 
