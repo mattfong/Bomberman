@@ -10,6 +10,9 @@ import javax.swing.JOptionPane;
  * @version     1.5                 (current version number of program)
  * @since       2014-11-27          (the version of the package this class was first added to)
  */
+//Matt wants to seperate this into two things
+//one for valdidity and one for frames
+
 public class UsernameAndPasswordValid {
 	
 	private static JFrame controllingFrame;

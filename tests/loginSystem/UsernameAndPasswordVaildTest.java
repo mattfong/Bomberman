@@ -51,13 +51,13 @@ public class UsernameAndPasswordVaildTest {
 
 	@Test
 	public void testValid() throws HeadlessException, IOException {
-		int i = 0, uLength, pLength, max = 20, min = 0;
+		int k,i = 0, uLength, pLength, max = 20, min = 0;
 		boolean userValid = false;
 		boolean passValid = false;
 		boolean ULcase = false, passUC = false, userUC = false;
 		boolean passLC = false;
 		boolean areThereNumbers;
-		for (i = 0; i < 6; i++) {
+		for (k = 0; k < 1000; k++) {
 			uLength = rnd.nextInt((max - min) + 1) + min;
 			pLength = rnd.nextInt((max - min) + 1) + min;
 			String user = randomString(uLength);

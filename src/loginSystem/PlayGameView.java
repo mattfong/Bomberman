@@ -34,7 +34,7 @@ public class PlayGameView {
 
 		final JFrame f = new JFrame("Main Menu");
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(4, 1, 5, 10));
+		panel.setLayout(new GridLayout(5, 1, 5, 10));
 
 		JButton play = new JButton("Play Game");
 		play.addActionListener(new ActionListener() {
@@ -65,6 +65,14 @@ public class PlayGameView {
 				f.dispose();
 			}
 		});
+		
+		JButton editAccount = new JButton("Modify Account");
+		editAccount.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				EditAccountView.main(null);
+				f.dispose();
+			}
+		});
 
 		JButton logOut = new JButton("Log Out");
 		logOut.addActionListener(new ActionListener() {
@@ -79,6 +87,7 @@ public class PlayGameView {
 		panel.add(play);
 		panel.add(saved);
 		panel.add(high);
+		panel.add(editAccount);
 		panel.add(logOut);
 		f.add(panel);
 		//These have to be after the panel add, so that the frame and panel display propely.
