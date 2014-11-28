@@ -28,12 +28,21 @@ public class Bomb extends GameObject {
 
 	bombCountdown = 40;
 	explosionRadius = radius;
+	addBomb(this);
     }
 
+    /**
+     * Static method that returns the total number of bombs placed on the board.
+     *
+     * @return number of bombs on the board as an int
+     */
     public static int numberOfBombOnBoard() {
 	return bombList.size();
     }
 
+    /**
+     * Static method that when called detonates the oldest bomb on the board. Does nothing if there are no bombs on the board.
+     */
     public static void detonateBomb() {
 	Bomb bomb;
 	bomb = bombList.peek();
@@ -43,10 +52,13 @@ public class Bomb extends GameObject {
 
     }
 
-    public static void addBomb(Bomb bomb) {
+    private void addBomb(Bomb bomb) {
 	bombList.add(bomb);
     }
 
+    /**
+     * Method which resets all placed bombs on the board.
+     */
     public static void resetBombList() {
 	bombList.clear();
     }

@@ -3,6 +3,7 @@ package gameplay.gameobject;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import gameplay.World;
 import gameplay.gameobject.powerups.BombPassPowerup;
 import gameplay.gameobject.powerups.BombPowerup;
 import gameplay.gameobject.powerups.DetonatorPowerup;
@@ -19,6 +20,7 @@ import org.junit.Test;
 
 public class PowerupTest {
     Bomberman bomberman;
+    World world;
 
     @Before
     public void setUp() throws Exception {
@@ -31,6 +33,8 @@ public class PowerupTest {
 	power = new BombPassPowerup(null, null);
 	power.applyPowerup(bomberman);
 	assertTrue(bomberman.canBombPass());
+	fail();
+
     }
 
     @Test
@@ -38,7 +42,7 @@ public class PowerupTest {
 	Powerup power;
 	power = new BombPowerup(null, null);
 	power.applyPowerup(bomberman);
-	assertEquals(2, bomberman.getBombLimit());
+	assertEquals(2, bomberman.bombLimit);
     }
 
     @Test

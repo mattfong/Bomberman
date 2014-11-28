@@ -26,8 +26,4 @@ public class ScoreManager {
 	return currentGameState.getScore();
     }
 
-    public static void calculateScore() {
-
-    }
-
 }
