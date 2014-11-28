@@ -43,7 +43,7 @@ public class NewAccountView {
 
 	CSVreader reader = new CSVreader();
 	try {
-	    accountManager.setAccounts(reader.CSVreader());
+	    accountManager.setAccounts(reader.CSVreaderAccounts());
 	} catch (IOException e1) {
 	    // TODO Auto-generated catch block
 	    e1.printStackTrace();
@@ -70,7 +70,7 @@ public class NewAccountView {
 			if (UsernameAndPasswordValid.valid(User, Pass) & Pass.equals(confirmPass)) {
 			    try {
 				CSVwriter writer = new CSVwriter();
-				writer.CSVwriter(Name, User, Pass);
+				writer.CSVwriterAccounts(Name, User, Pass);
 			    } catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

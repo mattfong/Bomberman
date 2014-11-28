@@ -1,4 +1,5 @@
 package loginSystem;
+import gameplay.World;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
 
@@ -40,7 +41,7 @@ public class LoginMenuView {
 		
 		CSVreader reader = new CSVreader();
 		try {
-			accountManager.setAccounts(reader.CSVreader());
+			accountManager.setAccounts(reader.CSVreaderAccounts());
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -67,6 +68,7 @@ public class LoginMenuView {
 						GameStateManager manager = GameStateManager.getInstance();
 						
 						GameState gameState = new GameState(acc.getUserName(), acc.getName());
+						gameState.setWorld(new World(31, 13));
 						manager.setCurrentGameState(gameState);
 						PlayGameView.main(null);
 						System.out.println("Username entered correctly");

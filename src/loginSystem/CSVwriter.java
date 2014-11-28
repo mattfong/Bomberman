@@ -9,15 +9,19 @@ import au.com.bytecode.opencsv.CSVWriter;
 
 public class CSVwriter {
 	
-	private final String csv = "UserPass.csv";
-	private final String csv2 = "UserPassTemp.csv";
+	private final String csvAccountsFile = "UserPass.csv";
+	private final String csvAccountsFileTemp = "UserPassTemp.csv";
 	private List<Account> accounts = new ArrayList<Account>();
 	private AccountManager accountManager = new AccountManager();
 	
-	public void CSVwriter(String name, String userName, String password) throws IOException{
+	public CSVwriter() {
+		super();
+	}
+
+	public void CSVwriterAccounts(String name, String userName, String password) throws IOException{
 		
 		//Creates a CSV file if it does not exist, and appends data to the file
-		CSVWriter writer = new CSVWriter(new FileWriter((csv), true), ',');	
+		CSVWriter writer = new CSVWriter(new FileWriter((csvAccountsFile), true), ',');	
 		Account newUser = new Account();
 		newUser.setName(name);
 		newUser.setUserName(userName);
@@ -30,17 +34,17 @@ public class CSVwriter {
 		writer.close();
 	}
 	
-	public void CSVwriterList(List<Account> accounts) throws IOException {
-		File CSVfile = new File(csv);
-		File tempCSV = new File(csv2);
-		CSVWriter writer = new CSVWriter(new FileWriter((csv2), true), ',');	
+	public void CSVwriterAccountsList(List<Account> accounts) throws IOException {
+		File CSVfile = new File(csvAccountsFile);
+		File tempCSV = new File(csvAccountsFileTemp);
+		CSVWriter writer = new CSVWriter(new FileWriter((csvAccountsFileTemp), true), ',');	
 
 		for(int i=0; i<accounts.size(); i++){
 			Account acc = accounts.get(i);
 			writer.writeNext(acc.toCSVEntry());
 		}
 		System.out.println("New List:" + accounts);
-		deleteCSVFile(csv, csv2);
+		deleteCSVFile(csvAccountsFile, csvAccountsFileTemp);
 		writer.close();
 		tempCSV.renameTo(CSVfile);
 		System.out.println(tempCSV.renameTo(CSVfile));
