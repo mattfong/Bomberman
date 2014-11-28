@@ -1,7 +1,5 @@
 package savingSystem;
 
-import gameplay.GameFrame;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,16 +20,21 @@ public class SavedGameManager {
 	public void setSavedGamesList(List<SavedGame> savedGamesList) {
 		this.savedGamesList = savedGamesList;
 	}
-
-	public SavedGame addSavedGame(String savedGameName){
-		SavedGame savedGame = new SavedGame();
-		savedGame.setSavedGameName(savedGameName);
-		savedGamesList.add(new SavedGame(savedGame.getGameState(), savedGame.getUserName(), savedGame.getSavedGameName()));
-		return savedGame;
+	
+	public void addSavedGame(SavedGame game) {
+		savedGamesList.add(game);
+	}
+	
+	public SavedGame addSavedGameName(String savedGameName){
+		SavedGame currentSavedGame = new SavedGame();
+		currentSavedGame.setSavedGameName(savedGameName);
+		addSavedGame(new SavedGame(currentSavedGame.getGameState(), currentSavedGame.getUserName(), currentSavedGame.getSavedGameName()));
+		System.out.println("size in add: " + numberOfSavedGames());
+		return currentSavedGame;
 	}
 	
 	public void removeSavedGame(String removeSavedGame){
-		for(int i=0; i<numberOfSavedGames(); i++){
+		for(int i=0; i<savedGamesList.size(); i++){
 			SavedGame savedGame = savedGamesList.get(i);
 			if(savedGame.getSavedGameName().equals(removeSavedGame)){
 				savedGamesList.remove(i);
@@ -41,19 +44,6 @@ public class SavedGameManager {
 	
 	public int numberOfSavedGames(){
 		return savedGamesList.size();
-	}
-	
-	public List<SavedGame> getSavedGameByUser(String userName){
-		List<SavedGame> gameList = null;
-		
-		for(int i=0; i<numberOfSavedGames(); i++){
-			SavedGame savedGame = savedGamesList.get(i);
-			if(savedGame.getUserName().equals(userName)){
-				gameList.add(new SavedGame(savedGame.getGameState(), savedGame.getUserName(), savedGame.getSavedGameName()));
-			}
-		}
-		
-		return gameList;
 	}
 	
 	public String getSaveGameFile(String userName) throws IOException{

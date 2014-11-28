@@ -13,7 +13,7 @@ public class Doll extends GameActor implements Cloneable {
 
     public Doll(Rectangle location, World world) {
 	super(location, world);
-	sprite = new ImageIcon(Doll.class.getResource("/Doll.jpg")).getImage();
+	sprite = new ImageIcon(Doll.class.getResource("/Doll.jpg"));
 	// inputManager = new CommandManager(this, InputListener.getInstance());
 	score = 400;
 	wallPass = false;

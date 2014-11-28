@@ -13,67 +13,73 @@ import javax.swing.ImageIcon;
  * @author mfong8 Class implementing the bomb feature.
  */
 public class Bomb extends GameObject {
-    private int explosionRadius;
-    private int bombCountdown;
+	private int explosionRadius;
+	private int bombCountdown;
 
-    private static Queue<Bomb> bombList = new LinkedList<Bomb>();
+	private static Queue<Bomb> bombList = new LinkedList<Bomb>();
 
-    public Bomb(Rectangle location, World world, int radius) {
-	super(location, world);
-	sprite = new ImageIcon(Bomb.class.getResource("/BombSprite.png")).getImage();
+	public Bomb(Rectangle location, World world, int radius) {
+		super(location, world);
+		sprite = new ImageIcon(Bomb.class.getResource("/BombSprite.png"));
 
-	destroyable = false;
-	solid = true;
-	conductsExplosions = false;
+		destroyable = false;
+		solid = true;
+		conductsExplosions = false;
 
-	bombCountdown = 40;
-	explosionRadius = radius;
-    }
-
-    public static int numberOfBombOnBoard() {
-	return bombList.size();
-    }
-
-    public static void detonateBomb() {
-	Bomb bomb;
-	bomb = bombList.peek();
-	if (bomb != null) {
-	    bomb.explode();
+		bombCountdown = 40;
+		explosionRadius = radius;
+		addBomb(this);
 	}
 
-    }
-
-    public static void addBomb(Bomb bomb) {
-	bombList.add(bomb);
-    }
-
-    public static void resetBombList() {
-	bombList.clear();
-    }
-
-    @Override
-    public void update() {
-	super.update();
-
-	bombCountdown--;
-	if (checkBombTimer()) {
-	    this.explode();
+	/**
+	 * Static method that returns the total number of bombs placed on the board.
+	 * 
+	 * @return number of bombs on the board as an int
+	 */
+	public static int numberOfBombOnBoard() {
+		return bombList.size();
 	}
 
-    }
+	public static void detonateBomb() {
+		Bomb bomb;
+		bomb = bombList.peek();
+		if (bomb != null) {
+			bomb.explode();
+		}
 
-    private void explode() {
-	bombList.remove();
-	this.destroy();
-	world.detonateLocation(getLocation(), explosionRadius);
-
-    }
-
-    private boolean checkBombTimer() {
-	if (bombCountdown == 0) {
-	    return true;
 	}
-	return false;
-    }
+
+	public static void addBomb(Bomb bomb) {
+		bombList.add(bomb);
+	}
+
+	public static void resetBombList() {
+		bombList.clear();
+	}
+
+	@Override
+	public void update() {
+		super.update();
+
+		bombCountdown--;
+		if (checkBombTimer()) {
+			this.explode();
+		}
+
+	}
+
+	private void explode() {
+		bombList.remove();
+		this.destroy();
+		world.detonateLocation(getLocation(), explosionRadius);
+
+	}
+
+	private boolean checkBombTimer() {
+		if (bombCountdown == 0) {
+			return true;
+		}
+		return false;
+	}
 
 }

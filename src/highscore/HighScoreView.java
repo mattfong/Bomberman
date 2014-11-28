@@ -41,8 +41,6 @@ public class HighScoreView extends JFrame implements ActionListener {
 	label.setHorizontalAlignment(JLabel.LEFT);
 	label.setVerticalAlignment(JLabel.TOP);
 
-	
-	/*
 	// ;)
 	String player5 = "Demo05        16,000";
 	String player6 = "Demo06        16,000";
@@ -57,7 +55,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 
 	String rogue = "Demo11        ";
 	ScoreManager.getInstance();
-	Integer rogueScore = ScoreManager.getScore() ;
+	Integer rogueScore = ScoreManager.getInstance().getScore();
 	String s = NumberFormat.getNumberInstance(Locale.US).format(rogueScore);
 	// System.out.println(NumberFormat.getNumberInstance(Locale.US).format(rogueScore));
 
@@ -255,8 +253,6 @@ public class HighScoreView extends JFrame implements ActionListener {
 	    player2 = "Demo02        10,000";
 	    player8 = "Demo08        9,000";
 	}
-	
-	*/
 
 	// 10 Players --NOTE EACH SCORE HAS IT'S BORDER, IT'S TO CUSTOMIZE THE
 	// COLORS LATER ON
@@ -267,7 +263,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreOne.setBorder(borderOne);
 	highScoreOne.setPreferredSize(new Dimension(950, 25));
 
-	highScoreOne.setText("Player1");
+	highScoreOne.setText(player5);
 	highScoreOne.setHorizontalAlignment(JLabel.LEFT);
 	highScoreOne.setVerticalAlignment(JLabel.TOP);
 
@@ -277,7 +273,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreTwo.setBorder(borderTwo);
 	highScoreTwo.setPreferredSize(new Dimension(950, 25));
 
-	highScoreTwo.setText("Player2");
+	highScoreTwo.setText(player6);
 	highScoreTwo.setHorizontalAlignment(JLabel.LEFT);
 	highScoreTwo.setVerticalAlignment(JLabel.TOP);
 
@@ -287,7 +283,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreThree.setBorder(borderThree);
 	highScoreThree.setPreferredSize(new Dimension(950, 25));
 
-	highScoreThree.setText("Player3");
+	highScoreThree.setText(player7);
 	highScoreThree.setHorizontalAlignment(JLabel.LEFT);
 	highScoreThree.setVerticalAlignment(JLabel.TOP);
 
@@ -297,7 +293,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreFour.setBorder(borderFour);
 	highScoreFour.setPreferredSize(new Dimension(950, 25));
 
-	highScoreFour.setText("Player4");
+	highScoreFour.setText(player4);
 	highScoreFour.setHorizontalAlignment(JLabel.LEFT);
 	highScoreFour.setVerticalAlignment(JLabel.TOP);
 
@@ -307,7 +303,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreFive.setBorder(borderFive);
 	highScoreFive.setPreferredSize(new Dimension(950, 25));
 
-	highScoreFive.setText("Player5");
+	highScoreFive.setText(player3);
 	highScoreFive.setHorizontalAlignment(JLabel.LEFT);
 	highScoreFive.setVerticalAlignment(JLabel.TOP);
 
@@ -317,7 +313,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreSix.setBorder(borderSix);
 	highScoreSix.setPreferredSize(new Dimension(950, 25));
 
-	highScoreSix.setText("Player6");
+	highScoreSix.setText(player10);
 	highScoreSix.setHorizontalAlignment(JLabel.LEFT);
 	highScoreSix.setVerticalAlignment(JLabel.TOP);
 
@@ -327,7 +323,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreSeven.setBorder(borderSeven);
 	highScoreSeven.setPreferredSize(new Dimension(950, 25));
 
-	highScoreSeven.setText("Player7");
+	highScoreSeven.setText(player9);
 	highScoreSeven.setHorizontalAlignment(JLabel.LEFT);
 	highScoreSeven.setVerticalAlignment(JLabel.TOP);
 
@@ -337,7 +333,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreEight.setBorder(borderEight);
 	highScoreEight.setPreferredSize(new Dimension(950, 25));
 
-	highScoreEight.setText("Player8");
+	highScoreEight.setText(player1);
 	highScoreEight.setHorizontalAlignment(JLabel.LEFT);
 	highScoreEight.setVerticalAlignment(JLabel.TOP);
 
@@ -347,7 +343,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreNine.setBorder(borderNine);
 	highScoreNine.setPreferredSize(new Dimension(950, 25));
 
-	highScoreNine.setText("Player9");
+	highScoreNine.setText(player2);
 	highScoreNine.setHorizontalAlignment(JLabel.LEFT);
 	highScoreNine.setVerticalAlignment(JLabel.TOP);
 
@@ -357,7 +353,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	highScoreTen.setBorder(borderTen);
 	highScoreTen.setPreferredSize(new Dimension(950, 25));
 
-	highScoreTen.setText("Player10");
+	highScoreTen.setText(player8);
 	highScoreTen.setHorizontalAlignment(JLabel.LEFT);
 	highScoreTen.setVerticalAlignment(JLabel.TOP);
 
@@ -366,6 +362,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	// beforehand
 	JButton goBack = new JButton("Back");
 	goBack.addActionListener(new ActionListener() {
+	    @Override
 	    public void actionPerformed(ActionEvent arg0) {
 		f.dispose();
 		// notYet();

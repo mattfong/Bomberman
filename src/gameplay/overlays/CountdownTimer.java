@@ -11,7 +11,8 @@ import javax.swing.Timer;
 
 public class CountdownTimer implements ActionListener, Serializable{
 	
-    Timer timer;
+//    private transient Timer timer;
+	Timer timer;
     int countdown;
     private World world;
 

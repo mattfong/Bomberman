@@ -1,12 +1,14 @@
 package gameplay.input;
 
+import java.io.Serializable;
+
 import gameplay.gameobject.GameActor;
 
 /**
  * @author MF
  *The CommandManager class is used to control the flow of commands. Each instance of CommandManager is binded to an individual GameActor and controls the GameActor's actions. 
  */
-public class CommandManager {
+public class CommandManager implements Serializable{
 
 	private GameActor actor;
 	private CommandIssuer commandSource;

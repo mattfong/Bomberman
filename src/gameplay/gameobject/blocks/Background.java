@@ -15,7 +15,7 @@ public class Background extends GameObject {
     public Background(Rectangle location, World world) {
 	super(location, world);
 	solid = false;
-	sprite = new ImageIcon(Background.class.getResource("/Background.png")).getImage();
+	sprite = new ImageIcon(Background.class.getResource("/Background.png"));
 	destroyable = false;
 	conductsExplosions = true;
     }

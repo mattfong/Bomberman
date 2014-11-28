@@ -14,7 +14,7 @@ public class Balloon extends GameActor {
     public Balloon(Rectangle location, World world) {
 	super(location, world);
 
-	sprite = new ImageIcon(Balloon.class.getResource("/Balloon.jpg")).getImage();
+	sprite = new ImageIcon(Balloon.class.getResource("/Balloon.jpg"));
 	inputManager = new CommandManager(this, null);
 	score = 100;
 	wallPass = false;
