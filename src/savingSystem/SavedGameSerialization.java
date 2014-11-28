@@ -13,12 +13,31 @@ import java.util.List;
 
 public class SavedGameSerialization {
 	
+	private SavedGameManager manager = new SavedGameManager();
+	
 	public void serializeSaveGameName(SavedGame games, String fileName) throws IOException {
 		List<SavedGame> allSavedGames = this.deserializeSaveGameName(fileName);
 		allSavedGames.add(games);
 		System.out.println("Checking if World gets serialized: " + games.getGameState().getWorld());
+//		for(int i=0; i<games.getGameState().getWorld().getActorList().size(); i++)
+//		System.out.println("Checking Game Actors: " + games.getGameState().getWorld().getActorList().get(i));
 		try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName))) {
 			for(SavedGame game: allSavedGames)
+			out.writeObject(game);
+			System.out.println("Step 3 In serialize:");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Problem during serialization");
+		}
+	}
+	
+	public void serializeGamesAfterRemoval(String fileName, String deleteGame) throws IOException {
+		List<SavedGame> allSavedGames = this.deserializeSaveGameName(fileName);
+		manager.setSavedGamesList(allSavedGames);
+		manager.removeSavedGame(deleteGame);
+		try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName))) {
+			for(SavedGame game: manager.getSavedGamesList())
 			out.writeObject(game);
 			System.out.println("Step 3 In serialize:");
 		} catch (IOException e) {

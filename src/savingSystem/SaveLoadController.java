@@ -10,10 +10,18 @@ import java.util.List;
 
 public class SaveLoadController {
 
-	private SavedGameSerialization serializeGame = new SavedGameSerialization();
-	private SavedGameManager saveManager = new SavedGameManager();
-	private GameState currentGame = GameStateManager.getInstance().getCurrentGameState();
-	private String fileName = "";
+	private SavedGameSerialization serializeGame;
+	private SavedGameManager saveManager;
+	private GameState currentGame;
+	private String fileName;
+	
+	public SaveLoadController() {
+		super();
+		serializeGame = new SavedGameSerialization();
+		saveManager = new SavedGameManager();
+		currentGame = GameStateManager.getInstance().getCurrentGameState();
+		fileName = "";
+	}
 
 	public void displaySaveGameMenu() {
 		SaveGameMenuView saveMenu = new SaveGameMenuView();
@@ -86,14 +94,9 @@ public class SaveLoadController {
 	}
 	
 	public void deleteGame(String deleteGame) {
-		SavedGame game = null;
 		try {
 			fileName = saveManager.getSaveGameFile(currentGame.getUserName());
-			System.out.println("Load Controller:" + fileName);
-			List<SavedGame> allSavedGames = serializeGame.deserializeSaveGameName(fileName);
-			saveManager.setSavedGamesList(allSavedGames);
-			saveManager.removeSavedGame(deleteGame);
-			System.out.println("Removal List: " + saveManager + "Size: " + saveManager.numberOfSavedGames());
+			serializeGame.serializeGamesAfterRemoval(fileName, deleteGame);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
