@@ -16,12 +16,12 @@ public class ScoreManager {
 	gameStateManager = GameStateManager.getInstance();
     }
 
-    public static void addToScore(int score) {
+    public void addToScore(int score) {
 	GameState currentGameState = gameStateManager.getCurrentGameState();
 	currentGameState.increaseScoreBy(score);
     }
 
-    public static int getScore() {
+    public int getScore() {
 	GameState currentGameState = gameStateManager.getCurrentGameState();
 	return currentGameState.getScore();
     }

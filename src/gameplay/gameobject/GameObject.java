@@ -10,7 +10,7 @@ import java.awt.Rectangle;
 public abstract class GameObject {
 
     protected final int pictureSize = 32;
-
+    protected ScoreManager scoreManager;
     protected Rectangle gridLocation;
     protected World world;
 
@@ -31,6 +31,7 @@ public abstract class GameObject {
     public GameObject(Rectangle location, World world) {
 	gridLocation = location;
 	this.world = world;
+	scoreManager = ScoreManager.getInstance();
     }
 
     // Game Engine related items
@@ -113,7 +114,7 @@ public abstract class GameObject {
      * Method which removes GameObject instance from the gamboard.
      */
     public void destroy() {
-	ScoreManager.addToScore(score);
+	scoreManager.addToScore(score);
 	world.removeGameObject(this);
     }
 

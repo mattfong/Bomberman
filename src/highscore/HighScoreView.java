@@ -55,7 +55,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 
 	String rogue = "Demo11        ";
 	ScoreManager.getInstance();
-	Integer rogueScore = ScoreManager.getScore() ;
+	Integer rogueScore = ScoreManager.getInstance().getScore();
 	String s = NumberFormat.getNumberInstance(Locale.US).format(rogueScore);
 	// System.out.println(NumberFormat.getNumberInstance(Locale.US).format(rogueScore));
 
@@ -362,6 +362,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 	// beforehand
 	JButton goBack = new JButton("Back");
 	goBack.addActionListener(new ActionListener() {
+	    @Override
 	    public void actionPerformed(ActionEvent arg0) {
 		f.dispose();
 		// notYet();
