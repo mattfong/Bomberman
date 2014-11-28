@@ -7,19 +7,10 @@ import java.util.List;
 
 public class SavedGameManager {
 	
-	private static SavedGameManager singleton = null;
 	private List<SavedGame> savedGamesList = new ArrayList<SavedGame>();
-	private SavedGame currentSavedGame;
 	
 	public SavedGameManager() {
 		super();
-	}
-	
-	public static SavedGameManager getInstance() {
-		if(singleton == null) {
-			singleton = new SavedGameManager();
-		}
-		return singleton;
 	}
 
 	public List<SavedGame> getSavedGamesList() {
@@ -28,14 +19,6 @@ public class SavedGameManager {
 
 	public void setSavedGamesList(List<SavedGame> savedGamesList) {
 		this.savedGamesList = savedGamesList;
-	}
-
-	public SavedGame getCurrentSavedGame() {
-		return currentSavedGame;
-	}
-
-	public void setCurrentSavedGame(SavedGame currentSavedGame) {
-		this.currentSavedGame = currentSavedGame;
 	}
 	
 	public void addSavedGame(SavedGame game) {

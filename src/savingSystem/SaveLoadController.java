@@ -1,5 +1,7 @@
 package savingSystem;
 
+import gameplay.GameFrame;
+import gameplay.GamePanel;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
 
@@ -9,7 +11,7 @@ import java.util.List;
 public class SaveLoadController {
 
 	private SavedGameSerialization serializeGame = new SavedGameSerialization();
-	private SavedGameManager saveManager = SavedGameManager.getInstance();
+	private SavedGameManager saveManager = new SavedGameManager();
 	private GameState currentGame = GameStateManager.getInstance().getCurrentGameState();
 	private String fileName = "";
 
@@ -79,6 +81,8 @@ public class SaveLoadController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		GameFrame gameplay = new GameFrame();
+		gameplay.setVisible(true);
 	}
 	
 	public void deleteGame(String deleteGame) {
