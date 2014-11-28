@@ -28,7 +28,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	sprite = new ImageIcon(Bomberman.class.getResource("/Sprite.png")).getImage();
 	inputManager = new CommandManager(this, InputListener.getInstance());
 	bombPass = false;
-	flamePass = false;
+	flamePass = true;
 	detonator = false;
 	explosionRadius = 1;
 	bombLimit = 1;
@@ -93,10 +93,15 @@ public class Bomberman extends GameActor implements BombermanInterface {
 
     @Override
     public void update() {
-	ArrayList<GameActor> actorList = world.getActorList();
+
 	inputManager.processCommand();
 	checkForAndApplyPowerup();
+	checkIfDead();
 
+    }
+
+    private void checkIfDead() {
+	ArrayList<GameActor> actorList = world.getActorList();
 	for (GameActor actor : actorList) {
 	    if (actor != this) {
 		if (actor.hasCollided(this)) {
@@ -110,10 +115,17 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	}
 
 	if (checkIfBombed()) {
-	    if (gameStateManager.getCurrentGameState().getRemainingLives() > 0) {
-		respawn();
+	    if (flamePass) { // oh hello there bomberman, i see you
+			     // are surounded by bombs Schönling. I
+		// sure hope that you can.... TAKE THE
+		// HEAT
+
 	    } else {
-		isDead = true;
+		if (gameStateManager.getCurrentGameState().getRemainingLives() > 0) {
+		    respawn();
+		} else {
+		    isDead = true;
+		}
 	    }
 	}
 
