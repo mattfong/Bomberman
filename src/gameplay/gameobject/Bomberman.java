@@ -2,6 +2,7 @@ package gameplay.gameobject;
 
 import gameplay.World;
 import gameplay.gameobject.blocks.Bomb;
+import gameplay.gameobject.blocks.Brick;
 import gameplay.gameobject.powerups.Powerup;
 import gameplay.input.CommandManager;
 import gameplay.input.InputListener;
@@ -25,13 +26,30 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	sprite = new ImageIcon(Bomberman.class.getResource("/Sprite.png"));
 	inputManager = new CommandManager(this, InputListener.getInstance());
 	bombPass = false;
-	flamePass = false;
+	flamePass = true;
 	detonator = false;
 	explosionRadius = 1;
 	bombLimit = 1;
 
     }
 
+	/**
+     * Overridden method which takes into account passing through bombs for
+     * bomberman.
+     */
+    @Override
+    public boolean canPassThrough(GameObject object) {
+	if (object instanceof Brick) {
+	    return wallPass;
+	} else if (object instanceof Bomb) {
+	    return bombPass;
+	} else if (object.isSolid()) {
+	    return false;
+	}
+	return true;
+
+    }
+    
     /**
      * places bomb at the location where Bomberman is standing.
      */
@@ -40,7 +58,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
 
 	if (!(world.getGameObjectInstanceAt(gridLocation) instanceof Bomb) && (Bomb.numberOfBombOnBoard() < bombLimit)) {
 	    Bomb bomb = new Bomb(new Rectangle(gridLocation), this.world, this.explosionRadius);
-	    Bomb.addBomb(bomb); // This is the culprit if it all goes to shit...
+	    //Bomb.addBomb(bomb); // This is the culprit if it all goes to shit...
 	    world.addGameObject(bomb);
 
 	}
@@ -71,31 +89,43 @@ public class Bomberman extends GameActor implements BombermanInterface {
 
     @Override
     public void update() {
-	ArrayList<GameActor> actorList = world.getActorList();
-	inputManager.processCommand();
-	checkForAndApplyPowerup();
 
-	for (GameActor actor : actorList) {
-	    if (actor != this) {
-		if (actor.hasCollided(this)) {
-		    if (GameStateManager.getInstance().getCurrentGameState().getRemainingLives() > 0) {
-			respawn();
-		    } else {
-			isDead = true;
-		    }
-		}
-	    }
-	}
+    	inputManager.processCommand();
+    	checkForAndApplyPowerup();
+    	checkIfDead();
 
-	if (checkIfBombed()) {
-	    if (GameStateManager.getInstance().getCurrentGameState().getRemainingLives() > 0) {
-		respawn();
-	    } else {
-		isDead = true;
-	    }
-	}
+        }
 
-    }
+        private void checkIfDead() {
+    	ArrayList<GameActor> actorList = world.getActorList();
+    	for (GameActor actor : actorList) {
+    	    if (actor != this) {
+    		if (actor.hasCollided(this)) {
+    		    if (GameStateManager.getInstance().getCurrentGameState().getRemainingLives() > 0) {
+    			respawn();
+    		    } else {
+    			isDead = true;
+    		    }
+    		}
+    	    }
+    	}
+
+    	if (checkIfBombed()) {
+    	    if (flamePass) { // oh hello there bomberman, i see you
+    			     // are surounded by bombs Schönling. I
+    		// sure hope that you can.... TAKE THE
+    		// HEAT
+
+    	    } else {
+    		if (GameStateManager.getInstance().getCurrentGameState().getRemainingLives() > 0) {
+    		    respawn();
+    		} else {
+    		    isDead = true;
+    		}
+    	    }
+    	}
+
+        }
 
     @Override
     public boolean canBombPass() {

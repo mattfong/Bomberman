@@ -5,7 +5,6 @@ import gameplay.World;
 import gameplay.gameobject.blocks.Brick;
 import gameplay.gameobject.blocks.Explosion;
 import gameplay.input.CommandManager;
-import gameplay.statemanagers.ScoreManager;
 
 import java.awt.Rectangle;
 import java.io.Serializable;
@@ -42,7 +41,7 @@ public class GameActor extends GameObject implements Serializable {
 	inputManager.processCommand(); // TODO: Remove when placing the new AI
 	if (checkIfBombed()) {
 	    isDead = true;
-	    ScoreManager.addToScore(score);
+	    scoreManager.addToScore(score);
 	}
 
     }

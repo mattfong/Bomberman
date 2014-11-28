@@ -14,7 +14,8 @@ public abstract class GameObject implements Serializable {
 	
 	private static final long serialVersionUID = -3547634888898588379L;
     protected final int pictureSize = 32;
-
+    protected ScoreManager scoreManager;
+    
     protected Rectangle gridLocation;
     protected World world;
     
@@ -117,7 +118,7 @@ public abstract class GameObject implements Serializable {
      * Method which removes GameObject instance from the gameboard.
      */
     public void destroy() {
-	ScoreManager.addToScore(score);
+	scoreManager.addToScore(score);
 	world.removeGameObject(this);
     }
 

@@ -1,4 +1,4 @@
-//TODO migrate this stuff to the board class and whereever this stupid stuff neeeds to go
+//TODO migrate this stuff to the board class and whereever this stupid stuff needs to go
 
 package gameplay;
 
@@ -6,7 +6,6 @@ import gameplay.gameobject.Bomberman;
 import gameplay.gameobject.GameActor;
 import gameplay.gameobject.GameObject;
 import gameplay.gameobject.blocks.Background;
-import gameplay.gameobject.blocks.Bomb;
 import gameplay.gameobject.blocks.Explosion;
 import gameplay.gameobject.blocks.Wall;
 import gameplay.overlays.CountdownTimer;
@@ -257,20 +256,9 @@ public class World implements Serializable {
 	    GameObject temp = grid[xIndex][yIndex].peek();
 	    return temp;
 	}
-	return new Background(location, this);
-    }
-
-    @Deprecated
-    public int numberOfBombsOnMap() {
-	int numberOfBombs = 0;
-	for (int i = 0; i < gridWidth; i++) {
-	    for (int j = 0; j < gridHeight; j++) {
-		if (grid[i][j].peek() instanceof Bomb) {
-		    numberOfBombs++;
-		}
-	    }
-	}
-	return numberOfBombs;
+	return new Background(location, this);  // returns a vanila tile that
+    										// just represents the coordinate
+											// data.
     }
 
     public int distanceToBomberman(GameActor actor) {

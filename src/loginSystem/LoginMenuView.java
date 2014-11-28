@@ -1,5 +1,4 @@
 package loginSystem;
-import gameplay.World;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
 
@@ -20,22 +19,67 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-
+/**
+ * @author      Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>
+ * @version     1.5                 (current version number of program)
+ * @since       2014-11-27          (the version of the package this class was first added to)
+ */
 
 public class LoginMenuView {
+	/**
+	 * This is a text field so that usernames can be entered.
+	 */
 	JTextField jt= new JTextField(30);
+	
+	/**
+	 * This is a password field that passwords are entered into. 
+	 * It is similar to the text feild, only the text is hidden by dots.
+	 */
 	JPasswordField pf = new JPasswordField(30);
+	/**
+	 * This is the controlling frame that pops up to display an error when logining in.
+	 */
 	private JFrame controllingFrame;
+	/**
+	 * This is a copy of the account manager. 
+	 * It is used to verify the account detailes
+	 */
 	private final AccountManager accountManager = new AccountManager();
-	//LoginFrame frame =new LoginFrame();
+	/**
+	 * This makes a copy of the username.
+	 * It done so that the playMenuView knows who is logged in.
+	 */
 	public static String justUsername=null;
 	
-	
+	/**
+	 * This creates the LoginMenu Frame and panel                     (1)
+	 * <p>
+	 * It will display the loginMenu Frame and panel. It has a text field, password field, and four buttons.
+	 * From here a user can login, create an account, delete an account, or see our built in suprise function 
+	 * <p>
+
+
+	 */
 	public void loginMenu(){
+		/**
+		 * This clears anything in the textfield, to stop the wrong information being entered.
+		 */
 		jt.setText(null);
+		/**
+		 * This clears anything in the password feild, to stop the wrong information being entered.
+		 */
 		pf.setText(null);
+		/**
+		 * This creates a JFrame for the Login menu.
+		 */
 		final JFrame f = new JFrame("Login menu");
+		/**
+		 * This creates a JPanel for the Login menu.
+		 */
 		JPanel panel = new JPanel();
+		/**
+		 * This Sets.
+		 */
 		panel.setLayout(new GridLayout(8,1,5,10));
 		
 		
@@ -61,14 +105,11 @@ public class LoginMenuView {
 					if(accountManager.isUser(jt.getText(), pf.getText())==true){
 						justUsername=jt.getText();
 						f.dispose();
-						//PlayGameView playGame = new PlayGameView();
-						//playGame.playMenu();
 						Account acc = accountManager.getOneAccount(justUsername); 
 						
 						GameStateManager manager = GameStateManager.getInstance();
 						
 						GameState gameState = new GameState(acc.getUserName(), acc.getName());
-						gameState.setWorld(new World(31, 13));
 						manager.setCurrentGameState(gameState);
 						PlayGameView.main(null);
 						System.out.println("Username entered correctly");
@@ -132,14 +173,21 @@ public class LoginMenuView {
 		panel.add(deleteUser);
 		panel.add(suprise);
 		f.add(panel);
-		
+		//Note: it is important that these operations always be at the bottem, to ensure that the frame display properly.
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(480, 440);
 		f.setLocationRelativeTo(null);
 		f.setResizable(false);
 		f.setVisible(true);
 	}
-		
+	
+	/**
+	 * This is the main method for the LoginMenuView                   (1)
+	 * <p>
+	 *It uses SwingUtilites to opend the loginMenu method. This ensures that the Frame and Panel will load properly
+	 *This also goes from static to non static, allowing non static varibles to be used in other classes.
+	 * <p>
+	 */
 	public static void main(String[] args){
 		
 		SwingUtilities.invokeLater(new Runnable(){
