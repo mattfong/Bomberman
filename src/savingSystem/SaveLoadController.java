@@ -86,8 +86,18 @@ public class SaveLoadController {
 	}
 	
 	public void deleteGame(String deleteGame) {
-		System.out.println(saveManager.getSavedGamesList() + "\n Size:"+ saveManager.numberOfSavedGames());
-		saveManager.removeSavedGame(deleteGame);
+		SavedGame game = null;
+		try {
+			fileName = saveManager.getSaveGameFile(currentGame.getUserName());
+			System.out.println("Load Controller:" + fileName);
+			List<SavedGame> allSavedGames = serializeGame.deserializeSaveGameName(fileName);
+			saveManager.setSavedGamesList(allSavedGames);
+			saveManager.removeSavedGame(deleteGame);
+			System.out.println("Removal List: " + saveManager + "Size: " + saveManager.numberOfSavedGames());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
