@@ -3,7 +3,9 @@ package gameplay.gameobject;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import gameplay.Direction;
 import gameplay.World;
+import gameplay.gameobject.blocks.Bomb;
 import gameplay.gameobject.blocks.Brick;
 import gameplay.gameobject.blocks.Explosion;
 import gameplay.gameobject.enemies.Balloon;
@@ -103,5 +105,24 @@ public class GameActorTest {
 	balloon.update();
 	assertTrue(balloon.checkIfBombed());
 
+    }
+
+    @Test
+    public void testCanMoveThrough() {
+	GameActor actor = new Balloon(new Rectangle(32, 32, 32, 32), world);
+
+	assertTrue(actor.canMove(Direction.RIGHT));
+	assertTrue(actor.canMove(Direction.DOWN));
+
+    }
+
+    @Test
+    public void testCannotMoveThrough() {
+	GameActor actor = new Balloon(new Rectangle(32, 32, 32, 32), world);
+	assertFalse(actor.canMove(Direction.LEFT));
+	assertFalse(actor.canMove(Direction.UP));
+	// place bomb and check it can't be moved through
+	world.addGameObject(new Bomb(new Rectangle(64, 32, 32, 32), world, 10));
+	assertFalse(actor.canMove(Direction.RIGHT));
     }
 }
