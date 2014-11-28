@@ -8,14 +8,17 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.io.Serializable;
 
-public abstract class GameObject implements Serializable {
+import javax.swing.ImageIcon;
 
+public abstract class GameObject implements Serializable {
+	
+	private static final long serialVersionUID = -3547634888898588379L;
     protected final int pictureSize = 32;
 
     protected Rectangle gridLocation;
     protected World world;
-
-    protected Image sprite;
+    
+    protected ImageIcon sprite;
     protected boolean solid;
     protected boolean destroyable;
     protected boolean conductsExplosions;
@@ -43,7 +46,7 @@ public abstract class GameObject implements Serializable {
      */
     public void draw(Graphics g) {
 
-	g.drawImage(sprite, gridLocation.x, gridLocation.y, null);
+	g.drawImage(sprite.getImage(), gridLocation.x, gridLocation.y, null);
     }
 
     /**
@@ -111,7 +114,7 @@ public abstract class GameObject implements Serializable {
 
     // Changes in state
     /**
-     * Method which removes GameObject instance from the gamboard.
+     * Method which removes GameObject instance from the gameboard.
      */
     public void destroy() {
 	ScoreManager.addToScore(score);

@@ -13,7 +13,7 @@ public class Explosion extends GameObject {
 	
 	public Explosion(Rectangle location, World world, int frameDelay ) {
 		super(location,world);
-		sprite = new ImageIcon(Explosion.class.getResource("/explosion.png")).getImage();
+		sprite = new ImageIcon(Explosion.class.getResource("/explosion.png"));
 		this.frameDelay=frameDelay;
 		solid = false;
 		destroyable = false;

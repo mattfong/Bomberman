@@ -15,7 +15,7 @@ public class BombPassPowerup extends GameObject implements Powerup {
 
     public BombPassPowerup(Rectangle location, World world) {
 	super(location, world);
-	sprite = new ImageIcon(BombPassPowerup.class.getResource("/PowerupBombpass.png")).getImage();
+	sprite = new ImageIcon(BombPassPowerup.class.getResource("/PowerupBombpass.png"));
 
 	destroyable = true;
 	solid = false;

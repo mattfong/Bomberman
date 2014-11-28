@@ -15,7 +15,7 @@ public class FlamePassPowerup extends GameObject implements Powerup {
 
     public FlamePassPowerup(Rectangle location, World world) {
 	super(location, world);
-	sprite = new ImageIcon(FlamePassPowerup.class.getResource("/PowerupFlamepass.png")).getImage();
+	sprite = new ImageIcon(FlamePassPowerup.class.getResource("/PowerupFlamepass.png"));
 
 	destroyable = true;
 	solid = false;

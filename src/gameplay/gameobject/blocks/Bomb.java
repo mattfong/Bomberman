@@ -20,7 +20,7 @@ public class Bomb extends GameObject {
 
     public Bomb(Rectangle location, World world, int radius) {
 	super(location, world);
-	sprite = new ImageIcon(Bomb.class.getResource("/BombSprite.png")).getImage();
+	sprite = new ImageIcon(Bomb.class.getResource("/BombSprite.png"));
 
 	destroyable = false;
 	solid = true;

@@ -15,7 +15,7 @@ public class BombPowerup extends GameObject implements Powerup {
 
     public BombPowerup(Rectangle location, World world) {
 	super(location, world);
-	sprite = new ImageIcon(BombPowerup.class.getResource("/PowerupBombs.png")).getImage();
+	sprite = new ImageIcon(BombPowerup.class.getResource("/PowerupBombs.png"));
 
 	destroyable = true;
 	solid = false;

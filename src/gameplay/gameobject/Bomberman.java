@@ -20,18 +20,15 @@ public class Bomberman extends GameActor implements BombermanInterface {
     protected boolean detonator;
     protected int explosionRadius;
 
-    private GameStateManager gameStateManager;
-
-    public Bomberman(Rectangle location, World world) {
+	public Bomberman(Rectangle location, World world) {
 	super(location, world);
-	sprite = new ImageIcon(Bomberman.class.getResource("/Sprite.png")).getImage();
+	sprite = new ImageIcon(Bomberman.class.getResource("/Sprite.png"));
 	inputManager = new CommandManager(this, InputListener.getInstance());
 	bombPass = false;
 	flamePass = false;
 	detonator = false;
 	explosionRadius = 1;
 	bombLimit = 1;
-	gameStateManager = GameStateManager.getInstance();
 
     }
 
@@ -81,7 +78,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	for (GameActor actor : actorList) {
 	    if (actor != this) {
 		if (actor.hasCollided(this)) {
-		    if (gameStateManager.getCurrentGameState().getRemainingLives() > 0) {
+		    if (GameStateManager.getInstance().getCurrentGameState().getRemainingLives() > 0) {
 			respawn();
 		    } else {
 			isDead = true;
@@ -91,7 +88,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	}
 
 	if (checkIfBombed()) {
-	    if (gameStateManager.getCurrentGameState().getRemainingLives() > 0) {
+	    if (GameStateManager.getInstance().getCurrentGameState().getRemainingLives() > 0) {
 		respawn();
 	    } else {
 		isDead = true;
@@ -170,7 +167,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	detonator = false;
 	gridLocation.x = 32;
 	gridLocation.y = 32;
-	gameStateManager.getCurrentGameState().decreaseRemainingLives();
+	GameStateManager.getInstance().getCurrentGameState().decreaseRemainingLives();
 
     }
 
@@ -185,7 +182,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
 
     @Override
     public void die() {
-	if (gameStateManager.getCurrentGameState().getRemainingLives() > 0) {
+	if (GameStateManager.getInstance().getCurrentGameState().getRemainingLives() > 0) {
 	    respawn();
 	} else {
 	    isDead = true;
