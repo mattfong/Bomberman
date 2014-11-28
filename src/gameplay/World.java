@@ -1,4 +1,4 @@
-//TODO migrate this stuff to the board class and whereever this stupid stuff neeeds to go
+//TODO migrate this stuff to the board class and whereever this stupid stuff needs to go
 
 package gameplay;
 
@@ -12,6 +12,7 @@ import gameplay.overlays.CountdownTimer;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -23,7 +24,7 @@ import java.util.Stack;
  * @author MF
  *
  */
-public class World {
+public class World implements Serializable {
 
     CountdownTimer gameTimer;
     private int gridWidth;
@@ -255,6 +256,7 @@ public class World {
 	    GameObject temp = grid[xIndex][yIndex].peek();
 	    return temp;
 	}
+
 	return new Background(location, this); // returns a vanila tile that
 					       // just represents the coordinate
 					       // data.

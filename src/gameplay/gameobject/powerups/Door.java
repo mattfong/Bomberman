@@ -13,7 +13,7 @@ public class Door extends GameObject implements Powerup {
 
     public Door(Rectangle location, World world) {
 	super(location, world);
-	sprite = new ImageIcon(Door.class.getResource("/OpenedDoor.jpg")).getImage();
+	sprite = new ImageIcon(Door.class.getResource("/OpenedDoor.jpg"));
 
 	destroyable = true;
 	solid = false;

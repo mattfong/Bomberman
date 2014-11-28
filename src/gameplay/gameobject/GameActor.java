@@ -7,6 +7,7 @@ import gameplay.gameobject.blocks.Explosion;
 import gameplay.input.CommandManager;
 
 import java.awt.Rectangle;
+import java.io.Serializable;
 
 /**
  * @author mfong8 Implenting class for the abstract GameObject class. Implements
@@ -16,7 +17,7 @@ import java.awt.Rectangle;
  * @author MF
  *
  */
-public class GameActor extends GameObject {
+public class GameActor extends GameObject implements Serializable {
 
     protected CommandManager inputManager;
     protected int moveSpeed = 32;

@@ -13,11 +13,10 @@ import java.util.List;
 
 public class SavedGameSerialization {
 	
-	private SavedGameManager saveManager = new SavedGameManager();
-	
 	public void serializeSaveGameName(SavedGame games, String fileName) throws IOException {
 		List<SavedGame> allSavedGames = this.deserializeSaveGameName(fileName);
 		allSavedGames.add(games);
+		System.out.println("Checking if World gets serialized: " + games.getGameState().getWorld());
 		try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName))) {
 			for(SavedGame game: allSavedGames)
 			out.writeObject(game);

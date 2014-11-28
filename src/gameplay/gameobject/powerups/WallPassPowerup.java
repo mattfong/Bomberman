@@ -15,7 +15,7 @@ public class WallPassPowerup extends GameObject implements Powerup {
 
     public WallPassPowerup(Rectangle location, World world) {
 	super(location, world);
-	sprite = new ImageIcon(WallPassPowerup.class.getResource("/PowerupWallpass.png")).getImage();
+	sprite = new ImageIcon(WallPassPowerup.class.getResource("/PowerupWallpass.png"));
 
 	destroyable = true;
 	solid = false;

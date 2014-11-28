@@ -5,12 +5,14 @@ import gameplay.gameobject.Bomberman;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.Timer;
 
-public class CountdownTimer implements ActionListener {
-
-    Timer timer;
+public class CountdownTimer implements ActionListener, Serializable{
+	
+//    private transient Timer timer;
+	Timer timer;
     int countdown;
     private World world;
 

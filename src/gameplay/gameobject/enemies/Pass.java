@@ -13,7 +13,7 @@ public class Pass extends GameActor {
 
     public Pass(Rectangle location, World world) {
 	super(location, world);
-	sprite = new ImageIcon(Pass.class.getResource("/Pass.jpg")).getImage();
+	sprite = new ImageIcon(Pass.class.getResource("/Pass.jpg"));
 	// inputManager = new CommandManager(this, InputListener.getInstance());
 	score = 4000;
 	wallPass = false;

@@ -13,7 +13,7 @@ public class Minvo extends GameActor {
 
     public Minvo(Rectangle location, World world) {
 	super(location, world);
-	sprite = new ImageIcon(Minvo.class.getResource("/Minvo.jpg")).getImage();
+	sprite = new ImageIcon(Minvo.class.getResource("/Minvo.jpg"));
 	// inputManager = new CommandManager(this, InputListener.getInstance());
 
 	score = 800;

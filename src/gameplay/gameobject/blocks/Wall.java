@@ -15,7 +15,7 @@ public class Wall extends GameObject {
     public Wall(Rectangle location, World world) {
 	super(location, world);
 
-	sprite = new ImageIcon(Wall.class.getResource("/HardBlock.png")).getImage();
+	sprite = new ImageIcon(Wall.class.getResource("/HardBlock.png"));
 
 	destroyable = false;
 	solid = true;

@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 public class SaveGameMenuView {
 	private JTextField jt= new JTextField(30);
 	private String savedGameName = ""; 
-	private SaveGameMenuController saveController = new SaveGameMenuController();
+	private SaveLoadController controller = new SaveLoadController();
 	private final JFrame frame = new JFrame("Save Game Menu");
 
 	public void SaveGameMenuView(){
@@ -33,7 +33,7 @@ public class SaveGameMenuView {
 	    saveGame.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				savedGameName = jt.getText();
-				saveController.saveGame(savedGameName);
+				controller.saveGame(savedGameName);
 			}
 		});
 

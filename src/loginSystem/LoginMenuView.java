@@ -85,7 +85,7 @@ public class LoginMenuView {
 		
 		CSVreader reader = new CSVreader();
 		try {
-			accountManager.setAccounts(reader.CSVreader());
+			accountManager.setAccounts(reader.CSVreaderAccounts());
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

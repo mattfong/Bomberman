@@ -13,22 +13,21 @@ import javax.swing.ImageIcon;
  * @author mfong8 Class implementing the bomb feature.
  */
 public class Bomb extends GameObject {
-    private int explosionRadius;
-    private int bombCountdown;
+	private int explosionRadius;
+	private int bombCountdown;
 
-    private static Queue<Bomb> bombList = new LinkedList<Bomb>();
+	private static Queue<Bomb> bombList = new LinkedList<Bomb>();
 
-    public Bomb(Rectangle location, World world, int radius) {
-	super(location, world);
-	sprite = new ImageIcon(Bomb.class.getResource("/BombSprite.png")).getImage();
+	public Bomb(Rectangle location, World world, int radius) {
+		super(location, world);
+		sprite = new ImageIcon(Bomb.class.getResource("/BombSprite.png"));
 
-	destroyable = false;
-	solid = true;
-	conductsExplosions = false;
-
-	bombCountdown = 40;
-	explosionRadius = radius;
-	addBomb(this);
+		destroyable = false;
+		solid = true;
+		conductsExplosions = false;
+		bombCountdown = 40;
+		explosionRadius = radius;
+		addBomb(this);
     }
 
     /**
@@ -52,9 +51,9 @@ public class Bomb extends GameObject {
 
     }
 
-    private void addBomb(Bomb bomb) {
-	bombList.add(bomb);
-    }
+	public static void addBomb(Bomb bomb) {
+		bombList.add(bomb);
+	}
 
     /**
      * Method which resets all placed bombs on the board.
@@ -62,30 +61,29 @@ public class Bomb extends GameObject {
     public static void resetBombList() {
 	bombList.clear();
     }
+    
+	@Override
+	public void update() {
+		super.update();
+		bombCountdown--;
+		if (checkBombTimer()) {
+			this.explode();
+		}
 
-    @Override
-    public void update() {
-	super.update();
-
-	bombCountdown--;
-	if (checkBombTimer()) {
-	    this.explode();
 	}
 
-    }
+	private void explode() {
+		bombList.remove();
+		this.destroy();
+		world.detonateLocation(getLocation(), explosionRadius);
 
-    private void explode() {
-	bombList.remove();
-	this.destroy();
-	world.detonateLocation(getLocation(), explosionRadius);
-
-    }
-
-    private boolean checkBombTimer() {
-	if (bombCountdown == 0) {
-	    return true;
 	}
-	return false;
-    }
+
+	private boolean checkBombTimer() {
+		if (bombCountdown == 0) {
+			return true;
+		}
+		return false;
+	}
 
 }

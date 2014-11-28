@@ -15,7 +15,7 @@ public class DetonatorPowerup extends GameObject implements Powerup {
 
     public DetonatorPowerup(Rectangle location, World world) {
 	super(location, world);
-	sprite = new ImageIcon(DetonatorPowerup.class.getResource("/PowerupDetonator.png")).getImage();
+	sprite = new ImageIcon(DetonatorPowerup.class.getResource("/PowerupDetonator.png"));
 
 	destroyable = true;
 	solid = false;

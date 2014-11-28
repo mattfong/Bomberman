@@ -1,26 +1,24 @@
 package loginSystem;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
 
 import au.com.bytecode.opencsv.CSVReader;
 
 
 public class CSVreader {
 	
-	private String csv = "UserPass.csv";
+	private String csvAccountsFile = "UserPass.csv";
 	private AccountManager accountManager = new AccountManager();
 	
-	public List<Account> CSVreader() throws IOException{
+	public CSVreader() {
+		super();
+	}
+
+	public List<Account> CSVreaderAccounts() throws IOException{
 		
-		CSVReader reader = new CSVReader(new FileReader(csv));
+		CSVReader reader = new CSVReader(new FileReader(csvAccountsFile));
 		
 		List<String[]> records = reader.readAll();
 		Iterator<String[]> i = records.iterator();

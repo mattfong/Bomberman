@@ -6,15 +6,20 @@ import gameplay.statemanagers.ScoreManager;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.io.Serializable;
 
-public abstract class GameObject {
+import javax.swing.ImageIcon;
 
+public abstract class GameObject implements Serializable {
+	
+	private static final long serialVersionUID = -3547634888898588379L;
     protected final int pictureSize = 32;
     protected ScoreManager scoreManager;
+
     protected Rectangle gridLocation;
     protected World world;
-
-    protected Image sprite;
+    
+    protected ImageIcon sprite;
     protected boolean solid;
     protected boolean destroyable;
     protected boolean conductsExplosions;
@@ -43,7 +48,7 @@ public abstract class GameObject {
      */
     public void draw(Graphics g) {
 
-	g.drawImage(sprite, gridLocation.x, gridLocation.y, null);
+	g.drawImage(sprite.getImage(), gridLocation.x, gridLocation.y, null);
     }
 
     /**
@@ -111,7 +116,7 @@ public abstract class GameObject {
 
     // Changes in state
     /**
-     * Method which removes GameObject instance from the gamboard.
+     * Method which removes GameObject instance from the gameboard.
      */
     public void destroy() {
 	scoreManager.addToScore(score);

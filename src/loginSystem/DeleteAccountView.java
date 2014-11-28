@@ -65,11 +65,11 @@ public class DeleteAccountView {
 				CSVwriter writer = new CSVwriter();
 				
 				try {
-					accountManager.setAccounts(reader.CSVreader());
+					accountManager.setAccounts(reader.CSVreaderAccounts());
 					System.out.println("AM in try:" + accountManager.numberOfAccounts() + "," + accountManager.getAccounts());
 					accountManager.deleteAccount(User);
 					System.out.println("AM:" + accountManager.numberOfAccounts() + "," + accountManager.getAccounts());	
-					writer.CSVwriterList(accountManager.getAccounts());
+					writer.CSVwriterAccountsList(accountManager.getAccounts());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

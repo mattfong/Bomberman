@@ -14,6 +14,13 @@ public class SavedGame implements Serializable{
 		super();
 	}
 	
+	
+	public SavedGame(GameState gameState, String userName) {
+		super();
+		this.gameState = gameState;
+		this.userName = userName;
+	}
+
 	public SavedGame(GameState gameState, String userName, String savedGameName) {
 		super();
 		this.gameState = gameState;

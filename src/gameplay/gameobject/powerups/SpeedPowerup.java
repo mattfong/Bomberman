@@ -15,7 +15,7 @@ public class SpeedPowerup extends GameObject implements Powerup {
 
     public SpeedPowerup(Rectangle location, World world) {
 	super(location, world);
-	sprite = new ImageIcon(SpeedPowerup.class.getResource("/PowerupSpeed.png")).getImage();
+	sprite = new ImageIcon(SpeedPowerup.class.getResource("/PowerupSpeed.png"));
 
 	destroyable = true;
 	solid = false;

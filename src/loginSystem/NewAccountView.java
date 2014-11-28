@@ -57,7 +57,7 @@ public class NewAccountView {
 
     	CSVreader reader = new CSVreader();
     	try {
-    		accountManager.setAccounts(reader.CSVreader());
+    		accountManager.setAccounts(reader.CSVreaderAccounts());
     	} catch (IOException e1) {
     		// TODO Auto-generated catch block
     		e1.printStackTrace();
@@ -83,7 +83,7 @@ public class NewAccountView {
     					if (UsernameAndPasswordValid.valid(User, Pass) & Pass.equals(confirmPass)) {
     						try {
     							CSVwriter writer = new CSVwriter();
-    							writer.CSVwriter(Name, User, Pass);
+    							writer.CSVwriterAccounts(Name, User, Pass);
     						} catch (IOException e) {
     							// TODO Auto-generated catch block
     							e.printStackTrace();
@@ -149,8 +149,8 @@ public class NewAccountView {
 	/**
 	 * This is the main method for the NewAccountView                   (1)
 	 * <p>
-	 *It uses SwingUtilites to opend the NewAccount method. This ensures that the Frame and Panel will load properly
-	 *This also goes from static to non static, allowing non static varibles to be used in other classes.
+	 *It uses SwingUtilites to open the NewAccount method. This ensures that the Frame and Panel will load properly
+	 *This also goes from static to non static, allowing non static variables to be used in other classes.
 	 * <p>
 	 */
     public static void main(String[] args) {
