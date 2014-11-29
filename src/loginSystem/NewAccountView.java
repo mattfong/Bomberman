@@ -44,6 +44,8 @@ public class NewAccountView {
 	 * the account information. 
 	 */
     public void NewAccountView() {
+    	
+    	
     	final JFrame frame = new JFrame("Make an account");
     	NameTF.setText(null);
     	UserTF.setText(null);
