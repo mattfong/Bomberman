@@ -27,26 +27,26 @@ import javax.swing.SwingUtilities;
  */
 
 public class LoginMenuView {
-	/**
+	/*
 	 * This is a text field so that usernames can be entered.
 	 */
 	JTextField jt= new JTextField(30);
 	
-	/**
+	/*
 	 * This is a password field that passwords are entered into. 
 	 * It is similar to the text feild, only the text is hidden by dots.
 	 */
 	JPasswordField pf = new JPasswordField(30);
-	/**
+	/*
 	 * This is the controlling frame that pops up to display an error when logining in.
 	 */
 	private JFrame controllingFrame;
-	/**
+	/*
 	 * This is a copy of the account manager. 
 	 * It is used to verify the account detailes
 	 */
 	private final AccountManager accountManager = new AccountManager();
-	/**
+	/*
 	 * This makes a copy of the username.
 	 * It done so that the playMenuView knows who is logged in.
 	 */
@@ -62,28 +62,21 @@ public class LoginMenuView {
 
 	 */
 	public void loginMenu(){
-		/**
-		 * This clears anything in the textfield, to stop the wrong information being entered.
+		/*
+		 * This clears anything in the textfield and password field, to stop the wrong information being entered.
 		 */
 		jt.setText(null);
-		/**
-		 * This clears anything in the password feild, to stop the wrong information being entered.
-		 */
 		pf.setText(null);
-		/**
-		 * This creates a JFrame for the Login menu.
+		/*
+		 * This creates a JFrame and JPanel for the Login menu. It sets the panel to be a grid layout of 8 spots
 		 */
 		final JFrame f = new JFrame("Login menu");
-		/**
-		 * This creates a JPanel for the Login menu.
-		 */
 		JPanel panel = new JPanel();
-		/**
-		 * This Sets.
-		 */
 		panel.setLayout(new GridLayout(8,1,5,10));
 		
-		
+		/*
+		 * This makes a reader so that the entered usernamne and password can be check against the account database.
+		 */
 		CSVreader reader = new CSVreader();
 		try {
 			accountManager.setAccounts(reader.CSVreaderAccounts());
@@ -91,34 +84,46 @@ public class LoginMenuView {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		/*
+		 * These labels are to tell the user what to put in the input fields.
+		 */
 		JLabel enterUser = new JLabel("If you have an account enter your username enter it here");
 		JLabel enterPass = new JLabel("If you have an account enter your Password here");
 		
+		/*
+		 * This button takes the entered cridentials and tries to log the user in.
+		 */
 		JButton login = new JButton("To Login click here");
-
-		JButton newUser = new JButton("IF you do not have an account click here to create one");
-		JButton deleteUser = new JButton("To delete your Account click here");
-		JButton suprise=new JButton("Click here for a suprise");
 		
 		login.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {				
 				try {
-					if(accountManager.isUser(jt.getText(), pf.getText())==true){
-						justUsername=jt.getText();
-						f.dispose();
-						Account acc = accountManager.getOneAccount(justUsername); 
+					if(accountManager.isUser(jt.getText(), pf.getText())){
+						/*
+						 * If the username/password are correct sevral things happen.
+						 */
+						justUsername=jt.getText(); /*The username is stored so to generate their game state with */
 						
+						
+						
+						Account acc = accountManager.getOneAccount(justUsername); 
 						GameStateManager manager = GameStateManager.getInstance();
 						
 						GameState gameState = new GameState(acc.getUserName(), acc.getName());
 						gameState.setWorld(new World(31, 13));
-						manager.setCurrentGameState(gameState);
-						PlayGameView.main(null);
-						System.out.println("Username entered correctly");
+						manager.setCurrentGameState(gameState); /*Matt I don't actuly know what this does*/
 						
+						f.dispose();						
+						PlayGameView.main(null); /*The frame disposes and the PlayGameView class is opened*/	
+										
+						System.out.println("Username entered correctly");
 					}
 					else{
-						 JOptionPane.showMessageDialog(controllingFrame,
+						/*
+						 * If the wrong username/password was entered the input feilds will be cleared and a message will be displayed
+						 * to the user informing them of their error 
+						 */
+						JOptionPane.showMessageDialog(controllingFrame,
 					                "Wrong username or password");
 						 jt.setText(null);
 						 pf.setText(null);
@@ -130,29 +135,40 @@ public class LoginMenuView {
 				
 			}
 		});	
-		newUser.addActionListener(new ActionListener(){
-			
-			public void actionPerformed(ActionEvent arg0) {
-			f.dispose();
-			NewAccountView.main(null);
-			}
-			
-		});	
 		
-		deleteUser.addActionListener(new ActionListener(){
-			
+		/*
+		 * This button allows the user to make a new account
+		 */	
+		JButton newUser = new JButton("IF you do not have an account click here to create one");
+		newUser.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				f.dispose();
-				DeleteAccountView.main(null);	
-			}
-			
+				NewAccountView.main(null); /*The frame is disposed and NewAccountView class opens */
+			}		
 		});	
 		
+		/*
+		 * This button allows the user to delete their account
+		 */
+		JButton deleteUser = new JButton("To delete your Account click here");
+		deleteUser.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				f.dispose();
+				DeleteAccountView.main(null);	/*The frame is disposed and DeleteAccountView class opens */
+			}
+		});	
+		/*
+		 * This button is our unique biult in feature. It rick rolls the user. 
+		 */
+		JButton suprise=new JButton("Click here for a suprise");
 		suprise.addActionListener(new ActionListener(){
-			
 			public void actionPerformed(ActionEvent arg0) {
 				String url="https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 		    	Desktop d=Desktop.getDesktop();
+		    	/*
+		    	 * When pressed it opens the URL for the youtube video in the default browser. 
+		    	 * Due to a possibility of failure with browsers it is surrounded with try caches
+		    	 */
 		    	try {
 					d.browse(new URI(url));
 				} catch (IOException e) {
@@ -163,9 +179,13 @@ public class LoginMenuView {
 					e.printStackTrace();
 				}
 			}
-			
 		});	
 		
+		
+		/*
+		 * These add the input fields, the labels and the buttons to the panel. 
+		 * Their order deterimines the order that the objects display on the panel.
+		 */
 		panel.add(enterUser);
 		panel.add(jt);
 		panel.add(enterPass);
@@ -174,8 +194,11 @@ public class LoginMenuView {
 		panel.add(newUser);
 		panel.add(deleteUser);
 		panel.add(suprise);
-		f.add(panel);
+		f.add(panel); /* finally the frame adds the panel */
 		//Note: it is important that these operations always be at the bottem, to ensure that the frame display properly.
+		/*
+		 * The next part is the frame conditions. They set the frame vizable, to a certin size, etc.
+		 */
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(480, 440);
 		f.setLocationRelativeTo(null);
