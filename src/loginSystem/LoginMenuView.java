@@ -196,7 +196,7 @@ public class LoginMenuView {
 		f.add(panel); /* finally the frame adds the panel */
 		//Note: it is important that these operations always be at the bottem, to ensure that the frame display properly.
 		/*
-		 * The next part is the frame conditions. They set the frame vizable, to a certin size, etc.
+		 * The next part is the frame conditions. They set the frame visable, to a certin size, etc.
 		 */
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(480, 440);
@@ -213,13 +213,17 @@ public class LoginMenuView {
 	 * <p>
 	 */
 	public static void main(String[] args){
-		
+		/*
+		 * This is very important. It ensure that the frame and panel will display properly and avoid 
+		 * the "grey scren" glicth we have experianced. It makes sure that the frame and panel always load properly. 
+		 */
 		SwingUtilities.invokeLater(new Runnable(){
 			@Override
 			public void run(){
+				/*
+				 * This allows a non static method to be called from a static method
+				 */
 				LoginMenuView LMV = new LoginMenuView();
-				
-				
 				LMV.loginMenu();
 			}
 		});
