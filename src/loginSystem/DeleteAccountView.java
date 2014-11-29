@@ -23,7 +23,8 @@ public class DeleteAccountView {
 	private JTextField UserTF= new JTextField(30);
 	private JPasswordField PassPF = new JPasswordField(30);
 	private JFrame controllingFrame;
-	
+
+
 	
 	/**
 	 * This creates the DeleteAccount Frame and panel                     (1)

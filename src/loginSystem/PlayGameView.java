@@ -20,7 +20,7 @@ import savingSystem.SaveLoadView;
  * @since 2014-11-27 (the version of the package this class was first added to)
  */
 public class PlayGameView {
-	 
+	
     /**
 	 * This creates the PlayMenu Frame and panel                     (1)
 	 * <p>
