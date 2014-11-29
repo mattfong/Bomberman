@@ -1,24 +1,22 @@
 package gameplay.gameobject;
 
 import gameplay.World;
-import gameplay.statemanagers.ScoreManager;
+import gameplay.statemanagers.GameStateManager;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 
 public abstract class GameObject implements Serializable {
-	
-	private static final long serialVersionUID = -3547634888898588379L;
+
+    private static final long serialVersionUID = -3547634888898588379L;
     protected final int pictureSize = 32;
-    protected ScoreManager scoreManager;
-    
+
     protected Rectangle gridLocation;
     protected World world;
-    
+
     protected ImageIcon sprite;
     protected boolean solid;
     protected boolean destroyable;
@@ -59,7 +57,8 @@ public abstract class GameObject implements Serializable {
 
     // Property Inquiries
     /**
-     * @return true if the object can be destroyed, false if the object cannot be destroyed.
+     * @return true if the object can be destroyed, false if the object cannot
+     *         be destroyed.
      */
     public boolean isDestroyable() {
 	return destroyable;
@@ -75,18 +74,21 @@ public abstract class GameObject implements Serializable {
     /**
      * Returns if the game object conducts explosions through it.
      *
-     * @return a boolean true if explosions should pass through the object, false if object stops explosions.
+     * @return a boolean true if explosions should pass through the object,
+     *         false if object stops explosions.
      */
     public boolean conductsExplosions() {
 	return conductsExplosions;
     }
 
     /**
-     * Checks if the current gameobject has collided with another gameobject obj.
+     * Checks if the current gameobject has collided with another gameobject
+     * obj.
      *
      * @param obj
      *            -GameObject to check against
-     * @return true if the instance collides with obj, false if they do not collide.
+     * @return true if the instance collides with obj, false if they do not
+     *         collide.
      */
     public boolean hasCollided(GameObject obj) {
 	if (gridLocation.intersects(obj.getCollisionBoundaries())) {
@@ -96,18 +98,23 @@ public abstract class GameObject implements Serializable {
     }
 
     /**
-     * Method generates a rectangle which represents the collision boundaries of the instance of GameObject
+     * Method generates a rectangle which represents the collision boundaries of
+     * the instance of GameObject
      *
-     * @return a Rectangle which represents the collision boundaries of the GameObject.
+     * @return a Rectangle which represents the collision boundaries of the
+     *         GameObject.
      */
     public Rectangle getCollisionBoundaries() {
 	return new Rectangle(this.gridLocation.x, this.gridLocation.y, pictureSize, pictureSize);
     }
 
     /**
-     * Method returns the location of this GameObject as a rectangle populated with the location and size of the gameobject.
+     * Method returns the location of this GameObject as a rectangle populated
+     * with the location and size of the gameobject.
      *
-     * @return rectangle whose x and y are the same as the top left location of the game object and whose width and heigh as the same as the gameobject's sprite.
+     * @return rectangle whose x and y are the same as the top left location of
+     *         the game object and whose width and heigh as the same as the
+     *         gameobject's sprite.
      */
     public Rectangle getLocation() {
 	return new Rectangle(this.gridLocation.x, this.gridLocation.y, pictureSize, pictureSize);
@@ -118,7 +125,7 @@ public abstract class GameObject implements Serializable {
      * Method which removes GameObject instance from the gameboard.
      */
     public void destroy() {
-	scoreManager.addToScore(score);
+	GameStateManager.getInstance().increaseScore(score);
 	world.removeGameObject(this);
     }
 

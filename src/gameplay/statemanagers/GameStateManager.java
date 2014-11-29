@@ -2,12 +2,11 @@ package gameplay.statemanagers;
 
 public class GameStateManager {
 
-
     private static GameStateManager singleton = null;
     private GameState currentGameState;
 
-    public GameStateManager() {
-    
+    private GameStateManager() {
+
     }
 
     public void setCurrentGameState(GameState state) {
@@ -23,6 +22,14 @@ public class GameStateManager {
 	    singleton = new GameStateManager();
 	}
 	return singleton;
+    }
+
+    public void increaseScore(int score) {
+	currentGameState.increaseScoreBy(score);
+    }
+
+    public int getScore() {
+	return currentGameState.getScore();
     }
 
 }
