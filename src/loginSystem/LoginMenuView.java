@@ -215,7 +215,7 @@ public class LoginMenuView {
 	public static void main(String[] args){
 		/*
 		 * This is very important. It ensure that the frame and panel will display properly and avoid 
-		 * the "grey scren" glicth we have experianced. It makes sure that the frame and panel always load properly. 
+		 * the "grey screen" glitch we have experienced. It makes sure that the frame and panel always load properly. 
 		 */
 		SwingUtilities.invokeLater(new Runnable(){
 			@Override
