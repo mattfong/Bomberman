@@ -10,7 +10,6 @@ import au.com.bytecode.opencsv.CSVReader;
 public class CSVreader {
 	
 	private final String csvAccountsFile = "UserPass.csv";
-	private final String csvHighScore = "HighScore.csv";
 	private AccountManager accountManager = new AccountManager();
 	
 	public CSVreader() {
