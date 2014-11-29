@@ -20,8 +20,18 @@ import javax.swing.SwingUtilities;
  */
 public class DeleteAccountView {
 
+	/*
+	 * This is a text field so that names can be entered.
+	 */
 	private JTextField UserTF= new JTextField(30);
+	/*
+	 * This is a password field that passwords are entered into. 
+	 * It is similar to the text feild, only the text is hidden by dots. 
+	 */
 	private JPasswordField PassPF = new JPasswordField(30);
+	 /*
+	 * This is the controlling frame that pops up to display an error when logining in.
+	 */
 	private JFrame controllingFrame;
 
 
@@ -76,8 +86,6 @@ public class DeleteAccountView {
 					e.printStackTrace();
 				}
 				frame.dispose();
-				//LoginMenuView loginMenu = new LoginMenuView();
-				//loginMenu.loginMenu();	
 				LoginMenuView.main(null);
 			}
 			
@@ -90,8 +98,6 @@ public class DeleteAccountView {
 			
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				//LoginMenuView loginMenu = new LoginMenuView(); 
-				//loginMenu.loginMenu();
 				LoginMenuView.main(null);
 			}
 			
