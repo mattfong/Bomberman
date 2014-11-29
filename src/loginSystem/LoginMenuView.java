@@ -105,7 +105,7 @@ public class LoginMenuView {
 					if(accountManager.isUser(jt.getText(), pf.getText())==true){
 						justUsername=jt.getText();
 						f.dispose();
-						Account acc = accountManager.getOneAccount(justUsername); 
+						Account acc = accountManager.getAccount(justUsername); 
 						
 						GameStateManager manager = GameStateManager.getInstance();
 						

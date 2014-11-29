@@ -1,18 +1,27 @@
 package highscore;
 
+import gameplay.statemanagers.GameState;
+import gameplay.statemanagers.GameStateManager;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import loginSystem.CSVreader;
 
 public class HighScoreDatabase {
     
     //private List <Integer> scores = new LinkedList<Integer>();
     //private List<String> playerNames = new LinkedList<String>();
+	private GameState currentGame = GameStateManager.getInstance().getCurrentGameState();
+	
     Players listOfPlayers;
     
     
     //TO KIRTH: ADD HERE
     public void getPlayerNames(){
 	//this should get data from the savedGame system and input into the String list
+	List<String> userNames = new ArrayList<String>();
 	
 	//listOfPlayers.setPlayerNames(List<String> list HERE);
     }
