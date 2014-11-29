@@ -2,6 +2,7 @@ package savingSystem;
 
 import gameplay.GameFrame;
 import gameplay.GamePanel;
+import gameplay.World;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
 
@@ -75,6 +76,7 @@ public class SaveLoadController {
 			for (int i = 0; i < allSavedGames.size(); i++) {
 				game = allSavedGames.get(i);
 				game.getGameState();
+				World world = game.getGameState().getWorld();
 				System.out.println("GameState parsed Information: \n Name: "
 						+ game.getGameState().getPlayerName() + "\n Username: "
 						+ game.getGameState().getUserName() + "\n World: "
@@ -91,6 +93,7 @@ public class SaveLoadController {
 		}
 		GameFrame gameplay = new GameFrame();
 		gameplay.setVisible(true);
+		
 	}
 	
 	public void deleteGame(String deleteGame) {
