@@ -2,6 +2,7 @@ package savingSystem;
 
 import gameplay.GameFrame;
 import gameplay.GamePanel;
+import gameplay.World;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
 
@@ -65,6 +66,7 @@ public class SaveLoadController {
 
 	public void loadGame() {
 		SavedGame game = null;
+		
 		try {
 			fileName = saveManager.getSaveGameFile(currentGame.getUserName());
 			System.out.println("Load Controller:" + fileName);
@@ -74,7 +76,10 @@ public class SaveLoadController {
 			System.out.println("Step 5: Deserialized List: " + allSavedGames);
 			for (int i = 0; i < allSavedGames.size(); i++) {
 				game = allSavedGames.get(i);
-				game.getGameState();
+
+				World world = game.getGameState().getWorld();
+				GameFrame gameplay = new GameFrame(world);
+				gameplay.setVisible(true);
 				System.out.println("GameState parsed Information: \n Name: "
 						+ game.getGameState().getPlayerName() + "\n Username: "
 						+ game.getGameState().getUserName() + "\n World: "
@@ -89,8 +94,7 @@ public class SaveLoadController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		GameFrame gameplay = new GameFrame();
-		gameplay.setVisible(true);
+		
 	}
 	
 	public void deleteGame(String deleteGame) {

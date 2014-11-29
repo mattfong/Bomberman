@@ -69,7 +69,6 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public GamePanel(World world) {
-
 	setPreferredSize(gameDim);
 	setFocusable(true);
 	requestFocus();

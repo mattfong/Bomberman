@@ -34,6 +34,12 @@ public class UserProfile {
 		return singleton;
 	}
 	
+	public void Init(String userName) throws IOException{
+		List<Account> allAccounts = getAllUserAccounts();
+		Account currentUser = getCurrentUser(userName);
+		List<SavedGame> savedGames = getSavedGamesByUser(currentUser.getUserName());
+	}
+	
 	private List<Account> getAllUserAccounts() throws IOException {
 		CSVreader reader = new CSVreader();
 		accountManager.setAccounts(reader.CSVreaderAccounts());
