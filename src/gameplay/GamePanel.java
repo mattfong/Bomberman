@@ -60,7 +60,8 @@ public class GamePanel extends JPanel implements Runnable {
 	setFocusable(true);
 	requestFocus();
 	world = new World(31, 13, level);
-
+	camera = new Camera(0, world.getBomberman());
+	actorList = world.getActorList();
 	addKeyListener(InputListener.getInstance());
 	InputListener.setGamePanel(this);
 	setLayout(null);
@@ -73,20 +74,13 @@ public class GamePanel extends JPanel implements Runnable {
 	setFocusable(true);
 	requestFocus();
 	this.world = world;
+	camera = new Camera(0, world.getBomberman());
+	actorList = world.getActorList();
 
 	addKeyListener(InputListener.getInstance());
 	InputListener.setGamePanel(this);
 	setLayout(null);
     }
-
-    // private boolean loadingSavedGame() {
-    // GameState state = stateManager.getCurrentGameState();
-    //
-    // if ( != null) {
-    // return true;
-    // }
-    // return false; // we are not loading a game
-    // }
 
     @Override
     public void run() {
