@@ -52,8 +52,7 @@ public class World implements Serializable {
 					      // with him
 
 	// prep the timer
-	gameTimer = new CountdownTimer();
-	gameTimer.registerOntoWorld(this);
+	gameTimer = new CountdownTimer(this);
 
     }
 
@@ -80,6 +79,7 @@ public class World implements Serializable {
     }
 
     public void update() {
+	gameTimer.update();
 	for (int i = 0; i < gridWidth; i++) {
 	    for (int j = 0; j < gridHeight; j++) {
 		if (!(grid[i][j].empty())) {
