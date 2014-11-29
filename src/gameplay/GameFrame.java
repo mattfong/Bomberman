@@ -13,7 +13,7 @@ public class GameFrame extends JFrame {
     }
 
     private void initUI() {
-	add(new GamePanel());
+	add(new GamePanel(Level.L1));
 	setSize(480, 440);
 	setTitle("Bomberman");
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

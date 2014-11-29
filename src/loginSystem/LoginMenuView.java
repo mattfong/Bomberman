@@ -1,4 +1,5 @@
 package loginSystem;
+import gameplay.Level;
 import gameplay.World;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
@@ -58,8 +59,6 @@ public class LoginMenuView {
 	 * It will display the loginMenu Frame and panel. It has a text field, password field, and four buttons.
 	 * From here a user can login, create an account, delete an account, or see our built in suprise function 
 	 * <p>
-
-
 	 */
 	public void loginMenu(){
 		/*
@@ -106,11 +105,11 @@ public class LoginMenuView {
 						
 						
 						
-						Account acc = accountManager.getOneAccount(justUsername); 
+						Account acc = accountManager.getAccount(justUsername); 
 						GameStateManager manager = GameStateManager.getInstance();
 						
 						GameState gameState = new GameState(acc.getUserName(), acc.getName());
-						gameState.setWorld(new World(31, 13));
+						gameState.setWorld(new World(31, 13,Level.L1));
 						manager.setCurrentGameState(gameState); /*Matt I don't actuly know what this does*/
 						
 						f.dispose();						

@@ -1,6 +1,7 @@
 package gameplay.gameobject;
 
 import static org.junit.Assert.assertEquals;
+import gameplay.Level;
 import gameplay.World;
 import gameplay.gameobject.blocks.Bomb;
 import gameplay.statemanagers.GameState;
@@ -17,8 +18,8 @@ public class BombTest {
 
     @Before
     public void setUp() {
-	world = new World(31, 15);
-	manager = new GameStateManager();
+	world = new World(31, 15,Level.L1);
+	manager = GameStateManager.getInstance();
 	manager = GameStateManager.getInstance();
 	manager.setCurrentGameState(new GameState(0));
 
