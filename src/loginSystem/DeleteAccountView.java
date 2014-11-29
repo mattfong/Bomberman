@@ -49,61 +49,92 @@ public class DeleteAccountView {
 	 * <p>
 	 */
 	public void DeleteAccountView(){
-		final JFrame frame = new JFrame();
+		
+		/*
+		 * This clears anything in the textfield and password field, to stop the wrong information being entered.
+		 */
 		UserTF.setText(null);
 		PassPF.setText(null);
-		
+		/*
+		 * This creates a JFrame and JPanel for the Login menu. It sets the panel to be a grid layout of 8 spots
+		 */
+		final JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
-		
 		panel.setLayout(new GridLayout(7,1,5,10));
 		
+    	/*
+		 * These labels are to tell the user what to put in the input fields.
+		 */
 		JLabel loginInfo = new JLabel("Enter the login account you want to delete");
 		JLabel enterUser = new JLabel("Username");
 		JLabel enterPass = new JLabel("Password");
+		/*
+		 * This button takes the entered cridentials and the correspodning account.
+		 */
 		JButton deleteUser = new JButton("Click here to delete your account");
-		
 		deleteUser.addActionListener(new ActionListener(){
-			
 			public void actionPerformed(ActionEvent arg0) {
+				/*
+				 * These get the entered username and password
+				 */
 				String User=UserTF.getText();
 				String Pass=PassPF.getText();
 				if(User.equals(null)||Pass.equals(null)){
+					/*
+					 * If there is nothing entered the an error message will pop up for the user
+					 */
 					JOptionPane.showMessageDialog(controllingFrame,
 			                "Username or Password is empty");
 				}
+				/*
+				 * this sets up a CSV reader and write to read and write to the CSV files
+				 */
 				AccountManager accountManager = new AccountManager();
 				CSVreader reader = new CSVreader();
 				CSVwriter writer = new CSVwriter();
 				
 				try {
+					/*
+					 * The account messanger trys to find an account matching the entered detailes
+					 */
 					accountManager.setAccounts(reader.CSVreaderAccounts());
 					System.out.println("AM in try:" + accountManager.numberOfAccounts() + "," + accountManager.getAccounts());
-					accountManager.deleteAccount(User);
+					
+					accountManager.deleteAccount(User); /* and if one is found it deltes it */
 					System.out.println("AM:" + accountManager.numberOfAccounts() + "," + accountManager.getAccounts());	
 					writer.CSVwriterAccountsList(accountManager.getAccounts());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				/*
+				 * After that is done the frame disposes and the loginMenu is brought up again
+				 */
 				frame.dispose();
 				LoginMenuView.main(null);
 			}
 			
 		});	
 		
-
+		/*
+		 * This button wil take the user back to the login menu
+		 */
 		JButton goBack = new JButton("Go back to login menu");
-
 		goBack.addActionListener(new ActionListener(){
-			
 			public void actionPerformed(ActionEvent arg0) {
+				/*
+				 * The frame disposes and the loginMenu opens
+				 */
 				frame.dispose();
 				LoginMenuView.main(null);
 			}
 			
 		});
 		
-		
+		/*
+		 * These add the input fields, the labels and the buttons to the panel. 
+		 * Their order deterimines the order that the objects display on the panel.
+		 */
 		panel.add(loginInfo);
 		panel.add(enterUser);
 		panel.add(UserTF);
@@ -111,7 +142,7 @@ public class DeleteAccountView {
 		panel.add(PassPF);
 		panel.add(deleteUser);
 		panel.add(goBack);
-		frame.add(panel);
+		frame.add(panel); /* Finally the panel is added to the frame */
 		//Note: it is important that these operations always be at the bottem, to ensure that the frame display properly.
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -128,11 +159,17 @@ public class DeleteAccountView {
 	 * <p>
 	 */
 	public static void main(String[] args){
+		/*
+		 * This is very important. It ensure that the frame and panel will display properly and avoid 
+		 * the "grey screen" glitch we have experienced. It makes sure that the frame and panel always load properly. 
+		 */
 		SwingUtilities.invokeLater(new Runnable(){
 			@Override
 			public void run(){
+				/*
+				 * This allows a non static method to be called from a static method
+				 */
 				DeleteAccountView LMV = new DeleteAccountView();
-				
 				LMV.DeleteAccountView();
 			}
 		});
