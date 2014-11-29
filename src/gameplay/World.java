@@ -36,19 +36,20 @@ public class World implements Serializable {
     GameActor bomberman;
     ArrayList<GameActor> actorList;
 
-    public World(int widthInBlocks, int heightInBlocks) {
+    public World(int widthInBlocks, int heightInBlocks, Level level) {
 
 	gridHeight = heightInBlocks;
 	gridWidth = widthInBlocks;
 
 	// prep the world
 	worldGenerator = new WorldGenerator(this, widthInBlocks, heightInBlocks);
-	worldGenerator.generateLevel(Level.L11);
+	worldGenerator.generateLevel(level);
 	grid = worldGenerator.getGrid();
 	actorList = worldGenerator.getActorList();
 
-	registerBomberman(actorList); // add register bomberman to the world so
-	// that we can interact wit him
+	registerBombermanFromList(actorList); // add register bomberman to the
+					      // world so that we can interact
+					      // with him
 
 	// prep the timer
 	gameTimer = new CountdownTimer();
@@ -68,7 +69,7 @@ public class World implements Serializable {
 	return bomberman;
     }
 
-    private void registerBomberman(ArrayList<GameActor> actorList) {
+    private void registerBombermanFromList(ArrayList<GameActor> actorList) {
 
 	for (GameActor actor : actorList) {
 

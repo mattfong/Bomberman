@@ -37,7 +37,7 @@ public class AccountManager {
 		}
 	}
 	
-	public Account getOneAccount(String userName){
+	public Account getAccount(String userName){
 		Account acc = null;
 		for(int i=0; i<numberOfAccounts(); i++){
 			acc = accounts.get(i);

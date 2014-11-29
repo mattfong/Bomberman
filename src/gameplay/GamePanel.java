@@ -6,7 +6,6 @@ import gameplay.overlays.Camera;
 import gameplay.overlays.CountdownTimer;
 import gameplay.overlays.HUD;
 import gameplay.pauseMenu.PauseMenuView;
-import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
 
 import java.awt.Color;
@@ -42,20 +41,25 @@ public class GamePanel extends JPanel implements Runnable {
 
     private Thread game;
     private volatile boolean running = false;
-    private GameStateManager stateManager;
+    private GameStateManager gameStateManager;
 
     // GameObjects
     World world;
     ArrayList<GameActor> actorList;
 
-    public GamePanel() {
+    /**
+     * Open the game at the level specified.
+     * 
+     * @param level
+     *            level that is to be loaded.
+     */
 
-	stateManager = GameStateManager.getInstance();
+    public GamePanel(Level level) {
+
 	setPreferredSize(gameDim);
 	setFocusable(true);
 	requestFocus();
-	loadGameLevel();
-
+	world = new World(31, 13, level);
 
 	addKeyListener(InputListener.getInstance());
 	InputListener.setGamePanel(this);
@@ -63,22 +67,26 @@ public class GamePanel extends JPanel implements Runnable {
 
     }
 
-    private void loadGameLevel() {
-	if (loadingSavedGame()) {
-	} else {
-	    world = new World(31, 13);
-	    camera = new Camera(0, world.getBomberman());
-	    actorList = world.getActorList();
-	}
+    public GamePanel(World world) {
+
+	setPreferredSize(gameDim);
+	setFocusable(true);
+	requestFocus();
+	this.world = world;
+
+	addKeyListener(InputListener.getInstance());
+	InputListener.setGamePanel(this);
+	setLayout(null);
     }
 
-    private boolean loadingSavedGame() {
-	GameState state = stateManager.getCurrentGameState();
-	// if (potentialWorld != null) { // if there is no cached world in gamestate then we are loading a game
-	// return true;
-	// }
-	return false; // we are not loading a game
-    }
+    // private boolean loadingSavedGame() {
+    // GameState state = stateManager.getCurrentGameState();
+    //
+    // if ( != null) {
+    // return true;
+    // }
+    // return false; // we are not loading a game
+    // }
 
     @Override
     public void run() {

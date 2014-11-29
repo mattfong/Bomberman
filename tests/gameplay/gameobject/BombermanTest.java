@@ -3,6 +3,7 @@ package gameplay.gameobject;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import gameplay.Direction;
+import gameplay.Level;
 import gameplay.World;
 import gameplay.gameobject.blocks.Bomb;
 import gameplay.gameobject.blocks.Explosion;
@@ -23,7 +24,7 @@ public class BombermanTest {
 
     @Before
     public void setUp() throws Exception {
-	world = new World(31, 15);
+	world = new World(31, 15,Level.L1);
 	bomberman = new Bomberman(new Rectangle(32, 32, 32, 32), world);
 	GameStateManager manager = GameStateManager.getInstance();
 	manager.setCurrentGameState(new GameState(100));

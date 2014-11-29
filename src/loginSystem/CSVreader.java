@@ -9,7 +9,8 @@ import au.com.bytecode.opencsv.CSVReader;
 
 public class CSVreader {
 	
-	private String csvAccountsFile = "UserPass.csv";
+	private final String csvAccountsFile = "UserPass.csv";
+	private final String csvHighScore = "HighScore.csv";
 	private AccountManager accountManager = new AccountManager();
 	
 	public CSVreader() {
@@ -26,12 +27,12 @@ public class CSVreader {
 		// Reading through the CSV file line by line, and adding to accounts
 		while(i.hasNext()){
 			String[] record = i.next();
-			accountManager.addAccount(new Account(record[0], record[1], record[2]));
+			accountManager.addAccount(new Account(record[0], record[1], record[2], Integer.parseInt(record[3])));
 		}
 		
 		reader.close();
 		System.out.println(accountManager.getAccounts());
 		return accountManager.getAccounts();
 	}
-
+	
 }

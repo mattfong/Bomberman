@@ -11,6 +11,7 @@ public class CSVwriter {
 	
 	private final String csvAccountsFile = "UserPass.csv";
 	private final String csvAccountsFileTemp = "UserPassTemp.csv";
+	private final String csvHighScore = "HighScore.csv";
 	private List<Account> accounts = new ArrayList<Account>();
 	private AccountManager accountManager = new AccountManager();
 	
@@ -26,9 +27,10 @@ public class CSVwriter {
 		newUser.setName(name);
 		newUser.setUserName(userName);
 		newUser.setPassword(password);
+		newUser.setTotalScore(0);
 		
 		accountManager.setAccounts(accounts);
-		accounts.add(new Account(newUser.getName(), newUser.getUserName(), newUser.getPassword()));
+		accounts.add(new Account(newUser.getName(), newUser.getUserName(), newUser.getPassword(), newUser.getTotalScore()));
 		writer.writeNext(newUser.toCSVEntry());
 		System.out.println(accounts);
 		writer.close();
@@ -59,5 +61,5 @@ public class CSVwriter {
 			System.out.println("CSV:" + CSVfile.delete());
 		}
 	}
-
+	
 }

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import gameplay.Direction;
+import gameplay.Level;
 import gameplay.World;
 import gameplay.gameobject.blocks.Bomb;
 import gameplay.gameobject.blocks.Brick;
@@ -23,7 +24,7 @@ public class GameActorTest {
 
     @Before
     public void setUp() throws Exception {
-	world = new World(32, 32);
+	world = new World(32, 32, Level.L1);
 	bomberman = new Bomberman(new Rectangle(32, 32, 32, 32), world);
     }
 
