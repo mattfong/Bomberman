@@ -41,7 +41,7 @@ public class GameStateManager {
     }
 
     public World getCurrentWorld() {
-	return GamePanel.getWorld();
+	return gamePanel.getWorld();
 
     }
 
