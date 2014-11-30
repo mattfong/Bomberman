@@ -20,9 +20,6 @@ public class GameStateManager {
     private GameStateManager() {
 
     }
-    GameStateManager manager= GameStateManager.getInstance();
-    GameState currentGameState=manager.getCurrentGameState();
-    currentGameState.getScore();
 
     public void setCurrentGameState(GameState state) {
 	currentGameState = state;
