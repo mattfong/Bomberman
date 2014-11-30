@@ -23,7 +23,7 @@ import javax.swing.SwingUtilities;
  * @since       2014-11-27          (the version of the package this class was first added to)
  */
 public class NewAccountView {
-    
+	private final String csvAccountsFile = "UserPass.csv";
 	/*
 	 * This is a text field so that names can be entered.
 	 */
@@ -123,7 +123,7 @@ public class NewAccountView {
     							 * These write to the Database, making a new account for the user
     							 */
     							CSVwriter writer = new CSVwriter();
-    							writer.CSVwriterAccounts(Name, User, Pass, 0);
+    							writer.CSVwriterAccounts(csvAccountsFile, Name, User, Pass, 0);
     						} catch (IOException e) {
     							// TODO Auto-generated catch block
     							e.printStackTrace();

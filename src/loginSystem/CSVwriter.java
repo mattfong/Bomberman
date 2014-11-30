@@ -20,16 +20,17 @@ public class CSVwriter {
 	
 	/**
 	 * Writes the new account information in a CSV file, and adds the information into the account manager.
+	 * @param fileName
 	 * @param name
 	 * @param userName
 	 * @param password
 	 * @param totalScore
 	 * @throws IOException
 	 */
-	public void CSVwriterAccounts(String name, String userName, String password, int totalScore) throws IOException{
+	public void CSVwriterAccounts(String fileName, String name, String userName, String password, int totalScore) throws IOException{
 		
 		//Creates a CSV file if it does not exist, and appends data to the file
-		CSVWriter writer = new CSVWriter(new FileWriter((csvAccountsFile), true), ',');	
+		CSVWriter writer = new CSVWriter(new FileWriter((fileName), true), ',');	
 		Account newUser = new Account();
 		newUser.setName(name);
 		newUser.setUserName(userName);
@@ -45,11 +46,12 @@ public class CSVwriter {
 	/**
 	 * Writes the list of accounts in a CSV file, after a user has deleted their account.
 	 * The new list is stored in a temporary file, then the original file is overwritten. 
+	 * @param fileName
 	 * @param accounts
 	 * @throws IOException
 	 */
-	public void CSVwriterAccountsList(List<Account> accounts) throws IOException {
-		File CSVfile = new File(csvAccountsFile);
+	public void CSVwriterAccountsList(String fileName, List<Account> accounts) throws IOException {
+		File CSVfile = new File(fileName);
 		File tempCSV = new File(csvAccountsFileTemp);
 		CSVWriter writer = new CSVWriter(new FileWriter((csvAccountsFileTemp), true), ',');	
 

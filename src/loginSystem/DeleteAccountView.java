@@ -35,7 +35,7 @@ public class DeleteAccountView {
 	private JFrame controllingFrame;
 
 
-	
+	private final String csvAccountsFile = "UserPass.csv";
 	/**
 	 * This creates the DeleteAccount Frame and panel                     (1)
 	 * <p>
@@ -102,7 +102,7 @@ public class DeleteAccountView {
 					
 					accountManager.deleteAccount(User); /* and if one is found it deltes it */
 					System.out.println("AM:" + accountManager.numberOfAccounts() + "," + accountManager.getAccounts());	
-					writer.CSVwriterAccountsList(accountManager.getAccounts());
+					writer.CSVwriterAccountsList(csvAccountsFile, accountManager.getAccounts());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
