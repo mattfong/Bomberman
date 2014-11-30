@@ -5,6 +5,15 @@ import gameplay.GamePanel;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+/**
+ * @author MF InputListener listens to the keyboard and caches input and holds
+ *         it until another system poll's the InputListener for the last command
+ *         issued by the user. Implemented via the singleton pattern to allow
+ *         access throughout the entire system. To implement speed, getCommand()
+ *         only returns a command on every n-th call, calling
+ *         increaseQuerySpeed() decreases the number of polls necessary to
+ *         generate a new command.
+ */
 public class InputListener extends KeyAdapter implements CommandIssuer {
 
     private static InputListener singleton = null;
@@ -38,6 +47,9 @@ public class InputListener extends KeyAdapter implements CommandIssuer {
 
     }
 
+    /**
+     * Increases the speed at which the listener responds to polls.
+     */
     public void increaseQuerySpeed() {
 	queryDelay--;
     }
