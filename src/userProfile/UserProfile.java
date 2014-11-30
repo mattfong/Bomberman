@@ -1,4 +1,4 @@
-package model;
+package userProfile;
 
 import highscore.HighScoreDatabase;
 
@@ -20,10 +20,15 @@ public class UserProfile {
 	private SavedGameManager saveManager;
 	private HighScoreDatabase scoreDatabase;
 	// Insert Unlocked Levels
-
+	
 	public UserProfile() {
+		
+	}
+	
+	public UserProfile(String userName) throws IOException {
 		accountManager = new AccountManager();
 		saveManager = new SavedGameManager();
+		Init(userName);
 	}
 	
 	public static UserProfile getInstance() {
@@ -34,7 +39,7 @@ public class UserProfile {
 		return singleton;
 	}
 	
-	public void Init(String userName) throws IOException{
+	private void Init(String userName) throws IOException{
 		List<Account> allAccounts = getAllUserAccounts();
 		Account currentUser = getCurrentUser(userName);
 		List<SavedGame> savedGames = getSavedGamesByUser(currentUser.getUserName());
@@ -57,6 +62,22 @@ public class UserProfile {
 		List<SavedGame> allSavedGames = serializeGame.deserializeSaveGameName(fileName);
 		saveManager.setSavedGamesList(allSavedGames);
 		return saveManager.getSavedGamesList();
+	}
+
+	public AccountManager getAccountManager() {
+		return accountManager;
+	}
+
+	public void setAccountManager(AccountManager accountManager) {
+		this.accountManager = accountManager;
+	}
+
+	public SavedGameManager getSaveManager() {
+		return saveManager;
+	}
+
+	public void setSaveManager(SavedGameManager saveManager) {
+		this.saveManager = saveManager;
 	}
 	
 }

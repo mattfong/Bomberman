@@ -7,10 +7,10 @@ import java.util.List;
 
 public class SavedGameManager {
 	
-	private List<SavedGame> savedGamesList = new ArrayList<SavedGame>();
+	private List<SavedGame> savedGamesList;
 	
 	public SavedGameManager() {
-		super();
+		savedGamesList = new ArrayList<SavedGame>();
 	}
 
 	public List<SavedGame> getSavedGamesList() {
@@ -20,7 +20,7 @@ public class SavedGameManager {
 	public void setSavedGamesList(List<SavedGame> savedGamesList) {
 		this.savedGamesList = savedGamesList;
 	}
-	
+
 	public void addSavedGame(SavedGame game) {
 		savedGamesList.add(game);
 	}
