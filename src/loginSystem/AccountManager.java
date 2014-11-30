@@ -73,4 +73,26 @@ public class AccountManager {
 		return false;
 	}
 	
+	public List<String> getAllUsernames() {
+		String userName = "";
+		List<String> userNameList = new ArrayList<String>(); 
+		for(int i=0; i<numberOfAccounts(); i++) {
+			Account acc = accounts.get(i);
+			userName = acc.getUserName();
+			userNameList.add(userName);
+		}
+		return userNameList;
+	}
+	
+	public List<Integer> getAllTotalScores() {
+		int totalScore = 0;
+		List<Integer> totalScoresList = new ArrayList<Integer>(); 
+		
+		for(int i=0; i<numberOfAccounts(); i++) {
+			Account acc = accounts.get(i);
+			totalScore = acc.getTotalScore(); 
+			totalScoresList.add(totalScore);
+		}
+		return totalScoresList;
+	}
 }
