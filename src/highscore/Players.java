@@ -15,20 +15,7 @@ public class Players {
 	this.scores = integerList;
     }
     
-    
-    //TO KIRTH: ADD HERE
-    public void getPlayerNamesFromCSV(){
-	//this should get data from the savedGame system and input into the String list
-	
-	//setPlayerNames(List<String> list HERE);
-    }
-    
-    //TO KIRTH: ADD HERE
-    public void getPlayerScoresFromCSV(){
-	//this should get data from the savedGame system and input it into the Integer list
-	
-	//setScores(List<Integer> list HERE);
-    }
+ 
     
     
     //Getters/Setters for player names

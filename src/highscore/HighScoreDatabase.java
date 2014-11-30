@@ -7,8 +7,6 @@ import java.util.ListIterator;
 
 public class HighScoreDatabase {
     
-    //private List <Integer> scores = new LinkedList<Integer>();
-    //private List<String> playerNames = new LinkedList<String>();
     
     private Players listOfPlayers;
     
@@ -30,13 +28,6 @@ public class HighScoreDatabase {
     }
 
 
-    
-    
-    
-    
-    //Getter and setters for listOfPlayers
-   
-    
     
     //TODO
     public List<String> transmitPlayerNames(){
@@ -136,46 +127,7 @@ public class HighScoreDatabase {
 	//this.listOfPlayers.setScores(this.sortByScore().getScores());	
     }
     
-    /* DEPRECATED
-    //Populates the a list of string with "Empty"
-    public static List<String> playersListPopulator(List<String> strlist){
-	
-	strlist.add("<Empty>");
-	strlist.add("<Empty>");
-	strlist.add("<Empty>");
-	strlist.add("<Empty>");
-	strlist.add("<Empty>");
-	strlist.add("<Empty>");
-	strlist.add("<Empty>");
-	strlist.add("<Empty>");
-	strlist.add("<Empty>");
-	strlist.add("<Empty>");
-	
-	return strlist;
-    }
     
-    
-    //Populates a list of Integers with -1
-    public static List<Integer> scoresListPopulator(List<Integer> intlist){
-	
-	intlist.add(-1);
-	intlist.add(-1);
-	intlist.add(-1);
-	intlist.add(-1);
-	intlist.add(-1);
-	intlist.add(-1);
-	intlist.add(-1);
-	intlist.add(-1);
-	intlist.add(-1);
-	intlist.add(-1);
-	
-	
-	return intlist;
-	
-	
-    }
-    
-    */
     
     //takes two lists that have already been sorted by the sortedForm method
     public Players topTen(Players players){
@@ -230,64 +182,7 @@ public class HighScoreDatabase {
     
     
  
-    /*
-    
-    //This looks at the listOfPlayers and returns the top 10 players along with their scores
-    public Players topTen(){
-	
-	this.sortedForm();
-	
-	List<String> p = new LinkedList<String>();
-	List<Integer> s = new LinkedList<Integer>();
-	
-	playersListPopulator(p);
-	scoresListPopulator(s);
-	
-	
-	//Putting the right number of Strings in
-	ListIterator<String> nameIterator = this.listOfPlayers.getPlayerNames().listIterator();
-	
-	int indexNames = 0;
-	while(nameIterator.hasNext() && (nameIterator.next()!=null) && (indexNames < 10)){
-	    
-	    
-	    p.remove(indexNames);
-	    
-	    String str = nameIterator.next();
-	    
-	    p.add(indexNames, str);
-	    
-	    indexNames++;
-	    
-	}
-	
-	
-	//Putting the right number of scores in
-	ListIterator<Integer> scoreIterator = this.listOfPlayers.getScores().listIterator();
-	
-	int indexScores = 0;
-	
-	while(scoreIterator.hasNext() && (scoreIterator.next() != null) && (indexScores < 10)){
-	    
-	    s.remove(indexScores);
-	    
-	    int integer = scoreIterator.next();
-	    
-	    s.add(indexScores, integer);
-	    
-	    indexScores++;
-	    
-	}
-	
-	
-	Players newPlayer = new Players(p, s);
-	
-	
-	return newPlayer;
-	
-    }
-    
-    */
+   
     
     
     public static void main(String[]args){
@@ -328,7 +223,10 @@ public class HighScoreDatabase {
 	
 	
 	//Logic to be implemented by the controller
-	Players testPlayers = new Players(p, s);
+	
+	//Linked list 1 = ...
+	//Linked list 2 = ...
+	Players testPlayers = new Players(p, s); //p and s should be coming from the players class. 
 	
 	HighScoreDatabase testdb = new HighScoreDatabase(testPlayers);
 	
