@@ -235,11 +235,6 @@ public class WorldGenerator implements Serializable {
 
     }
 
-    // TODO implement it so that it's placed under a random spot
-    private void placePowerup(Stack<GameObject>[][] grid) {
-	// TODO: IMPLEMENT THIS
-    }
-
     private void addGameObject(GameObject gameObject, Stack<GameObject>[][] grid) {
 	int xIndex;
 	int yIndex;
