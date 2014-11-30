@@ -1,15 +1,14 @@
 package highscore;
 
 import gameplay.pauseMenu.PanelManager;
-import gameplay.statemanagers.GameStateManager;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.NumberFormat;
-import java.util.Locale;
+import java.io.IOException;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -17,14 +16,46 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.border.Border;
 
+import loginSystem.Account;
+import loginSystem.AccountManager;
+import loginSystem.CSVreader;
 import loginSystem.PlayGameView;
+import userProfile.UserProfile;
 
 public class HighScoreView extends JFrame implements ActionListener {
 
     JFrame f;
+    
+    public static void main(String[]args){
+	
+	CSVreader reader = new CSVreader();
+	AccountManager accountManager = new AccountManager();
+	try {
+		accountManager.setAccounts(reader.CSVreaderAccounts());
+	} catch (IOException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	
+	List<Account> accounts = accountManager.getAccounts();
+	
+	System.out.println(accounts.get(0).getUserName());
+    }
 
     public HighScoreView() {
 
+	This is 
+	//UserProfile user = UserProfile.getInstance();
+	CSVreader reader = new CSVreader();
+	AccountManager accountManager = new AccountManager();
+	try {
+		accountManager.setAccounts(reader.CSVreaderAccounts());
+	} catch (IOException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	
+	List<Account> accounts = accountManager.getAccounts();
 	// High Score Label
 
 	f = new JFrame("Bomberman - High Score");
@@ -53,12 +84,13 @@ public class HighScoreView extends JFrame implements ActionListener {
 	String player2 = "Demo02        10,000";
 	String player8 = "Demo08        9,000";
 
+	/*
 	String rogue = "Demo11        ";
 	GameStateManager gameStateManager = GameStateManager.getInstance();
 	Integer rogueScore = gameStateManager.getScore();
 	String s = NumberFormat.getNumberInstance(Locale.US).format(rogueScore);
 	// System.out.println(NumberFormat.getNumberInstance(Locale.US).format(rogueScore));
-
+	*/
 
 	// 10 Players --NOTE EACH SCORE HAS IT'S BORDER, IT'S TO CUSTOMIZE THE
 	// COLORS LATER ON
