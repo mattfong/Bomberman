@@ -71,6 +71,14 @@ public class Factory implements Serializable {
 
     }
 
+    /**
+     * Creates a powerup instance for the given level.
+     * 
+     * @param level
+     *            required level
+     * @return instance of the Powerup associated with that level with location
+     *         set to 0,0
+     */
     public Powerup getPowerup(Level level) {
 	Powerup powerup;
 	Class c;
