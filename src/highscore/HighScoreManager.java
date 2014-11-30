@@ -23,7 +23,7 @@ public class HighScoreManager {
     
 
     // TO KIRTH: ADD HERE
-    public static List<String> getPlayerNamesFromCSV() {
+    private List<String> getPlayerNamesFromCSV() {
 	// this should get data from the savedGame system and input into the
 	// String list
 
@@ -32,7 +32,7 @@ public class HighScoreManager {
     }
 
     // TO KIRTH: ADD HERE
-    public static List<Integer> getPlayerScoresFromCSV() {
+    private List<Integer> getPlayerScoresFromCSV() {
 	// this should get data from the savedGame system and input it into the
 	// Integer list
 
