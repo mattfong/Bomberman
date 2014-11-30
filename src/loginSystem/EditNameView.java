@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import userProfile.EditNameViewLogic;
+
 /**
  * @author Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>
  * @version 1.6 (current version number of program)
@@ -38,6 +40,7 @@ public class EditNameView {
 				String newName = jt.getText();
 				//DO SOMETHING WITH THIS
 				frame.dispose();
+				EditNameViewLogic.editNameLogic(newName);
 				EditNameView.main(null);
 			}
 		});
