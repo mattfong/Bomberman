@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 /**
  * @author mfong8 Implenting class for the abstract GameObject class. Implements
- *         features associated with moveable game actor objects.
+ *         features associated with moveable game actor objects. Each GameActor is responsible to manage it's own state, it checks if it has been killed and if is has raises a flag for the game engine to remove it from play.
  */
 /**
  * @author MF
@@ -48,13 +48,13 @@ public class GameActor extends GameObject implements Serializable {
 
     }
 
+    /**
+     * @return rectangle representing bomberman's coordinates
+     */
     public Rectangle getBombermanCoordinates() {
 	return world.getBombermanCoordinates();
     }
 
-    /**
-     * @return
-     */
     protected boolean checkIfBombed() {
 
 	if (world.getGameObjectInstanceAt(this.getLocation()) instanceof Explosion) {
@@ -65,17 +65,19 @@ public class GameActor extends GameObject implements Serializable {
 
     }
 
+    /**
+     * @param direction
+     *            direction enum in which to check
+     * @return true if the GameActor is able to move onto the grid element.
+     */
     public boolean canMove(Direction direction) {
 	return !(world.willCollide(this, direction));
 
     }
 
-    private boolean hasCollided() {
-
-	return world.checkForCollision(this);
-
-    }
-
+    /**
+     * @return check if the GameActor is dead.
+     */
     public boolean isDead() {
 	return isDead;
     }
@@ -148,16 +150,26 @@ public class GameActor extends GameObject implements Serializable {
 
     }
 
+    /**
+     * @return true if bomberman is at an intersection, false if not
+     */
     public boolean isAtIntersection() {
 	return world.isIntersection(this.getLocation());
     }
 
-    public int distanceToBomberman() {
-	return world.distanceToBomberman(this);
-    }
+    // /**
+    // * @return int value for distance to Bomberman
+    // */
+    // public int distanceToBomberman() {
+    // return world.distanceToBomberman(this);
+    // }
 
-    public boolean bombermanWithinRange(int range) {
-	return world.bombermanWithin(this, range);
-    }
+    // /**
+    // * @param range range to bomberan to check
+    // * @return true if bomberman is within the range inclusively
+    // */
+    // public boolean bombermanWithinRange(int range) {
+    // return world.bombermanWithin(this, range);
+    // }
 
 }

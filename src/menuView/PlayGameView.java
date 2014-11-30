@@ -53,6 +53,8 @@ public class PlayGameView extends JPanel{
 		logoutButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 //				f.dispose();
+				MenuDisplay md = new MenuDisplay();
+				md.goTo("loginMenu");
 			}
 		});
 		

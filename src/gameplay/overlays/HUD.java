@@ -6,6 +6,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
+/**
+ * @author MF Class containing the HUD overlay which displays the score,
+ *         remaining lives and countdown.
+ */
 public class HUD {
 
     public static void draw(Graphics g, CountdownTimer timer) {

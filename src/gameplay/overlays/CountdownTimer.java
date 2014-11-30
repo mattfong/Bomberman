@@ -5,28 +5,36 @@ import gameplay.gameobject.Bomberman;
 
 import java.io.Serializable;
 
+/**
+ * @author MF Class which runs the game timer whcih is displayed to the user.
+ */
 public class CountdownTimer implements Serializable {
 
-    // private transient Timer timer;
-    // Timer timer;
     int countdown;
     private World world;
     private int frameRate = 25;// 25 frames per second, shoud match the frame
 			       // rate in the gamepanel engine
     private int counter;
 
+    public CountdownTimer(World world) {
+	countdown = 200;
+	this.world = world;
+
+	counter = 0;
+    }
+
+    /**
+     * @return the value of the countdown from when the game started.
+     */
     public int getcountdown() {
 	return countdown;
     }
 
-    public CountdownTimer(World world) {
-	countdown = 200;
-	this.world = world;
-	// timer = new Timer(1000, this);
-	// timer.start();
-	counter = 0;
-    }
-
+    /**
+     * drives the countdown, when called if 1 second has passed it will
+     * decrement the countdown by 1. Kills bomberman when the countdown reaches
+     * 0.
+     */
     public void update() {
 	counter++;
 	if ((counter % frameRate) == 0) {
@@ -36,7 +44,7 @@ public class CountdownTimer implements Serializable {
 		    Bomberman bomberman = (Bomberman) world.getBomberman();
 		    bomberman.die();
 		}
-		countdown = 200;
+		reset();
 	    }
 	    counter = 0;
 	}

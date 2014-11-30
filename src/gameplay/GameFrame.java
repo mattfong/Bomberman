@@ -5,13 +5,28 @@ import gameplay.statemanagers.GameStateManager;
 
 import javax.swing.JFrame;
 
+/**
+ * @author MF GameFrame which contains the Bomberman game.
+ */
 public class GameFrame extends JFrame {
 
+    /**
+     * Start a game at the level specified within the parameter.
+     * 
+     * @param level
+     *            level enum representing the level to be loaded.
+     */
     public GameFrame(Level level) {
 	initUI(level);
 
     }
 
+    /**
+     * Starts a game from the world specified.
+     * 
+     * @param world
+     *            world that is to be loaded.
+     */
     public GameFrame(World world) {
 	initUI(world);
     }

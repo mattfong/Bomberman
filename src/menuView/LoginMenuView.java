@@ -24,7 +24,7 @@ public class LoginMenuView extends JPanel{
 	}
 	
 	private void initUI() {
-		setLayout(new GridLayout(5,2,5,10));
+		setLayout(new GridLayout(8,2,5,10));
 		JLabel loginMenuLabel = new JLabel("Login Menu");
 		loginMenuLabel.setFont(new Font("Miriam", Font.BOLD, 28));
 		
@@ -56,6 +56,8 @@ public class LoginMenuView extends JPanel{
 		deleteAccountButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				//dispose();
+				MenuDisplay md = new MenuDisplay();
+				md.goTo("deleteMenu");
 			}		
 		});
 		
