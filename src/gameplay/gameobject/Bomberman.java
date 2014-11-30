@@ -104,6 +104,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
     public void update() {
 	inputManager.processCommand();
 	checkForAndApplyPowerup();
+	checkForDoor();
 	checkIfDead();
 
     }
