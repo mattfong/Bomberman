@@ -21,6 +21,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+
+import userProfile.LoginMenuViewLogic;
 /**
  * @author      Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>
  * @version     1.5                 (current version number of program)
@@ -102,20 +104,22 @@ public class LoginMenuView {
 						 * If the username/password are correct sevral things happen.
 						 */
 						justUsername=jt.getText(); /*The username is stored so to generate their game state with */
+
+						f.dispose();	
 						
-						
-						
+						LoginMenuViewLogic.loginMenuLogic(justUsername);
+						/*
 						Account acc = accountManager.getAccount(justUsername); 
 						GameStateManager manager = GameStateManager.getInstance();
 						
 						GameState gameState = new GameState(acc.getUserName(), acc.getName());
 						gameState.setWorld(new World(31, 13,Level.L1));
-						manager.setCurrentGameState(gameState); /*Matt I don't actuly know what this does*/
-						
-						f.dispose();						
-						PlayGameView.main(null); /*The frame disposes and the PlayGameView class is opened*/	
+						manager.setCurrentGameState(gameState); //Matt I don't actuly know what this does
+											
+						PlayGameView.main(null); //The frame disposes and the PlayGameView class is opened	
 										
 						System.out.println("Username entered correctly");
+						*/
 					}
 					else{
 						/*
