@@ -22,7 +22,7 @@ public class CSVwriterTest {
 
 	@Test
 	public void test() throws IOException {
-		writer.CSVwriterAccounts("Demo1 Game1", "Demo11", "Demo111@");
+		
 		assertTrue("Username matches: ", acc.getUserName().equals(accManager.getAccounts()));
 	}
 

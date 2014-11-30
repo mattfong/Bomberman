@@ -25,7 +25,7 @@ public class LoginMenuView extends JPanel{
 	
 	private void initUI() {
 		setLayout(new GridLayout(5,2,5,10));
-		JLabel loginMenuLabel = new JLabel("Load Menu");
+		JLabel loginMenuLabel = new JLabel("Login Menu");
 		loginMenuLabel.setFont(new Font("Miriam", Font.BOLD, 28));
 		
 		JTextField userNameField = new JTextField(30);
@@ -34,30 +34,30 @@ public class LoginMenuView extends JPanel{
 		JLabel enterUserName = new JLabel("Enter Username: ");
 		JLabel enterPassword = new JLabel("Enter Password:");
 		
-		JButton login = new JButton("Login ");
-		JButton newAccount = new JButton("Create new account");
-		JButton deleteAccount = new JButton("Delete Account");
-		JButton suprise=new JButton("Click here for a suprise");
+		JButton loginButton = new JButton("Login ");
+		JButton newAccountButton = new JButton("Create new account");
+		JButton deleteAccountButton = new JButton("Delete Account");
+		JButton supriseButton = new JButton("Click here for a suprise");
 		
-		login.addActionListener(new ActionListener(){
+		loginButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				//dispose();
 			}		
 		});
 		
-		newAccount.addActionListener(new ActionListener(){
+		newAccountButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				//dispose();
 			}		
 		});	
 		
-		deleteAccount.addActionListener(new ActionListener(){
+		deleteAccountButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				//dispose();
 			}		
 		});
 		
-		suprise.addActionListener(new ActionListener(){
+		supriseButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				String url="https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 		    	Desktop d=Desktop.getDesktop();
@@ -79,9 +79,9 @@ public class LoginMenuView extends JPanel{
 		add(userNameField);
 		add(enterPassword);
 		add(passwordField);
-		add(login);
-		add(deleteAccount);
-		add(newAccount);
-		add(suprise);
+		add(loginButton);
+		add(deleteAccountButton);
+		add(newAccountButton);
+		add(supriseButton);
 	}
 }
