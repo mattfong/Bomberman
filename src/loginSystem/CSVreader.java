@@ -15,7 +15,12 @@ public class CSVreader {
 	public CSVreader() {
 		super();
 	}
-
+	
+	/***
+	 * Reads each line in the CSV file, and adds all the accounts into the account Manager.
+	 * @return a list of all the accounts
+	 * @throws IOException
+	 */
 	public List<Account> CSVreaderAccounts() throws IOException{
 		
 		CSVReader reader = new CSVReader(new FileReader(csvAccountsFile));
@@ -30,7 +35,7 @@ public class CSVreader {
 		}
 		
 		reader.close();
-		System.out.println(accountManager.getAccounts());
+		
 		return accountManager.getAccounts();
 	}
 	

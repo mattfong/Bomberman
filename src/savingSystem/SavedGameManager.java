@@ -20,19 +20,23 @@ public class SavedGameManager {
 	public void setSavedGamesList(List<SavedGame> savedGamesList) {
 		this.savedGamesList = savedGamesList;
 	}
-
-	public void addSavedGame(SavedGame game) {
-		savedGamesList.add(game);
-	}
 	
+	/**
+	 * Add a saved game to the list of saved games.
+	 * @param savedGameName
+	 * @return a saved game
+	 */
 	public SavedGame addSavedGameName(String savedGameName){
 		SavedGame currentSavedGame = new SavedGame();
 		currentSavedGame.setSavedGameName(savedGameName);
-		addSavedGame(new SavedGame(currentSavedGame.getGameState(), currentSavedGame.getUserName(), currentSavedGame.getSavedGameName()));
-		System.out.println("size in add: " + numberOfSavedGames());
+		savedGamesList.add(new SavedGame(currentSavedGame.getGameState(), currentSavedGame.getUserName(), currentSavedGame.getSavedGameName()));
 		return currentSavedGame;
 	}
 	
+	/**
+	 * Removes a saved game from the list.
+	 * @param removeSavedGame
+	 */
 	public void removeSavedGame(String removeSavedGame){
 		for(int i=0; i<savedGamesList.size(); i++){
 			SavedGame savedGame = savedGamesList.get(i);
@@ -42,10 +46,20 @@ public class SavedGameManager {
 		}
 	}
 	
+	/**
+	 * Determines the number of saved games in the list.
+	 * @return the number of saved games in the list
+	 */
 	public int numberOfSavedGames(){
 		return savedGamesList.size();
 	}
 	
+	/***
+	 * Get the name of the saved game file of the user.
+	 * @param userName
+	 * @return
+	 * @throws IOException
+	 */
 	public String getSaveGameFile(String userName) throws IOException{
 		String fileName = userName + "SaveGameList.ser";
 		File saveFile = new File(fileName);
