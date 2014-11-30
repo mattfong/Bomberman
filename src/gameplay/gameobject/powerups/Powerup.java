@@ -3,7 +3,7 @@ package gameplay.gameobject.powerups;
 import gameplay.gameobject.BombermanInterface;
 
 /**
- * @author mfong8 Interface which defines the behvariour of a powerup
+ * @author mfong8 Interface which defines the behavior of a powerup
  */
 public interface Powerup {
 
@@ -14,5 +14,7 @@ public interface Powerup {
      *            actor on which the powerup will be applied to.
      */
     public void applyPowerup(BombermanInterface bomberman);
+
+    public void haveBeenBombed();
 
 }

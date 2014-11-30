@@ -28,4 +28,10 @@ public class FlamePassPowerup extends GameObject implements Powerup {
 	actor.setFlamePass(true);
     }
 
+    @Override
+    public void haveBeenBombed() {
+	// TODO Auto-generated method stub
+
+    }
+
 }

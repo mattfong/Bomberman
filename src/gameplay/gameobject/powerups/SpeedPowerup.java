@@ -28,4 +28,10 @@ public class SpeedPowerup extends GameObject implements Powerup {
 	actor.increaseMoveSpeed();
     }
 
+    @Override
+    public void haveBeenBombed() {
+	// TODO Auto-generated method stub
+
+    }
+
 }

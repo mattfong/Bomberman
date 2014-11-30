@@ -8,6 +8,7 @@ import gameplay.gameobject.GameObject;
 import gameplay.gameobject.blocks.Background;
 import gameplay.gameobject.blocks.Explosion;
 import gameplay.gameobject.blocks.Wall;
+import gameplay.gameobject.powerups.Powerup;
 import gameplay.overlays.CountdownTimer;
 
 import java.awt.Graphics;
@@ -185,6 +186,11 @@ public class World implements Serializable {
 	int yIndex = (location.y / 32) + direction.getY();
 
 	GameObject o = grid[xIndex][yIndex].peek();
+
+	if (o instanceof Powerup) {
+	    ((Powerup) o).haveBeenBombed(); // alert the powerup that someone
+					    // has set it on fire
+	}
 
 	if (o.conductsExplosions()) {
 	    addGameObject(new Explosion(new Rectangle(xIndex * 32, yIndex * 32, 32, 32), this, explosionLength));

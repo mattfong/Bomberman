@@ -132,7 +132,7 @@ public class WorldGenerator implements Serializable {
 								       // index
 	tempObject = temp.pop();
 	addGameObject(new Door(tempObject.getLocation(), world), grid);
-	// System.out.println(tempObject.getLocation().toString()); TODO: remove
+	// System.out.println(tempObject.getLocation().toString());
 	temp.push(tempObject);
 
 	temp = brickLocations.get(rng.nextInt(brickLocations.size()));

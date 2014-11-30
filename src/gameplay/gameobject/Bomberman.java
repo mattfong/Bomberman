@@ -3,6 +3,7 @@ package gameplay.gameobject;
 import gameplay.World;
 import gameplay.gameobject.blocks.Bomb;
 import gameplay.gameobject.blocks.Brick;
+import gameplay.gameobject.powerups.Door;
 import gameplay.gameobject.powerups.Powerup;
 import gameplay.input.CommandManager;
 import gameplay.input.InputListener;
@@ -66,13 +67,24 @@ public class Bomberman extends GameActor implements BombermanInterface {
     }
 
     private void checkForAndApplyPowerup() {
-	if (world.getGameObjectInstanceAt(this.getLocation()) instanceof Powerup) {
+
+	GameObject checkObject = world.getGameObjectInstanceAt(this.getLocation());
+	if ((checkObject instanceof Powerup) && !(checkObject instanceof Door)) {
 	    Powerup bacon = (Powerup) world.getGameObjectInstanceAt(this.getLocation());
 	    bacon.applyPowerup(this);
 	    GameObject eggs = world.getGameObjectInstanceAt(this.getLocation());
 	    eggs.destroy();
 	}
 
+    }
+
+    private void checkForDoor() {
+	GameObject checkObject = world.getGameObjectInstanceAt(this.getLocation());
+	if (checkObject instanceof Door) {
+	    if (((Door) checkObject).isOpen()) {
+		((Door) checkObject).applyPowerup(this);
+	    }
+	}
     }
 
     /**

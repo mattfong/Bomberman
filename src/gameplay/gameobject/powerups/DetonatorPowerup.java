@@ -28,4 +28,10 @@ public class DetonatorPowerup extends GameObject implements Powerup {
 	actor.setDetonator(true);
     }
 
+    @Override
+    public void haveBeenBombed() {
+	// TODO Auto-generated method stub
+
+    }
+
 }
