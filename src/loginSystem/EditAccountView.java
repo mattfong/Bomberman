@@ -27,7 +27,7 @@ public class EditAccountView {
 	 * <p>
 	 */
 	public void editMenu() {
-		final JFrame frame = new JFrame("Login menu");
+		final JFrame frame = new JFrame("edit your account details");
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(3, 1, 5, 10));
 		
