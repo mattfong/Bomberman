@@ -11,8 +11,8 @@ public class DumbAI extends AI {
     private boolean wentDownOnce = false;
 
     // Constructor
-    public DumbAI(GameActor actor) {
-	super(actor, AILevel.EASY);
+    public DumbAI(GameActor actor, Speed speed) {
+	super(actor, speed);
     }
 
     @Override
@@ -34,11 +34,13 @@ public class DumbAI extends AI {
 	Boolean cantMoveDown = !canMoveDown;
 
 	/*
-	 * System.out.println("Move Down: " + canMoveDown); System.out.println("Move Up: " + canMoveUp); System.out.println("Move Right: " + canMoveRight); System.out.println("Move Left: " +
-	 * canMoveLeft);
+	 * System.out.println("Move Down: " + canMoveDown);
+	 * System.out.println("Move Up: " + canMoveUp);
+	 * System.out.println("Move Right: " + canMoveRight);
+	 * System.out.println("Move Left: " + canMoveLeft);
 	 */
 
-	if (counter > 10) {
+	if (counter > speed) {
 	    counter = 0;
 
 	    if (wentDownOnce == true) {

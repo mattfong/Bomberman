@@ -2,6 +2,7 @@ package gameplay.gameobject.enemies;
 
 import gameplay.World;
 import gameplay.ai.DumbAI;
+import gameplay.ai.Speed;
 import gameplay.gameobject.GameActor;
 import gameplay.input.CommandManager;
 
@@ -17,7 +18,7 @@ public class Doll extends GameActor implements Cloneable {
 	// inputManager = new CommandManager(this, InputListener.getInstance());
 	score = 400;
 	wallPass = false;
-	inputManager = new CommandManager(this, new DumbAI(this));
+	inputManager = new CommandManager(this, new DumbAI(this, Speed.NORMAL));
     }
 
     public Doll(World world) {

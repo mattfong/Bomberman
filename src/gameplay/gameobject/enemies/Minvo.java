@@ -2,6 +2,7 @@ package gameplay.gameobject.enemies;
 
 import gameplay.World;
 import gameplay.ai.DumbAI;
+import gameplay.ai.Speed;
 import gameplay.gameobject.GameActor;
 import gameplay.input.CommandManager;
 
@@ -18,7 +19,7 @@ public class Minvo extends GameActor {
 
 	score = 800;
 	wallPass = false;
-	inputManager = new CommandManager(this, new DumbAI(this));
+	inputManager = new CommandManager(this, new DumbAI(this, Speed.FAST));
     }
 
     public Minvo(World world) {

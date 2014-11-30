@@ -8,16 +8,14 @@ import java.util.Random;
 
 public class AverageAI extends AI {
 
-    private Integer speed = 5;
-
     private Boolean justMovedLeft = false;
     private Boolean justMovedUp = false;
 
     private Boolean leftRight = true;
     private Boolean isAtIntersection;
 
-    public AverageAI(GameActor actor) {
-	super(actor, AILevel.MEDIUM);
+    public AverageAI(GameActor actor, Speed speed) {
+	super(actor, speed);
 
     }
 
