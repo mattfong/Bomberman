@@ -41,34 +41,10 @@ public class WorldGenerator implements Serializable {
 
     }
 
-    /**
-     * Used for testing, empty game grid on which explosions and scores can be
-     * tested.
-     * 
-     * @return an empty grid
-     */
-    public Stack<GameObject>[][] generateEmptyGameGrid() {
-	grid = new Stack[gridWidth][gridHeight];
-	initStack(grid);
-	placeBackground(grid);
-	placeConcreteGrid(grid);
-	return grid;
-    }
-
-    /**
-     * Generate actor list for the given level
-     * 
-     * @return an ArrayList of game actors on the level
-     */
     public ArrayList<GameActor> getActorList() {
 	return actorList;
     }
 
-    /**
-     * Get the generated grid
-     * 
-     * @return a grid populated with the grid according to level spec
-     */
     public Stack<GameObject>[][] getGrid() {
 	return grid;
     }
@@ -97,17 +73,85 @@ public class WorldGenerator implements Serializable {
     private void generateGameGrid(Level level) {
 	grid = new Stack[gridWidth][gridHeight];
 
-	buildGrid(grid);
+	populateGrid(grid);
 	placePowerupAndDoor(grid, factory.getPowerup(level));
 	populateActors(level);
     }
 
-    private void buildGrid(Stack<GameObject>[][] grid) {
+    private void populateActors(Level level) {
+
+	actorList = factory.getEnemyList(level);
+	placeEnemiesInEmptySpot(actorList, this.grid);
+
+	actorList.add(new Bomberman(new Rectangle(32, 32, 32, 32), world));
+
+    }
+
+    private void placeEnemiesInEmptySpot(ArrayList<GameActor> enemiesList, Stack<GameObject>[][] grid) {
+	ArrayList<Stack<GameObject>> emptyStacks = new ArrayList<Stack<GameObject>>();
+	rng = new Random();
+
+	for (int i = 1; i < (gridWidth - 1); i++) {
+	    for (int j = 1; j < (gridHeight - 1); j++) {
+		if (!(grid[i][j].peek() instanceof Brick) && !(grid[i][j].peek() instanceof Wall)) {
+		    emptyStacks.add(grid[i][j]);
+		}
+	    }
+	}
+	int randomNumber;
+	for (GameActor enemy : enemiesList) {
+	    randomNumber = rng.nextInt(emptyStacks.size());
+	    enemy.setLocation(emptyStacks.get(randomNumber).peek().getLocation());
+	    emptyStacks.remove(randomNumber);
+
+	}
+
+    }
+
+    private void placePowerupAndDoor(Stack<GameObject>[][] grid, Powerup powerup) {
+	ArrayList<Stack<GameObject>> brickLocations = new ArrayList<Stack<GameObject>>();
+	rng = new Random();
+
+	for (int i = 1; i < (gridWidth - 1); i++) {
+	    for (int j = 1; j < (gridHeight - 1); j++) {
+		if (grid[i][j].peek() instanceof Brick) {
+		    brickLocations.add(grid[i][j]);
+		}
+	    }
+	}
+	int randomNumber;
+
+	Stack<GameObject> temp;
+	GameObject tempObject;
+	GameObject powerupObject = (GameObject) powerup;
+
+	temp = brickLocations.get(rng.nextInt(brickLocations.size())); // get
+								       // the
+								       // object
+								       // at the
+								       // index
+	tempObject = temp.pop();
+	addGameObject(new Door(tempObject.getLocation(), world), grid);
+	// System.out.println(tempObject.getLocation().toString());
+	temp.push(tempObject);
+
+	temp = brickLocations.get(rng.nextInt(brickLocations.size()));
+	tempObject = temp.pop();
+	powerupObject.setLocation(tempObject.getLocation());
+	// System.out.println(tempObject.getLocation().toString()); TODO: remove
+	addGameObject(powerupObject, grid);
+	temp.push(tempObject);
+
+    }
+
+    private void populateGrid(Stack<GameObject>[][] grid) {
 	initStack(grid);
-	placeBackground(grid);
-	placeConcreteGrid(grid);
+	fillBackground(grid);
+	concreteFill(grid);
 	placeBricks(grid);
 	clearTopLeftCorner(grid);
+	// placePowerup(grid);
+	addGameObject(new Background(new Rectangle(32, 32, 32, 32), world), grid);
 	// addGameObject(new DetonatorPowerup(new Rectangle(3 * 32, 4 * 32, 32,
 	// 32), world), grid);
 	// addGameObject(new Door(new Rectangle(3 * 32, 6 * 32, 32, 32), world),
@@ -122,7 +166,7 @@ public class WorldGenerator implements Serializable {
 	}
     }
 
-    private void placeBackground(Stack<GameObject>[][] grid) {
+    private void fillBackground(Stack<GameObject>[][] grid) {
 	for (int i = 0; i < gridWidth; i++) {
 	    for (int j = 0; j < gridHeight; j++) {
 		addGameObject(new Background(new Rectangle(i * blockSize, j * blockSize, blockSize, blockSize), world), grid);
@@ -130,7 +174,7 @@ public class WorldGenerator implements Serializable {
 	}
     }
 
-    private void placeConcreteGrid(Stack<GameObject>[][] grid) {
+    private void concreteFill(Stack<GameObject>[][] grid) {
 	for (int i = 0; i < gridWidth; i++) {
 
 	    addGameObject(new Wall(new Rectangle(i * blockSize, 0 * blockSize, blockSize, blockSize), world), grid);
@@ -175,69 +219,9 @@ public class WorldGenerator implements Serializable {
 
     }
 
-    private void placePowerupAndDoor(Stack<GameObject>[][] grid, Powerup powerup) {
-	ArrayList<Stack<GameObject>> brickLocations = new ArrayList<Stack<GameObject>>();
-	rng = new Random();
-
-	for (int i = 1; i < (gridWidth - 1); i++) {
-	    for (int j = 1; j < (gridHeight - 1); j++) {
-		if (grid[i][j].peek() instanceof Brick) {
-		    brickLocations.add(grid[i][j]);
-		}
-	    }
-	}
-	int randomNumber;
-
-	Stack<GameObject> temp;
-	GameObject tempObject;
-	GameObject powerupObject = (GameObject) powerup;
-
-	temp = brickLocations.get(rng.nextInt(brickLocations.size())); // get
-								       // the
-								       // object
-								       // at the
-								       // index
-	tempObject = temp.pop();
-	addGameObject(new Door(tempObject.getLocation(), world), grid);
-	// System.out.println(tempObject.getLocation().toString());
-	temp.push(tempObject);
-
-	temp = brickLocations.get(rng.nextInt(brickLocations.size()));
-	tempObject = temp.pop();
-	powerupObject.setLocation(tempObject.getLocation());
-	// System.out.println(tempObject.getLocation().toString()); TODO: remove
-	addGameObject(powerupObject, grid);
-	temp.push(tempObject);
-
-    }
-
-    private void populateActors(Level level) {
-
-	actorList = factory.getEnemyList(level);
-	placeEnemiesInEmptySpot(actorList, this.grid);
-
-	actorList.add(new Bomberman(new Rectangle(32, 32, 32, 32), world));
-
-    }
-
-    private void placeEnemiesInEmptySpot(ArrayList<GameActor> enemiesList, Stack<GameObject>[][] grid) {
-	ArrayList<Stack<GameObject>> emptyStacks = new ArrayList<Stack<GameObject>>();
-	rng = new Random();
-
-	for (int i = 1; i < (gridWidth - 1); i++) {
-	    for (int j = 1; j < (gridHeight - 1); j++) {
-		if (!(grid[i][j].peek() instanceof Brick) && !(grid[i][j].peek() instanceof Wall)) {
-		    emptyStacks.add(grid[i][j]);
-		}
-	    }
-	    int randomNumber;
-	    for (GameActor enemy : enemiesList) {
-		randomNumber = rng.nextInt(emptyStacks.size());
-		enemy.setLocation(emptyStacks.get(randomNumber).peek().getLocation());
-		emptyStacks.remove(randomNumber);
-	    }
-	}
-
+    // TODO implement it so that it's placed under a random spot
+    private void placePowerup(Stack<GameObject>[][] grid) {
+	// TODO: IMPLEMENT THIS
     }
 
     private void addGameObject(GameObject gameObject, Stack<GameObject>[][] grid) {
