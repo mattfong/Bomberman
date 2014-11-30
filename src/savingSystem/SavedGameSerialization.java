@@ -11,6 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * This class serializes and deserializes all the objects that are needed to be saved. 
+ * @author Kirththiga Murugupillai
+ *
+ */
 public class SavedGameSerialization {
 	
 	private SavedGameManager manager = new SavedGameManager();

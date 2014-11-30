@@ -14,17 +14,8 @@ public class MenuDisplay {
 	LoginMenuView lPanel = new LoginMenuView();
 	PlayGameView pPanel = new PlayGameView();
 	//newAccount
-	
-	
 
 	MenuFrame frame = new MenuFrame("Bomberman");
-	
-	
-	
-	
-	
-	
-	
 	
 	public void newMenu(){
 		//frame.add(nPanel);
@@ -43,9 +34,6 @@ public class MenuDisplay {
 	public void PlayGameMenu(){
 		frame.add(pPanel);
 	}
-	
-	
-	
 	
 	public void goTo(String goTo){
 		//frame.removeAll();

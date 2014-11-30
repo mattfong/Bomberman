@@ -9,6 +9,11 @@ import gameplay.statemanagers.GameStateManager;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * This class deals with loading, saving, and deleting a game from a serialized file.
+ * @author Kirththiga Murugupillai
+ *
+ */
 public class SaveLoadController {
 
 	private SavedGameSerialization serializeGame;

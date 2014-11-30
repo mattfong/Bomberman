@@ -4,6 +4,11 @@ import gameplay.statemanagers.GameState;
 
 import java.io.Serializable;
 
+/**
+ * A class which creates the SavedGame object, which contains getters/setters for GameState, userName, and savedGameName.
+ * @author Kirththiga Murugupillai
+ *
+ */
 public class SavedGame implements Serializable{
 	
 	private GameState gameState;

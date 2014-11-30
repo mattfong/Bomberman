@@ -5,6 +5,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class performs operations on a list of SavedGame. 
+ * @author Kirththiga Murugupillai
+ *
+ */
 public class SavedGameManager {
 	
 	private List<SavedGame> savedGamesList;

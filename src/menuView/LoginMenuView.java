@@ -10,14 +10,12 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import loginSystem.NewAccountView;
-
-public class LoginMenuView extends JPanel{
+public class LoginMenuView extends JFrame{
 
 	public LoginMenuView() {
 		initUI();
@@ -88,4 +86,5 @@ public class LoginMenuView extends JPanel{
 		add(newAccountButton);
 		add(supriseButton);
 	}
+
 }

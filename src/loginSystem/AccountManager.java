@@ -3,6 +3,11 @@ package loginSystem;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class performs operations on a list of Accounts.
+ * @author Kirththiga Murugupillai
+ *
+ */
 public class AccountManager {
 
 	private List<Account> accounts = new ArrayList<Account>();
@@ -19,14 +24,27 @@ public class AccountManager {
 		this.accounts = accounts;
 	}
 
+	/**
+	 * Adding an account into a list of Accounts.
+	 * @param newAccount
+	 */
 	public void addAccount(Account newAccount){
 		accounts.add(newAccount);
 	}
 	
+	/**
+	 * Determines the number of accounts on the list.
+	 * @return size of list
+	 */
 	public int numberOfAccounts(){
 		return accounts.size();
 	}
 	
+	
+	/**
+	 * Deletes an account from a list, when a username is provided. 
+	 * @param userName
+	 */
 	public void deleteAccount(String userName) {
 		
 		for(int i=0; i<numberOfAccounts(); i++){
@@ -37,6 +55,11 @@ public class AccountManager {
 		}
 	}
 	
+	/**
+	 * Obtaining a single account from a list of accounts.
+	 * @param userName
+	 * @return the current user's account
+	 */
 	public Account getAccount(String userName){
 		Account acc = null;
 		for(int i=0; i<numberOfAccounts(); i++){
@@ -49,6 +72,11 @@ public class AccountManager {
 		return acc;
 	}
 	
+	/**
+	 * Checks if the username exists within the list of accounts.
+	 * @param userName
+	 * @return true if the username exists within the list, otherwise false
+	 */
 	public boolean isUsername(String userName) {
 		
 		for(int i=0; i<numberOfAccounts(); i++){
@@ -73,26 +101,4 @@ public class AccountManager {
 		return false;
 	}
 	
-	public List<String> getAllUsernames() {
-		String userName = "";
-		List<String> userNameList = new ArrayList<String>(); 
-		for(int i=0; i<numberOfAccounts(); i++) {
-			Account acc = accounts.get(i);
-			userName = acc.getUserName();
-			userNameList.add(userName);
-		}
-		return userNameList;
-	}
-	
-	public List<Integer> getAllTotalScores() {
-		int totalScore = 0;
-		List<Integer> totalScoresList = new ArrayList<Integer>(); 
-		
-		for(int i=0; i<numberOfAccounts(); i++) {
-			Account acc = accounts.get(i);
-			totalScore = acc.getTotalScore(); 
-			totalScoresList.add(totalScore);
-		}
-		return totalScoresList;
-	}
 }
