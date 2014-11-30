@@ -3,42 +3,42 @@ package gameplay.overlays;
 import gameplay.World;
 import gameplay.gameobject.Bomberman;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.Serializable;
 
-import javax.swing.Timer;
+public class CountdownTimer implements Serializable {
 
-public class CountdownTimer implements ActionListener, Serializable{
-	
-//    private transient Timer timer;
-	Timer timer;
+    // private transient Timer timer;
+    // Timer timer;
     int countdown;
     private World world;
+    private int frameRate = 25;// 25 frames per second, shoud match the frame
+			       // rate in the gamepanel engine
+    private int counter;
 
     public int getcountdown() {
 	return countdown;
     }
 
-    public void registerOntoWorld(World world) {
-	this.world = world;
-    }
-
-    public CountdownTimer() {
+    public CountdownTimer(World world) {
 	countdown = 200;
-	timer = new Timer(1000, this);
-	timer.start();
+	this.world = world;
+	// timer = new Timer(1000, this);
+	// timer.start();
+	counter = 0;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent arg0) {
-	countdown--;
-	if (countdown == 0) {
-	    if (world != null) {
-		Bomberman bomberman = (Bomberman) world.getBomberman();
-		bomberman.die();
+    public void update() {
+	counter++;
+	if ((counter % frameRate) == 0) {
+	    countdown--;
+	    if (countdown == 0) {
+		if (world != null) {
+		    Bomberman bomberman = (Bomberman) world.getBomberman();
+		    bomberman.die();
+		}
+		countdown = 200;
 	    }
-	    countdown = 200;
+	    counter = 0;
 	}
     }
 

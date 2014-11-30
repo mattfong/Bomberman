@@ -21,7 +21,7 @@ import java.util.Stack;
  * @author mfong8 WorldGenerator's role is to take in a level configuration and
  *         generate a populated grid based on the given level specifications.
  */
-public class WorldGenerator implements Serializable{
+public class WorldGenerator implements Serializable {
 
     private Random rng;
     private final int probabilityConstant = 20;
@@ -59,7 +59,7 @@ public class WorldGenerator implements Serializable{
      *            the level that is to be loaded as an enum Level
      */
     public void generateLevel(Level level) {
-	generateGameGrid(); // sets grid to the proper setup
+	generateGameGrid(level); // sets grid to the proper setup
 	populateActors(level); // sets the ArrayList actorList to the proper
 			       // setup
 
@@ -71,21 +71,14 @@ public class WorldGenerator implements Serializable{
      *
      * @return a fully populated grid.
      */
-    private void generateGameGrid() {
+    private void generateGameGrid(Level level) {
 	grid = new Stack[gridWidth][gridHeight];
+
 	populateGrid(grid);
 	placePowerupAndDoor(grid, new BombPowerup(new Rectangle(0, 0, 32, 32), world));
     }
 
     private void populateActors(Level level) {
-
-	// actorList = new ArrayList<GameActor>();
-	// actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
-	// actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
-	// actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
-	// actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
-	// actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
-	// actorList.add(new Balloon(new Rectangle(0, 0, 32, 32), world));
 
 	actorList = factory.createClassList(level);
 	placeEnemiesInEmptySpot(actorList, this.grid);
@@ -139,7 +132,7 @@ public class WorldGenerator implements Serializable{
 								       // index
 	tempObject = temp.pop();
 	addGameObject(new Door(tempObject.getLocation(), world), grid);
-	// System.out.println(tempObject.getLocation().toString()); TODO: remove
+	// System.out.println(tempObject.getLocation().toString());
 	temp.push(tempObject);
 
 	temp = brickLocations.get(rng.nextInt(brickLocations.size()));

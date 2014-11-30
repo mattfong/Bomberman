@@ -55,7 +55,8 @@ public class GamePanel extends JPanel implements Runnable {
      */
 
     public GamePanel(Level level) {
-
+	gameStateManager = GameStateManager.getInstance();
+	gameStateManager.registerGamePanel(this);
 	setPreferredSize(gameDim);
 	setFocusable(true);
 	requestFocus();
@@ -69,6 +70,8 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public GamePanel(World world) {
+	gameStateManager = GameStateManager.getInstance();
+	gameStateManager.registerGamePanel(this);
 	setPreferredSize(gameDim);
 	setFocusable(true);
 	requestFocus();
@@ -221,4 +224,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     }
 
+    public World getWorld() {
+	return world;
+    }
 }

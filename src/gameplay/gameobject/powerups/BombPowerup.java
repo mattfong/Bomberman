@@ -28,4 +28,10 @@ public class BombPowerup extends GameObject implements Powerup {
 	actor.increaseBombLimit();
     }
 
+    @Override
+    public void haveBeenBombed() {
+	// TODO Auto-generated method stub
+
+    }
+
 }

@@ -33,7 +33,6 @@ public class PowerupTest {
 	power = new BombPassPowerup(null, null);
 	power.applyPowerup(bomberman);
 	assertTrue(bomberman.canBombPass());
-	fail();
 
     }
 

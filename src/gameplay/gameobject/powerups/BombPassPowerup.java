@@ -29,4 +29,10 @@ public class BombPassPowerup extends GameObject implements Powerup {
 
     }
 
+    @Override
+    public void haveBeenBombed() {
+	// TODO Auto-generated method stub
+
+    }
+
 }

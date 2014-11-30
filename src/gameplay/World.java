@@ -8,6 +8,7 @@ import gameplay.gameobject.GameObject;
 import gameplay.gameobject.blocks.Background;
 import gameplay.gameobject.blocks.Explosion;
 import gameplay.gameobject.blocks.Wall;
+import gameplay.gameobject.powerups.Powerup;
 import gameplay.overlays.CountdownTimer;
 
 import java.awt.Graphics;
@@ -35,9 +36,10 @@ public class World implements Serializable {
     private final int explosionLength = 10;
     GameActor bomberman;
     ArrayList<GameActor> actorList;
+    Level currentLevel;
 
     public World(int widthInBlocks, int heightInBlocks, Level level) {
-
+	currentLevel = level;
 	gridHeight = heightInBlocks;
 	gridWidth = widthInBlocks;
 
@@ -52,8 +54,7 @@ public class World implements Serializable {
 					      // with him
 
 	// prep the timer
-	gameTimer = new CountdownTimer();
-	gameTimer.registerOntoWorld(this);
+	gameTimer = new CountdownTimer(this);
 
     }
 
@@ -80,6 +81,7 @@ public class World implements Serializable {
     }
 
     public void update() {
+	gameTimer.update();
 	for (int i = 0; i < gridWidth; i++) {
 	    for (int j = 0; j < gridHeight; j++) {
 		if (!(grid[i][j].empty())) {
@@ -185,6 +187,11 @@ public class World implements Serializable {
 
 	GameObject o = grid[xIndex][yIndex].peek();
 
+	if (o instanceof Powerup) {
+	    ((Powerup) o).haveBeenBombed(); // alert the powerup that someone
+					    // has set it on fire
+	}
+
 	if (o.conductsExplosions()) {
 	    addGameObject(new Explosion(new Rectangle(xIndex * 32, yIndex * 32, 32, 32), this, explosionLength));
 	    detonateLine(new Rectangle(xIndex * 32, yIndex * 32, 32, 32), direction, radius - 1);
@@ -282,7 +289,9 @@ public class World implements Serializable {
     }
 
     public void loadNextLevel() {
-	worldGenerator.generateLevel(Level.L1);
+	int levelNo = currentLevel.getLevelNumber();
+	currentLevel = Level.getLevelByNumber(levelNo + 1);
+	worldGenerator.generateLevel(currentLevel);
 	grid = worldGenerator.getGrid();
 	actorList = worldGenerator.getActorList();
 	gameTimer.reset();

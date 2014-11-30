@@ -15,7 +15,7 @@ public class InputListener extends KeyAdapter implements CommandIssuer {
 
     protected InputListener() {
 	pollCounter = 0;
-	queryDelay = 1;
+	queryDelay = 4;
     }
 
     public static InputListener getInstance() {
@@ -38,8 +38,8 @@ public class InputListener extends KeyAdapter implements CommandIssuer {
 
     }
 
-    public void setQuerySpeed(int speed) {
-	queryDelay = speed;
+    public void increaseQuerySpeed() {
+	queryDelay--;
     }
 
     @Override

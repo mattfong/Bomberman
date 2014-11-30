@@ -30,4 +30,6 @@ public interface BombermanInterface {
 
     public void die();
 
+    public void increaseMoveSpeed();
+
 }

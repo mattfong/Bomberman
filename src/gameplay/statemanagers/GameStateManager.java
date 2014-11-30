@@ -1,9 +1,13 @@
 package gameplay.statemanagers;
 
+import gameplay.GamePanel;
+import gameplay.World;
+
 public class GameStateManager {
 
     private static GameStateManager singleton = null;
     private GameState currentGameState;
+    private GamePanel gamePanel;
 
     private GameStateManager() {
 
@@ -11,6 +15,10 @@ public class GameStateManager {
 
     public void setCurrentGameState(GameState state) {
 	currentGameState = state;
+    }
+
+    public void registerGamePanel(GamePanel panel) {
+	this.gamePanel = panel;
     }
 
     public GameState getCurrentGameState() {
@@ -30,6 +38,11 @@ public class GameStateManager {
 
     public int getScore() {
 	return currentGameState.getScore();
+    }
+
+    public World getCurrentWorld() {
+	return gamePanel.getWorld();
+
     }
 
 }

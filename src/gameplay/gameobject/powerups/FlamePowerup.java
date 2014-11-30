@@ -28,4 +28,10 @@ public class FlamePowerup extends GameObject implements Powerup {
 	actor.increaseExplosionRadius();
     }
 
+    @Override
+    public void haveBeenBombed() {
+	// TODO Auto-generated method stub
+
+    }
+
 }
