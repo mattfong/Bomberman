@@ -6,8 +6,7 @@ import gameplay.gameobject.GameObject;
 import gameplay.gameobject.blocks.Background;
 import gameplay.gameobject.blocks.Brick;
 import gameplay.gameobject.blocks.Wall;
-import gameplay.gameobject.enemies.MonsterFactory;
-import gameplay.gameobject.powerups.BombPowerup;
+import gameplay.gameobject.enemies.Factory;
 import gameplay.gameobject.powerups.Door;
 import gameplay.gameobject.powerups.Powerup;
 
@@ -32,13 +31,13 @@ public class WorldGenerator implements Serializable {
 
     private Stack<GameObject>[][] grid;
     private ArrayList<GameActor> actorList;
-    private MonsterFactory factory;
+    private Factory factory;
 
     public WorldGenerator(World world, int gridWidth, int gridHeight) {
 	this.world = world;
 	this.gridHeight = gridHeight;
 	this.gridWidth = gridWidth;
-	factory = new MonsterFactory(world);
+	factory = new Factory(world);
 
     }
 
@@ -75,12 +74,12 @@ public class WorldGenerator implements Serializable {
 	grid = new Stack[gridWidth][gridHeight];
 
 	populateGrid(grid);
-	placePowerupAndDoor(grid, new BombPowerup(new Rectangle(0, 0, 32, 32), world));
+	placePowerupAndDoor(grid, factory.getPowerup(level));
     }
 
     private void populateActors(Level level) {
 
-	actorList = factory.createClassList(level);
+	actorList = factory.getEnemyList(level);
 	placeEnemiesInEmptySpot(actorList, this.grid);
 
 	actorList.add(new Bomberman(new Rectangle(32, 32, 32, 32), world));

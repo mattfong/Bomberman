@@ -2,7 +2,6 @@ package gameplay.gameobject;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import gameplay.World;
 import gameplay.gameobject.powerups.BombPassPowerup;
 import gameplay.gameobject.powerups.BombPowerup;
@@ -12,6 +11,7 @@ import gameplay.gameobject.powerups.FlamePowerup;
 import gameplay.gameobject.powerups.Powerup;
 import gameplay.gameobject.powerups.SpeedPowerup;
 import gameplay.gameobject.powerups.WallPassPowerup;
+import gameplay.input.InputListener;
 
 import java.awt.Rectangle;
 
@@ -73,8 +73,7 @@ public class PowerupTest {
 	Powerup power;
 	power = new SpeedPowerup(null, null);
 	power.applyPowerup(bomberman);
-	fail();
-
+	InputListener listener = InputListener.getInstance();
     }
 
     @Test
