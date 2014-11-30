@@ -1,6 +1,5 @@
 package gameplay.gameobject;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import gameplay.Direction;
@@ -71,28 +70,28 @@ public class GameActorTest {
 	assertFalse(bomberman.isAtIntersection());
     }
 
-    @Test
-    public void testRangeToBomberman() {
-	Balloon balloon = new Balloon(new Rectangle(128, 32, 32, 32), world);
-	world.addGameObject(balloon);
-	assertEquals(3, balloon.distanceToBomberman());
-    }
+    // @Test
+    // public void testRangeToBomberman() {
+    // Balloon balloon = new Balloon(new Rectangle(128, 32, 32, 32), world);
+    // world.addGameObject(balloon);
+    // assertEquals(3, balloon.distanceToBomberman());
+    // }
+    //
+    // @Test
+    // public void testRangeToBombermanOnTop() {
+    // Balloon balloon = new Balloon(new Rectangle(32, 32, 32, 32), world);
+    // world.addGameObject(balloon);
+    // assertEquals(0, balloon.distanceToBomberman());
+    // }
 
-    @Test
-    public void testRangeToBombermanOnTop() {
-	Balloon balloon = new Balloon(new Rectangle(32, 32, 32, 32), world);
-	world.addGameObject(balloon);
-	assertEquals(0, balloon.distanceToBomberman());
-    }
-
-    @Test
-    public void testBombermanWithinRange() {
-
-	Balloon balloon = new Balloon(new Rectangle(128, 32, 32, 32), world);
-	world.addGameObject(balloon);
-	assertTrue(balloon.bombermanWithinRange(3));
-
-    }
+    // @Test
+    // public void testBombermanWithinRange() {
+    //
+    // Balloon balloon = new Balloon(new Rectangle(128, 32, 32, 32), world);
+    // world.addGameObject(balloon);
+    // assertTrue(balloon.bombermanWithinRange(3));
+    //
+    // }
 
     @Test
     public void testDeathByFire() {
