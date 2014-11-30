@@ -8,3 +8,8 @@ gameplay.input
 gameplay.overlays
 gameplay.pauseMenu
 gameplay.statemanagers
+highscore
+loginSystem
+menuView
+savingSystem
+userProfile
