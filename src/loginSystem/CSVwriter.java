@@ -9,7 +9,7 @@ import au.com.bytecode.opencsv.CSVWriter;
 
 public class CSVwriter {
 	
-	private final String csvAccountsFile = "UserPass.csv";
+//	private final String csvAccountsFile = "UserPass.csv";
 	private final String csvAccountsFileTemp = "UserPassTemp.csv";
 	private List<Account> accounts = new ArrayList<Account>();
 	private AccountManager accountManager = new AccountManager();
@@ -60,7 +60,7 @@ public class CSVwriter {
 			writer.writeNext(acc.toCSVEntry());
 		}
 
-		deleteCSVFile(csvAccountsFile);
+		deleteCSVFile(fileName);
 		writer.close();
 		tempCSV.renameTo(CSVfile);
 	}
