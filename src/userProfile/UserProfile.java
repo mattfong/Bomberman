@@ -16,19 +16,13 @@ import savingSystem.SavedGameSerialization;
 public class UserProfile {
 	
 	private static UserProfile singleton = null;
+	private String userName;
 	private AccountManager accountManager;
 	private SavedGameManager saveManager;
 	private HighScoreDatabase scoreDatabase;
-	// Insert Unlocked Levels
 	
-	public UserProfile() {
-		
-	}
-	
-	public UserProfile(String userName) throws IOException {
-		accountManager = new AccountManager();
-		saveManager = new SavedGameManager();
-		Init(userName);
+	private UserProfile() {
+
 	}
 	
 	public static UserProfile getInstance() {
@@ -39,18 +33,26 @@ public class UserProfile {
 		return singleton;
 	}
 	
+	public void setUserProfile(String userName) throws IOException {
+		this.userName = userName;
+		accountManager = new AccountManager();
+		saveManager = new SavedGameManager();
+		Init(userName);
+	}
+	
 	private void Init(String userName) throws IOException{
-		List<Account> allAccounts = getAllUserAccounts();
 		Account currentUser = getCurrentUser(userName);
 		List<SavedGame> savedGames = getSavedGamesByUser(currentUser.getUserName());
 	}
 	
-	private List<Account> getAllUserAccounts() throws IOException {
-		CSVreader reader = new CSVreader();
-		accountManager.setAccounts(reader.CSVreaderAccounts());
-		return accountManager.getAccounts();
+	public String getUserName() {
+		return userName;
 	}
-	
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	private Account getCurrentUser(String userName) {
 		Account currentAccount = accountManager.getAccount(userName);
 		return currentAccount;
