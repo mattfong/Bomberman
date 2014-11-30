@@ -17,7 +17,7 @@ public class SaveLoadView extends JPanel {
 	}
 	
 	private void initUI() {
-
+		setLayout(new GridLayout(4,1,5,10));
 		JLabel saveLoadMenuLabel = new JLabel("Save Load Menu");
 		saveLoadMenuLabel.setFont(new Font("Miriam", Font.BOLD, 28));
 		
@@ -53,6 +53,5 @@ public class SaveLoadView extends JPanel {
 		loadGameButton.setBounds(85, 180, 134, 25);
 		goBackButton.setBounds(85, 180, 134, 25);
 //		setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		setLayout(new GridLayout(4,1,5,10));
 	}
 }
