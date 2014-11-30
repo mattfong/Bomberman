@@ -12,10 +12,25 @@ public class HighScoreDatabase {
     
     private Players listOfPlayers;
     
+
     //Constructor
     public HighScoreDatabase(Players database){
 	this.listOfPlayers = database;
     }
+    
+    
+    
+    public Players getListOfPlayers() {
+        return listOfPlayers;
+    }
+
+
+    public void setListOfPlayers(Players listOfPlayers) {
+        this.listOfPlayers = listOfPlayers;
+    }
+
+
+    
     
     
     //TO KIRTH: ADD HERE
@@ -32,6 +47,9 @@ public class HighScoreDatabase {
 	//listOfPlayers.setScores(List<Integer> list HERE);
     }
     
+    
+    //Getter and setters for listOfPlayers
+   
     
     
     //TODO
@@ -114,16 +132,25 @@ public class HighScoreDatabase {
     
     
     //This changes the listOfPlayers into sorted form
-    public void sortedForm(){
+    public void sortedForm(Players players){
+	
+	List<String> names = players.getPlayerNames();
+	
+	List<Integer> scores = players.getScores();
+	
+	this.listOfPlayers.setPlayerNames(names);
+	
+	this.listOfPlayers.setScores(scores);
 	
 	
 	//Sort player names
-	this.listOfPlayers.setPlayerNames(this.sortByScore().getPlayerNames());
+	//this.listOfPlayers.setPlayerNames(this.sortByScore().getPlayerNames());
 	
 	//Sort player scores
-	this.listOfPlayers.setScores(this.sortByScore().getScores());	
+	//this.listOfPlayers.setScores(this.sortByScore().getScores());	
     }
     
+    /* DEPRECATED
     //Populates the a list of string with "Empty"
     public static List<String> playersListPopulator(List<String> strlist){
 	
@@ -162,8 +189,62 @@ public class HighScoreDatabase {
 	
     }
     
- 
+    */
     
+    //takes two lists that have already been sorted by the sortedForm method
+    public Players topTen(Players players){
+	
+	List<String> names = players.getPlayerNames();
+	List<Integer> scores = players.getScores();
+	
+	List<String> newNames = new LinkedList<String>();
+	List<Integer> newScores = new LinkedList<Integer>();
+	
+	
+	//names
+	ListIterator<String> nameIterator = names.listIterator();
+	
+	
+	int indexNames = 0;
+	
+	while(nameIterator.hasNext() && (indexNames < 10)){
+	     
+	    String nameToAdd = nameIterator.next();
+	    
+	    newNames.add(nameToAdd);
+	    
+	    indexNames++;
+	    
+	}
+	
+	//scores
+	ListIterator<Integer> scoreIterator = scores.listIterator();
+	
+	int indexScores = 0;
+	
+	while(scoreIterator.hasNext() && (indexScores < 10)){
+	    
+	    
+	    
+	    int scoreToAdd = scoreIterator.next();
+	    
+	    newScores.add(indexScores, scoreToAdd);
+	    
+	    indexScores++;
+	    
+	}
+	
+	Players newPlayer = new Players(newNames, newScores);
+	
+	return newPlayer;
+	
+	
+    }
+    
+    
+    
+ 
+    /*
     
     //This looks at the listOfPlayers and returns the top 10 players along with their scores
     public Players topTen(){
@@ -220,6 +301,7 @@ public class HighScoreDatabase {
 	
     }
     
+    */
     
     
     public static void main(String[]args){
@@ -238,6 +320,7 @@ public class HighScoreDatabase {
 	p.add("Five");
 	p.add("Three");
 	p.add("Two");
+	p.add("One");
 	
 	s.add(10000);
 	s.add(8000);
@@ -249,26 +332,62 @@ public class HighScoreDatabase {
 	s.add(5000);
 	s.add(3000);
 	s.add(2000);
+	s.add(1000);
+	
+	
+	
+	//System.out.println(s.get(0));
 	
 	
 	
 	
-	
-	
-	
+	//Logic to be implemented by the controller
 	Players testPlayers = new Players(p, s);
 	
 	HighScoreDatabase testdb = new HighScoreDatabase(testPlayers);
 	
+	
+	Players jedi = testdb.sortByScore();
+	
+	
+	testdb.sortedForm(jedi);
+	//NOW IT'S SORTED
+	
+	//gotta extrac top 10 from it
+	
+	Players vader = testdb.getListOfPlayers();
+	
+	//Need players sorted
+	Players newVader = testdb.topTen(vader);
+	
+	
+	
+	
+	//testdb.topTen(players)
+	
+	String str = newVader.getScores().toString();
+	//String str = testdb.sortByScore().getScores().toString();
+	
+	System.out.println(str);
+	
 	//testdb.sortedForm();
 	
-	//Players jedi = testdb.topTen();
+	//System.out.println(x);testdb.sortedForm();
 	
-	//System.out.println(jedi.getScores().toString());
 	
-	testdb.sortedForm();
 	
-	System.out.println(testdb.listOfPlayers.getPlayerNames().toString());
+	
+	//List<String> printNames = testdb.listOfPlayers.getPlayerNames();
+	
+	//List<Integer> printScores = testdb.listOfPlayers.getScores();
+	
+	//Players jedi = testdb.topTen(testdb.listOfPlayers.getPlayerNames(), testdb.listOfPlayers.getScores());
+	
+	//System.out.println(printScores.get(0));
+	
+	//testdb.sortedForm();
+	
+	//System.out.println(testdb.listOfPlayers.getPlayerNames().toString());
 	
 	
 	
