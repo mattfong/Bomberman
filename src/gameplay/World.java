@@ -290,10 +290,13 @@ public class World implements Serializable {
 
     public void loadNextLevel() {
 	int levelNo = currentLevel.getLevelNumber();
+
 	currentLevel = Level.getLevelByNumber(levelNo + 1);
 	worldGenerator.generateLevel(currentLevel);
+
 	grid = worldGenerator.getGrid();
 	actorList = worldGenerator.getActorList();
+
 	gameTimer.reset();
 
     }

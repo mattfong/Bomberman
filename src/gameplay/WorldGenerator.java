@@ -75,6 +75,7 @@ public class WorldGenerator implements Serializable {
 
 	populateGrid(grid);
 	placePowerupAndDoor(grid, factory.getPowerup(level));
+	populateActors(level);
     }
 
     private void populateActors(Level level) {
