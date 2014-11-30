@@ -58,14 +58,23 @@ public class World implements Serializable {
 
     }
 
+    /**
+     * @return CountdownTimer that is bounded to the world.
+     */
     public CountdownTimer getTimer() {
 	return gameTimer;
     }
 
+    /**
+     * @return list of GameActors operating on the game world.
+     */
     public ArrayList<GameActor> getActorList() {
 	return actorList;
     }
 
+    /**
+     * @return The bomberman gameActor operating on the game world.
+     */
     public GameActor getBomberman() {
 	return bomberman;
     }
@@ -80,6 +89,9 @@ public class World implements Serializable {
 	}
     }
 
+    /**
+     * Updates the static elements on the game World
+     */
     public void update() {
 	gameTimer.update();
 	for (int i = 0; i < gridWidth; i++) {
@@ -169,6 +181,17 @@ public class World implements Serializable {
 	return true;
     }
 
+    /**
+     * Detonates the space specified by location, and causes explosions to
+     * appear in the four directions within the given radius. Explosions
+     * propegate until they hit a solid brick whic is not permeable to
+     * explosions such as a brick or wall piece.
+     * 
+     * @param location
+     *            loaction on the grid that is to be blown up
+     * @param radius
+     *            radius of the explosion
+     */
     public void detonateLocation(Rectangle location, int radius) {
 	addGameObject(new Explosion(location, this, explosionLength));
 	for (Direction dir : Direction.values()) {
@@ -256,6 +279,13 @@ public class World implements Serializable {
 	return (!bool);
     }
 
+    /**
+     * Returns the instance of GameObject as the location specified by location.
+     * 
+     * @param location
+     *            Rectangle representing a location on the grid
+     * @return instance of gameObject at that point.
+     */
     public GameObject getGameObjectInstanceAt(Rectangle location) {
 	int xIndex = location.x / blockSize;
 	int yIndex = location.y / blockSize;
@@ -270,6 +300,7 @@ public class World implements Serializable {
 					       // data.
     }
 
+    @Deprecated
     public int distanceToBomberman(GameActor actor) {
 	int xDistance = Math.abs(actor.getXCoordinate() - bomberman.getXCoordinate()) / blockSize;
 	int yDistance = Math.abs(actor.getYCoordinate() - bomberman.getYCoordinate()) / blockSize;
@@ -277,6 +308,7 @@ public class World implements Serializable {
 	return (xDistance + yDistance);
     }
 
+    @Deprecated
     public boolean bombermanWithin(GameActor actor, int radius) {
 	int xDistance = Math.abs(actor.getXCoordinate() - bomberman.getXCoordinate()) / blockSize;
 	int yDistance = Math.abs(actor.getYCoordinate() - bomberman.getYCoordinate()) / blockSize;
@@ -288,6 +320,9 @@ public class World implements Serializable {
 
     }
 
+    /**
+     * Loads the next game level.
+     */
     public void loadNextLevel() {
 	int levelNo = currentLevel.getLevelNumber();
 
@@ -301,6 +336,12 @@ public class World implements Serializable {
 
     }
 
+    /**
+     * Returns bomberman's location.
+     * 
+     * @return a rectangle which represents the location of bomberman on the
+     *         game world.
+     */
     public Rectangle getBombermanCoordinates() {
 	return bomberman.getLocation();
     }
