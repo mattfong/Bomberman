@@ -38,10 +38,6 @@ public class InputListener extends KeyAdapter implements CommandIssuer {
 
     }
 
-    public void resetQuerySpeed() {
-	queryDelay = 4;
-    }
-
     public void increaseQuerySpeed() {
 	queryDelay--;
     }

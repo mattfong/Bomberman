@@ -230,10 +230,6 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	} else {
 	    isDead = true;
 	}
-	InputListener.getInstance().resetQuerySpeed(); // don't forget to slow
-						       // bomberman down after
-						       // he dies or 'shoot him
-						       // in the foot'
     }
 
     @Override
