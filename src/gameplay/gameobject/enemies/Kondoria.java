@@ -15,7 +15,6 @@ public class Kondoria extends GameActor {
     public Kondoria(Rectangle location, World world) {
 	super(location, world);
 	sprite = new ImageIcon(Kondoria.class.getResource("/Kondoria.jpg"));
-	// inputManager = new CommandManager(this, InputListener.getInstance());
 	score = 1000;
 	wallPass = true;
 	inputManager = new CommandManager(this, new DumbAI(this, Speed.SLOW));

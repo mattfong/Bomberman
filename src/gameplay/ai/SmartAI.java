@@ -6,6 +6,13 @@ import gameplay.input.Command;
 
 import java.util.Random;
 
+/**
+ * AI implementation of the High inteligence AI as per requirement
+ * "High intelligence enemies move like medium intelligence enemies with a 50% chance of changing directions. High intelligence enemies shall chase bomberman if he is within a 2 square radius; if there is an obstacle between bomberman and the enemy, it will use A star search to find the path to bomberman, if such a path exists. The enemy will check for bomberman and recalculate the path everytime it traverses 1 grid cell."
+ * 
+ * @author YA
+ *
+ */
 public class SmartAI extends AI {
 
     // Did not finish implementing A*, average AI standin as logic for now, A*
