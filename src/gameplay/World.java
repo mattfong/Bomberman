@@ -35,9 +35,10 @@ public class World implements Serializable {
     private final int explosionLength = 10;
     GameActor bomberman;
     ArrayList<GameActor> actorList;
+    Level currentLevel;
 
     public World(int widthInBlocks, int heightInBlocks, Level level) {
-
+	currentLevel = level;
 	gridHeight = heightInBlocks;
 	gridWidth = widthInBlocks;
 
@@ -282,7 +283,9 @@ public class World implements Serializable {
     }
 
     public void loadNextLevel() {
-	worldGenerator.generateLevel(Level.L1);
+	int levelNo = currentLevel.getLevelNumber();
+	currentLevel = Level.getLevelByNumber(levelNo + 1);
+	worldGenerator.generateLevel(currentLevel);
 	grid = worldGenerator.getGrid();
 	actorList = worldGenerator.getActorList();
 	gameTimer.reset();
