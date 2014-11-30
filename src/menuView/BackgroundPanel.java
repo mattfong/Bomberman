@@ -24,3 +24,5 @@ public class BackgroundPanel extends JPanel {
 		panel.setVisible(true);
 	}
 }
+
+

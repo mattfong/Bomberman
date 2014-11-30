@@ -59,6 +59,8 @@ public class DeleteAccountPanel extends JPanel {
 		});
 		
 		
+		
+		
 		add(loginInfo);
 		add(enterUser);
 		add(UserTF);

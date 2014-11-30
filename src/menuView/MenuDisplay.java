@@ -20,6 +20,12 @@ public class MenuDisplay {
 	MenuFrame frame = new MenuFrame("Bomberman");
 	
 	
+	
+	
+	
+	
+	
+	
 	public void newMenu(){
 		//frame.add(nPanel);
 	}

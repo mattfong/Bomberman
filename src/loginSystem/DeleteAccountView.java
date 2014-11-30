@@ -173,6 +173,8 @@ public class DeleteAccountView {
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 
+		
+		
 	}
 
 	/**
