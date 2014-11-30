@@ -17,6 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+
+import userProfile.NewAccountViewLogic;
 /**
  * @author      Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>
  * @version     1.5                 (current version number of program)
@@ -117,11 +119,15 @@ public class NewAccountView {
     			try {
     				if (accountManager.isUsername(User) == false) { /* This checks for other accounts     */
     					if (UsernameAndPasswordValid.valid(User, Pass) & Pass.equals(confirmPass)) { 
-    						/* This checks that all paramiters have been met */
+    						
+    						frame.dispose();
+    						NewAccountViewLogic.newAccountLogic(Name, User, Pass, 0);
+    						/*
+    						// This checks that all paramiters have been met 
     						try {
-    							/*
-    							 * These write to the Database, making a new account for the user
-    							 */
+    							
+    							// These write to the Database, making a new account for the user
+    						
     							CSVwriter writer = new CSVwriter();
     							writer.CSVwriterAccounts(csvAccountsFile, Name, User, Pass, 0);
     						} catch (IOException e) {
@@ -130,15 +136,17 @@ public class NewAccountView {
     						}
 
     						System.out.println("Entered user is " + User + " and pass is " + Pass);
-    						/*
-    						 * This makes a new gamestate for the new account
-    						 * It then disposes the frame and goes to the playgameMenu
-    						 */
-    						frame.dispose();
+    						
+    						 //This makes a new gamestate for the new account
+    						 // It then disposes the frame and goes to the playgameMenu
+    						 
+    						
     						GameState gameState = new GameState(User, Name);
     						GameStateManager manager = GameStateManager.getInstance();
     						manager.setCurrentGameState(gameState);
     						PlayGameView.main(null);
+    						*/
+    						
     					} else {
     						/*
     						 * If the password and the check password do not match then the user is shown an error message.
