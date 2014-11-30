@@ -15,7 +15,9 @@ import gameplay.gameobject.powerups.SpeedPowerup;
 import gameplay.gameobject.powerups.WallPassPowerup;
 
 /**
- * @author MF Level enum specifying config information for the bomberman levels.
+ * Level enum specifying config information for the bomberman levels.
+ * 
+ * @author MF
  */
 public enum Level {
     L1(

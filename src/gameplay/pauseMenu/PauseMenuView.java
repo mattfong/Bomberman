@@ -15,7 +15,9 @@ import javax.swing.border.EtchedBorder;
 import savingSystem.SaveLoadController;
 
 /**
- * @author MF Class containing the JPanel of the pause menu.
+ * Class containing the JPanel of the pause menu.
+ * 
+ * @author MF
  */
 public class PauseMenuView extends JPanel {
 

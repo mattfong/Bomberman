@@ -9,7 +9,9 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 /**
- * @author mfong8 Powerup which allows bomberman to move through walls.
+ * Powerup which allows bomberman to move through walls.
+ * 
+ * @author mfong8
  */
 public class WallPassPowerup extends GameObject implements Powerup {
 

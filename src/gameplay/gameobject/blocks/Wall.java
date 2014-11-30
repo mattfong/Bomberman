@@ -8,7 +8,9 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 /**
- * @author mfong8 Implementation of the Wall GameObject.
+ * Implementation of the Wall GameObject.
+ * 
+ * @author mfong8
  */
 public class Wall extends GameObject {
 

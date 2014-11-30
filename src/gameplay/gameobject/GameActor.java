@@ -11,13 +11,14 @@ import java.awt.Rectangle;
 import java.io.Serializable;
 
 /**
- * @author mfong8 Implenting class for the abstract GameObject class. Implements
- *         features associated with moveable game actor objects. Each GameActor is responsible to manage it's own state, it checks if it has been killed and if is has raises a flag for the game engine to remove it from play.
- */
-/**
- * @author MF
+ * Implenting class for the abstract GameObject class. Implements features
+ * associated with moveable game actor objects. Each GameActor is responsible to
+ * manage it's own state, it checks if it has been killed and if is has raises a
+ * flag for the game engine to remove it from play.
  *
+ * @author mfong8
  */
+
 public class GameActor extends GameObject implements Serializable {
 
     protected CommandManager inputManager;

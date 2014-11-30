@@ -17,11 +17,12 @@ import java.util.Random;
 import java.util.Stack;
 
 /**
- * @author mfong8 WorldGenerator's role is to take in a level configuration and
- *         generate a populated grid based on the given level specifications. To
- *         use, create with constructor, then call generateLevel with the
- *         desired level, then use getGrid and getActorList to get the relevant
- *         information.
+ * WorldGenerator's role is to take in a level configuration and generate a
+ * populated grid based on the given level specifications. To use, create with
+ * constructor, then call generateLevel with the desired level, then use getGrid
+ * and getActorList to get the relevant information.
+ * 
+ * @author mfong8
  */
 public class WorldGenerator implements Serializable {
 

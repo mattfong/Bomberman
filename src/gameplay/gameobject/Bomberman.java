@@ -15,8 +15,11 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
- * @author MF Class implementing Bomberman gameactor, uses BombermnaInterface to
- *         implement all the behavior associated with bomberman.
+ * 
+ * Class implementing Bomberman gameactor, uses BombermnaInterface to implement
+ * all the behavior associated with bomberman.
+ * 
+ * @author MF
  */
 public class Bomberman extends GameActor implements BombermanInterface {
 

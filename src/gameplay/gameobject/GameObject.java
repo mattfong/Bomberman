@@ -10,8 +10,10 @@ import java.io.Serializable;
 import javax.swing.ImageIcon;
 
 /**
- * @author MF Abstract class which represents a basic game object with methods
- *         to implements base functionality common across to all game objects.
+ * Abstract class which represents a basic game object with methods to
+ * implements base functionality common across to all game objects.
+ * 
+ * @author MF
  */
 public abstract class GameObject implements Serializable {
 

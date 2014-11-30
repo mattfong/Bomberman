@@ -11,7 +11,9 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 /**
- * @author MF Implementation of the Pontan enemy requirement.
+ * Implementation of the Pontan enemy requirement.
+ * 
+ * @author MF
  */
 public class Pontan extends GameActor {
 

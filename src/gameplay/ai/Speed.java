@@ -1,5 +1,11 @@
 package gameplay.ai;
 
+/**
+ * Enum containing the speed at which the AI will return commands.
+ * 
+ * @author MF
+ *
+ */
 public enum Speed {
     SLOW(
 	    15),

@@ -1,12 +1,25 @@
 package gameplay;
 
 /**
- * @author mfong8 Enum representing directions on the game board. Possible enums
- *         are RIGHT, LEFT, UP, DOWN.
+ * Enum representing directions on the game board. Possible enums are RIGHT,
+ * LEFT, UP, DOWN.
+ * 
+ * @author mfong8
  *
  */
 public enum Direction {
-    LEFT(-1, 0), RIGHT(1, 0), UP(0, 1), DOWN(0, -1);
+    LEFT(
+	    -1,
+	    0),
+    RIGHT(
+	    1,
+	    0),
+    UP(
+	    0,
+	    1),
+    DOWN(
+	    0,
+	    -1);
 
     private int x;
     private int y;

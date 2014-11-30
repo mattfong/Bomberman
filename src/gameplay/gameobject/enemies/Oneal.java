@@ -11,7 +11,9 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 /**
- * @author MF Implementation of the Oneal enemy class implementation.
+ * Implementation of the Oneal enemy class implementation.
+ * 
+ * @author MF
  */
 public class Oneal extends GameActor {
 

@@ -18,6 +18,16 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+/**
+ * GamePanel acts as the game engine. A Java thread throws an event every 40ms
+ * which is caught by the run method. The run method then runs the gameUpdate
+ * method which updates all the game elements and then runs the gameRender
+ * method which gets all the gameObjects to draw themselves on a graphics object
+ * and finally the paintScreen method displays the screens to the user.
+ * 
+ * @author MF
+ *
+ */
 public class GamePanel extends JPanel implements Runnable {
 
     int xCoord;

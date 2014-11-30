@@ -4,8 +4,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
- * @author MF Class is used to manage transition from pause menu to the
- *         gameplay.
+ * Class is used to manage transition from pause menu to the gameplay.
+ * 
+ * @author MF
  */
 public class PanelManager {
 

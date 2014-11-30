@@ -1,5 +1,3 @@
-//TODO migrate this stuff to the board class and whereever this stupid stuff needs to go
-
 package gameplay;
 
 import gameplay.gameobject.Bomberman;
@@ -18,11 +16,10 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 /**
+ * The world class acts as the game board, it manages interactions between
+ * gameactors and gameobject instances.
+ * 
  * @author mfong8
- *
- */
-/**
- * @author MF
  *
  */
 public class World implements Serializable {

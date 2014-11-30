@@ -1,1 +1,10 @@
+gameplay
+gameplay.ai
 gameplay.gameobject
+gameplay.gameobject.blocks
+gameplay.gameobject.enemies
+gameplay.gameobject.powerups
+gameplay.input
+gameplay.overlays
+gameplay.pauseMenu
+gameplay.statemanagers
