@@ -11,15 +11,22 @@ public class CSVwriter {
 	
 	private final String csvAccountsFile = "UserPass.csv";
 	private final String csvAccountsFileTemp = "UserPassTemp.csv";
-	private final String csvHighScore = "HighScore.csv";
 	private List<Account> accounts = new ArrayList<Account>();
 	private AccountManager accountManager = new AccountManager();
 	
 	public CSVwriter() {
 		super();
 	}
-
-	public void CSVwriterAccounts(String name, String userName, String password) throws IOException{
+	
+	/**
+	 * Writes the new account information in a CSV file, and adds the information into the account manager.
+	 * @param name
+	 * @param userName
+	 * @param password
+	 * @param totalScore
+	 * @throws IOException
+	 */
+	public void CSVwriterAccounts(String name, String userName, String password, int totalScore) throws IOException{
 		
 		//Creates a CSV file if it does not exist, and appends data to the file
 		CSVWriter writer = new CSVWriter(new FileWriter((csvAccountsFile), true), ',');	
@@ -27,15 +34,20 @@ public class CSVwriter {
 		newUser.setName(name);
 		newUser.setUserName(userName);
 		newUser.setPassword(password);
-		newUser.setTotalScore(0);
+		newUser.setTotalScore(totalScore);
 		
-		accountManager.setAccounts(accounts);
 		accounts.add(new Account(newUser.getName(), newUser.getUserName(), newUser.getPassword(), newUser.getTotalScore()));
+		accountManager.setAccounts(accounts);
 		writer.writeNext(newUser.toCSVEntry());
-		System.out.println(accounts);
 		writer.close();
 	}
 	
+	/**
+	 * Writes the list of accounts in a CSV file, after a user has deleted their account.
+	 * The new list is stored in a temporary file, then the original file is overwritten. 
+	 * @param accounts
+	 * @throws IOException
+	 */
 	public void CSVwriterAccountsList(List<Account> accounts) throws IOException {
 		File CSVfile = new File(csvAccountsFile);
 		File tempCSV = new File(csvAccountsFileTemp);
@@ -45,16 +57,18 @@ public class CSVwriter {
 			Account acc = accounts.get(i);
 			writer.writeNext(acc.toCSVEntry());
 		}
-		System.out.println("New List:" + accounts);
-		deleteCSVFile(csvAccountsFile, csvAccountsFileTemp);
+
+		deleteCSVFile(csvAccountsFile);
 		writer.close();
 		tempCSV.renameTo(CSVfile);
-		System.out.println(tempCSV.renameTo(CSVfile));
 	}
 	
-	public void deleteCSVFile(String csv, String csv2){
+	/**
+	 * Checks if the CSV file exists in order to delete the file.
+	 * @param csv
+	 */
+	public void deleteCSVFile(String csv){
 		File CSVfile = new File(csv);
-		File tempCSV = new File(csv2);
 		
 		if(CSVfile.exists()){
 			CSVfile.delete();

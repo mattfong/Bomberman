@@ -123,7 +123,7 @@ public class NewAccountView {
     							 * These write to the Database, making a new account for the user
     							 */
     							CSVwriter writer = new CSVwriter();
-    							writer.CSVwriterAccounts(Name, User, Pass);
+    							writer.CSVwriterAccounts(Name, User, Pass, 0);
     						} catch (IOException e) {
     							// TODO Auto-generated catch block
     							e.printStackTrace();

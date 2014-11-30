@@ -17,7 +17,6 @@ public class SaveLoadController {
 	private String fileName;
 	
 	public SaveLoadController() {
-		super();
 		serializeGame = new SavedGameSerialization();
 		saveManager = new SavedGameManager();
 		currentGame = GameStateManager.getInstance().getCurrentGameState();
@@ -34,42 +33,41 @@ public class SaveLoadController {
 		loadMenu.LoadGameMenuView();
 	}
 
+	/**
+	 * Uses the save game name entered by the user, and saves the game by serializing the information.
+	 * @param savedGameName
+	 */
 	public void saveGame(String savedGameName) {
 
 		SavedGame savedGame = new SavedGame();
 
 		try {
 			fileName = saveManager.getSaveGameFile(currentGame.getUserName());
-			System.out.println("Step 1: " + fileName);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		savedGame = saveManager.addSavedGameName(savedGameName);
 		savedGame.setGameState(currentGame);
-//		savedGame.setSavedGameName(savedGameName);
+		savedGame.setSavedGameName(savedGameName);
 		savedGame.setUserName(currentGame.getUserName());
-		
-		System.out.println("Line before Step 2 SavedGame: " + savedGame);
-		System.out.println("Step 2: Save Game Name: " + savedGameName
-				+ ", username: " + currentGame.getUserName());
 
 		try {
 			serializeGame.serializeSaveGameName(savedGame, fileName);
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		System.out.println("Step 4: Serialization Done");
-
+		
 	}
-
+	
+	/**
+	 * Obtain's the user's save game file, and deserializes all the games within the file.
+	 */
 	public void loadGame() {
 		SavedGame game = null;
 		
 		try {
 			fileName = saveManager.getSaveGameFile(currentGame.getUserName());
-			System.out.println("Load Controller:" + fileName);
 			List<SavedGame> allSavedGames = serializeGame.deserializeSaveGameName(fileName);
 			saveManager.setSavedGamesList(allSavedGames);
 
@@ -80,29 +78,23 @@ public class SaveLoadController {
 				World world = game.getGameState().getWorld();
 				GameFrame gameplay = new GameFrame(world);
 				gameplay.setVisible(true);
-				System.out.println("GameState parsed Information: \n Name: "
-						+ game.getGameState().getPlayerName() + "\n Username: "
-						+ game.getGameState().getUserName() + "\n World: "
-						+ game.getGameState().getWorld() + "\n Level: "
-						+ game.getGameState().getLevel() + "\n Score: "
-						+ game.getGameState().getScore()
-						+ "\n Remaining Lives: "
-						+ game.getGameState().getRemainingLives()
-						+ "\n Size of list: " + allSavedGames.size());
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
 	
+	/**
+	 * Uses the delete game name entered by the user, and deletes the game from the file.
+	 * Then, the file is serialized and overwritten with the new list.
+	 * @param deleteGame
+	 */
 	public void deleteGame(String deleteGame) {
 		try {
 			fileName = saveManager.getSaveGameFile(currentGame.getUserName());
 			serializeGame.serializeGamesAfterRemoval(fileName, deleteGame);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
