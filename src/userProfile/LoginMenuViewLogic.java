@@ -1,11 +1,14 @@
 package userProfile;
 
+import java.io.IOException;
+
 import gameplay.Level;
 import gameplay.World;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
 import loginSystem.Account;
 import loginSystem.AccountManager;
+import loginSystem.CSVreader;
 import loginSystem.PlayGameView;
 
 public class LoginMenuViewLogic {
@@ -15,6 +18,14 @@ public class LoginMenuViewLogic {
 	public static void loginMenuLogic(String username){
 		
 		AccountManager accountManager = new AccountManager();
+		
+		CSVreader reader = new CSVreader();
+		try {
+			accountManager.setAccounts(reader.CSVreaderAccounts());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		Account acc = accountManager.getAccount(username); 
 		GameStateManager manager = GameStateManager.getInstance();

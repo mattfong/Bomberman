@@ -107,9 +107,9 @@ public class LoginMenuView {
 
 						f.dispose();	
 						
-						//LoginMenuViewLogic.loginMenuLogic(justUsername);
+						LoginMenuViewLogic.loginMenuLogic(justUsername);
 						//THERE IS A PROBLE WITH THE LOGIC METHODS
-						
+						/*
 						Account acc = accountManager.getAccount(justUsername); 
 						GameStateManager manager = GameStateManager.getInstance();
 						
