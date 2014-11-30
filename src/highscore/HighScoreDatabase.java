@@ -33,20 +33,6 @@ public class HighScoreDatabase {
     
     
     
-    //TO KIRTH: ADD HERE
-    public void getPlayerNamesFromCSV(){
-	//this should get data from the savedGame system and input into the String list
-	
-	//listOfPlayers.setPlayerNames(List<String> list HERE);
-    }
-    
-    //TO KIRTH: ADD HERE
-    public void getPlayerScoresFromCSV(){
-	//this should get data from the savedGame system and input it into the Integer list
-	
-	//listOfPlayers.setScores(List<Integer> list HERE);
-    }
-    
     
     //Getter and setters for listOfPlayers
    
@@ -368,94 +354,18 @@ public class HighScoreDatabase {
 	String str = newVader.getScores().toString();
 	//String str = testdb.sortByScore().getScores().toString();
 	
+	
+	
 	System.out.println(str);
 	
-	//testdb.sortedForm();
-	
-	//System.out.println(x);testdb.sortedForm();
 	
 	
 	
 	
-	//List<String> printNames = testdb.listOfPlayers.getPlayerNames();
-	
-	//List<Integer> printScores = testdb.listOfPlayers.getScores();
-	
-	//Players jedi = testdb.topTen(testdb.listOfPlayers.getPlayerNames(), testdb.listOfPlayers.getScores());
-	
-	//System.out.println(printScores.get(0));
-	
-	//testdb.sortedForm();
-	
-	//System.out.println(testdb.listOfPlayers.getPlayerNames().toString());
-	
-	
-	
-	
-	
-	
-	
-	/*
-	
-	List<String> tlist = new LinkedList<String>();
-	
-	tlist.add("TenThousand");
-	tlist.add("EightThousand");
-	tlist.add("NineThousand");
-	tlist.add("ThirtyThousand");
-	
-	
-	ListIterator<String> itr = tlist.listIterator(0);
-	
-	
-	*/
-	
-	
-	
-	
-	/*
-	
-	
-	while (itr.hasNext() && itr.next() != null ){
-	   
-	    String str = itr.next();
-	    System.out.println(str);
-	   
-	}
-	
-	*/
 	
 	System.out.println("yo");
 	
-	//String str = testdb.listOfPlayers.getPlayerNames().get(2);
 	
-	//System.out.println(str);
-	
-	//getting something
-	//System.out.println(testdb.listOfPlayers.getPlayerNames().get(0));
-	
-	
-	//System.out.println(testdb.sortByScore().getScores().get(3));
-	
-	
-	
-	//removeUser(testPlayers, 0);
-	
-	//System.out.println(testPlayers.getScores().get(0));
-	
-	
-	//Players test = new Players(p, s);
-	
-	//HighScoreDatabase testdb = new HighScoreDatabase(test);
-	
-	//test = testdb.sortByScore();
-	
-	//System.out.println(test.getPlayerNames().get(0));
-	//System.out.println(test.getScores().get(0));
-	
-	//System.out.println(testdb.sortByScore().getPlayerNames().get(0));
-	//System.out.println(testdb.sor)
-	//test.s
 	
 	
 	

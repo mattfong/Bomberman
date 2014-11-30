@@ -7,6 +7,14 @@ import savingSystem.SavedGameManager;
 public class HighScoreManager {
     
     
+    public Players showTopTen(){
+	
+	
+	
+	return null;
+	
+    }
+    
     
     
 
