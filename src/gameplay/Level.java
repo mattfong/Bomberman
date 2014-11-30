@@ -14,6 +14,9 @@ import gameplay.gameobject.powerups.FlamePowerup;
 import gameplay.gameobject.powerups.SpeedPowerup;
 import gameplay.gameobject.powerups.WallPassPowerup;
 
+/**
+ * @author MF Level enum specifying config information for the bomberman levels.
+ */
 public enum Level {
     L1(
 	    1,
@@ -296,6 +299,15 @@ public enum Level {
 	levelNumber = levelKey;
     }
 
+    /**
+     * Lookup a level by level number.
+     * 
+     * @param keyValue
+     *            numeric value of the level dessired (24 returns Level.L24 and
+     *            1 returns Level.L1)
+     * @return a Level enum for the level number specified. If no valid levels
+     *         for the key exists returns Level.L1
+     */
     public static Level getLevelByNumber(int keyValue) {
 	for (Level level : Level.values()) {
 	    if (level.getLevelNumber() == keyValue) {
@@ -305,14 +317,24 @@ public enum Level {
 	return Level.L1;
     }
 
+    /**
+     * @return the level number of the level object.
+     */
     public int getLevelNumber() {
 	return levelNumber;
     }
 
+    /**
+     * @return a list of class objects containing the enemies for the level.
+     */
     public Class[] getClassList() {
 	return clazzArray;
     }
 
+    /**
+     * @return a class object which contains the class type fo the powerup for
+     *         the level.
+     */
     public Class getPowerupClass() {
 	return powerup;
     }

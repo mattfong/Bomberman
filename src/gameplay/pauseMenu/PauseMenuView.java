@@ -14,6 +14,9 @@ import javax.swing.border.EtchedBorder;
 
 import savingSystem.SaveLoadController;
 
+/**
+ * @author MF Class containing the JPanel of the pause menu.
+ */
 public class PauseMenuView extends JPanel {
 
     private GamePanel parentPanel;
@@ -27,7 +30,6 @@ public class PauseMenuView extends JPanel {
 	setFocusable(true);
 	requestFocus();
 
-	// TODO: Fix this hack
 	manager.setParentPanel(panel);
     }
 
