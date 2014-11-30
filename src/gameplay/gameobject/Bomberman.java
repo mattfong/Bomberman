@@ -14,6 +14,10 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
+/**
+ * @author MF Class implementing Bomberman gameactor, uses BombermnaInterface to
+ *         implement all the behavior associated with bomberman.
+ */
 public class Bomberman extends GameActor implements BombermanInterface {
 
     protected int bombLimit;
@@ -104,7 +108,6 @@ public class Bomberman extends GameActor implements BombermanInterface {
     public void update() {
 	inputManager.processCommand();
 	checkForAndApplyPowerup();
-	checkForDoor();
 	checkIfDead();
 
     }
