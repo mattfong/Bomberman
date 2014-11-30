@@ -30,6 +30,8 @@ public class LoginMenuView extends JPanel{
 		
 		JTextField userNameField = new JTextField(30);
 		JPasswordField passwordField = new JPasswordField(30);
+		userNameField.setText(null);
+		passwordField.setText(null);
 		
 		JLabel enterUserName = new JLabel("Enter Username: ");
 		JLabel enterPassword = new JLabel("Enter Password:");
