@@ -4,6 +4,13 @@ import gameplay.Direction;
 import gameplay.gameobject.GameActor;
 import gameplay.input.Command;
 
+/**
+ * AI which implements the logic for the Low intelligence AI as specified by
+ * "Low intelligence enemies will move in one direction until they hit an obstacle then they will move in the opposite direction"
+ * 
+ * @author YA
+ *
+ */
 public class DumbAI extends AI {
 
     private boolean justMovedLeft = false;
@@ -62,7 +69,7 @@ public class DumbAI extends AI {
 
     }
 
-    public Command leftAndRight() {
+    private Command leftAndRight() {
 
 	Boolean canMoveRight = actor.canMove(Direction.RIGHT);
 	Boolean canMoveLeft = actor.canMove(Direction.LEFT);
@@ -85,7 +92,7 @@ public class DumbAI extends AI {
 
     }
 
-    public Command upAndDown() {
+    private Command upAndDown() {
 
 	// For moving up and down
 	Boolean canMoveUp = actor.canMove(Direction.UP);

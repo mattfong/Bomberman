@@ -8,6 +8,13 @@ import gameplay.input.CommandLeft;
 import gameplay.input.CommandRight;
 import gameplay.input.CommandUp;
 
+/**
+ * Abstract AI template to drive a generic GameActor class. Integligence and
+ * speed of movement are controlled by this class.
+ * 
+ * @author YA
+ *
+ */
 public abstract class AI implements CommandIssuer {
 
     // protected int responseSpeed;
@@ -16,6 +23,14 @@ public abstract class AI implements CommandIssuer {
     protected int speed;
 
     // Constructor
+    /**
+     * Contructor for the AI module.
+     * 
+     * @param actor
+     *            actor which is to be driven
+     * @param speed
+     *            speed which the game actor should move at.
+     */
     public AI(GameActor actor, Speed speed) {
 	this.actor = actor;
 	this.speed = speed.getSpeed();

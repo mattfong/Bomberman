@@ -10,12 +10,14 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+/**
+ * @author MF Implementation of the Pontan enemy requirement.
+ */
 public class Pontan extends GameActor {
 
     public Pontan(Rectangle location, World world) {
 	super(location, world);
 	sprite = new ImageIcon(Pontan.class.getResource("/Pontan.jpg"));
-	// inputManager = new CommandManager(this, InputListener.getInstance());
 	score = 8000;
 	wallPass = true;
 	inputManager = new CommandManager(this, new DumbAI(this, Speed.FAST));

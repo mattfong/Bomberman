@@ -10,12 +10,14 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+/**
+ * @author MF Implementation of the Pass enemy requirement.
+ */
 public class Pass extends GameActor {
 
     public Pass(Rectangle location, World world) {
 	super(location, world);
 	sprite = new ImageIcon(Pass.class.getResource("/Pass.jpg"));
-	// inputManager = new CommandManager(this, InputListener.getInstance());
 	score = 4000;
 	wallPass = false;
 	inputManager = new CommandManager(this, new DumbAI(this, Speed.FAST));

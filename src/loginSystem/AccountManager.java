@@ -42,6 +42,7 @@ public class AccountManager {
 		for(int i=0; i<numberOfAccounts(); i++){
 			acc = accounts.get(i);
 			if(userName.equals(acc.getUserName())){
+				System.out.println("Account was found");
 				return acc;
 			}
 		}

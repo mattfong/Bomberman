@@ -107,8 +107,9 @@ public class LoginMenuView {
 
 						f.dispose();	
 						
-						LoginMenuViewLogic.loginMenuLogic(justUsername);
-						/*
+						//LoginMenuViewLogic.loginMenuLogic(justUsername);
+						//THERE IS A PROBLE WITH THE LOGIC METHODS
+						
 						Account acc = accountManager.getAccount(justUsername); 
 						GameStateManager manager = GameStateManager.getInstance();
 						
@@ -119,7 +120,8 @@ public class LoginMenuView {
 						PlayGameView.main(null); //The frame disposes and the PlayGameView class is opened	
 										
 						System.out.println("Username entered correctly");
-						*/
+						//*/
+						
 					}
 					else{
 						/*

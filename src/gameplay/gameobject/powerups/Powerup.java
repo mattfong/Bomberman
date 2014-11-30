@@ -15,6 +15,9 @@ public interface Powerup {
      */
     public void applyPowerup(BombermanInterface bomberman);
 
+    /**
+     * Method that is called to inform the powerup that it's been bombed.
+     */
     public void haveBeenBombed();
 
 }

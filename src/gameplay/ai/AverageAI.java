@@ -6,6 +6,13 @@ import gameplay.input.Command;
 
 import java.util.Random;
 
+/**
+ * AI implementation of the Medium AI as per requirement
+ * "medium intelligence enemies will move like low intelligence enemies but may change directions at an intersection with a 10% chance. Medium intelligence enemies shall also chase bomberman if bomberman comes within a 1 square radius."
+ * 
+ * @author YA
+ *
+ */
 public class AverageAI extends AI {
 
     private Boolean justMovedLeft = false;
@@ -91,15 +98,15 @@ public class AverageAI extends AI {
     // HELPER METHODS
 
     // towrite if time allows
-    public Boolean bombermanIsWithinOne() {
+    private Boolean bombermanIsWithinOne() {
 	return null;
     }
 
-    public Integer setToZero(Integer anInt) {
+    private Integer setToZero(Integer anInt) {
 	return anInt = 0;
     }
 
-    public Command changeDirection(Boolean percentChance) {
+    private Command changeDirection(Boolean percentChance) {
 
 	if (leftRight) {
 	    isAtIntersection = actor.isAtIntersection();
@@ -132,7 +139,7 @@ public class AverageAI extends AI {
 
     }
 
-    public Command upAndDown() {
+    private Command upAndDown() {
 
 	// For moving up and down
 	Boolean canMoveUp = actor.canMove(Direction.UP);
@@ -156,7 +163,7 @@ public class AverageAI extends AI {
 	}
     }
 
-    public Command leftAndRight() {
+    private Command leftAndRight() {
 
 	Boolean canMoveRight = actor.canMove(Direction.RIGHT);
 	Boolean canMoveLeft = actor.canMove(Direction.LEFT);
@@ -181,7 +188,7 @@ public class AverageAI extends AI {
     }
 
     // Randomizer methods
-    public Boolean isTenPercent() {
+    private Boolean isTenPercent() {
 
 	Random r = new Random();
 	int number = r.nextInt(9);
@@ -190,7 +197,7 @@ public class AverageAI extends AI {
 	return isTenPercent;
     }
 
-    public Boolean isZero(int integer) {
+    private Boolean isZero(int integer) {
 
 	if (integer == 0) {
 	    return true;
