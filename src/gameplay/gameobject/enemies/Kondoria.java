@@ -2,6 +2,7 @@ package gameplay.gameobject.enemies;
 
 import gameplay.World;
 import gameplay.ai.DumbAI;
+import gameplay.ai.Speed;
 import gameplay.gameobject.GameActor;
 import gameplay.input.CommandManager;
 
@@ -17,7 +18,7 @@ public class Kondoria extends GameActor {
 	// inputManager = new CommandManager(this, InputListener.getInstance());
 	score = 1000;
 	wallPass = true;
-	inputManager = new CommandManager(this, new DumbAI(this));
+	inputManager = new CommandManager(this, new DumbAI(this, Speed.SLOW));
     }
 
     public Kondoria(World world) {

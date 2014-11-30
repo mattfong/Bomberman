@@ -1,6 +1,5 @@
 package gameplay.ai;
 
-import gameplay.Direction;
 import gameplay.gameobject.GameActor;
 import gameplay.input.Command;
 import gameplay.input.CommandDown;
@@ -10,21 +9,20 @@ import gameplay.input.CommandRight;
 import gameplay.input.CommandUp;
 
 public abstract class AI implements CommandIssuer {
-    
 
-    //protected int responseSpeed;
+    // protected int responseSpeed;
     protected GameActor actor;
     protected int counter;
-    
-    
-    
+    protected int speed;
 
     // Constructor
-    public AI(GameActor actor, AILevel aiLevel) {
+    public AI(GameActor actor, Speed speed) {
 	this.actor = actor;
+	this.speed = speed.getSpeed();
+
     }
 
-    //Shortened move commands
+    // Shortened move commands
     public Command up() {
 	return new CommandUp();
     }
@@ -40,9 +38,5 @@ public abstract class AI implements CommandIssuer {
     public Command left() {
 	return new CommandLeft();
     }
-
-    
-    
-
 
 }
