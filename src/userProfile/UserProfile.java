@@ -12,8 +12,8 @@ import savingSystem.SavedGame;
 import savingSystem.SavedGameManager;
 import savingSystem.SavedGameSerialization;
 
+
 public class UserProfile {
-<<<<<<< Updated upstream
 	
 	private static UserProfile singleton = null;
 	private String userName;
@@ -65,73 +65,21 @@ public class UserProfile {
 		saveManager.setSavedGamesList(allSavedGames);
 		return saveManager.getSavedGamesList();
 	}
-=======
->>>>>>> Stashed changes
 
-    private static UserProfile singleton = null;
-    private AccountManager accountManager;
-    private SavedGameManager saveManager;
-    private HighScoreDatabase scoreDatabase;
-
-    // Insert Unlocked Levels
-
-    public UserProfile() {
-
-    }
-
-    public UserProfile(String userName) throws IOException {
-	accountManager = new AccountManager();
-	saveManager = new SavedGameManager();
-	Init(userName);
-    }
-
-    public static UserProfile getInstance() {
-	if (singleton == null) {
-	    singleton = new UserProfile();
+	public AccountManager getAccountManager() {
+		return accountManager;
 	}
 
-	return singleton;
-    }
+	public void setAccountManager(AccountManager accountManager) {
+		this.accountManager = accountManager;
+	}
 
-    private void Init(String userName) throws IOException {
-	List<Account> allAccounts = getAllUserAccounts();
-	Account currentUser = getCurrentUser(userName);
-	List<SavedGame> savedGames = getSavedGamesByUser(currentUser.getUserName());
-    }
+	public SavedGameManager getSaveManager() {
+		return saveManager;
+	}
 
-    private List<Account> getAllUserAccounts() throws IOException {
-	CSVreader reader = new CSVreader();
-	accountManager.setAccounts(reader.CSVreaderAccounts());
-	return accountManager.getAccounts();
-    }
-
-    private Account getCurrentUser(String userName) {
-	Account currentAccount = accountManager.getAccount(userName);
-	return currentAccount;
-    }
-
-    private List<SavedGame> getSavedGamesByUser(String userName) throws IOException {
-	String fileName = saveManager.getSaveGameFile(userName);
-	SavedGameSerialization serializeGame = new SavedGameSerialization();
-	List<SavedGame> allSavedGames = serializeGame.deserializeSaveGameName(fileName);
-	saveManager.setSavedGamesList(allSavedGames);
-	return saveManager.getSavedGamesList();
-    }
-
-    public AccountManager getAccountManager() {
-	return accountManager;
-    }
-
-    public void setAccountManager(AccountManager accountManager) {
-	this.accountManager = accountManager;
-    }
-
-    public SavedGameManager getSaveManager() {
-	return saveManager;
-    }
-
-    public void setSaveManager(SavedGameManager saveManager) {
-	this.saveManager = saveManager;
-    }
-
+	public void setSaveManager(SavedGameManager saveManager) {
+		this.saveManager = saveManager;
+	}
+	
 }
