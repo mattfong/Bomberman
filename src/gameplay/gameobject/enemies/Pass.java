@@ -10,6 +10,9 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+/**
+ * @author MF Implementation of the Pass enemy requirement.
+ */
 public class Pass extends GameActor {
 
     public Pass(Rectangle location, World world) {

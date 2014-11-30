@@ -10,6 +10,9 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+/**
+ * @author MF Implementation of the Oneal enemy class implementation.
+ */
 public class Oneal extends GameActor {
 
     public Oneal(Rectangle location, World world) {

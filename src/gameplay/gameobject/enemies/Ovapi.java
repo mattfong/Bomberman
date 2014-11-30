@@ -10,6 +10,9 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+/**
+ * @author MF Implementation of the Ovapi enemy requirement.
+ */
 public class Ovapi extends GameActor {
 
     public Ovapi(Rectangle location, World world) {

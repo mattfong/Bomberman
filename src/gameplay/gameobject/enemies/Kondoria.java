@@ -10,6 +10,9 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+/**
+ * @author MF Implementation of the Kondoria requirements.
+ */
 public class Kondoria extends GameActor {
 
     public Kondoria(Rectangle location, World world) {

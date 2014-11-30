@@ -10,6 +10,9 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+/**
+ * @author MF Implementation of the Minvor requirements.
+ */
 public class Minvo extends GameActor {
 
     public Minvo(Rectangle location, World world) {

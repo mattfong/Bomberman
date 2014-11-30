@@ -10,6 +10,9 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+/**
+ * @author MF Implementation of the Balloon enemy requirements.
+ */
 public class Balloon extends GameActor {
 
     public Balloon(Rectangle location, World world) {
