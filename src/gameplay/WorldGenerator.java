@@ -18,7 +18,10 @@ import java.util.Stack;
 
 /**
  * @author mfong8 WorldGenerator's role is to take in a level configuration and
- *         generate a populated grid based on the given level specifications.
+ *         generate a populated grid based on the given level specifications. To
+ *         use, create with constructor, then call generateLevel with the
+ *         desired level, then use getGrid and getActorList to get the relevant
+ *         information.
  */
 public class WorldGenerator implements Serializable {
 
@@ -41,10 +44,22 @@ public class WorldGenerator implements Serializable {
 
     }
 
+    /**
+     * Get the list of actors operating on the level.
+     * 
+     * @return ArrayList of enemies associated with the level passed into
+     *         generator
+     */
     public ArrayList<GameActor> getActorList() {
 	return actorList;
     }
 
+    /**
+     * Get the grid associated with the input level.
+     * 
+     * @return grid populated with all the gameobjects specified by the level
+     *         passed into the generate method.
+     */
     public Stack<GameObject>[][] getGrid() {
 	return grid;
     }
