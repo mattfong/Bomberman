@@ -9,11 +9,15 @@ import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 
+/**
+ * @author MF Abstract class which represents a basic game object with methods
+ *         to implements base functionality common across to all game objects.
+ */
 public abstract class GameObject implements Serializable {
 
     private static final long serialVersionUID = -3547634888898588379L;
     protected final int pictureSize = 32;
-    
+
     protected Rectangle gridLocation;
     protected World world;
 
