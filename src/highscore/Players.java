@@ -10,11 +10,14 @@ public class Players {
     
     
     //Constructor
-    public Players(LinkedList<String> stringList, LinkedList<Integer> integerList){
-	
+    public Players(List <String> stringList, List <Integer> integerList){
+	this.playerNames = stringList;
+	this.scores = integerList;
     }
     
-    //Getters/Setters
+    
+    
+    //Getters/Setters for player names
     public List<String> getPlayerNames() {
 	return playerNames;
     }
@@ -23,7 +26,7 @@ public class Players {
     }
     
     
-    //Getters/Setters
+    //Getters/Setters for player scores
     public List <Integer> getScores() {
 	return scores;
     }
