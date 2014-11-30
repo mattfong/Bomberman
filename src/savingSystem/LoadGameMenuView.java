@@ -1,16 +1,24 @@
 package savingSystem;
 
+import gameplay.statemanagers.GameState;
+import gameplay.statemanagers.GameStateManager;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 
 public class LoadGameMenuView {
 
@@ -19,6 +27,11 @@ public class LoadGameMenuView {
 	private JPanel panel = new JPanel();
 	private final JTextField deleteGame = new JTextField(30);
 	private SaveLoadController controller = new SaveLoadController();
+	private SavedGameSerialization serializeGame = new SavedGameSerialization();
+	private SavedGameManager saveManager = new SavedGameManager();
+	private GameState currentGame = GameStateManager.getInstance().getCurrentGameState();
+	private SavedGame game = null;
+	private String saveGameName = "";
 	
 	public void LoadGameMenuView(){
 		frame.setVisible(true);
@@ -27,7 +40,7 @@ public class LoadGameMenuView {
 		frame.setResizable(false);
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
-	    panel.setLayout(new GridLayout(7,1,5,10));
+	    panel.setLayout(new GridLayout(8,1,5,10));
 	    
 	    JLabel loadGameLabel = new JLabel("Load Game");
 	    JLabel deleteGameLabel = new JLabel("Delete saved game");
@@ -37,6 +50,24 @@ public class LoadGameMenuView {
 	    JButton goBackButton = new JButton("Go Back");
 	    JButton closeMenuButton = new JButton("Close Menu");
 	    
+	    try {
+	    String fileName = saveManager.getSaveGameFile(currentGame.getUserName());
+			savedGames = serializeGame.deserializeSaveGameName(fileName);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		saveManager.setSavedGamesList(savedGames);
+		String[] nameList = new String[saveManager.numberOfSavedGames()];
+		for(int i=0; i<saveManager.numberOfSavedGames(); i++) {
+			nameList[i] = savedGames.get(i).getSavedGameName();
+		}
+	
+	    JList list = new JList(nameList);
+	    list.setVisibleRowCount(5);
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list.setLayoutOrientation(JList.VERTICAL);
+		
 	    loadGameButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				controller.loadGame();
@@ -67,6 +98,7 @@ public class LoadGameMenuView {
 		});
 
 	    panel.add(loadGameLabel);
+	    panel.add(new JScrollPane(list));
 	    panel.add(deleteGameLabel);
 	    panel.add(deleteGame);
 	    panel.add(loadGameButton);
