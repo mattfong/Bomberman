@@ -25,7 +25,7 @@ public class SpeedPowerup extends GameObject implements Powerup {
 
     @Override
     public void applyPowerup(BombermanInterface actor) {
-
+	actor.increaseMoveSpeed();
     }
 
 }

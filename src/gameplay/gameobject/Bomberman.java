@@ -21,18 +21,18 @@ public class Bomberman extends GameActor implements BombermanInterface {
     protected boolean detonator;
     protected int explosionRadius;
 
-	public Bomberman(Rectangle location, World world) {
+    public Bomberman(Rectangle location, World world) {
 	super(location, world);
 	sprite = new ImageIcon(Bomberman.class.getResource("/Sprite.png"));
 	inputManager = new CommandManager(this, InputListener.getInstance());
 	bombPass = false;
-	flamePass = true;
+	flamePass = false;
 	detonator = false;
 	explosionRadius = 1;
 	bombLimit = 1;
 
     }
-    
+
     /**
      * Overridden method which takes into account passing through bombs for
      * bomberman.
@@ -90,42 +90,43 @@ public class Bomberman extends GameActor implements BombermanInterface {
 
     @Override
     public void update() {
-    	inputManager.processCommand();
-    	checkForAndApplyPowerup();
-    	checkIfDead();
+	inputManager.processCommand();
+	checkForAndApplyPowerup();
+	checkIfDead();
 
-        }
+    }
 
-        private void checkIfDead() {
-    	ArrayList<GameActor> actorList = world.getActorList();
-    	for (GameActor actor : actorList) {
-    	    if (actor != this) {
-    		if (actor.hasCollided(this)) {
-    		    if (GameStateManager.getInstance().getCurrentGameState().getRemainingLives() > 0) {
-    			respawn();
-    		    } else {
-    			isDead = true;
-    		    }
-    		}
-    	    }
-    	}
+    private void checkIfDead() {
+	ArrayList<GameActor> actorList = world.getActorList();
+	for (GameActor actor : actorList) {
+	    if (!(actor instanceof Bomberman)) {
+		if (actor.hasCollided(this)) {
+		    if (GameStateManager.getInstance().getCurrentGameState().getRemainingLives() > 0) {
+			respawn();
+		    } else {
+			isDead = true;
+			System.out.println("Hello");
+		    }
+		}
+	    }
+	}
 
-    	if (checkIfBombed()) {
-    	    if (flamePass) { // oh hello there bomberman, i see you
-    			     // are surounded by bombs Schönling. I
-    		// sure hope that you can.... TAKE THE
-    		// HEAT
+	if (checkIfBombed()) {
+	    if (flamePass) { // oh hello there bomberman, i see you
+			     // are surounded by bombs Schönling. I
+		// sure hope that you can.... TAKE THE
+		// HEAT
 
-    	    } else {
-    		if (GameStateManager.getInstance().getCurrentGameState().getRemainingLives() > 0) {
-    		    respawn();
-    		} else {
-    		    isDead = true;
-    		}
-    	    }
-    	}
+	    } else {
+		if (GameStateManager.getInstance().getCurrentGameState().getRemainingLives() > 0) {
+		    respawn();
+		} else {
+		    isDead = true;
+		}
+	    }
+	}
 
-        }
+    }
 
     @Override
     public boolean canBombPass() {
@@ -217,6 +218,15 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	} else {
 	    isDead = true;
 	}
+	InputListener.getInstance().resetQuerySpeed(); // don't forget to slow
+						       // bomberman down after
+						       // he dies or 'shoot him
+						       // in the foot'
+    }
+
+    @Override
+    public void increaseMoveSpeed() {
+	InputListener.getInstance().increaseQuerySpeed();
     }
 
 }
