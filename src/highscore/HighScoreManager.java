@@ -15,6 +15,8 @@ public class HighScoreManager {
 	
     }
     
+    
+    
  
 
     
@@ -50,6 +52,27 @@ public class HighScoreManager {
 	List<Integer> scores = getPlayerScoresFromCSV();
 	
 	
+	
+	Players newPlayer = new Players(names, scores);
+	
+	HighScoreDatabase database = new HighScoreDatabase(newPlayer);
+
+	Players temp = database.sortByScore();
+
+	database.sortedForm(temp);
+	
+	// NOW IT'S SORTED
+
+	// gotta extrac top 10 from it
+
+	Players temp2 = database.getListOfPlayers();
+
+	// Need players sorted
+	Players finalplayer = database.topTen(temp2);
+	
+	//RETURN FINALPLAYER ONCE CSV METHODS IMPLEMENTED 
+	//the view will extract both the name and the score. it will return something else
+	//if the result from it is null.
 
 	return null;
 
