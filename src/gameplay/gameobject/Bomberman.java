@@ -203,11 +203,9 @@ public class Bomberman extends GameActor implements BombermanInterface {
     @Override
     public boolean canDetonateBomb() {
 	return detonator;
-
     }
 
-    @Override
-    public void respawn() {
+    private void respawn() {
 	bombPass = false;
 	wallPass = false;
 	wallPass = false;
