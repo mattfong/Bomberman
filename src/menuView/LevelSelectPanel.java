@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import savingSystem.SaveLoadController;
 /**
  * @author Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>
  * @version 1.7 (current version number of program)
@@ -20,6 +22,7 @@ public class LevelSelectPanel extends JPanel{
 	LevelSelectPanelLogic LSPL = new LevelSelectPanelLogic();
 	
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
+	SaveLoadController SLC = new SaveLoadController();
 	
 	public LevelSelectPanel() {
 		initUI();
@@ -31,9 +34,9 @@ public class LevelSelectPanel extends JPanel{
 		int i =3;
 		
 		
-	
+		
+		i = SLC.maxLevelReachedByUser();
 		int counter, counterPlusOne;
-		//int realLevel;
 		JButton[] buttons = new JButton[25];
 		for(counter=0;counter<(buttons.length);counter++){
 			counterPlusOne=(counter+1);
