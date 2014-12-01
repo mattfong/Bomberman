@@ -118,25 +118,34 @@ public class SaveLoadController {
 	public int maxLevelReachedByUser() {
 		SavedGame game = null;
 		int[] levelsStored; 
-		int maxLevel= 1;
+		//If there are no saved games, then the user starts at level 1.
+		int maxLevel = 1;
 		
 		try {
 			fileName = saveManager.getSaveGameFile(currentGame.getUserName());
 			List<SavedGame> allSavedGames = serializeGame.deserializeSaveGameName(fileName);
 			saveManager.setSavedGamesList(allSavedGames);
 			levelsStored = new int[saveManager.numberOfSavedGames()];
-
-			System.out.println("Step 5: Deserialized List: " + allSavedGames);
+	
+			/* Looping through the list of saved games, and get all the levels of the saved games.
+			 * Then, store the levels in an array and sort. 
+			*/
 			for (int i = 0; i < allSavedGames.size(); i++) {
 				game = allSavedGames.get(i);
 				Level level = game.getGameState().getLevel();
 				levelsStored[i] = level.getLevelNumber();
 			}
 			Arrays.sort(levelsStored);
-			maxLevel = levelsStored[saveManager.numberOfSavedGames()-1];
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+			
+			if(saveManager.numberOfSavedGames() > 0) {
+				// Obtaining the highest level achieved by the user, which is stored in the last index.
+				maxLevel = levelsStored[saveManager.numberOfSavedGames()-1];
+			} else {
+				maxLevel = 1;
+			}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		return maxLevel;
 	}
 
