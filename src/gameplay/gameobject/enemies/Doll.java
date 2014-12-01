@@ -1,9 +1,9 @@
 package gameplay.gameobject.enemies;
 
 import gameplay.gameobject.GameActor;
-import gameplay.input.ai.DumbAI;
+import gameplay.input.CommandManager;
+import gameplay.input.ai.AverageAI;
 import gameplay.input.ai.Speed;
-import gameplay.input.commandobjects.CommandManager;
 import gameplay.world.World;
 
 import java.awt.Rectangle;
@@ -22,7 +22,7 @@ public class Doll extends GameActor implements Cloneable {
 	sprite = new ImageIcon(Doll.class.getResource("/Doll.jpg"));
 	score = 400;
 	wallPass = false;
-	inputManager = new CommandManager(this, new DumbAI(this, Speed.NORMAL));
+	inputManager = new CommandManager(this, new AverageAI(this, Speed.NORMAL));
     }
 
     public Doll(World world) {

@@ -1,9 +1,9 @@
 package gameplay.gameobject.enemies;
 
 import gameplay.gameobject.GameActor;
-import gameplay.input.ai.DumbAI;
+import gameplay.input.CommandManager;
+import gameplay.input.ai.AverageAI;
 import gameplay.input.ai.Speed;
-import gameplay.input.commandobjects.CommandManager;
 import gameplay.world.World;
 
 import java.awt.Rectangle;
@@ -22,7 +22,7 @@ public class Pontan extends GameActor {
 	sprite = new ImageIcon(Pontan.class.getResource("/Pontan.jpg"));
 	score = 8000;
 	wallPass = true;
-	inputManager = new CommandManager(this, new DumbAI(this, Speed.FAST));
+	inputManager = new CommandManager(this, new AverageAI(this, Speed.FAST));
     }
 
     public Pontan(World world) {
