@@ -50,15 +50,16 @@ public class HighScoreView extends JFrame implements ActionListener {
 	*/
 	
 	
-	HighScoreView hs = new HighScoreView(1);
-	Players testp = hs.showTopTen();
+	//HighScoreView hs = new HighScoreView(1);
+	//Players testp = hs.showTopTen();
 	
-	System.out.println(testp.getPlayerNames().toString());
+	//System.out.println(testp.getPlayerNames().toString());
 	
 	
 	
 	
     }
+    /*
     
     //For testing
     public HighScoreView(int integ){
@@ -154,7 +155,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 
     }
     
-    
+    */
     
     public HighScoreView() {
 	
