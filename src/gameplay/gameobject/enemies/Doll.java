@@ -1,10 +1,10 @@
 package gameplay.gameobject.enemies;
 
-import gameplay.World;
-import gameplay.ai.DumbAI;
-import gameplay.ai.Speed;
 import gameplay.gameobject.GameActor;
-import gameplay.input.CommandManager;
+import gameplay.input.ai.DumbAI;
+import gameplay.input.ai.Speed;
+import gameplay.input.commandobjects.CommandManager;
+import gameplay.world.World;
 
 import java.awt.Rectangle;
 

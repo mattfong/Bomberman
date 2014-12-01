@@ -1,9 +1,8 @@
 package gameplay.gameobject;
 
 import static org.junit.Assert.fail;
-import gameplay.Level;
-import gameplay.World;
 import gameplay.gameobject.blocks.Background;
+import gameplay.world.World;
 
 import java.util.Stack;
 

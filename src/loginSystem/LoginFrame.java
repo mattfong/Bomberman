@@ -1,5 +1,5 @@
 package loginSystem;
-import gameplay.GamePanel;
+import gameplay.engine.GamePanel;
 
 import javax.swing.JFrame;
 

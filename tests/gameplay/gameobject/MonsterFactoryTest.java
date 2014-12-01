@@ -2,9 +2,7 @@ package gameplay.gameobject;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import gameplay.Level;
 import gameplay.gameobject.GameActor;
-import gameplay.gameobject.enemies.Factory;
 
 import java.util.ArrayList;
 

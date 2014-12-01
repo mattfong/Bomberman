@@ -1,10 +1,10 @@
 package gameplay.gameobject.powerups;
 
-import gameplay.World;
-import gameplay.gameobject.Bomberman;
-import gameplay.gameobject.BombermanInterface;
 import gameplay.gameobject.GameActor;
 import gameplay.gameobject.GameObject;
+import gameplay.gameobject.bomberman.Bomberman;
+import gameplay.gameobject.bomberman.BombermanInterface;
+import gameplay.world.World;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class Door extends GameObject implements Powerup {
 	super(location, world);
 	sprite = new ImageIcon(Door.class.getResource("/ClosedDoor.jpg"));
 
-	destroyable = true;
+	destroyable = false;
 	solid = false;
 	conductsExplosions = false;
 	isOpen = false;

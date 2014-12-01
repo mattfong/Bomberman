@@ -1,10 +1,9 @@
 package gameplay.gameobject;
 
 import static org.junit.Assert.assertNotNull;
-import gameplay.Level;
-import gameplay.WorldGenerator;
 import gameplay.gameobject.GameActor;
 import gameplay.gameobject.GameObject;
+import gameplay.world.WorldGenerator;
 
 import java.util.ArrayList;
 import java.util.Stack;

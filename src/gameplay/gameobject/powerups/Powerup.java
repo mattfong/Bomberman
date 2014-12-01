@@ -1,6 +1,6 @@
 package gameplay.gameobject.powerups;
 
-import gameplay.gameobject.BombermanInterface;
+import gameplay.gameobject.bomberman.BombermanInterface;
 
 /**
  * Interface which defines the behavior of a powerup

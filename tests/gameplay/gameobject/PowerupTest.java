@@ -2,7 +2,7 @@ package gameplay.gameobject;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import gameplay.World;
+import gameplay.gameobject.bomberman.Bomberman;
 import gameplay.gameobject.powerups.BombPassPowerup;
 import gameplay.gameobject.powerups.BombPowerup;
 import gameplay.gameobject.powerups.DetonatorPowerup;
@@ -12,6 +12,7 @@ import gameplay.gameobject.powerups.Powerup;
 import gameplay.gameobject.powerups.SpeedPowerup;
 import gameplay.gameobject.powerups.WallPassPowerup;
 import gameplay.input.InputListener;
+import gameplay.world.World;
 
 import java.awt.Rectangle;
 
@@ -41,7 +42,7 @@ public class PowerupTest {
 	Powerup power;
 	power = new BombPowerup(null, null);
 	power.applyPowerup(bomberman);
-	assertEquals(2, bomberman.bombLimit);
+	assertEquals(2, bomberman.getBombLimit());
     }
 
     @Test
@@ -65,7 +66,7 @@ public class PowerupTest {
 	Powerup power;
 	power = new FlamePowerup(null, null);
 	power.applyPowerup(bomberman);
-	assertEquals(2, bomberman.explosionRadius);
+	assertEquals(2, bomberman.getBombRadius());
     }
 
     @Test

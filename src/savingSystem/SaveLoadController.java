@@ -1,10 +1,10 @@
 package savingSystem;
 
-import gameplay.GameFrame;
-import gameplay.GamePanel;
-import gameplay.World;
+import gameplay.engine.GameFrame;
+import gameplay.engine.GamePanel;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
+import gameplay.world.World;
 
 import java.io.IOException;
 import java.util.List;
