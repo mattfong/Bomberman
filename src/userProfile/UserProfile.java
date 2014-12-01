@@ -39,6 +39,12 @@ public class UserProfile {
 		return singleton;
 	}
 	
+	/**
+	 * This method sets the userProfile when the user logins, so that all their information can 
+	 * be collected and used throughout the transition.
+	 * @param userName
+	 * @throws IOException
+	 */
 	public void setUserProfile(String userName) throws IOException {
 		this.userName = userName;
 		accountManager = new AccountManager();
@@ -46,6 +52,11 @@ public class UserProfile {
 		Init(userName);
 	}
 	
+	/**
+	 * This method collects all the data that has been stored in files. 
+	 * @param userName
+	 * @throws IOException
+	 */
 	private void Init(String userName) throws IOException{
 		CSVreader reader = new CSVreader();
 		accountManager.setAccounts(reader.CSVreaderAccounts("UserPass.csv"));
@@ -76,6 +87,12 @@ public class UserProfile {
 		return currentAccount;
 	}
 	
+	/**
+	 * The method gets the user's serialized file, and returns the list of saved games.
+	 * @param userName
+	 * @return a list of saved games for the current user
+	 * @throws IOException
+	 */
 	private List<SavedGame> getSavedGamesByUser(String userName) throws IOException {
 		String fileName = saveManager.getSaveGameFile(userName);
 		SavedGameSerialization serializeGame = new SavedGameSerialization();

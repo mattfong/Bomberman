@@ -77,7 +77,7 @@ public class LevelSelectPanel extends JPanel {
 		goBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String username = "if you see this there is a serious error.";
-				manager.displayPlayGameMenu(username);
+				manager.displayPlayGameMenu();
 			}
 		});
 		add(goBack);

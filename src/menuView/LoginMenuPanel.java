@@ -58,14 +58,11 @@ public class LoginMenuPanel extends JPanel {
 
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
-				Boolean isCorrectID = loginMenuPanelLogic.loginCheck(
-						userNameField, passwordField);
-				if (isCorrectID) {
-					try {
-						UserProfile.getInstance().setUserProfile(
-								userNameField.getText());
-						manager.displayPlayGameMenu(userNameField.getText());
+			    Boolean isCorrectID = loginMenuPanelLogic.loginCheck(userNameField, passwordField);
+			    if(isCorrectID){
+			    	try {
+			    		UserProfile.getInstance().setUserProfile(userNameField.getText());
+						manager.displayPlayGameMenu();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

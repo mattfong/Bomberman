@@ -15,7 +15,7 @@ public class ModifyAccountViewLogic {
 		user = UserProfile.getInstance();
 	}
 	
-	public void modifyAccount(String newName, String newPassword) {
+	public void modifyAccountParameters(String newName, String newPassword) {
 		String currentUserName = user.getUserName();
 		String currentName = user.getAccountManager().getAccount(currentUserName).getName();
 		String currentPassword = user.getAccountManager().getAccount(currentUserName).getPassword();
@@ -39,5 +39,5 @@ public class ModifyAccountViewLogic {
 			e.printStackTrace();
 		}
 	}
-	
+
 }

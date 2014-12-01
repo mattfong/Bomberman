@@ -65,7 +65,6 @@ public class NewAccountPanel extends JPanel {
 				 */
 				NewAccountPanelLogic.NewAccountLogic(NameTF.getText(),
 						UserTF.getText(), PassPF.getText());
-
 			}
 		});
 

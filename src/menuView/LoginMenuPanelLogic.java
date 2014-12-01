@@ -13,9 +13,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import userProfile.UserProfile;
 import loginSystem.Account;
 import loginSystem.AccountManager;
 import loginSystem.CSVreader;
+import loginSystem.CSVwriter;
 import loginSystem.PlayGameView;
 
 /**
@@ -26,12 +28,12 @@ import loginSystem.PlayGameView;
 public class LoginMenuPanelLogic {
 
 	private JFrame controllingFrame;
+	private final String csvAccountsFile = "UserPass.csv";
 
-	/*
-	 * public LoginMenuPanelLogic() {
-	 * 
-	 * }
-	 */
+	public LoginMenuPanelLogic() {
+
+	}
+
 	/**
 	 * This will check that the username and password match valid accounts/ If
 	 * they match, it will return true, else it will return false and make a
@@ -60,7 +62,6 @@ public class LoginMenuPanelLogic {
 
 		if (accountManager.isUser(userNameField.getText(),
 				passwordField.getText())) {
-
 			Account acc = accountManager.getAccount(userName);
 			GameStateManager manager = GameStateManager.getInstance();
 
