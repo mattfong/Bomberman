@@ -2,6 +2,8 @@ package menuView;
 
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -15,6 +17,7 @@ import userProfile.UserProfile;
 
 public class LoadGameMenuPanel extends JPanel{
 	
+	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
 	private JList list;
 	private UserProfile user = UserProfile.getInstance();
 	
@@ -42,6 +45,23 @@ public class LoadGameMenuPanel extends JPanel{
 	    JButton goBackButton = new JButton("Go Back");
 	    JButton closeMenuButton = new JButton("Close Menu");
 	    
+		deleteSavedGameButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+
+			}
+		});	
+		
+		goBackButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				manager.displaySaveLoad();
+			}
+		});	
+		
+		closeMenuButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+
+			}
+		});	
 		
 		add(loadMenuLabel);
 		add(loadGameLabel);

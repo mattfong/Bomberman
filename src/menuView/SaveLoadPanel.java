@@ -29,19 +29,19 @@ public class SaveLoadPanel extends JPanel {
 	    
 		saveGameButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				manager.displaySaveMenu();
 			}
 		});
 
 		loadGameButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
+				manager.displayLoadMenu();
 			}
 		});
 		
 		goBackButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
+				manager.displayPlayGameMenu();
 			}
 		});
 		

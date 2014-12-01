@@ -12,11 +12,10 @@ import javax.swing.JTextField;
 
 public class SaveGameMenuPanel extends JPanel{
 	
-//	private String saveGameNameText;
+	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
 	private final JTextField saveGameNameField;
 	
 	public SaveGameMenuPanel() {
-//		saveGameNameText = "";
 		saveGameNameField= new JTextField(30);
 		initUI();
 	}
@@ -36,13 +35,13 @@ public class SaveGameMenuPanel extends JPanel{
 		saveGameButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				String saveGameNameText = saveGameNameField.getText();
-//				frame.dispose();
+				
 			}
 		});	
 		
 		goBackButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-//				frame.dispose();
+				manager.displaySaveLoad();
 			}
 		});	
 		

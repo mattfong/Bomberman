@@ -38,8 +38,8 @@ public class PanelTransitionManager {
 	}
 	
 	public void displayNewAccountMenu() {
-		NewAccountPanel accountMenu = new AccountPanel();
-		frame.setContentPane(newAccountMenu);
+		NewAccountPanel accountMenu = new NewAccountPanel();
+		frame.setContentPane(accountMenu);
 		frame.invalidate();
 		frame.validate();
 	}
@@ -61,6 +61,13 @@ public class PanelTransitionManager {
 	public void displayPlayGameMenu(){
 		PlayGamePanel playMenu = new PlayGamePanel();
 		frame.setContentPane(playMenu);
+		frame.invalidate();
+		frame.validate();
+	}
+	
+	public void displayLevels() {
+		LevelSelectPanel levelMenu = new LevelSelectPanel();
+		frame.setContentPane(levelMenu);
 		frame.invalidate();
 		frame.validate();
 	}
@@ -91,5 +98,10 @@ public class PanelTransitionManager {
 		frame.setContentPane(highScoreMenu);
 		frame.invalidate();
 		frame.validate();
+	}
+	
+	public static void main(String[] args) {
+		PanelTransitionManager manager = PanelTransitionManager.getInstance();
+		manager.displayLoginMenu();
 	}
 }

@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class PlayGamePanel extends JPanel{
+	
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
 
 	public PlayGamePanel() {
@@ -25,33 +26,30 @@ public class PlayGamePanel extends JPanel{
 
 		playGameButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				f.dispose();
+				manager.displayLevels();
 			}
 		});
 		
 		saveLoadButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				f.dispose();
+				manager.displaySaveLoad();
 			}
 		});
 
 		highScoreButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				f.dispose();
+				manager.displayHighscoreMenu();
 			}
 		});
 		
 		editAccountButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				f.dispose();
+				manager.displayModifyAccount();
 			}
 		});
 		
 		logoutButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				f.dispose();
-				/*MenuDisplay md = new MenuDisplay();
-				md.goTo("loginMenu");*/
 				manager.displayLoginMenu();
 			}
 		});
