@@ -11,9 +11,8 @@ import java.util.Random;
  * "High intelligence enemies move like medium intelligence enemies with a 50% chance of changing directions. High intelligence enemies shall chase bomberman if he is within a 2 square radius; if there is an obstacle between bomberman and the enemy, it will use A star search to find the path to bomberman, if such a path exists. The enemy will check for bomberman and recalculate the path everytime it traverses 1 grid cell."
  * 
  * @author YA
- *
+ * 
  */
-
 
 public class SmartAI extends AI {
 
@@ -34,28 +33,33 @@ public class SmartAI extends AI {
 
     @Override
     public Command getCommand() {
-	
+
 	counter++;
 
 	Boolean fiftyPercent = isFiftyPercent();
-	
-	
+
 	if (counter > speed) {
-	    
+
 	    counter = 0;
-	    
+
 	    return chdirAndChaseBomberman(fiftyPercent);
-	    
+
 	}
 
 	return null;
-	
-	
+
     }
-    
-    
+
     // HELPER METHODS
 
+    /**
+     * This method encompasses the change direction method but it also makes the
+     * GameActor (enemy) an enemy
+     * 
+     * @param percentChance
+     * @return up, down, right, left depending on what direction it was going
+     *         before and depending on if bomberman is around
+     */
     public Command chdirAndChaseBomberman(Boolean percentChance) {
 
 	Boolean canMoveRight = actor.canMove(Direction.RIGHT);
@@ -121,6 +125,14 @@ public class SmartAI extends AI {
 
     }
 
+    /**
+     * This method makes the GameActor change directions.
+     * 
+     * @param percentChance
+     *            the chance it changes directions per intersection
+     * @return up, down, right, left depending on the direction it was going
+     *         before
+     */
     public Command changeDirection(Boolean percentChance) {
 
 	if (leftRight) {
@@ -154,6 +166,12 @@ public class SmartAI extends AI {
 
     }
 
+    /**
+     * This method returns up or down depending on whether the GameActor can go
+     * up or down
+     * 
+     * @return up or down command depending on if it can go up or down
+     */
     public Command upAndDown() {
 
 	// For moving up and down
@@ -178,6 +196,12 @@ public class SmartAI extends AI {
 	}
     }
 
+    /**
+     * This method makes an enemy move right or left
+     * 
+     * @return returns left or right depending on whether the GameActor can move
+     *         left or right
+     */
     public Command leftAndRight() {
 
 	Boolean canMoveRight = actor.canMove(Direction.RIGHT);
@@ -189,23 +213,25 @@ public class SmartAI extends AI {
 	}
 
 	if (canMoveRight && (justMovedLeft == false)) {
-	    
-	    
+
 	    return right();
 
 	}
 
 	else {
 	    justMovedLeft = true;
-	    
-	    
-	    
+
 	    return left();
 	}
 
     }
-    
-    // Randomizer methods
+
+    /**
+     * This method is a randomizer, true 50% of the time, false 50% of the time
+     * 
+     * @return returns true or false depending on the int received from
+     *         Random.nextInt
+     */
     public Boolean isFiftyPercent() {
 
 	Random r = new Random();
@@ -215,28 +241,29 @@ public class SmartAI extends AI {
 	return isFiftyPercent;
     }
 
+    /**
+     * This method sees if a number is 0, 1, 2, 3, or 4
+     * 
+     * @param integer
+     *            integer obtained from a randomizer
+     * @return returns true if the number is indeed 0, 1, 2, 3 or 4
+     */
     public Boolean isZeroOneTwoThreeFour(int integer) {
 
-	if (integer == 0){
+	if (integer == 0) {
 	    return true;
-	} 
-	else if(integer == 1){
+	} else if (integer == 1) {
 	    return true;
-	}
-	else if(integer == 2){
+	} else if (integer == 2) {
 	    return true;
-	}
-	else if(integer == 3){
+	} else if (integer == 3) {
 	    return true;
-	}
-	else if(integer == 4){
+	} else if (integer == 4) {
 	    return true;
-	}
-	else {
+	} else {
 	    return false;
 	}
 
     }
 
-    
 }
