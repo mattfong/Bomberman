@@ -15,6 +15,12 @@ import javax.swing.ListSelectionModel;
 
 import userProfile.UserProfile;
 
+/***
+ * This is the load game panel, which displays the list of saved games.
+ * Also, the user can delete one of the saved game. 
+ * @author Kirththiga
+ *
+ */
 public class LoadGameMenuPanel extends JPanel{
 	
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
@@ -32,7 +38,8 @@ public class LoadGameMenuPanel extends JPanel{
 		loadMenuLabel.setFont(new Font("Miriam", Font.BOLD, 28));
 		
 		JLabel loadGameLabel = new JLabel("Load Game");
-		System.out.println(user);
+		
+		// Storing the list of saved games in an array in order to use JList for display purposes.
 		String[] saveList = new String[user.getSaveManager().numberOfSavedGames()];
 		for(int i=0; i<user.getSaveManager().numberOfSavedGames(); i++) {
 			saveList[i] = user.getSavedGames().get(i).getSavedGameName();
@@ -44,6 +51,7 @@ public class LoadGameMenuPanel extends JPanel{
 		
 		JLabel deleteGameLabel = new JLabel("Delete saved game");
 		JTextField deleteGame = new JTextField(30);
+		deleteGame.setText(null);
 		
 		JButton deleteSavedGameButton = new JButton("Delete Saved Game");
 	    JButton goBackButton = new JButton("Go Back");

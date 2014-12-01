@@ -20,10 +20,9 @@ import loginSystem.AccountManager;
 import loginSystem.CSVreader;
 
 /**
- * @author Philip Hoddinott, inital upload by [kirth was this you?]
- *         <philip.hoddinott@mail.mcgill.ca>
- * @version 1.7 (current version number of program)
- * @since 2014-12-1 (the version of the package this class was first added to)
+ * This is the login panel, and it has been redesigned. 
+ * Phil designed the previous login panel.
+ * @author Kirththiga Murugupillai
  */
 public class LoginMenuPanel extends JPanel {
 
@@ -64,7 +63,6 @@ public class LoginMenuPanel extends JPanel {
 			    		UserProfile.getInstance().setUserProfile(userNameField.getText());
 						manager.displayPlayGameMenu();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}

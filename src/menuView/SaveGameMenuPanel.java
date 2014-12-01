@@ -10,6 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * This class displays the save menu panel, where the user can enter the saved game name.
+ * @author Kirththiga Murugupillai
+ *
+ */
 public class SaveGameMenuPanel extends JPanel{
 	
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
