@@ -15,7 +15,6 @@ import java.util.Random;
  */
 
 
-
 public class SmartAI extends AI {
 
     // Did not finish implementing A*, average AI standin as logic for now, A*
