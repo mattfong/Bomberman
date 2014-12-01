@@ -8,8 +8,17 @@ package menuView;
  */
 
 import java.io.IOException;
+
 import javax.swing.JFrame;
+
 import userProfile.UserProfile;
+
+
+import gameplay.engine.GameFrame;
+import gameplay.engine.GamePanel;
+import gameplay.gameobject.Level;
+import gameplay.statemanagers.GameState;
+import gameplay.statemanagers.GameStateManager;
 
 public class PanelTransitionManager {
 
@@ -51,6 +60,15 @@ public class PanelTransitionManager {
 		frame.revalidate();
 	}
 	
+	
+	public void displayGamePanel(int level){
+		Level lvl = Level.getLevelByNumber(level);
+		GamePanel gamePanel= new GamePanel(lvl);
+		gamePanel.setFocusable(true);
+		frame.setContentPane(gamePanel);
+		frame.invalidate();
+		frame.validate();
+	}
 	/**
 	 * This methods displays the login panel and adds it to the main frame.
 	 */

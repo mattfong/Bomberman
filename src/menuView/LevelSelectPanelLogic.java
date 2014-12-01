@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class LevelSelectPanelLogic {
 	private static JFrame controllingFrame;
+	private PanelTransitionManager manager = PanelTransitionManager
+			.getInstance();
 
 	/**
 	 * This is sent the numbers of levels unlocked and the currentl level. If
@@ -40,13 +42,14 @@ public class LevelSelectPanelLogic {
 	public void play(int level) {
 		System.out.println(level);
 		
-		Level lvl = Level.getLevelByNumber(level);
+		//Level lvl = Level.getLevelByNumber(level);
 		
+		manager.displayGamePanel(level);
 		//String lvl = "L" + level;
 		//System.out.println(lvl);
 		
 		//JFrame frame = new GameFrame(lvl);
-		new GameFrame(lvl);
+		//new GameFrame(lvl);
 		/*
 		 * levelSelected = intoInt(toInt); if (levelSelected == 11) {
 		 * GameStateManager manager = GameStateManager.getInstance(); GameState
