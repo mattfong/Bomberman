@@ -41,20 +41,25 @@ public class LevelSelectPanel extends JPanel {
 
 		int i = 3;
 
-		i = SLC.maxLevelReachedByUser();
+		//i = SLC.maxLevelReachedByUser();
 		// THIS LINES GIVES ERRORS!
 
 		int counter, counterPlusOne;
 		JButton[] buttons = new JButton[25];
 		for (counter = 0; counter < (buttons.length); counter++) {
+			
 			counterPlusOne = (counter + 1);
 			final int realLevel = counterPlusOne;
+			
 			buttons[counter] = new JButton("Lvl " + (counterPlusOne));
+			
 			if (LSPL.visable(i, counterPlusOne)) {
+				
 				buttons[counter].setContentAreaFilled(true);
+				
 				buttons[counter].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						System.out.println("it's good");
+						//System.out.println("it's good");
 						// NEED TO FIX THIS
 						LSPL.play(realLevel);
 					}

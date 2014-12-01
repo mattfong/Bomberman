@@ -45,6 +45,7 @@ public class LevelSelectPanelLogic {
 		//String lvl = "L" + level;
 		//System.out.println(lvl);
 		
+		//JFrame frame = new GameFrame(lvl);
 		new GameFrame(lvl);
 		/*
 		 * levelSelected = intoInt(toInt); if (levelSelected == 11) {
