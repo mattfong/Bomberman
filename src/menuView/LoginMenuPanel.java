@@ -18,80 +18,84 @@ import javax.swing.JTextField;
 import userProfile.UserProfile;
 import loginSystem.AccountManager;
 import loginSystem.CSVreader;
+
 /**
- * @author Philip Hoddinott, inital upload by [kirth was this you?] <philip.hoddinott@mail.mcgill.ca>
+ * @author Philip Hoddinott, inital upload by [kirth was this you?]
+ *         <philip.hoddinott@mail.mcgill.ca>
  * @version 1.7 (current version number of program)
  * @since 2014-12-1 (the version of the package this class was first added to)
  */
-public class LoginMenuPanel extends JPanel{
-	
-	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
-	private AccountManager accountManager= new AccountManager();
+public class LoginMenuPanel extends JPanel {
+
+	private PanelTransitionManager manager = PanelTransitionManager
+			.getInstance();
+	private AccountManager accountManager = new AccountManager();
 	private LoginMenuPanelLogic loginMenuPanelLogic = new LoginMenuPanelLogic();
-	
 
 	public LoginMenuPanel() {
 		initUI();
 	}
-	
+
 	private void initUI() {
-		setLayout(new GridLayout(5,2,5,10));
+		setLayout(new GridLayout(5, 2, 5, 10));
 		JLabel loginMenuLabel = new JLabel("Login Menu");
 		loginMenuLabel.setFont(new Font("Miriam", Font.BOLD, 28));
 		JLabel empty = new JLabel("");
-		
+
 		final JTextField userNameField = new JTextField(30);
 		final JPasswordField passwordField = new JPasswordField(30);
 		userNameField.setText(null);
 		passwordField.setText(null);
-		//String userName;
-		
+		// String userName;
+
 		JLabel enterUserName = new JLabel("Enter Username: ");
 		JLabel enterPassword = new JLabel("Enter Password:");
-		
+
 		JButton loginButton = new JButton("Login ");
 		JButton newAccountButton = new JButton("Create new account");
 		JButton deleteAccountButton = new JButton("Delete Account");
 		JButton supriseButton = new JButton("Click here for a suprise");
-	
-		
-		loginButton.addActionListener(new ActionListener(){
+
+		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			   
-			    Boolean isCorrectID = loginMenuPanelLogic.loginCheck(userNameField, passwordField);
-			    if(isCorrectID){
-			    	try {
-			    		UserProfile.getInstance().setUserProfile(userNameField.getText());
+
+				Boolean isCorrectID = loginMenuPanelLogic.loginCheck(
+						userNameField, passwordField);
+				if (isCorrectID) {
+					try {
+						UserProfile.getInstance().setUserProfile(
+								userNameField.getText());
 						manager.displayPlayGameMenu(userNameField.getText());
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-			    }
-			}		
+				}
+			}
 		});
-		
-		newAccountButton.addActionListener(new ActionListener(){
+
+		newAccountButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				manager.displayNewAccountMenu();
-			}		
-		});	
-		
-		deleteAccountButton.addActionListener(new ActionListener(){
+			}
+		});
+
+		deleteAccountButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				manager.displayDeleteAccountMenu();
-			}		
+			}
 		});
-		
-		supriseButton.addActionListener(new ActionListener(){
+
+		supriseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String url="https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-		    	Desktop d=Desktop.getDesktop();
-		    	/*
-		    	 * When pressed it opens the URL for the youtube video in the default browser. 
-		    	 * Due to a possibility of failure with browsers it is surrounded with try caches
-		    	 */
-		    	try {
+				String url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+				Desktop d = Desktop.getDesktop();
+				/*
+				 * When pressed it opens the URL for the youtube video in the
+				 * default browser. Due to a possibility of failure with
+				 * browsers it is surrounded with try caches
+				 */
+				try {
 					d.browse(new URI(url));
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -99,8 +103,8 @@ public class LoginMenuPanel extends JPanel{
 					e.printStackTrace();
 				}
 			}
-		});	
-		
+		});
+
 		add(loginMenuLabel);
 		add(empty);
 		add(enterUserName);
