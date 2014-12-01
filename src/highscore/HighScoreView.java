@@ -27,6 +27,7 @@ public class HighScoreView extends JFrame implements ActionListener {
 
     JFrame f;
     
+    //For testing
     public static void main(String[]args){
 	
 	//This is going to be the way to call it after. 
@@ -49,10 +50,6 @@ public class HighScoreView extends JFrame implements ActionListener {
 	*/
 	
 	
-	
-	//System.out.println(accounts.get(0).getUserName());
-	
-	
 	HighScoreView hs = new HighScoreView(1);
 	Players testp = hs.showTopTen();
 	
@@ -63,16 +60,12 @@ public class HighScoreView extends JFrame implements ActionListener {
 	
     }
     
-    
+    //For testing
     public HighScoreView(int integ){
 	
     }
-  
-    
-  
-    
    
-    
+    //For testing
     private List<String> getListOfUsernames(int size, List<Account> accounts){
 	
 	String userName = "";
@@ -95,6 +88,7 @@ public class HighScoreView extends JFrame implements ActionListener {
     }
     
     
+    //For testing
     private List<Integer> getListOfScores(int size, List<Account> accounts){
 	
 	int totalScore = 0;
@@ -116,14 +110,8 @@ public class HighScoreView extends JFrame implements ActionListener {
 	return totalScoresList;
     }
  
-    
+    //For testing
     public Players showTopTen() {
-
-	// get the right info from the getCSVetc. methods above and implement
-	// same logic as the main method in HighScoreDatabase
-	// also logic to check if there is anything that is empty or what not
-	// should go here.
-	// when the view creates a HighScoreManager c
 	
 	
 	CSVreader reader = new CSVreader();
@@ -149,18 +137,16 @@ public class HighScoreView extends JFrame implements ActionListener {
 
 	Players temp = database.sortByScore();
 
-	database.sortedForm(temp);
+	database.sortedForm(temp);	
+	//The lists are sorted now, gotta get the top 10 users/scores now
 	
-	// NOW IT'S SORTED
-
-	// gotta extrac top 10 from it
-
+	//build a player with sorted lists
 	Players temp2 = database.getListOfPlayers();
 
-	// Need players sorted
+	//Extract the top ten players and store them in a Players object
 	Players finalplayer = database.topTen(temp2);
 	
-	//RETURN FINALPLAYER ONCE CSV METHODS IMPLEMENTED 
+	
 	//the view will extract both the name and the score. it will return something else
 	//if the result from it is null.
 
@@ -169,7 +155,7 @@ public class HighScoreView extends JFrame implements ActionListener {
     }
     
     
-
+    
     public HighScoreView() {
 	
 	
