@@ -126,13 +126,11 @@ public class GamePanel extends JPanel implements Runnable {
 		try {
 		    game.sleep(sleepTime / 1000000);
 		} catch (InterruptedException e) {
-		    System.out.println("Dam");
 		    e.printStackTrace();
 		}
 	    } else {
 		overSleepTime = diff - period;
 	    }
-
 	}
     }
 
@@ -141,9 +139,11 @@ public class GamePanel extends JPanel implements Runnable {
 	    for (GameActor actor : actorList) {
 		actor.update();
 	    }
+	    gameStateManager.openScorePoll();
 	    removeDeadActors(actorList);
 	    world.update();
 	    camera.update();
+	    gameStateManager.closeScorePoll();
 	}
 
     }

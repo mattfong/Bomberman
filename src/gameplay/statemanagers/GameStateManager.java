@@ -3,6 +3,8 @@ package gameplay.statemanagers;
 import gameplay.GamePanel;
 import gameplay.World;
 
+import java.util.ArrayList;
+
 /**
  * Singleton wrapper for accessing and modifying the a gamestate from anywhere
  * in the system.
@@ -16,6 +18,7 @@ public class GameStateManager {
     private static GameStateManager singleton = null;
     private GameState currentGameState;
     private GamePanel gamePanel;
+    private ArrayList<Integer> scoreValues = new ArrayList<Integer>();
 
     private GameStateManager() {
 
@@ -30,7 +33,6 @@ public class GameStateManager {
     }
 
     public GameState getCurrentGameState() {
-
 	if (currentGameState == null) {
 	    currentGameState = new GameState();
 	    return currentGameState;
@@ -44,10 +46,11 @@ public class GameStateManager {
 	    singleton = new GameStateManager();
 	}
 	return singleton;
+
     }
 
     public void increaseScore(int score) {
-	currentGameState.increaseScoreBy(score);
+	scoreValues.add(score);
     }
 
     public int getScore() {
@@ -57,6 +60,28 @@ public class GameStateManager {
     public World getCurrentWorld() {
 	return gamePanel.getWorld();
 
+    }
+
+    /**
+     * Method to be called at the begining of each "round" at the begining of
+     * the game update.
+     */
+    public void openScorePoll() {
+	scoreValues.clear();
+    }
+
+    /**
+     * Method to be called at the end of each "round" at the end of each game
+     * update.
+     */
+    public void closeScorePoll() {
+	int counter = 1;
+	int scoreWithMultiplier;
+	for (Integer scores : scoreValues) {
+	    scoreWithMultiplier = scores * counter;
+	    currentGameState.increaseScoreBy(scoreWithMultiplier);
+	    counter++;
+	}
     }
 
 }
