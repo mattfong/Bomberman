@@ -75,7 +75,8 @@ public class GamePanel extends JPanel implements Runnable {
 	requestFocus();
 
 	// set world to a new world
-	world = new World(31, 13, level);
+	this.world = new World(31, 13, level);
+	gameStateManager.getCurrentGameState().setWorld(this.world);
 
 	// set the camera, get the actor lists and add a key listener
 	camera = new Camera(0, world.getBomberman());
@@ -99,7 +100,7 @@ public class GamePanel extends JPanel implements Runnable {
 
 	// set world to a given room
 	this.world = world;
-
+	gameStateManager.getCurrentGameState().setWorld(this.world);
 	// set the camera, get actor list from the loaded world and add a key
 	// listener
 	camera = new Camera(0, world.getBomberman());

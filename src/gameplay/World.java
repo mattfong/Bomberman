@@ -48,7 +48,6 @@ public class World implements Serializable {
 	// GameStataManager as serilizable object reference
 	GameStateManager manager = GameStateManager.getInstance();
 	GameState state = manager.getCurrentGameState();
-	state.setWorld(this);
 
 	// prep the world
 	worldGenerator = new WorldGenerator(this, widthInBlocks, heightInBlocks);
