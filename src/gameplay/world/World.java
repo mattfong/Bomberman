@@ -353,4 +353,8 @@ public class World implements Serializable {
     public Rectangle getBombermanCoordinates() {
 	return bomberman.getLocation();
     }
+
+    public void spawnEnemies(ArrayList<GameActor> newActorList) {
+	actorList.addAll(newActorList);
+    }
 }

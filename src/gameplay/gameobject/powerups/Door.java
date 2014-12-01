@@ -4,6 +4,7 @@ import gameplay.gameobject.GameActor;
 import gameplay.gameobject.GameObject;
 import gameplay.gameobject.bomberman.Bomberman;
 import gameplay.gameobject.bomberman.BombermanInterface;
+import gameplay.gameobject.enemies.Oneal;
 import gameplay.world.World;
 
 import java.awt.Rectangle;
@@ -56,7 +57,11 @@ public class Door extends GameObject implements Powerup {
 
     @Override
     public void haveBeenBombed() {
-	// TODO Auto-generated method stub
+	ArrayList<GameActor> actorList = new ArrayList<GameActor>();
+	for (int i = 0; i < 5; i++) {
+	    actorList.add(new Oneal(gridLocation, world));
+	}
+	world.spawnEnemies(actorList);
 
     }
 
