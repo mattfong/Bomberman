@@ -82,7 +82,7 @@ public class HighScoreDatabase {
 		// i is the index of this element
 
 		// store maxScore and the index of it
-		if (currentScore > maxScore) {
+		if (currentScore >= maxScore) {
 		    maxIndex = i;
 		    maxScore = currentScore;
 		    maxPlayerName = playersToRemove.get(maxIndex);
