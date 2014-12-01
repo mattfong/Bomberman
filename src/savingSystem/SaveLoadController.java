@@ -2,11 +2,13 @@ package savingSystem;
 
 import gameplay.engine.GameFrame;
 import gameplay.engine.GamePanel;
+import gameplay.gameobject.Level;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
 import gameplay.world.World;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -105,6 +107,37 @@ public class SaveLoadController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Obtaining all the save games and the levels reached for each saved game.
+	 * Then the levels are stored in an array and sorted in ascending order.
+	 * The highest level reached by user would be stored in the last index.
+	 * @return maximum level achieved by user
+	 */
+	public int maxLevelReachedByUser() {
+		SavedGame game = null;
+		int[] levelsStored; 
+		int maxLevel= 0;
+		
+		try {
+			fileName = saveManager.getSaveGameFile(currentGame.getUserName());
+			List<SavedGame> allSavedGames = serializeGame.deserializeSaveGameName(fileName);
+			saveManager.setSavedGamesList(allSavedGames);
+			levelsStored = new int[saveManager.numberOfSavedGames()];
+
+			System.out.println("Step 5: Deserialized List: " + allSavedGames);
+			for (int i = 0; i < allSavedGames.size(); i++) {
+				game = allSavedGames.get(i);
+				Level level = game.getGameState().getLevel();
+				levelsStored[i] = level.getLevelNumber();
+			}
+			Arrays.sort(levelsStored);
+			maxLevel = levelsStored[saveManager.numberOfSavedGames()-1];
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return maxLevel;
 	}
 
 }
