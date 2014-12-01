@@ -66,8 +66,27 @@ public class LevelSelectPanel extends JPanel{
 		JButton level25 = new JButton("Level 25");
 		int k;
 		JButton[] buttons = new JButton[25];
-		for(k=0;k<buttons.length;k++){
-			buttons[k]= new JButton("Level "+(k+1));
+		for(k=1;k<(buttons.length+1);k++){
+			buttons[k]= new JButton("Level "+k);
+			if(LSPL.visable(i, k)){
+				level2.setContentAreaFilled(true);
+				level2.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						System.out.println("it's good");
+					}
+				});
+				
+			}
+			else{
+				level2.setContentAreaFilled(false);
+				level2.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						LSPL.locked();
+					}
+				});
+			}
+			
+			add(buttons[k]);
 			
 		}
 		
