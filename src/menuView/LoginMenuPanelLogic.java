@@ -1,9 +1,9 @@
 package menuView;
 
-import gameplay.Level;
-import gameplay.World;
+import gameplay.gameobject.Level;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
+import gameplay.world.World;
 
 import java.io.IOException;
 

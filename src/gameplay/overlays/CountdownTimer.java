@@ -1,7 +1,7 @@
 package gameplay.overlays;
 
-import gameplay.World;
-import gameplay.gameobject.Bomberman;
+import gameplay.gameobject.bomberman.Bomberman;
+import gameplay.world.World;
 
 import java.io.Serializable;
 

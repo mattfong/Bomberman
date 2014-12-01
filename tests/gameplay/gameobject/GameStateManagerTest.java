@@ -1,8 +1,6 @@
 package gameplay.gameobject;
 
 import static org.junit.Assert.assertEquals;
-import gameplay.Level;
-import gameplay.World;
 import gameplay.gameobject.blocks.Background;
 import gameplay.gameobject.blocks.Explosion;
 import gameplay.gameobject.enemies.Balloon;
@@ -10,6 +8,7 @@ import gameplay.gameobject.enemies.Minvo;
 import gameplay.gameobject.enemies.Oneal;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
+import gameplay.world.World;
 
 import java.awt.Rectangle;
 import java.util.Stack;

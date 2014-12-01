@@ -1,7 +1,7 @@
 package loginSystem;
 
-import gameplay.GameFrame;
-import gameplay.Level;
+import gameplay.engine.GameFrame;
+import gameplay.gameobject.Level;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
 

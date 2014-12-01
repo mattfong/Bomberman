@@ -1,6 +1,6 @@
 package highscore;
 
-import gameplay.pauseMenu.PanelManager;
+import gameplay.overlays.pauseMenu.PanelManager;
 
 import java.awt.Color;
 import java.awt.Dimension;

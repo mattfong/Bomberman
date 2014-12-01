@@ -1,7 +1,7 @@
 package gameplay.statemanagers;
 
-import gameplay.GamePanel;
-import gameplay.World;
+import gameplay.engine.GamePanel;
+import gameplay.world.World;
 
 import java.util.ArrayList;
 

@@ -2,10 +2,10 @@ package userProfile;
 
 import java.io.IOException;
 
-import gameplay.Level;
-import gameplay.World;
+import gameplay.gameobject.Level;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
+import gameplay.world.World;
 import loginSystem.Account;
 import loginSystem.AccountManager;
 import loginSystem.CSVreader;

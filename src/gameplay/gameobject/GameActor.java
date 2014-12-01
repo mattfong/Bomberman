@@ -1,11 +1,11 @@
 package gameplay.gameobject;
 
-import gameplay.Direction;
-import gameplay.World;
 import gameplay.gameobject.blocks.Brick;
 import gameplay.gameobject.blocks.Explosion;
-import gameplay.input.CommandManager;
+import gameplay.input.commandobjects.CommandManager;
 import gameplay.statemanagers.GameStateManager;
+import gameplay.world.Direction;
+import gameplay.world.World;
 
 import java.awt.Rectangle;
 import java.io.Serializable;

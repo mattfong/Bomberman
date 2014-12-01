@@ -1,7 +1,7 @@
 package gameplay.gameobject;
 
-import gameplay.World;
 import gameplay.statemanagers.GameStateManager;
+import gameplay.world.World;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;

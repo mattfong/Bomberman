@@ -1,10 +1,10 @@
 package gameplay.gameobject.powerups;
 
-import gameplay.World;
-import gameplay.gameobject.Bomberman;
-import gameplay.gameobject.BombermanInterface;
 import gameplay.gameobject.GameActor;
 import gameplay.gameobject.GameObject;
+import gameplay.gameobject.bomberman.Bomberman;
+import gameplay.gameobject.bomberman.BombermanInterface;
+import gameplay.world.World;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;

@@ -1,6 +1,14 @@
 package gameplay.input;
 
-import gameplay.GamePanel;
+import gameplay.engine.GamePanel;
+import gameplay.input.commandobjects.Command;
+import gameplay.input.commandobjects.CommandDetonateBomb;
+import gameplay.input.commandobjects.CommandDown;
+import gameplay.input.commandobjects.CommandIssuer;
+import gameplay.input.commandobjects.CommandLeft;
+import gameplay.input.commandobjects.CommandPlaceBomb;
+import gameplay.input.commandobjects.CommandRight;
+import gameplay.input.commandobjects.CommandUp;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

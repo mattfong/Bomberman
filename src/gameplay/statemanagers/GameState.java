@@ -1,7 +1,7 @@
 package gameplay.statemanagers;
 
-import gameplay.Level;
-import gameplay.World;
+import gameplay.gameobject.Level;
+import gameplay.world.World;
 
 import java.io.Serializable;
 

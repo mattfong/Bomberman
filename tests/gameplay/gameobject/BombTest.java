@@ -1,11 +1,10 @@
 package gameplay.gameobject;
 
 import static org.junit.Assert.assertEquals;
-import gameplay.Level;
-import gameplay.World;
 import gameplay.gameobject.blocks.Bomb;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
+import gameplay.world.World;
 
 import java.awt.Rectangle;
 
