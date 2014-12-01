@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import userProfile.NewAccountPanelLogic;
+
 public class NewAccountPanel extends JPanel {
 
 	private PanelTransitionManager manager = PanelTransitionManager
@@ -23,9 +25,9 @@ public class NewAccountPanel extends JPanel {
 	private void initUI() {
 		setLayout(new GridLayout(10, 1, 5, 10));
 
-		JTextField NameTF = new JTextField(30);
-		JTextField UserTF = new JTextField(30);
-		JPasswordField PassPF = new JPasswordField(30);
+		final JTextField NameTF = new JTextField(30);
+		final JTextField UserTF = new JTextField(30);
+		final JPasswordField PassPF = new JPasswordField(30);
 		JPasswordField ConfirmPassPF = new JPasswordField(30);
 		NameTF.setText(null);
 		PassPF.setText(null);
@@ -46,6 +48,8 @@ public class NewAccountPanel extends JPanel {
 				 * UserTF.getText(); String Pass = PassPF.getText(); String
 				 * confirmPass = ConfirmPassPF.getText();
 				 */
+				NewAccountPanelLogic.NewAccountLogic(NameTF.getText(), UserTF.getText(), PassPF.getText());
+				
 			}
 		});
 
