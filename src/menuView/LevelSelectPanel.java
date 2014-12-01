@@ -32,6 +32,7 @@ public class LevelSelectPanel extends JPanel {
 	public LevelSelectPanel() {
 		initUI();
 	}
+
 	/**
 	 * This creates the panel for the select level menu
 	 */
