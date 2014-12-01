@@ -1,7 +1,10 @@
 package menuView;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -16,18 +19,796 @@ public class NewAccountPanel extends JPanel{
 	}
 
 	private void initUI() {
-		setLayout(new GridLayout(7,1,5,10));
+		setLayout(new GridLayout(10,1,5,10));
+		
+		JTextField NameTF = new JTextField(30);
 		JTextField UserTF = new JTextField(30);
 		JPasswordField PassPF = new JPasswordField(30);
 		JPasswordField ConfirmPassPF = new JPasswordField(30);
-		UserTF.setText(null);
+		NameTF.setText(null);
 		PassPF.setText(null);
 		ConfirmPassPF = new JPasswordField(30);
 		
 		JLabel loginInfo = new JLabel(
-				"Enter the login account you want to delete");
-		JLabel enterUser = new JLabel("Username");
-		JLabel enterPass = new JLabel("Password");
+				"Enter the Account details for the account that you want to make");
+		JLabel enterName = new JLabel("          Enter your name");
+    	JLabel enterUser = new JLabel("			Enter your desired username");
+    	JLabel enterPass = new JLabel("			Enter your desired Password");
+    	JLabel enterConfirmPass = new JLabel("			Confirm your desired Password");
+		
+		JButton makeUser = new JButton("Click here to create your account");
+		makeUser.addActionListener(new ActionListener() {
+    		public void actionPerformed(ActionEvent arg0) {
+    			/*String Name = NameTF.getText();
+    			String User = UserTF.getText();
+    			String Pass = PassPF.getText();
+    			String confirmPass = ConfirmPassPF.getText();
+    			 * 
+    			 */
+    		}
+		});
+		
+		
+		JButton goBack = new JButton("Go back to login menu");
+    	goBack.addActionListener(new ActionListener() {
+    		public void actionPerformed(ActionEvent arg0) {
+    			
+    		}
+    	});
+    	
+add(enterName);
+    	add(NameTF);
+    	add(enterUser);
+    	add(UserTF);
+    	add(enterPass);
+    	add(PassPF);
+    	add(enterConfirmPass);
+    	add(ConfirmPassPF);
+    	add(makeUser);
+    	add(goBack);
+
 		
 	}
+	/*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 */	/*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 */	/*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 */
+	/*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 *//*String Name = NameTF.getText();
+	String User = UserTF.getText();
+	String Pass = PassPF.getText();
+	String confirmPass = ConfirmPassPF.getText();
+	 * 
+	 */
 }
