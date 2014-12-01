@@ -12,7 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import savingSystem.SaveLoadView;
+import junk.EditAccountView;
+import junk.SaveLoadView;
 
 /**
  * @author Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>

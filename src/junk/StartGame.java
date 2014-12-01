@@ -1,4 +1,4 @@
-package loginSystem;
+package junk;
 
 import loginSystem.LoginMenuView;
 /**

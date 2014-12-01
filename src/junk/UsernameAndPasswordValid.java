@@ -1,10 +1,12 @@
-package loginSystem;
+package junk;
 
 import java.awt.HeadlessException;
 import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import loginSystem.AccountManager;
 /**
  * @author      Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>
  * @version     1.5                 (current version number of program)

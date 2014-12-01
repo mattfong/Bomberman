@@ -1,4 +1,4 @@
-package loginSystem;
+package junk;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -33,6 +33,7 @@ public class EditPasswordView {
 				"Once you have entered your new password, click here to change it.\n "
 						+ "Be careful, this is a perminate change");
 		editPass.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
 				String newName = jt.getText();
@@ -44,6 +45,7 @@ public class EditPasswordView {
 
 		JButton goBack = new JButton("Click here to go back one menu");
 		goBack.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				EditAccountView.main(null);

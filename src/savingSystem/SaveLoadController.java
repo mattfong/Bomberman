@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import junk.LoadGameMenuView;
+import junk.SaveGameMenuView;
+
 /**
  * This class deals with loading, saving, and deleting a game from a serialized file.
  * @author Kirththiga Murugupillai
@@ -28,16 +31,6 @@ public class SaveLoadController {
 		saveManager = new SavedGameManager();
 		currentGame = GameStateManager.getInstance().getCurrentGameState();
 		fileName = "";
-	}
-
-	public void displaySaveGameMenu() {
-		SaveGameMenuView saveMenu = new SaveGameMenuView();
-		saveMenu.SaveGameMenuView();
-	}
-
-	public void displayLoadGameMenu() {
-		LoadGameMenuView loadMenu = new LoadGameMenuView();
-		loadMenu.LoadGameMenuView();
 	}
 
 	/**

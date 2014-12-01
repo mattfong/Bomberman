@@ -18,6 +18,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import junk.UsernameAndPasswordValid;
 import userProfile.NewAccountViewLogic;
 /**
  * @author      Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>

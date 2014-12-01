@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import java.awt.HeadlessException;
 import java.io.IOException;
 import java.util.Random;
+
+import junk.UsernameAndPasswordValid;
+
 import org.junit.Before;
 import org.junit.Test;
 
