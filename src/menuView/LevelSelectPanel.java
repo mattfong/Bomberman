@@ -35,7 +35,9 @@ public class LevelSelectPanel extends JPanel{
 		
 		
 		
-		i = SLC.maxLevelReachedByUser();
+		//i = SLC.maxLevelReachedByUser();
+		//THIS LINES GIVES ERRORS!
+		
 		int counter, counterPlusOne;
 		JButton[] buttons = new JButton[25];
 		for(counter=0;counter<(buttons.length);counter++){
