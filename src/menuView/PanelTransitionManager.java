@@ -2,28 +2,36 @@ package menuView;
 
 /**
  * The panelTransitionManager acts as the main JFrame, and coordinates 
- * the calls between the panels. This is a singelton class.
+ * the calls between the panels. This is a singleton class, which makes it easier
+ * to centralize the transition between panels.
  * @author Kirththiga Murugupillai
  */
+
 import java.io.IOException;
-
 import javax.swing.JFrame;
-
 import userProfile.UserProfile;
 
 public class PanelTransitionManager {
-	
+
 	private static PanelTransitionManager singleton = null;
 	private JFrame frame;
 	private UserProfile user = UserProfile.getInstance();
-	
+
+	/**
+	 * This creates the frame and goes to the initUI
+	 */
 	private PanelTransitionManager() {
 		frame = new JFrame();
 		initUI();
 	}
-	
+
+	/**
+	 * This gets the game instance and returns the singleton
+	 * 
+	 * @return
+	 */
 	public static PanelTransitionManager getInstance() {
-		if(singleton == null) {
+		if (singleton == null) {
 			singleton = new PanelTransitionManager();
 		}
 		return singleton;
@@ -62,7 +70,7 @@ public class PanelTransitionManager {
 		frame.invalidate();
 		frame.validate();
 	}
-	
+
 	/**
 	 * This methods displays the delete account panel and adds it to the main frame.
 	 */
@@ -70,7 +78,7 @@ public class PanelTransitionManager {
 		DeleteAccountPanel deleteMenu = new DeleteAccountPanel();
 		frame.setContentPane(deleteMenu);
 		frame.invalidate();
-		frame.validate();	
+		frame.validate();
 	}
 	
 	/**
@@ -103,7 +111,7 @@ public class PanelTransitionManager {
 		frame.invalidate();
 		frame.validate();
 	}
-	
+
 	/**
 	 * This methods displays the save load panel and adds it to the main frame.
 	 */
@@ -138,14 +146,15 @@ public class PanelTransitionManager {
 	 * This methods displays the highscore panel and adds it to the main frame.
 	 */
 	public void displayHighscoreMenu() {
-		HighScorePanel  highScoreMenu = new HighScorePanel();
+		HighScorePanel highScoreMenu = new HighScorePanel();
 		frame.setContentPane(highScoreMenu);
 		frame.invalidate();
 		frame.validate();
 	}
-	
+
 	/**
-	 * The main method which runs the game.
+	 * The main method which starts the game.
+	 * @param args
 	 */
 	public static void main(String[] args) {
 		PanelTransitionManager manager = PanelTransitionManager.getInstance();
