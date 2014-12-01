@@ -15,12 +15,14 @@ import javax.swing.JTextField;
 
 public class DeleteAccountPanel extends JPanel {
 
+	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
+	
 	public DeleteAccountPanel (){
 		initUI();
 	}
 	
 	private void initUI() {
-		setLayout(new GridLayout(7,2,5,10));
+		setLayout(new GridLayout(7,1,5,10));
 		JTextField UserTF = new JTextField(30);
 		JPasswordField PassPF = new JPasswordField(30);
 		UserTF.setText(null);
@@ -41,7 +43,7 @@ public class DeleteAccountPanel extends JPanel {
 		JButton goBack = new JButton("Go back to login menu");
 		goBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				manager.displayLoginMenu();
 			}
 		});
 		
