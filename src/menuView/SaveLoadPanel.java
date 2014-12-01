@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -46,6 +47,7 @@ public class SaveLoadPanel extends JPanel {
 		goBackButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				manager.displayPlayGameMenu(user.getUserName());
+				
 			}
 		});
 		

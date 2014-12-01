@@ -1,5 +1,7 @@
 package menuView;
 
+import java.io.IOException;
+
 import javax.swing.JFrame;
 
 import userProfile.UserProfile;
@@ -63,10 +65,9 @@ public class PanelTransitionManager {
 		frame.validate();
 	}
 	
-	public void displayPlayGameMenu(String userName){
+	public void displayPlayGameMenu(String userName) {
 		PlayGamePanel playMenu = new PlayGamePanel();
 		frame.setContentPane(playMenu);
-		user.setUserName(userName);
 		frame.invalidate();
 		frame.validate();
 	}

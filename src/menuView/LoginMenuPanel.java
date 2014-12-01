@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import userProfile.UserProfile;
 import loginSystem.AccountManager;
 import loginSystem.CSVreader;
 
@@ -55,7 +56,13 @@ public class LoginMenuPanel extends JPanel{
 			   
 			    Boolean isCorrectID = loginMenuPanelLogic.loginCheck(userNameField, passwordField);
 			    if(isCorrectID){
-			    	manager.displayPlayGameMenu(userNameField.getText());
+			    	try {
+			    		UserProfile.getInstance().setUserProfile(userNameField.getText());
+						manager.displayPlayGameMenu(userNameField.getText());
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 			    }
 			}		
 		});

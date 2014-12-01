@@ -11,7 +11,12 @@ import loginSystem.CSVreader;
 import savingSystem.SavedGame;
 import savingSystem.SavedGameManager;
 import savingSystem.SavedGameSerialization;
-
+/**
+ * Can access all the information such as account information, saved games, highscores 
+ * after the user has loginned in.
+ * @author Kirththiga Murugupillai
+ *
+ */
 
 public class UserProfile {
 	
@@ -42,6 +47,8 @@ public class UserProfile {
 	}
 	
 	private void Init(String userName) throws IOException{
+		CSVreader reader = new CSVreader();
+		accountManager.setAccounts(reader.CSVreaderAccounts("UserPass.csv"));
 		Account currentUser = getCurrentUser(userName);
 		savedGames = getSavedGamesByUser(currentUser.getUserName());
 		saveManager.setSavedGamesList(savedGames);
@@ -75,6 +82,14 @@ public class UserProfile {
 		List<SavedGame> allSavedGames = serializeGame.deserializeSaveGameName(fileName);
 		saveManager.setSavedGamesList(allSavedGames);
 		return saveManager.getSavedGamesList();
+	}
+
+	@Override
+	public String toString() {
+		return "UserProfile [userName=" + userName + ", accountManager="
+				+ accountManager + ", saveManager=" + saveManager
+				+ ", scoreDatabase=" + scoreDatabase + ", savedGames="
+				+ savedGames + "]";
 	}
 
 	public AccountManager getAccountManager() {
