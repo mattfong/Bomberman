@@ -49,13 +49,13 @@ public class LoginMenuPanel extends JPanel{
 		
 		newAccountButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-
+				manager.displayNewAccountMenu();
 			}		
 		});	
 		
 		deleteAccountButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-
+				manager.displayDeleteAccountMenu();
 			}		
 		});
 		
