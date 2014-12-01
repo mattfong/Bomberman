@@ -23,8 +23,8 @@ public class DeleteAccountPanel extends JPanel {
 	
 	private void initUI() {
 		setLayout(new GridLayout(7,1,5,10));
-		JTextField UserTF = new JTextField(30);
-		JPasswordField PassPF = new JPasswordField(30);
+		final JTextField UserTF = new JTextField(30);
+		final JPasswordField PassPF = new JPasswordField(30);
 		UserTF.setText(null);
 		PassPF.setText(null);
 		
@@ -37,6 +37,22 @@ public class DeleteAccountPanel extends JPanel {
 		deleteUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				DeleteAccountPanelLogic.DeleteAccount(UserTF.getText(), PassPF.getText());
+				/*
+				String User = UserTF.getText();
+				String Pass = PassPF.getText();
+
+				if (User.equals(null) || Pass.equals(null)) {
+
+					// If there is nothing entered the an error message will pop
+					// up for the user
+
+					JOptionPane.showMessageDialog(controllingFrame,
+							"Username or Password is empty");
+				} else {
+					//Deleteaccout panel logic
+				}
+				*/
 			}
 		});
 		

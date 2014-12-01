@@ -18,27 +18,21 @@ public class DeleteAccountViewLogic {
 		// JFrame controllingFrame;
 		String csvAccountsFile = "UserPass.csv";
 
-		/*
-		 * this sets up a CSV reader and write to read and write to the CSV
-		 * files
-		 */
+		// this sets up a CSV reader and write to read and write to the CSV files
+		 
 		AccountManager accountManager = new AccountManager();
 		CSVreader reader = new CSVreader();
 		CSVwriter writer = new CSVwriter();
 
 		try {
-			/*
-			 * The account messanger trys to find an account matching the
-			 * entered detailes
-			 */
+			// The account messanger trys to find an account matching the entered detailes
+			
 			accountManager.setAccounts(reader.CSVreaderAccounts(csvAccountsFile));
 			System.out.println("AM in try:" + accountManager.numberOfAccounts()
 					+ "," + accountManager.getAccounts());
 
-			accountManager.deleteAccount(User); /*
-												 * and if one is found it deltes
-												 * it
-												 */
+			accountManager.deleteAccount(User); // and if one is found it deltes it
+											
 			System.out.println("AM:" + accountManager.numberOfAccounts() + ","
 					+ accountManager.getAccounts());
 			writer.CSVwriterAccountsList(csvAccountsFile,
@@ -47,10 +41,8 @@ public class DeleteAccountViewLogic {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		/*
-		 * After that is done the frame disposes and the loginMenu is brought up
-		 * again
-		 */
+		// After that is done the frame disposes and the loginMenu is brought up again
+		
 		LoginMenuView.main(null);
 	}
 }

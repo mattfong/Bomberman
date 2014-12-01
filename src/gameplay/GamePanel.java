@@ -136,13 +136,15 @@ public class GamePanel extends JPanel implements Runnable {
 
     private void gameUpdate() {
 	if (running && (game != null)) {
+	    gameStateManager.openScorePoll();
+
 	    for (GameActor actor : actorList) {
 		actor.update();
 	    }
-	    gameStateManager.openScorePoll();
 	    removeDeadActors(actorList);
 	    world.update();
 	    camera.update();
+
 	    gameStateManager.closeScorePoll();
 	}
 
