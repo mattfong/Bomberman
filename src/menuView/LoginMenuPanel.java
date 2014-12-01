@@ -18,7 +18,11 @@ import javax.swing.JTextField;
 import userProfile.UserProfile;
 import loginSystem.AccountManager;
 import loginSystem.CSVreader;
-
+/**
+ * @author Philip Hoddinott, inital upload by [kirth was this you?] <philip.hoddinott@mail.mcgill.ca>
+ * @version 1.7 (current version number of program)
+ * @since 2014-12-1 (the version of the package this class was first added to)
+ */
 public class LoginMenuPanel extends JPanel{
 	
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();

@@ -17,7 +17,11 @@ import loginSystem.Account;
 import loginSystem.AccountManager;
 import loginSystem.CSVreader;
 import loginSystem.PlayGameView;
-
+/**
+ * @author Philip Hoddinott<philip.hoddinott@mail.mcgill.ca>
+ * @version 1.7 (current version number of program)
+ * @since 2014-12-1 (the version of the package this class was first added to)
+ */
 public class LoginMenuPanelLogic {
     
     private JFrame controllingFrame;

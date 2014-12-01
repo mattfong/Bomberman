@@ -7,7 +7,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
+/**
+ * @author Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>
+ * @version 1.7 (current version number of program)
+ * @since 2014-12-1 (the version of the package this class was first added to)
+ */
 public class PlayGamePanel extends JPanel{
 	
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
@@ -15,7 +19,14 @@ public class PlayGamePanel extends JPanel{
 	public PlayGamePanel() {
 		initUI();
 	}
-	
+	/**
+	 * This creates the PlayMenu panel                     
+	 * <p>
+	 * The PlayMenu has five buttons. One plays the game, one loads a game, 
+	 * one displays the highscores, one modifys the acount, one logs the player out.
+	 * <p>
+	 * 
+	 */
 	private void initUI() {
 		setLayout(new GridLayout(5,1,5,10));
 		JButton playGameButton = new JButton("Play Game");

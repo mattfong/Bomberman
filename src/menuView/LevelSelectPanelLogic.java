@@ -2,7 +2,11 @@ package menuView;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
+/**
+ * @author Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>
+ * @version 1.7 (current version number of program)
+ * @since 2014-12-1 (the version of the package this class was first added to)
+ */
 public class LevelSelectPanelLogic {
 	 private static JFrame controllingFrame;
 	

@@ -8,7 +8,11 @@ import javax.swing.JOptionPane;
 import loginSystem.AccountManager;
 import loginSystem.CSVreader;
 import loginSystem.CSVwriter;
-
+/**
+ * @author Philip Hoddinott, inital upload by <philip.hoddinott@mail.mcgill.ca>
+ * @version 1.7 (current version number of program)
+ * @since 2014-12-1 (the version of the package this class was first added to)
+ */
 public class DeleteAccountPanelLogic {
 
 	private static JFrame controllingFrame;
