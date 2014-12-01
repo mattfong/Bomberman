@@ -39,8 +39,13 @@ public class LevelSelectPanelLogic {
 	 */
 	public void play(int level) {
 		System.out.println(level);
-		String lvl = "L" + level;
-		System.out.println(lvl);
+		
+		Level lvl = Level.getLevelByNumber(level);
+		
+		//String lvl = "L" + level;
+		//System.out.println(lvl);
+		
+		new GameFrame(lvl);
 		/*
 		 * levelSelected = intoInt(toInt); if (levelSelected == 11) {
 		 * GameStateManager manager = GameStateManager.getInstance(); GameState
