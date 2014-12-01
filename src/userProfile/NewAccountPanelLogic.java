@@ -1,5 +1,11 @@
 package userProfile;
 
+public class NewAccountPanelLogic {
+
+	
+	/*
+	 * package userProfile;
+
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
 
@@ -43,4 +49,6 @@ public class NewAccountViewLogic {
 		manager.setCurrentGameState(gameState);
 		PlayGameView.main(null);
 	}
+}
+	 */
 }
