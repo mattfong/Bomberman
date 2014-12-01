@@ -36,6 +36,13 @@ public class GameState implements Serializable {
 	level = Level.L1;
     }
 
+    public GameState() {
+	this.score = 0;
+	remainingLives = 3;
+	world = null;
+	level = Level.L1;
+    }
+
     public World getWorld() {
 	return world;
     }

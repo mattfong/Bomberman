@@ -1,6 +1,8 @@
-package gameplay;
+package gameplay.gameobject;
 
 import static org.junit.Assert.assertNotNull;
+import gameplay.Level;
+import gameplay.WorldGenerator;
 import gameplay.gameobject.GameActor;
 import gameplay.gameobject.GameObject;
 

@@ -1,6 +1,7 @@
-package gameplay;
+package gameplay.gameobject;
 
 import static org.junit.Assert.assertEquals;
+import gameplay.Level;
 
 import org.junit.Test;
 

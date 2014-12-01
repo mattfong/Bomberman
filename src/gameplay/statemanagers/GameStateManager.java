@@ -30,7 +30,12 @@ public class GameStateManager {
     }
 
     public GameState getCurrentGameState() {
+
+	if (currentGameState == null) {
+	    return new GameState();
+	}
 	return currentGameState;
+
     }
 
     public static GameStateManager getInstance() {
