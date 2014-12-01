@@ -16,13 +16,15 @@ public class LevelSelectPanelLogic {
 		 return true;
 	 }
 	 
-	//public void center(String )
+	public void play(int level ){
+		System.out.println(level);
+	}
 	 
 	 public void locked(){
 		JOptionPane.showMessageDialog(controllingFrame,
                 "This level is locked");
 	}
 	
-	//public 
+	 
 
 }

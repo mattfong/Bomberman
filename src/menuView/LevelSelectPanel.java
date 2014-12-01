@@ -29,17 +29,23 @@ public class LevelSelectPanel extends JPanel{
 		setLayout(new GridLayout(5,1,5,10));
 		
 		int i =3;
+		
+		
 	
 		int counter, counterPlusOne;
+		//int realLevel;
 		JButton[] buttons = new JButton[25];
 		for(counter=0;counter<(buttons.length);counter++){
 			counterPlusOne=(counter+1);
+			final int realLevel=counterPlusOne;
 			buttons[counter]= new JButton("Level "+(counterPlusOne));
 			if(LSPL.visable(i, counterPlusOne)){
 				buttons[counter].setContentAreaFilled(true);
 				buttons[counter].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						System.out.println("it's good");
+						//NEED TO FIX THIS
+						LSPL.play(realLevel);
 					}
 				});
 				
@@ -61,6 +67,7 @@ public class LevelSelectPanel extends JPanel{
 		goBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//manager.displayPlayGameMenu(userName);
+				//NEED TO FIX THIS
 			}
 		});
 		
