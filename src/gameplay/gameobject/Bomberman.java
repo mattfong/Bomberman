@@ -124,7 +124,6 @@ public class Bomberman extends GameActor implements BombermanInterface {
 			respawn();
 		    } else {
 			isDead = true;
-			System.out.println("Hello");
 		    }
 		}
 	    }
