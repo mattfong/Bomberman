@@ -1,6 +1,18 @@
 package menuView;
 
 public class DeleteAccountPanelLogic {
+	
+	
+	
+	public static void DeleteAccount(String User, String Pass){
+		DeleteAccountPanelLogic DAPL = new DeleteAccountPanelLogic();
+		
+		DAPL.Delete(User, Pass);
+	}
+	
+	public void Delete(String User, String Pass){
+		
+	}
 /*
  * package userProfile;
 
