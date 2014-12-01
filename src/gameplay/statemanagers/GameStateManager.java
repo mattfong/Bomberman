@@ -32,7 +32,8 @@ public class GameStateManager {
     public GameState getCurrentGameState() {
 
 	if (currentGameState == null) {
-	    return new GameState();
+	    currentGameState = new GameState();
+	    return currentGameState;
 	}
 	return currentGameState;
 
