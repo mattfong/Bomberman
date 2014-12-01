@@ -9,6 +9,11 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Testing the CSVreader class, and checking if the contents are there.
+ * @author Kirththiga Murugpillai
+ *
+ */
 public class CSVreaderTest {
 	
 	private CSVreader reader;
@@ -21,12 +26,15 @@ public class CSVreaderTest {
 		accounts = new ArrayList<Account>();
 		csvFileTest3 = "UserPassTest3.csv";
 	}
-
+	
+	/**
+	 * Testing if both objects are the same. The contents in the CSVfile and the list.
+	 * @throws IOException
+	 */
 	@Test
 	public void CSVreaderAccountsTest() throws IOException {
 		accounts = reader.CSVreaderAccounts(csvFileTest3);
-		System.out.println(accounts.size() + " " + reader.CSVreaderAccounts(csvFileTest3).size());
-		assertEquals("Size of accounts list: ", accounts.size(), reader.CSVreaderAccounts(csvFileTest3).size());
+		assertSame(accounts, reader.CSVreaderAccounts(csvFileTest3));
 	}
 
 }
