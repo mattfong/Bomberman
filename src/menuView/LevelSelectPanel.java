@@ -1,6 +1,6 @@
 package menuView;
 
-import gameplay.Level;
+//import gameplay.Level;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
 
@@ -25,7 +25,7 @@ public class LevelSelectPanel extends JPanel{
 		setLayout(new GridLayout(5,1,5,10));
 		
 		int i =3;
-		
+		/*
 		JButton level1 = new JButton("Level 1");
 		level1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -64,13 +64,15 @@ public class LevelSelectPanel extends JPanel{
 		JButton level23 = new JButton("Level 23");
 		JButton level24 = new JButton("Level 24");
 		JButton level25 = new JButton("Level 25");
-		int k;
+		*/
+		int counter, counterPlusOne;
 		JButton[] buttons = new JButton[25];
-		for(k=1;k<(buttons.length+1);k++){
-			buttons[k]= new JButton("Level "+k);
-			if(LSPL.visable(i, k)){
-				level2.setContentAreaFilled(true);
-				level2.addActionListener(new ActionListener() {
+		for(counter=0;counter<(buttons.length);counter++){
+			counterPlusOne=(counter+1);
+			buttons[counter]= new JButton("Level "+(counterPlusOne));
+			if(LSPL.visable(i, counterPlusOne)){
+				buttons[counter].setContentAreaFilled(true);
+				buttons[counter].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						System.out.println("it's good");
 					}
@@ -78,18 +80,18 @@ public class LevelSelectPanel extends JPanel{
 				
 			}
 			else{
-				level2.setContentAreaFilled(false);
-				level2.addActionListener(new ActionListener() {
+				buttons[counter].setContentAreaFilled(false);
+				buttons[counter].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						LSPL.locked();
 					}
 				});
 			}
 			
-			add(buttons[k]);
+			add(buttons[counter]);
 			
 		}
-		
+		/*
 		if(LSPL.visable(i, 2)){
 			level2.setContentAreaFilled(false);
 			level2.addActionListener(new ActionListener() {
@@ -224,6 +226,6 @@ public class LevelSelectPanel extends JPanel{
 		add(level23);
 		add(level24);
 		add(level25);
-		
+		*/
 	}
 }
