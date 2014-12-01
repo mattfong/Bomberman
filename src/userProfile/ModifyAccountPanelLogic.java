@@ -5,12 +5,12 @@ import java.io.IOException;
 import loginSystem.Account;
 import loginSystem.CSVwriter;
 
-public class ModifyAccountViewLogic {
+public class ModifyAccountPanelLogic {
 	
 	private UserProfile user;
 	private final String csvAccountsFile = "UserPass.csv";
 	
-	public ModifyAccountViewLogic(){
+	public ModifyAccountPanelLogic(){
 		
 		user = UserProfile.getInstance();
 	}
@@ -24,11 +24,16 @@ public class ModifyAccountViewLogic {
 		user.getAccountManager().deleteAccount(currentUserName);
 		
 		if(newName.length() != 0 && (newName.equals(currentName) == false)) {
+			System.out.println("entered first if");
 			user.getAccountManager().addAccount(new Account(newName, currentUserName, currentPassword, currentTotalScore));
 		} else if (newPassword.length() !=0  && (newPassword.equals(currentPassword) == false)) {
+			System.out.println("second if");
 			user.getAccountManager().addAccount(new Account(currentName, currentUserName, newPassword, currentTotalScore));
-		} else {
+		} else if(newName.length() != 0 && (newName.equals(currentName) == false) && newPassword.length() !=0  && (newPassword.equals(currentPassword) == false)){
+			System.out.println("else");
 			user.getAccountManager().addAccount(new Account(newName, currentUserName, newPassword, currentTotalScore));
+		} else {
+			user.getAccountManager().addAccount(new Account(currentName, currentUserName, currentPassword, currentTotalScore));
 		}
 		
 		CSVwriter writer = new CSVwriter();
