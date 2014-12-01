@@ -118,7 +118,7 @@ public class SaveLoadController {
 	public int maxLevelReachedByUser() {
 		SavedGame game = null;
 		int[] levelsStored; 
-		int maxLevel= 0;
+		int maxLevel= 1;
 		
 		try {
 			fileName = saveManager.getSaveGameFile(currentGame.getUserName());
