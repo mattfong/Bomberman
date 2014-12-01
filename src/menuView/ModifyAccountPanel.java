@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import userProfile.ModifyAccountPanelLogic;
+import menuView.menuLogic.ModifyAccountPanelLogic;
 /**
  * This class displays the modify account panel, where the user can change 
  * his name and password. 
