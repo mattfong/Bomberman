@@ -69,6 +69,12 @@ public class DumbAI extends AI {
 
     }
 
+    /**
+     * This method makes an enemy move right or left
+     * 
+     * @return returns left or right depending on whether the GameActor can move
+     *         left or right
+     */
     private Command leftAndRight() {
 
 	Boolean canMoveRight = actor.canMove(Direction.RIGHT);
@@ -92,6 +98,13 @@ public class DumbAI extends AI {
 
     }
 
+    /**
+     * This method returns up or down depending on whether the GameActor can go
+     * up or down
+     * 
+     * @return up or down command depending on if it can go up or down
+     * 
+     */
     private Command upAndDown() {
 
 	// For moving up and down
