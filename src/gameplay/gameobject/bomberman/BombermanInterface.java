@@ -14,6 +14,16 @@ public interface BombermanInterface {
     public boolean canDetonateBomb();
 
     /**
+     * @return the total number of bombs allowed to be dropped.
+     */
+    public int getBombLimit();
+
+    /**
+     * @return the radius of the bombs that bomberman drops
+     */
+    public int getBombRadius();
+
+    /**
      * @return true if Bomberman can pass through bombs, else fase.
      */
     public boolean canBombPass();

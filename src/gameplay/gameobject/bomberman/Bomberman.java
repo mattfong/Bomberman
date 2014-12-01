@@ -96,6 +96,10 @@ public class Bomberman extends GameActor implements BombermanInterface {
 	}
     }
 
+    @Override
+    public int getBombLimit() {
+	return bombLimit;
+    }
     /**
      * checks if the GameActor has the ability to remote detonate and if true,
      * detonates the bombs in order that they are placed.
@@ -241,6 +245,11 @@ public class Bomberman extends GameActor implements BombermanInterface {
     @Override
     public void increaseMoveSpeed() {
 	InputListener.getInstance().increaseQuerySpeed();
+    }
+
+    @Override
+    public int getBombRadius() {
+	return explosionRadius;
     }
 
 }

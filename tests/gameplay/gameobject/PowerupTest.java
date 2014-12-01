@@ -42,7 +42,7 @@ public class PowerupTest {
 	Powerup power;
 	power = new BombPowerup(null, null);
 	power.applyPowerup(bomberman);
-	assertEquals(2, bomberman.bombLimit);
+	assertEquals(2, bomberman.getBombLimit());
     }
 
     @Test
@@ -66,7 +66,7 @@ public class PowerupTest {
 	Powerup power;
 	power = new FlamePowerup(null, null);
 	power.applyPowerup(bomberman);
-	assertEquals(2, bomberman.explosionRadius);
+	assertEquals(2, bomberman.getBombRadius());
     }
 
     @Test
