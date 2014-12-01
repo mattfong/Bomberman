@@ -18,6 +18,7 @@ public class NewAccountPanel extends JPanel {
 	public NewAccountPanel() {
 		initUI();
 	}
+	
 
 	private void initUI() {
 		setLayout(new GridLayout(10, 1, 5, 10));
