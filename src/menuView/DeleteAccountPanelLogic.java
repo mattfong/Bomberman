@@ -1,4 +1,8 @@
-package userProfile;
+package menuView;
+
+public class DeleteAccountPanelLogic {
+/*
+ * package userProfile;
 
 import java.io.IOException;
 
@@ -45,4 +49,7 @@ public class DeleteAccountViewLogic {
 		
 		LoginMenuView.main(null);
 	}
+}
+
+ */
 }
