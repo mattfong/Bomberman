@@ -11,7 +11,9 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 /**
- * @author MF Implementation of the Kondoria requirements.
+ * Implementation of the Kondoria requirements.
+ * 
+ * @author MF
  */
 public class Kondoria extends GameActor {
 

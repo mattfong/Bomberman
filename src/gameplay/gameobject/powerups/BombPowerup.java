@@ -9,7 +9,9 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 /**
- * @author mfong8 Bomb powerup which allows bomberman to place additional bombs.
+ * Bomb powerup which allows bomberman to place additional bombs.
+ * 
+ * @author mfong8
  */
 public class BombPowerup extends GameObject implements Powerup {
 

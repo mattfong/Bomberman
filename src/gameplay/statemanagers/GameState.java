@@ -5,70 +5,85 @@ import gameplay.World;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * Class which contains information relevant to the state of the current game.
+ * This class contains score, remaining lives, the world and the level.
+ * 
+ * @author MF
+ *
+ */
 public class GameState implements Serializable {
-	private String userName;
-	private String playerName;
-	private Level level;
-	private World world;
-	private int score;
-	private int remainingLives;
+    private String userName;
+    private String playerName;
+    private Level level;
+    private World world;
+    private int score;
+    private int remainingLives;
 
-	public GameState(String userName, String playerName) {
-		super();
-		this.userName = userName;
-		this.playerName = playerName;
-		this.level = Level.L1;
-		remainingLives = 3;
-	}
+    public GameState(String userName, String playerName) {
+	super();
+	this.userName = userName;
+	this.playerName = playerName;
+	this.level = Level.L1;
+	remainingLives = 3;
+    }
 
-	public GameState(int score) {
-		this.score = score;
-		remainingLives = 3;
-		world = null;
-		level = Level.L1;
-	}
+    public GameState(int score) {
+	this.score = score;
+	remainingLives = 3;
+	world = null;
+	level = Level.L1;
+    }
 
-	public World getWorld() {
-		return world;
-	}
+    public GameState() {
+	this.score = 0;
+	remainingLives = 3;
+	world = null;
+	level = Level.L1;
+    }
 
-	public void setWorld(World world) {
-		this.world = world;
-	}
+    public World getWorld() {
+	return world;
+    }
 
-	public String getUserName() {
-		return userName;
-	}
+    public void setWorld(World world) {
+	this.world = world;
+    }
 
-	public void decreaseRemainingLives() {
-		remainingLives--;
-	}
+    public String getUserName() {
+	return userName;
+    }
 
-	public String getPlayerName() {
-		return playerName;
-	}
+    public void decreaseRemainingLives() {
+	remainingLives--;
+    }
 
-	public int getScore() {
-		return score;
-	}
+    public String getPlayerName() {
+	return playerName;
+    }
 
-	public int getRemainingLives() {
-		return remainingLives;
-	}
+    public int getScore() {
+	return score;
+    }
 
-	public void setRemainingLives(int remainingLives) {
-		this.remainingLives = remainingLives;
-	}
+    public int getRemainingLives() {
+	return remainingLives;
+    }
 
-	public Level getLevel() {
-		return level;
-	}
+    public void setRemainingLives(int remainingLives) {
+	this.remainingLives = remainingLives;
+    }
 
-	public void increaseScoreBy(int scoreToAdd) {
-		this.score += scoreToAdd;
-	}
+    public Level getLevel() {
+	return level;
+    }
 
-	public void setLevel(Level level) {
-		this.level = level;
-	}
+    public void increaseScoreBy(int scoreToAdd) {
+	this.score += scoreToAdd;
+    }
+
+    public void setLevel(Level level) {
+	this.level = level;
+    }
 }

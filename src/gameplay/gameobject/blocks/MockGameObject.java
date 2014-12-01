@@ -6,8 +6,10 @@ import gameplay.gameobject.GameObject;
 import java.awt.Rectangle;
 
 /**
- * @author mfong8 Class is an implementation of abstract GameObject class meant
- *         to use for testing.
+ * Class is an implementation of abstract GameObject class meant to use for
+ * testing.
+ * 
+ * @author mfong8
  */
 public class MockGameObject extends GameObject {
 

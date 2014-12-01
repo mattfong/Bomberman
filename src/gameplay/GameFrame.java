@@ -6,7 +6,9 @@ import gameplay.statemanagers.GameStateManager;
 import javax.swing.JFrame;
 
 /**
- * @author MF GameFrame which contains the Bomberman game.
+ * GameFrame which contains the Bomberman game.
+ * 
+ * @author MF
  */
 public class GameFrame extends JFrame {
 

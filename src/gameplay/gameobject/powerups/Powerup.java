@@ -3,7 +3,9 @@ package gameplay.gameobject.powerups;
 import gameplay.gameobject.BombermanInterface;
 
 /**
- * @author mfong8 Interface which defines the behavior of a powerup
+ * Interface which defines the behavior of a powerup
+ * 
+ * @author mfong8
  */
 public interface Powerup {
 

@@ -9,7 +9,9 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 /**
- * @author mfong8 Powerup which increase the movement speed of bomberman.
+ * Powerup which increase the movement speed of bomberman.
+ * 
+ * @author mfong8
  */
 public class SpeedPowerup extends GameObject implements Powerup {
 

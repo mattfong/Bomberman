@@ -1,5 +1,3 @@
-//TODO migrate this stuff to the board class and whereever this stupid stuff needs to go
-
 package gameplay;
 
 import gameplay.gameobject.Bomberman;
@@ -10,6 +8,8 @@ import gameplay.gameobject.blocks.Explosion;
 import gameplay.gameobject.blocks.Wall;
 import gameplay.gameobject.powerups.Powerup;
 import gameplay.overlays.CountdownTimer;
+import gameplay.statemanagers.GameState;
+import gameplay.statemanagers.GameStateManager;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -18,11 +18,10 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 /**
+ * The world class acts as the game board, it manages interactions between
+ * gameactors and gameobject instances.
+ * 
  * @author mfong8
- *
- */
-/**
- * @author MF
  *
  */
 public class World implements Serializable {
@@ -42,6 +41,14 @@ public class World implements Serializable {
 	currentLevel = level;
 	gridHeight = heightInBlocks;
 	gridWidth = widthInBlocks;
+
+	// store a reference to this to the GameState so it can used by
+	// save/load
+	// statement is this long because it avoids having to add a
+	// GameStataManager as serilizable object reference
+	GameStateManager manager = GameStateManager.getInstance();
+	GameState state = manager.getCurrentGameState();
+	state.setWorld(this);
 
 	// prep the world
 	worldGenerator = new WorldGenerator(this, widthInBlocks, heightInBlocks);
@@ -328,8 +335,8 @@ public class World implements Serializable {
 
 	currentLevel = Level.getLevelByNumber(levelNo + 1);
 	worldGenerator.generateLevel(currentLevel);
-
 	grid = worldGenerator.getGrid();
+
 	actorList = worldGenerator.getActorList();
 
 	gameTimer.reset();

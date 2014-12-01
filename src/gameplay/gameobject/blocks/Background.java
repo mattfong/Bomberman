@@ -8,7 +8,9 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 /**
- * @author mfong8 Class which represents the background for the entire game.
+ * Class which represents the background for the entire game.
+ * 
+ * @author mfong8
  */
 public class Background extends GameObject {
 

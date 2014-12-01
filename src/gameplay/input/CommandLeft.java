@@ -3,17 +3,17 @@ package gameplay.input;
 import gameplay.gameobject.GameActor;
 
 /**
- * @author mfong8
- *Command to move the GameActor left
+ * 
+ * Command to move the GameActor left * @author mfong8
  */
 public class CommandLeft implements Command {
 
-	public CommandLeft() {
-	}
+    public CommandLeft() {
+    }
 
-	@Override
-	public void execute(GameActor actor) {
-		actor.moveLeft();
-	}
+    @Override
+    public void execute(GameActor actor) {
+	actor.moveLeft();
+    }
 
 }

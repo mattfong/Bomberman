@@ -11,7 +11,9 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 /**
- * @author MF Implementation of the Minvor requirements.
+ * Implementation of the Minvor requirements.
+ * 
+ * @author MF
  */
 public class Minvo extends GameActor {
 

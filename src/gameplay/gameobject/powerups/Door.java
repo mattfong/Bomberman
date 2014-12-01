@@ -11,6 +11,13 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
+/**
+ * 
+ * Class implementing the door object.
+ * 
+ * @author MF
+ *
+ */
 public class Door extends GameObject implements Powerup {
 
     private boolean isOpen;
@@ -35,6 +42,9 @@ public class Door extends GameObject implements Powerup {
 
     }
 
+    /**
+     * @return true if the door is open, false if it's closed.
+     */
     public boolean isOpen() {
 	return isOpen;
     }

@@ -3,6 +3,14 @@ package gameplay.statemanagers;
 import gameplay.GamePanel;
 import gameplay.World;
 
+/**
+ * Singleton wrapper for accessing and modifying the a gamestate from anywhere
+ * in the system.
+ * 
+ * 
+ * @author MF
+ *
+ */
 public class GameStateManager {
 
     private static GameStateManager singleton = null;
@@ -22,7 +30,12 @@ public class GameStateManager {
     }
 
     public GameState getCurrentGameState() {
+
+	if (currentGameState == null) {
+	    return new GameState();
+	}
 	return currentGameState;
+
     }
 
     public static GameStateManager getInstance() {

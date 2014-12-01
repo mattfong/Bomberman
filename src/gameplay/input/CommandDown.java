@@ -3,18 +3,20 @@ package gameplay.input;
 import gameplay.gameobject.GameActor;
 
 /**
+ * 
+ * Command to move the gameactor down.
+ *
  * @author mfong8
- *Command to move the gameactor down.
  */
 public class CommandDown implements Command {
 
-	public CommandDown() {
-		
-	}
+    public CommandDown() {
 
-	@Override
-	public void execute(GameActor actor) {
-		actor.moveDown();
-	}
+    }
+
+    @Override
+    public void execute(GameActor actor) {
+	actor.moveDown();
+    }
 
 }

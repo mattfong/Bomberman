@@ -9,7 +9,9 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 /**
- * @author mfong8 Powerup which makes bomberman immune to fire.
+ * Powerup which makes bomberman immune to fire.
+ * 
+ * @author mfong8
  */
 public class FlamePassPowerup extends GameObject implements Powerup {
 

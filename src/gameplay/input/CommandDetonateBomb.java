@@ -4,7 +4,9 @@ import gameplay.gameobject.BombermanInterface;
 import gameplay.gameobject.GameActor;
 
 /**
- * @author mfong8 Command to detonate a bomb.
+ * Command to detonate a bomb.
+ * 
+ * @author mfong8
  */
 public class CommandDetonateBomb implements Command {
 

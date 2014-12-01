@@ -1,16 +1,11 @@
 package gameplay.gameobject;
 
 /**
- * @author MF Interface which characterizes all of bomberman's functionality.
- */
-/**
+ * Interface which characterizes all of bomberman's functionality.
+ * 
  * @author MF
- *
  */
-/**
- * @author MF
- *
- */
+
 public interface BombermanInterface {
 
     /**

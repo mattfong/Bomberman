@@ -3,19 +3,19 @@ package gameplay.input;
 import gameplay.gameobject.GameActor;
 
 /**
+ * 
+ * Command to instruct the GameActor to move right.
+ * 
  * @author mfong8
- *Command to instruct the GameActor to move right.
  */
 public class CommandRight implements Command {
 
-	public CommandRight() {
-	}
+    public CommandRight() {
+    }
 
-
-
-	@Override
-	public void execute(GameActor actor) {
-		actor.moveRight();
-	}
+    @Override
+    public void execute(GameActor actor) {
+	actor.moveRight();
+    }
 
 }

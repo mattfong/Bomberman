@@ -18,6 +18,16 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+/**
+ * GamePanel acts as the game engine. A Java thread throws an event every 40ms
+ * which is caught by the run method. The run method then runs the gameUpdate
+ * method which updates all the game elements and then runs the gameRender
+ * method which gets all the gameObjects to draw themselves on a graphics object
+ * and finally the paintScreen method displays the screens to the user.
+ * 
+ * @author MF
+ *
+ */
 public class GamePanel extends JPanel implements Runnable {
 
     int xCoord;
@@ -55,31 +65,47 @@ public class GamePanel extends JPanel implements Runnable {
      */
 
     public GamePanel(Level level) {
+	// panel registration for use by pause system
 	gameStateManager = GameStateManager.getInstance();
 	gameStateManager.registerGamePanel(this);
+
+	// jpanel stuff
 	setPreferredSize(gameDim);
 	setFocusable(true);
 	requestFocus();
+
+	// set world to a new world
 	world = new World(31, 13, level);
+
+	// set the camera, get the actor lists and add a key listener
 	camera = new Camera(0, world.getBomberman());
 	actorList = world.getActorList();
 	addKeyListener(InputListener.getInstance());
+
 	InputListener.setGamePanel(this);
 	setLayout(null);
 
     }
 
     public GamePanel(World world) {
+	// panel registration for use by pause system
 	gameStateManager = GameStateManager.getInstance();
 	gameStateManager.registerGamePanel(this);
+
+	// jpanel stuff
 	setPreferredSize(gameDim);
 	setFocusable(true);
 	requestFocus();
+
+	// set world to a given room
 	this.world = world;
+
+	// set the camera, get actor list from the loaded world and add a key
+	// listener
 	camera = new Camera(0, world.getBomberman());
 	actorList = world.getActorList();
-
 	addKeyListener(InputListener.getInstance());
+
 	InputListener.setGamePanel(this);
 	setLayout(null);
     }

@@ -17,8 +17,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * @author MF Credit to TA Dominique for telling me how to implement this black
- *         magic with meta classes.
+ * Credit to TA Dominique for telling me how to implement this black magic with
+ * meta classes.
+ * 
+ * @author MF
  */
 public class Factory implements Serializable {
 

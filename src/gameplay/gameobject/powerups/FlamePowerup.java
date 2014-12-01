@@ -9,7 +9,9 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 /**
- * @author mfong8 Powerup which increase the explosion radius of bombs.
+ * Powerup which increase the explosion radius of bombs.
+ * 
+ * @author mfong8
  */
 public class FlamePowerup extends GameObject implements Powerup {
 

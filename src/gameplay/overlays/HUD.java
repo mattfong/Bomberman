@@ -7,8 +7,10 @@ import java.awt.Font;
 import java.awt.Graphics;
 
 /**
- * @author MF Class containing the HUD overlay which displays the score,
- *         remaining lives and countdown.
+ * Class containing the HUD overlay which displays the score, remaining lives
+ * and countdown.
+ * 
+ * @author MF
  */
 public class HUD {
 

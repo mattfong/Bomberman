@@ -3,9 +3,10 @@ package gameplay.overlays;
 import gameplay.gameobject.GameActor;
 
 /**
- * @author MF Class which controls what portion of the game world is viewed, the
- *         camera is 15 blocks wide and pans when bomberman gets to the middle
- *         of the view.
+ * Class which controls what portion of the game world is viewed, the camera is
+ * 15 blocks wide and pans when bomberman gets to the middle of the view.
+ * 
+ * @author MF
  *
  */
 public class Camera {

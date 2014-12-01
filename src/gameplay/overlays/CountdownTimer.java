@@ -6,7 +6,9 @@ import gameplay.gameobject.Bomberman;
 import java.io.Serializable;
 
 /**
- * @author MF Class which runs the game timer whcih is displayed to the user.
+ * Class which runs the game timer whcih is displayed to the user.
+ * 
+ * @author MF
  */
 public class CountdownTimer implements Serializable {
 

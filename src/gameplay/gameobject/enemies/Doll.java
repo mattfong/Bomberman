@@ -11,7 +11,9 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 /**
- * @author MF Implementation of the Doll enemy requirements.
+ * Implementation of the Doll enemy requirements.
+ * 
+ * @author MF
  */
 public class Doll extends GameActor implements Cloneable {
 
