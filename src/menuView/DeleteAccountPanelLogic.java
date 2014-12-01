@@ -18,13 +18,25 @@ public class DeleteAccountPanelLogic {
 	private static JFrame controllingFrame;
 	private PanelTransitionManager manager = PanelTransitionManager
 			.getInstance();
-
+	
+	/**
+	 * This allows a transition from static action listenrs to non static methods. It is sent the 
+	 * username and password as strings
+	 * @param User
+	 * @param Pass
+	 */
 	public static void DeleteAccount(String User, String Pass) {
 		DeleteAccountPanelLogic DAPL = new DeleteAccountPanelLogic();
 
 		DAPL.Delete(User, Pass);
 	}
-
+	
+	/**
+	 * This is sent the username and password as strings. It searches through the list of accounts,  and once it has f
+	 * found the account it deletes it.
+	 * @param User
+	 * @param Pass
+	 */
 	public void Delete(String User, String Pass) {
 
 		if (User.equals(null) || Pass.equals(null)) {

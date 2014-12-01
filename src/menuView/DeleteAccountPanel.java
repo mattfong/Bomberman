@@ -20,11 +20,15 @@ import javax.swing.JTextField;
 public class DeleteAccountPanel extends JPanel {
 
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
-	
+	/**
+	 * This calls the initUI method
+	 */
 	public DeleteAccountPanel (){
 		initUI();
 	}
-	
+	/**
+	 * This creates the panel for the DeleteAccountMenu
+	 */
 	private void initUI() {
 		setLayout(new GridLayout(7,1,5,10));
 		final JTextField UserTF = new JTextField(30);

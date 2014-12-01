@@ -15,7 +15,10 @@ import javax.swing.JPanel;
 public class PlayGamePanel extends JPanel{
 	
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
-
+	
+	/**
+	 * This callses the initUI for the PlayGamePanel
+	 */
 	public PlayGamePanel() {
 		initUI();
 	}
