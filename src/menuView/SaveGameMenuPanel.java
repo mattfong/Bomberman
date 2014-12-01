@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import savingSystem.SaveLoadController;
+
 /**
  * This class displays the save menu panel, where the user can enter the saved game name.
  * @author Kirththiga Murugupillai
@@ -19,6 +21,7 @@ public class SaveGameMenuPanel extends JPanel{
 	
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
 	private final JTextField saveGameNameField;
+	private SaveLoadController saveLoadController = new SaveLoadController();
 	
 	public SaveGameMenuPanel() {
 		saveGameNameField= new JTextField(30);
@@ -39,8 +42,8 @@ public class SaveGameMenuPanel extends JPanel{
 		
 		saveGameButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				String saveGameNameText = saveGameNameField.getText();
-				
+				// The saveLoadController contains the logic for saving the game.
+				saveLoadController.saveGame(saveGameNameField.getText());
 			}
 		});	
 		

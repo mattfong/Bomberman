@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
+import savingSystem.SaveLoadController;
 import userProfile.UserProfile;
 
 /***
@@ -26,10 +27,11 @@ public class LoadGameMenuPanel extends JPanel{
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
 	private JList list;
 	private UserProfile user = UserProfile.getInstance();
+	private SaveLoadController saveLoadController = new SaveLoadController();
+	private final JTextField deleteGame = new JTextField(30);
 	
 	public LoadGameMenuPanel() {
 		initUI();
-		System.out.println("entered constructor");
 	}
 	
 	private void initUI() {
@@ -50,16 +52,30 @@ public class LoadGameMenuPanel extends JPanel{
 		list.setLayoutOrientation(JList.VERTICAL);
 		
 		JLabel deleteGameLabel = new JLabel("Delete saved game");
-		JTextField deleteGame = new JTextField(30);
 		deleteGame.setText(null);
 		
+		JButton loadGameButton = new JButton("Load Game");
 		JButton deleteSavedGameButton = new JButton("Delete Saved Game");
 	    JButton goBackButton = new JButton("Go Back");
 	    JButton closeMenuButton = new JButton("Close Menu");
 	    
+	    loadGameButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				// Obtaining the index of the selected element on the list.
+				if(e.getActionCommand().equals("Load Game")){
+					int index = list.getSelectedIndex();
+					System.out.println("Index: " + index);
+					saveLoadController.loadGame(index);
+				}
+			}
+		});
+	    
 		deleteSavedGameButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-
+				/*The saveLoadController contains the logic for deleting the game from
+				 * the serialized file.
+				 */
+				saveLoadController.deleteGame(deleteGame.getText());
 			}
 		});	
 		
@@ -71,7 +87,7 @@ public class LoadGameMenuPanel extends JPanel{
 		
 		closeMenuButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-
+				manager.displayPlayGameMenu();
 			}
 		});	
 		
