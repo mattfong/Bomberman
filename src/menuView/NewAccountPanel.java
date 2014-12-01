@@ -47,13 +47,7 @@ public class NewAccountPanel extends JPanel {
 		JButton makeUser = new JButton("Click here to create your account");
 		makeUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				/*
-				 * String Name = NameTF.getText(); String User =
-				 * UserTF.getText(); String Pass = PassPF.getText(); String
-				 * confirmPass = ConfirmPassPF.getText();
-				 */
-				NewAccountPanelLogic.NewAccountLogic(NameTF.getText(), UserTF.getText(), PassPF.getText());
-				
+				NewAccountPanelLogic.NewAccountLogic(NameTF.getText(), UserTF.getText(), PassPF.getText());		
 			}
 		});
 

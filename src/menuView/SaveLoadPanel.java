@@ -46,7 +46,7 @@ public class SaveLoadPanel extends JPanel {
 		
 		goBackButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				manager.displayPlayGameMenu(user.getUserName());
+				manager.displayPlayGameMenu();
 				
 			}
 		});

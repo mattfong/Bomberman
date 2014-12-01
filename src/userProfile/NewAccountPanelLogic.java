@@ -54,7 +54,7 @@ public class NewAccountPanelLogic {
 		GameStateManager gManager = GameStateManager.getInstance();
 		gManager.setCurrentGameState(gameState);
 		
-		manager.displayPlayGameMenu(User);
+		manager.displayPlayGameMenu();
 		
 	}
 	/*

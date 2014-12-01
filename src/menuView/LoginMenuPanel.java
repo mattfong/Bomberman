@@ -62,7 +62,7 @@ public class LoginMenuPanel extends JPanel{
 			    if(isCorrectID){
 			    	try {
 			    		UserProfile.getInstance().setUserProfile(userNameField.getText());
-						manager.displayPlayGameMenu(userNameField.getText());
+						manager.displayPlayGameMenu();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
