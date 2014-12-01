@@ -16,11 +16,15 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import loginSystem.AccountManager;
+import loginSystem.CSVreader;
 
 public class LoginMenuPanel extends JPanel{
 	
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
-	private AccountManager accountManager = new AccountManager();
+	private AccountManager accountManager= new AccountManager();
+	private LoginMenuPanelLogic loginMenuPanelLogic = new LoginMenuPanelLogic();
+	
+
 	public LoginMenuPanel() {
 		initUI();
 	}
@@ -31,10 +35,11 @@ public class LoginMenuPanel extends JPanel{
 		loginMenuLabel.setFont(new Font("Miriam", Font.BOLD, 28));
 		JLabel empty = new JLabel("");
 		
-		JTextField userNameField = new JTextField(30);
-		JPasswordField passwordField = new JPasswordField(30);
+		final JTextField userNameField = new JTextField(30);
+		final JPasswordField passwordField = new JPasswordField(30);
 		userNameField.setText(null);
 		passwordField.setText(null);
+		//String userName;
 		
 		JLabel enterUserName = new JLabel("Enter Username: ");
 		JLabel enterPassword = new JLabel("Enter Password:");
@@ -43,11 +48,15 @@ public class LoginMenuPanel extends JPanel{
 		JButton newAccountButton = new JButton("Create new account");
 		JButton deleteAccountButton = new JButton("Delete Account");
 		JButton supriseButton = new JButton("Click here for a suprise");
+	
 		
 		loginButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-			    //if()
-				manager.displayPlayGameMenu();
+			   
+			    	Boolean isCorrectID = loginMenuPanelLogic.loginCheck(userNameField, passwordField);
+			    	if(isCorrectID){
+			    	manager.displayPlayGameMenu();
+			    	}
 			}		
 		});
 		
