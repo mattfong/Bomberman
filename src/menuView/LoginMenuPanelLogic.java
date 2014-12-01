@@ -28,25 +28,21 @@ public class LoginMenuPanelLogic {
     
     public Boolean loginCheck(JTextField userNameField, JPasswordField passwordField) {
 
-	userNameField.getText();
-	passwordField.getText();
-	String userName = userNameField.getName();
+	String userName = userNameField.getText();
 	
 	AccountManager accountManager = new AccountManager();
 	String csvAccountsFile = "UserPass.csv";
 	CSVreader reader = new CSVreader();
 	
 	try {
-	    accountManager.setAccounts(reader
-		    .CSVreaderAccounts(csvAccountsFile));
+	    accountManager.setAccounts(reader.CSVreaderAccounts(csvAccountsFile));
 	} catch (IOException e1) {
 	    // TODO Auto-generated catch block
 	    e1.printStackTrace();
 	}
 	
 	
-	if (accountManager.isUser(userNameField.getText(),
-		passwordField.getText())) {
+	if (accountManager.isUser(userNameField.getText(), passwordField.getText())) {
 
 	    Account acc = accountManager.getAccount(userName);
 	    GameStateManager manager = GameStateManager.getInstance();
