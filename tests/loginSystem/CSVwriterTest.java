@@ -12,6 +12,7 @@ public class CSVwriterTest {
 	CSVwriter writer;
 	Account acc;
 	AccountManager accManager;
+	String csvFileTest = "UserPassTest.csv";
 	
 	@Before
 	public void setUp() throws Exception {

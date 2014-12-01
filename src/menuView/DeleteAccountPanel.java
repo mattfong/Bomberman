@@ -23,21 +23,14 @@ public class DeleteAccountPanel extends JPanel {
 		setLayout(new GridLayout(7,2,5,10));
 		JTextField UserTF = new JTextField(30);
 		JPasswordField PassPF = new JPasswordField(30);
-		JFrame controllingFrame;
 		UserTF.setText(null);
 		PassPF.setText(null);
 		
-		/*
-		 * These labels are to tell the user what to put in the input fields.
-		 */
 		JLabel loginInfo = new JLabel(
 				"Enter the login account you want to delete");
 		JLabel enterUser = new JLabel("Username");
 		JLabel enterPass = new JLabel("Password");
-		/*
-		 * This button takes the entered cridentials and the correspodning
-		 * account.
-		 */
+
 		JButton deleteUser = new JButton("Click here to delete your account");
 		deleteUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -48,17 +41,9 @@ public class DeleteAccountPanel extends JPanel {
 		JButton goBack = new JButton("Go back to login menu");
 		goBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				/*
-				 * The frame disposes and the loginMenu opens
-				 */
-				MenuDisplay md = new MenuDisplay();
-				md.goTo("loginMenu");
-				//MenuDisplay.goTo("loginMenu");
+				
 			}
-
 		});
-		
-		
 		
 		
 		add(loginInfo);
@@ -68,7 +53,6 @@ public class DeleteAccountPanel extends JPanel {
 		add(PassPF);
 		add(deleteUser);
 		add(goBack);	
-		
-		
-	}//end
+			
+	}
 }

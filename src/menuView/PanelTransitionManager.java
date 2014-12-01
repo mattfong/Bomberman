@@ -37,6 +37,27 @@ public class PanelTransitionManager {
 		frame.validate();
 	}
 	
+	public void displayNewAccountMenu() {
+		NewAccountPanel accountMenu = new AccountPanel();
+		frame.setContentPane(newAccountMenu);
+		frame.invalidate();
+		frame.validate();
+	}
+	
+	public void displayDeleteAccountMenu() {
+		DeleteAccountPanel deleteMenu = new DeleteAccountPanel();
+		frame.setContentPane(deleteMenu);
+		frame.invalidate();
+		frame.validate();	
+	}
+	
+	public void displayModifyAccount() {
+		ModifyAccountPanel modifyAccount = new ModifyAccountPanel();
+		frame.setContentPane(modifyAccount);
+		frame.invalidate();
+		frame.validate();
+	}
+	
 	public void displayPlayGameMenu(){
 		PlayGamePanel playMenu = new PlayGamePanel();
 		frame.setContentPane(playMenu);
@@ -44,4 +65,31 @@ public class PanelTransitionManager {
 		frame.validate();
 	}
 	
+	public void displaySaveLoad() {
+		SaveLoadPanel saveLoadMenu = new SaveLoadPanel();
+		frame.setContentPane(saveLoadMenu);
+		frame.invalidate();
+		frame.validate();
+	}
+	
+	public void displaySaveMenu() {
+		SaveGameMenuPanel saveMenu = new SaveGameMenuPanel();
+		frame.setContentPane(saveMenu);
+		frame.invalidate();
+		frame.validate();
+	}
+	
+	public void displayLoadMenu() {
+		LoadGameMenuPanel loadMenu = new LoadGameMenuPanel();
+		frame.setContentPane(loadMenu);
+		frame.invalidate();
+		frame.validate();
+	}
+	
+	public void displayHighscoreMenu() {
+		HighScorePanel  highScoreMenu = new HighScorePanel();
+		frame.setContentPane(highScoreMenu);
+		frame.invalidate();
+		frame.validate();
+	}
 }
