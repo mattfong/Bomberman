@@ -2,10 +2,13 @@ package menuView;
 
 import javax.swing.JFrame;
 
+import userProfile.UserProfile;
+
 public class PanelTransitionManager {
 	
 	private static PanelTransitionManager singleton = null;
 	private JFrame frame;
+	private UserProfile user = UserProfile.getInstance();
 	
 	private PanelTransitionManager() {
 		frame = new JFrame();
@@ -60,9 +63,10 @@ public class PanelTransitionManager {
 		frame.validate();
 	}
 	
-	public void displayPlayGameMenu(){
+	public void displayPlayGameMenu(String userName){
 		PlayGamePanel playMenu = new PlayGamePanel();
 		frame.setContentPane(playMenu);
+		user.setUserName(userName);
 		frame.invalidate();
 		frame.validate();
 	}
@@ -105,6 +109,5 @@ public class PanelTransitionManager {
 	public static void main(String[] args) {
 		PanelTransitionManager manager = PanelTransitionManager.getInstance();
 		manager.displayLoginMenu();
-		//go to displayLoginMenu()
 	}
 }

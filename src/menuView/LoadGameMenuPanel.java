@@ -23,6 +23,7 @@ public class LoadGameMenuPanel extends JPanel{
 	
 	public LoadGameMenuPanel() {
 		initUI();
+		System.out.println("entered constructor");
 	}
 	
 	private void initUI() {
@@ -31,8 +32,11 @@ public class LoadGameMenuPanel extends JPanel{
 		loadMenuLabel.setFont(new Font("Miriam", Font.BOLD, 28));
 		
 		JLabel loadGameLabel = new JLabel("Load Game");
-		user.getSaveManager().getSavedGamesList();
+		
 		String[] saveList = new String[user.getSaveManager().numberOfSavedGames()];
+		for(int i=0; i<user.getSaveManager().numberOfSavedGames(); i++) {
+			saveList[i] = user.getSavedGames().get(i).getSavedGameName();
+		}
 		list = new JList(saveList);
 		list.setVisibleRowCount(5);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

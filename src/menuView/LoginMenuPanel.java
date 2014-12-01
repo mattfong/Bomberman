@@ -55,7 +55,7 @@ public class LoginMenuPanel extends JPanel{
 			   
 			    Boolean isCorrectID = loginMenuPanelLogic.loginCheck(userNameField, passwordField);
 			    if(isCorrectID){
-			    	manager.displayPlayGameMenu();
+			    	manager.displayPlayGameMenu(userNameField.getText());
 			    }
 			}		
 		});

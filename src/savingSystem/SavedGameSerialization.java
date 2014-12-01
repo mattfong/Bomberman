@@ -80,6 +80,7 @@ public class SavedGameSerialization {
 				try {
 					game = (SavedGame) in.readObject();
 					allSavedGames.add(game);
+					//manager.setSavedGamesList(allSavedGames);
 				} catch (EOFException e) {
 					done = true;
 				} catch (ClassNotFoundException e) {

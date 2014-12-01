@@ -20,6 +20,7 @@ public class UserProfile {
 	private AccountManager accountManager;
 	private SavedGameManager saveManager;
 	private HighScoreDatabase scoreDatabase;
+	private List<SavedGame> savedGames;
 	
 	private UserProfile() {
 
@@ -42,7 +43,9 @@ public class UserProfile {
 	
 	private void Init(String userName) throws IOException{
 		Account currentUser = getCurrentUser(userName);
-		List<SavedGame> savedGames = getSavedGamesByUser(currentUser.getUserName());
+		savedGames = getSavedGamesByUser(currentUser.getUserName());
+		saveManager.setSavedGamesList(savedGames);
+		setSaveManager(saveManager);
 	}
 	
 	public String getUserName() {
@@ -52,7 +55,15 @@ public class UserProfile {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	
+	public List<SavedGame> getSavedGames() {
+		return savedGames;
+	}
 
+	public void setSavedGames(List<SavedGame> savedGames) {
+		this.savedGames = savedGames;
+	}
+	
 	private Account getCurrentUser(String userName) {
 		Account currentAccount = accountManager.getAccount(userName);
 		return currentAccount;

@@ -10,9 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
+import userProfile.UserProfile;
+
 public class SaveLoadPanel extends JPanel {
 
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
+	private UserProfile user = UserProfile.getInstance();
 	
 	public SaveLoadPanel() {
 		initUI();
@@ -35,13 +38,14 @@ public class SaveLoadPanel extends JPanel {
 
 		loadGameButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("clicked load" + user.getUserName() + user.getSaveManager());
 				manager.displayLoadMenu();
 			}
 		});
 		
 		goBackButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				manager.displayPlayGameMenu();
+				manager.displayPlayGameMenu(user.getUserName());
 			}
 		});
 		
