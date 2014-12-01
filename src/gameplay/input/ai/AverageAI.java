@@ -50,13 +50,15 @@ public class AverageAI extends AI {
 
     
     // HELPER METHODS
-
-    
-    
-    public Integer setToZero(Integer anInt){
-	return anInt = 0;
-    }
-    
+   
+    /**
+     * This method encompasses the change direction method but it also makes the
+     * GameActor (enemy) an enemy
+     * 
+     * @param percentChance
+     * @return up, down, right, left depending on what direction it was going
+     *         before and depending on if bomberman is around
+     */
     public Command chdirAndChaseBomberman(Boolean percentChance){
 	
 	Boolean canMoveRight = actor.canMove(Direction.RIGHT);
@@ -124,6 +126,14 @@ public class AverageAI extends AI {
     }
     
     
+    /**
+     * This method makes the GameActor change directions.
+     * 
+     * @param percentChance
+     *            the chance it changes directions per intersection
+     * @return up, down, right, left depending on the direction it was going
+     *         before and the percentChance
+     */
     public Command changeDirection(Boolean percentChance) {
 
 	if (leftRight) {
@@ -157,6 +167,13 @@ public class AverageAI extends AI {
 	
     }
 
+    /**
+     * This method returns up or down depending on whether the GameActor can go
+     * up or down
+     * 
+     * @return up or down command depending on if it can go up or down
+     * 
+     */
     public Command upAndDown() {
 
 	// For moving up and down
@@ -182,6 +199,12 @@ public class AverageAI extends AI {
 	}
     }
 
+    /**
+     * This method makes an enemy move right or left
+     * 
+     * @return returns left or right depending on whether the GameActor can move
+     *         left or right
+     */
     public Command leftAndRight() {
 
 	Boolean canMoveRight = actor.canMove(Direction.RIGHT);
@@ -209,7 +232,12 @@ public class AverageAI extends AI {
 
     }
 
-    // Randomizer methods
+    /**
+     * This method tells you if the output of a randomizer is 10%
+     * 
+     * @return returns true if the number outputted by a randomizer corresponds to 10%
+     * 
+     */
     public Boolean isTenPercent() {
 
 	Random r = new Random();
@@ -219,6 +247,12 @@ public class AverageAI extends AI {
 	return isTenPercent;
     }
 
+    /**
+     * This method says if an integer is zero.
+     * 
+     * @param integer integer is any integer given by the randomizer
+     * @return returns true if the integer is zero
+     */
     public Boolean isZero(int integer) {
 
 	if (integer == 0) {

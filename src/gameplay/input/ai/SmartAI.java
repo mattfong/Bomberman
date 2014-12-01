@@ -131,7 +131,7 @@ public class SmartAI extends AI {
      * @param percentChance
      *            the chance it changes directions per intersection
      * @return up, down, right, left depending on the direction it was going
-     *         before
+     *         before and the percentChance
      */
     public Command changeDirection(Boolean percentChance) {
 
@@ -171,6 +171,7 @@ public class SmartAI extends AI {
      * up or down
      * 
      * @return up or down command depending on if it can go up or down
+     * 
      */
     public Command upAndDown() {
 
@@ -201,6 +202,7 @@ public class SmartAI extends AI {
      * 
      * @return returns left or right depending on whether the GameActor can move
      *         left or right
+     *         
      */
     public Command leftAndRight() {
 
