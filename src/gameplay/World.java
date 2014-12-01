@@ -336,6 +336,7 @@ public class World implements Serializable {
 	currentLevel = Level.getLevelByNumber(levelNo + 1);
 	worldGenerator.generateLevel(currentLevel);
 	grid = worldGenerator.getGrid();
+	GameStateManager.getInstance().getCurrentGameState().setLevel(currentLevel);
 
 	actorList = worldGenerator.getActorList();
 
