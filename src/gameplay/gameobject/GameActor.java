@@ -2,7 +2,7 @@ package gameplay.gameobject;
 
 import gameplay.gameobject.blocks.Brick;
 import gameplay.gameobject.blocks.Explosion;
-import gameplay.input.commandobjects.CommandManager;
+import gameplay.input.CommandManager;
 import gameplay.statemanagers.GameStateManager;
 import gameplay.world.Direction;
 import gameplay.world.World;
@@ -41,7 +41,7 @@ public class GameActor extends GameObject implements Serializable {
 
     @Override
     public void update() {
-	inputManager.processCommand(); // TODO: Remove when placing the new AI
+	inputManager.processCommand();
 	if (checkIfBombed()) {
 	    isDead = true;
 	    GameStateManager.getInstance().increaseScore(score);

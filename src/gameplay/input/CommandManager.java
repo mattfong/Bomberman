@@ -1,6 +1,8 @@
-package gameplay.input.commandobjects;
+package gameplay.input;
 
 import gameplay.gameobject.GameActor;
+import gameplay.input.commandobjects.Command;
+import gameplay.input.commandobjects.CommandIssuer;
 
 import java.io.Serializable;
 

@@ -34,12 +34,22 @@ public class LoginMenuPanelLogic {
 
 	}
 
+	/**
+	 * This will check that the username and password match valid accounts/ If
+	 * they match, it will return true, else it will return false and make a
+	 * frame pop up to tell the User.
+	 * 
+	 * @param userNameField
+	 * @param passwordField
+	 * @return
+	 */
 	public Boolean loginCheck(JTextField userNameField,
 			JPasswordField passwordField) {
 
 		String userName = userNameField.getText();
 
 		AccountManager accountManager = new AccountManager();
+		String csvAccountsFile = "UserPass.csv";
 		CSVreader reader = new CSVreader();
 
 		try {
@@ -52,7 +62,6 @@ public class LoginMenuPanelLogic {
 
 		if (accountManager.isUser(userNameField.getText(),
 				passwordField.getText())) {
-
 			Account acc = accountManager.getAccount(userName);
 			GameStateManager manager = GameStateManager.getInstance();
 
