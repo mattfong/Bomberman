@@ -173,63 +173,6 @@ public class HighScoreDatabase {
 
     }
 
-    // REMOVE THIS FROM THE FINAL SUBMISSION
-    public static void main(String[] args) {
-
-	List<String> p = new LinkedList<String>();
-	List<Integer> s = new LinkedList<Integer>();
-
-	p.add("TenThousand");
-	p.add("EightThousand");
-	p.add("NineThousand");
-	p.add("ThirtyThousand");
-	p.add("SixteenThousand");
-	p.add("Nineteen");
-	p.add("Seventeen");
-	p.add("Five");
-	p.add("Three");
-	p.add("Two");
-	p.add("One");
-
-	s.add(10000);
-	s.add(8000);
-	s.add(9000);
-	s.add(30000);
-	s.add(16000);
-	s.add(19000);
-	s.add(17000);
-	s.add(5000);
-	s.add(3000);
-	s.add(2000);
-	s.add(1000);
-
-	// Logic to be implemented by the controller
-
-	// Linked list 1 = ...
-	// Linked list 2 = ...
-	Players testPlayers = new Players(p, s); // p and s should be coming
-						 // from the players class.
-
-	HighScoreDatabase testdb = new HighScoreDatabase(testPlayers);
-
-	Players jedi = testdb.sortByScore();
-
-	testdb.sortedForm(jedi);
-	// NOW IT'S SORTED
-
-	// gotta extrac top 10 from it
-
-	Players vader = testdb.getListOfPlayers();
-
-	// Need players sorted
-	Players newVader = testdb.topTen(vader);
-
-	// testdb.topTen(players)
-
-	String str = newVader.getScores().toString();
-
-	System.out.println(str);
-
-    }
+   
 
 }
