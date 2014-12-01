@@ -15,9 +15,12 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import loginSystem.AccountManager;
+
 public class LoginMenuPanel extends JPanel{
 	
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
+	private AccountManager accountManager = new AccountManager();
 	public LoginMenuPanel() {
 		initUI();
 	}
@@ -43,6 +46,7 @@ public class LoginMenuPanel extends JPanel{
 		
 		loginButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
+			    //if()
 				manager.displayPlayGameMenu();
 			}		
 		});

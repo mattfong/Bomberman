@@ -30,6 +30,8 @@ public class PanelTransitionManager {
 		frame.revalidate();
 	}
 	
+	
+	//#1
 	public void displayLoginMenu(){
 		LoginMenuPanel loginMenu = new LoginMenuPanel();
 		frame.setContentPane(loginMenu);
@@ -103,5 +105,6 @@ public class PanelTransitionManager {
 	public static void main(String[] args) {
 		PanelTransitionManager manager = PanelTransitionManager.getInstance();
 		manager.displayLoginMenu();
+		//go to displayLoginMenu()
 	}
 }
