@@ -13,6 +13,9 @@ import java.util.Random;
  * @author YA
  *
  */
+
+
+
 public class SmartAI extends AI {
 
     // Did not finish implementing A*, average AI standin as logic for now, A*
@@ -32,82 +35,91 @@ public class SmartAI extends AI {
 
     @Override
     public Command getCommand() {
-
+	
 	counter++;
 
-	Boolean tenPercent = isTenPercent();
-
+	Boolean fiftyPercent = isFiftyPercent();
+	
+	
 	if (counter > speed) {
-
-	    Boolean canMoveRight = actor.canMove(Direction.RIGHT);
-	    Boolean canMoveLeft = actor.canMove(Direction.LEFT);
-
-	    Boolean cantMoveRight = !canMoveRight;
-	    Boolean cantMoveLeft = !canMoveLeft;
-
-	    // For moving up and down
-	    Boolean canMoveUp = actor.canMove(Direction.UP);
-	    Boolean canMoveDown = actor.canMove(Direction.DOWN);
-
-	    Boolean cantMoveUp = !canMoveUp;
-	    Boolean cantMoveDown = !canMoveDown;
-
+	    
 	    counter = 0;
-
-	    Integer creepX = actor.getLocation().x;
-	    Integer creepY = actor.getLocation().y;
-
-	    int bombermanX = actor.getBombermanCoordinates().x;
-	    int bombermanY = actor.getBombermanCoordinates().y;
-
-	    if (cantMoveLeft && cantMoveRight) {
-		leftRight = false;
-	    }
-
-	    if (cantMoveUp && cantMoveDown) {
-		leftRight = true;
-	    }
-
-	    if (((creepX + 32) == bombermanX) && actor.canMove(Direction.RIGHT) && (((creepY + 32) == bombermanY) || ((creepY - 32) == bombermanY) || (creepY == bombermanY))) {
-
-		return right();
-	    }
-
-	    else if (((creepX - 32) == bombermanX) && actor.canMove(Direction.LEFT) && (((creepY + 32) == bombermanY) || ((creepY - 32) == bombermanY) || (creepY == bombermanY))) {
-
-		return left();
-	    }
-
-	    else if (((creepY + 32) == bombermanY) && actor.canMove(Direction.DOWN) && (((creepX + 32) == bombermanX) || ((creepX - 32) == bombermanX) || (creepX == bombermanX))) {
-
-		return down();
-	    }
-
-	    else if (((creepY - 32) == bombermanY) && actor.canMove(Direction.UP) && (((creepX + 32) == bombermanX) || ((creepX - 32) == bombermanX) || (creepX == bombermanX))) {
-
-		return up();
-	    }
-
-	    else {
-
-		return changeDirection(tenPercent);
-
-	    }
-
+	    
+	    return chdirAndChaseBomberman(fiftyPercent);
+	    
 	}
 
 	return null;
+	
+	
     }
-
+    
+    
     // HELPER METHODS
 
-    // towrite if time allows
-    public Boolean bombermanIsWithinOne() {
-	return null;
-    }
+    public Command chdirAndChaseBomberman(Boolean percentChance) {
 
-    public Integer setToZero(Integer anInt) {
-	return anInt = 0;
+	Boolean canMoveRight = actor.canMove(Direction.RIGHT);
+	Boolean canMoveLeft = actor.canMove(Direction.LEFT);
+
+	Boolean cantMoveRight = !canMoveRight;
+	Boolean cantMoveLeft = !canMoveLeft;
+
+	// For moving up and down
+	Boolean canMoveUp = actor.canMove(Direction.UP);
+	Boolean canMoveDown = actor.canMove(Direction.DOWN);
+
+	Boolean cantMoveUp = !canMoveUp;
+	Boolean cantMoveDown = !canMoveDown;
+
+	Integer creepX = actor.getLocation().x;
+	Integer creepY = actor.getLocation().y;
+
+	int bombermanX = actor.getBombermanCoordinates().x;
+	int bombermanY = actor.getBombermanCoordinates().y;
+
+	if (cantMoveLeft && cantMoveRight) {
+	    leftRight = false;
+	}
+
+	if (cantMoveUp && cantMoveDown) {
+	    leftRight = true;
+	}
+
+	if ((creepX + 32 == bombermanX)
+		&& actor.canMove(Direction.RIGHT)
+		&& ((creepY + 32 == bombermanY) || (creepY - 32 == bombermanY) || (creepY == bombermanY))) {
+
+	    return right();
+	}
+
+	else if ((creepX - 32 == bombermanX)
+		&& actor.canMove(Direction.LEFT)
+		&& ((creepY + 32 == bombermanY) || (creepY - 32 == bombermanY) || (creepY == bombermanY))) {
+
+	    return left();
+	}
+
+	else if ((creepY + 32 == bombermanY)
+		&& actor.canMove(Direction.DOWN)
+		&& ((creepX + 32 == bombermanX) || (creepX - 32 == bombermanX) || (creepX == bombermanX))) {
+
+	    return down();
+	}
+
+	else if ((creepY - 32 == bombermanY)
+		&& actor.canMove(Direction.UP)
+		&& ((creepX + 32 == bombermanX) || (creepX - 32 == bombermanX) || (creepX == bombermanX))) {
+
+	    return up();
+	}
+
+	else {
+
+	    return changeDirection(percentChance);
+
+	}
+
     }
 
     public Command changeDirection(Boolean percentChance) {
@@ -178,36 +190,54 @@ public class SmartAI extends AI {
 	}
 
 	if (canMoveRight && (justMovedLeft == false)) {
-
+	    
+	    
 	    return right();
 
 	}
 
 	else {
 	    justMovedLeft = true;
-
+	    
+	    
+	    
 	    return left();
 	}
 
     }
-
+    
     // Randomizer methods
-    public Boolean isTenPercent() {
+    public Boolean isFiftyPercent() {
 
 	Random r = new Random();
 	int number = r.nextInt(9);
-	Boolean isTenPercent = isZero(number);
+	Boolean isFiftyPercent = isZeroOneTwoThreeFour(number);
 
-	return isTenPercent;
+	return isFiftyPercent;
     }
 
-    public Boolean isZero(int integer) {
+    public Boolean isZeroOneTwoThreeFour(int integer) {
 
-	if (integer == 0) {
+	if (integer == 0){
 	    return true;
-	} else {
+	} 
+	else if(integer == 1){
+	    return true;
+	}
+	else if(integer == 2){
+	    return true;
+	}
+	else if(integer == 3){
+	    return true;
+	}
+	else if(integer == 4){
+	    return true;
+	}
+	else {
 	    return false;
 	}
 
     }
+
+    
 }
