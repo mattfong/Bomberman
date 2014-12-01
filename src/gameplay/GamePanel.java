@@ -65,31 +65,47 @@ public class GamePanel extends JPanel implements Runnable {
      */
 
     public GamePanel(Level level) {
+	// panel registration for use by pause system
 	gameStateManager = GameStateManager.getInstance();
 	gameStateManager.registerGamePanel(this);
+
+	// jpanel stuff
 	setPreferredSize(gameDim);
 	setFocusable(true);
 	requestFocus();
+
+	// set world to a new world
 	world = new World(31, 13, level);
+
+	// set the camera, get the actor lists and add a key listener
 	camera = new Camera(0, world.getBomberman());
 	actorList = world.getActorList();
 	addKeyListener(InputListener.getInstance());
+
 	InputListener.setGamePanel(this);
 	setLayout(null);
 
     }
 
     public GamePanel(World world) {
+	// panel registration for use by pause system
 	gameStateManager = GameStateManager.getInstance();
 	gameStateManager.registerGamePanel(this);
+
+	// jpanel stuff
 	setPreferredSize(gameDim);
 	setFocusable(true);
 	requestFocus();
+
+	// set world to a given room
 	this.world = world;
+
+	// set the camera, get actor list from the loaded world and add a key
+	// listener
 	camera = new Camera(0, world.getBomberman());
 	actorList = world.getActorList();
-
 	addKeyListener(InputListener.getInstance());
+
 	InputListener.setGamePanel(this);
 	setLayout(null);
     }
