@@ -7,7 +7,7 @@ import gameplay.gameobject.blocks.Brick;
 import gameplay.gameobject.powerups.Door;
 import gameplay.gameobject.powerups.Powerup;
 import gameplay.input.InputListener;
-import gameplay.input.commandobjects.CommandManager;
+import gameplay.input.CommandManager;
 import gameplay.statemanagers.GameStateManager;
 import gameplay.world.World;
 
