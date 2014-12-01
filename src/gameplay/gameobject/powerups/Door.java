@@ -26,7 +26,7 @@ public class Door extends GameObject implements Powerup {
 	super(location, world);
 	sprite = new ImageIcon(Door.class.getResource("/ClosedDoor.jpg"));
 
-	destroyable = true;
+	destroyable = false;
 	solid = false;
 	conductsExplosions = false;
 	isOpen = false;
