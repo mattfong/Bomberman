@@ -17,7 +17,7 @@ public class NewAccountViewLogic {
 		AccountManager accountManager = new AccountManager();
 		CSVreader reader = new CSVreader();
     	try {
-    		accountManager.setAccounts(reader.CSVreaderAccounts());
+    		accountManager.setAccounts(reader.CSVreaderAccounts(csvAccountsFile));
     	} catch (IOException e1) {
     		// TODO Auto-generated catch block
     		e1.printStackTrace();

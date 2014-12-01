@@ -22,13 +22,6 @@ public class Account {
 		this.password = password;
 		this.totalScore = totalScore;
 	}
-
-	public Account(String[] a){
-		this.name=a[0];
-		this.userName=a[1];
-		this.password=a[2];
-		
-	}
 	
 	@Override
 	public String toString() {

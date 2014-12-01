@@ -9,7 +9,7 @@ import au.com.bytecode.opencsv.CSVReader;
 
 public class CSVreader {
 	
-	private final String csvAccountsFile = "UserPass.csv";
+//	private final String csvAccountsFile = "UserPass.csv";
 	private AccountManager accountManager = new AccountManager();
 	
 	public CSVreader() {
@@ -21,9 +21,9 @@ public class CSVreader {
 	 * @return a list of all the accounts
 	 * @throws IOException
 	 */
-	public List<Account> CSVreaderAccounts() throws IOException{
+	public List<Account> CSVreaderAccounts(String fileName) throws IOException{
 		
-		CSVReader reader = new CSVReader(new FileReader(csvAccountsFile));
+		CSVReader reader = new CSVReader(new FileReader(fileName));
 		
 		List<String[]> records = reader.readAll();
 		Iterator<String[]> i = records.iterator();

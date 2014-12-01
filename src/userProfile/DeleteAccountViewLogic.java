@@ -31,7 +31,7 @@ public class DeleteAccountViewLogic {
 			 * The account messanger trys to find an account matching the
 			 * entered detailes
 			 */
-			accountManager.setAccounts(reader.CSVreaderAccounts());
+			accountManager.setAccounts(reader.CSVreaderAccounts(csvAccountsFile));
 			System.out.println("AM in try:" + accountManager.numberOfAccounts()
 					+ "," + accountManager.getAccounts());
 
