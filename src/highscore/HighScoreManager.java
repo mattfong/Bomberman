@@ -52,6 +52,11 @@ public class HighScoreManager {
     
    
     
+    /**
+     * This method gets a list of all the usernames in a list of Account objects.
+     * 
+     * @return returns a list of String objects (usernames)
+     */
     private List<String> getListOfUsernames(){
 	
 	String userName = "";
@@ -74,6 +79,11 @@ public class HighScoreManager {
     }
     
     
+    /**
+     * This method gets a list of scores that are saved on the csv file
+     * 
+     * @return returns a list scores
+     */
     private List<Integer> getListOfScores(){
 	
 	int totalScore = 0;
@@ -100,6 +110,11 @@ public class HighScoreManager {
  
 
 
+    /**
+     * This method gets the topTen players and their scores
+     * 
+     * @return returns a Players object containing the top 10 scores along with their user names;
+     */
     public Players showTopTen() {
 	
 	List<String> names = getListOfUsernames();
