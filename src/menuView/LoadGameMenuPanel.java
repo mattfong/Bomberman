@@ -32,7 +32,7 @@ public class LoadGameMenuPanel extends JPanel{
 		loadMenuLabel.setFont(new Font("Miriam", Font.BOLD, 28));
 		
 		JLabel loadGameLabel = new JLabel("Load Game");
-		
+		System.out.println(user);
 		String[] saveList = new String[user.getSaveManager().numberOfSavedGames()];
 		for(int i=0; i<user.getSaveManager().numberOfSavedGames(); i++) {
 			saveList[i] = user.getSavedGames().get(i).getSavedGameName();
