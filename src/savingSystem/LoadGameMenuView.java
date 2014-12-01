@@ -63,15 +63,19 @@ public class LoadGameMenuView {
 			nameList[i] = savedGames.get(i).getSavedGameName();
 		}
 	
-	    JList list = new JList(nameList);
+	    final JList list = new JList(nameList);
 	    list.setVisibleRowCount(5);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setLayoutOrientation(JList.VERTICAL);
 		
 	    loadGameButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				controller.loadGame();
-				frame.dispose();
+			public void actionPerformed(ActionEvent e) {
+				if(e.getActionCommand().equals("Load Game")){
+					int index = list.getSelectedIndex();
+					System.out.println("Index: " + index);
+					controller.loadGame(index);
+					frame.dispose();
+				}
 			}
 		});
 

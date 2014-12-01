@@ -67,8 +67,9 @@ public class SaveLoadController {
 	
 	/**
 	 * Obtain's the user's save game file, and deserializes all the games within the file.
+	 * @param index
 	 */
-	public void loadGame() {
+	public void loadGame(int index) {
 		SavedGame game = null;
 		
 		try {
@@ -78,11 +79,13 @@ public class SaveLoadController {
 
 			System.out.println("Step 5: Deserialized List: " + allSavedGames);
 			for (int i = 0; i < allSavedGames.size(); i++) {
-				game = allSavedGames.get(i);
-
-				World world = game.getGameState().getWorld();
-				GameFrame gameplay = new GameFrame(world);
-				gameplay.setVisible(true);
+				if(index == i){
+					game = allSavedGames.get(i);
+	
+					World world = game.getGameState().getWorld();
+					GameFrame gameplay = new GameFrame(world);
+					gameplay.setVisible(true);
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
