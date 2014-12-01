@@ -12,7 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-
+/**
+ * @author Philip Hoddinott, inital upload by [kirth was this you?] <philip.hoddinott@mail.mcgill.ca>
+ * @version 1.7 (current version number of program)
+ * @since 2014-12-1 (the version of the package this class was first added to)
+ */
 public class DeleteAccountPanel extends JPanel {
 
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();

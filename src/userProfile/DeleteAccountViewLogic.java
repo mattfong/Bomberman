@@ -9,7 +9,11 @@ import loginSystem.AccountManager;
 import loginSystem.CSVreader;
 import loginSystem.CSVwriter;
 import loginSystem.LoginMenuView;
-
+/**
+ * @author Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>
+ * @version 1.7 (current version number of program)
+ * @since 2014-12-1 (the version of the package this class was first added to)
+ */
 public class DeleteAccountViewLogic {
 	private static JFrame controllingFrame;
 
