@@ -2,7 +2,10 @@ package loginSystem;
 
 import static org.junit.Assert.*;
 
+import java.awt.AWTException;
 import java.awt.HeadlessException;
+import java.awt.Robot;
+import java.awt.event.InputEvent;
 import java.io.IOException;
 import java.util.Random;
 
@@ -53,13 +56,18 @@ public class LoginMenuPanelLogicTest {
 	}
 
 	@Test
-	public void testValid() throws HeadlessException, IOException {
+	public void testValid() throws HeadlessException, IOException, AWTException {
 		int k,i = 0, uLength, pLength, max = 20, min = 0;
 		boolean userValid = false;
 		boolean passValid = false;
 		boolean ULcase = false, passUC = false, userUC = false;
 		boolean passLC = false;
 		boolean areThereNumbers;
+		
+		Robot bot = new Robot();
+		
+		
+		
 		for (k = 0; k < 1000; k++) {
 			uLength = rnd.nextInt((max - min) + 1) + min;
 			pLength = rnd.nextInt((max - min) + 1) + min;
@@ -73,6 +81,13 @@ public class LoginMenuPanelLogicTest {
 
 			// ad in account manager test
 			//add in username with no non standard charircwrs.
+			bot.mouseMove(675,400);
+			bot.mousePress(InputEvent.BUTTON1_MASK);
+			bot.mouseRelease(InputEvent.BUTTON1_MASK);
+			//add time between press and release or the input event system may 
+			//not think it is a click
+			try{Thread.sleep(250);}catch(InterruptedException e){}
+			bot.mouseRelease(InputEvent.BUTTON1_MASK);
 
 			if (uLength < 6) {
 				assertFalse("this should be false", system.valid(user, pass));
@@ -113,6 +128,8 @@ public class LoginMenuPanelLogicTest {
 			}// password needs one speical case
 				// password must have one of each the following:upper case,
 				// lower case, number speical
+			bot.mousePress(InputEvent.BUTTON1_MASK);
+			bot.mouseRelease(InputEvent.BUTTON1_MASK);
 		}
 
 		fail("Not yet implemented");

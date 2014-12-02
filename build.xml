@@ -42,7 +42,7 @@
 		<jar destfile="${dist}/build.jar" filesetmanifest="mergewithoutmain">
 			<!-- Specify the class which has the main method. -->
 			<manifest>
-				<attribute name="Main-Class" value="TestApp"/>
+				<attribute name="Main-Class" value="menuView.PanelTransitionManager"/>
 				<attribute name="Class-Path" value="."/>
 			</manifest>
 			<!-- Add in our compiled files. -->
