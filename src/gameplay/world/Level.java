@@ -1,4 +1,4 @@
-package gameplay.gameobject;
+package gameplay.world;
 
 import gameplay.gameobject.enemies.Balloon;
 import gameplay.gameobject.enemies.Doll;

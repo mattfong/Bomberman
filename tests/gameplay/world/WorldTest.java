@@ -1,6 +1,7 @@
-package gameplay.gameobject;
+package gameplay.world;
 
 import static org.junit.Assert.assertEquals;
+import gameplay.gameobject.GameObject;
 import gameplay.gameobject.blocks.Background;
 import gameplay.statemanagers.GameStateManager;
 import gameplay.world.World;

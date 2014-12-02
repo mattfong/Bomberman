@@ -1,14 +1,16 @@
-package gameplay.gameobject;
+package gameplay.world;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import gameplay.gameobject.GameActor;
+import gameplay.world.Factory;
+import gameplay.world.Level;
 
 import java.util.ArrayList;
 
 import org.junit.Test;
 
-public class MonsterFactoryTest {
+public class FactoryTest {
 
     @Test
     public void testCreateClassListNotNull() {

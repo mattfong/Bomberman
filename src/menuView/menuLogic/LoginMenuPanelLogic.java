@@ -1,21 +1,18 @@
 package menuView.menuLogic;
 
-import gameplay.gameobject.Level;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
+import gameplay.world.Level;
 import gameplay.world.World;
 
 import java.awt.HeadlessException;
 import java.io.IOException;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import junk.PlayGameView;
-import userProfile.UserProfile;
 import loginSystem.Account;
 import loginSystem.AccountManager;
 import loginSystem.CSVreader;
@@ -200,6 +197,10 @@ public class LoginMenuPanelLogic {
 	public boolean newAccountLogic(String name, String username, String password, String confirmPassword, int score){
 		boolean check = false;
 		boolean validate = false;
+		
+		if(password.equals(confirmPassword)){
+			
+		
 		AccountManager accountManager = new AccountManager();
 		CSVreader reader = new CSVreader();
     	try {
@@ -234,6 +235,12 @@ public class LoginMenuPanelLogic {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		}
+		
+		else{
+			JOptionPane.showMessageDialog(controllingFrame,
+	                "Password and confirm Password do not match");
 		}
 		return check;
 		

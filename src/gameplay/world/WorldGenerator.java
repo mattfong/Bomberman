@@ -1,9 +1,7 @@
 package gameplay.world;
 
-import gameplay.gameobject.Factory;
 import gameplay.gameobject.GameActor;
 import gameplay.gameobject.GameObject;
-import gameplay.gameobject.Level;
 import gameplay.gameobject.blocks.Background;
 import gameplay.gameobject.blocks.Brick;
 import gameplay.gameobject.blocks.Wall;
