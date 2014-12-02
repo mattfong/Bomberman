@@ -29,6 +29,8 @@ public class LevelSelectPanelLogic {
 	 * @param thisLevel
 	 * @return
 	 */
+	
+	
 	public boolean visable(int levelsUnlocked, int thisLevel) {
 		if (thisLevel > levelsUnlocked)
 			return false;

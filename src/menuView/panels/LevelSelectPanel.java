@@ -43,7 +43,7 @@ public class LevelSelectPanel extends JPanel {
 
 		int i = 3;
 
-		//i = SLC.maxLevelReachedByUser();
+		i = SLC.maxLevelReachedByUser();
 		// THIS LINES GIVES ERRORS!
 
 		int counter, counterPlusOne;
