@@ -165,7 +165,10 @@ public class PanelTransitionManager {
 		frame.invalidate();
 		frame.validate();
 	}
-
+	
+	public void closeMenu() {
+		frame.dispose();
+	}
 	/**
 	 * The main method which starts the game.
 	 * @param args

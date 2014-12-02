@@ -54,7 +54,7 @@ public class ModifyAccountPanel extends JPanel{
 		
 		closeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				manager.closeMenu();
 			}
 		});
 		

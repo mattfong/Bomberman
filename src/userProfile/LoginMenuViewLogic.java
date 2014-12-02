@@ -2,6 +2,7 @@ package userProfile;
 
 import java.io.IOException;
 
+import junk.PlayGameView;
 import gameplay.gameobject.Level;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
@@ -9,7 +10,6 @@ import gameplay.world.World;
 import loginSystem.Account;
 import loginSystem.AccountManager;
 import loginSystem.CSVreader;
-import loginSystem.PlayGameView;
 /**
  * @author Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>
  * @version 1.7 (current version number of program)

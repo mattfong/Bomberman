@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import junk.PlayGameView;
+
 /**
  * @author      Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>
  * @version     1.5                 (current version number of program)

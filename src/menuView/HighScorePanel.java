@@ -16,7 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-import loginSystem.PlayGameView;
+import junk.PlayGameView;
 
 public class HighScorePanel extends JPanel{
     	
