@@ -62,11 +62,13 @@ public class HighscoreDatabaseTest {
 	
 	Players updated = testDatabase.getListOfPlayers();
 	
-	Players newUpdated = testDatabase.topTen(updated);
+	Players topTenNames = testDatabase.topTen(updated);
 	
-	String str = newUpdated.getPlayerNames().get(0);
+	String firstName = topTenNames.getPlayerNames().get(0);
 	
-	assertEquals("ThirtyThousand", str);
+	assertEquals("ThirtyThousand", firstName);
+	
+	
 	
 	
 	
