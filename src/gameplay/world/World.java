@@ -335,10 +335,11 @@ public class World implements Serializable {
 	Level nextLevel;
 	nextLevel = Level.getLevelByNumber(levelNo + 1);
 	worldGenerator.generateLevel(currentLevel);
-	grid = worldGenerator.getGrid();
-	GameStateManager.getInstance().getCurrentGameState().setLevel(nextLevel);
 
+	grid = worldGenerator.getGrid();
 	actorList = worldGenerator.getActorList();
+
+	GameStateManager.getInstance().getCurrentGameState().setLevel(nextLevel);
 
 	gameTimer.reset();
 
@@ -363,8 +364,8 @@ public class World implements Serializable {
 	    }
 	}
 
-	    actorList.clear();
-	    actorList.addAll(newActorList);
+	actorList.clear();
+	actorList.addAll(newActorList);
 
 	if (!(cachedBomberman == null)) {
 	    actorList.add(cachedBomberman);

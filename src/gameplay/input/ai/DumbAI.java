@@ -97,7 +97,6 @@ public class DumbAI extends AI {
 	}
 
     }
-    
 
     /**
      * This method returns up or down depending on whether the GameActor can go

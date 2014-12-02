@@ -17,66 +17,66 @@ import menuView.PanelTransitionManager;
  */
 public class PlayGamePanel extends JPanel {
 
-	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
+    private PanelTransitionManager manager = PanelTransitionManager.getInstance();
 
-	/**
-	 * This callses the initUI for the PlayGamePanel
-	 */
-	public PlayGamePanel() {
-		initUI();
-	}
+    /**
+     * This callses the initUI for the PlayGamePanel
+     */
+    public PlayGamePanel() {
+	initUI();
+    }
 
-	/**
-	 * This creates the PlayMenu panel
-	 * <p>
-	 * The PlayMenu has five buttons. One plays the game, one loads a game, one
-	 * displays the highscores, one modifys the acount, one logs the player out.
-	 * <p>
-	 * 
-	 */
-	private void initUI() {
-		setLayout(new GridLayout(5, 1, 5, 10));
-		JButton playGameButton = new JButton("Play Game");
-		JButton saveLoadButton = new JButton("Enter Save Load Game Menu");
-		JButton highScoreButton = new JButton("View Highscores");
-		JButton editAccountButton = new JButton("Edit Account");
-		JButton logoutButton = new JButton("Logout");
+    /**
+     * This creates the PlayMenu panel
+     * <p>
+     * The PlayMenu has five buttons. One plays the game, one loads a game, one
+     * displays the highscores, one modifys the acount, one logs the player out.
+     * <p>
+     * 
+     */
+    private void initUI() {
+	setLayout(new GridLayout(5, 1, 5, 10));
+	JButton playGameButton = new JButton("Play Game");
+	JButton saveLoadButton = new JButton("Enter Save Load Game Menu");
+	JButton highScoreButton = new JButton("View Highscores");
+	JButton editAccountButton = new JButton("Edit Account");
+	JButton logoutButton = new JButton("Logout");
 
-		playGameButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				manager.displayLevels();
-			}
-		});
+	playGameButton.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent arg0) {
+		manager.displayLevels();
+	    }
+	});
 
-		saveLoadButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				manager.displaySaveLoad();
-			}
-		});
+	saveLoadButton.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent arg0) {
+		manager.displaySaveLoad();
+	    }
+	});
 
-		highScoreButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				manager.displayHighscoreMenu();
-			}
-		});
+	highScoreButton.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent arg0) {
+		manager.displayHighscoreMenu();
+	    }
+	});
 
-		editAccountButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				manager.displayModifyAccount();
-			}
-		});
+	editAccountButton.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent arg0) {
+		manager.displayModifyAccount();
+	    }
+	});
 
-		logoutButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				manager.displayLoginMenu();
-			}
-		});
+	logoutButton.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent arg0) {
+		manager.displayLoginMenu();
+	    }
+	});
 
-		setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		add(playGameButton);
-		add(saveLoadButton);
-		add(highScoreButton);
-		add(editAccountButton);
-		add(logoutButton);
-	}
+	setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+	add(playGameButton);
+	add(saveLoadButton);
+	add(highScoreButton);
+	add(editAccountButton);
+	add(logoutButton);
+    }
 }

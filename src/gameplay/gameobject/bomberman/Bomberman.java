@@ -100,6 +100,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
     public int getBombLimit() {
 	return bombLimit;
     }
+
     /**
      * checks if the GameActor has the ability to remote detonate and if true,
      * detonates the bombs in order that they are placed.

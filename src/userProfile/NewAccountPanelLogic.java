@@ -9,6 +9,7 @@ import loginSystem.AccountManager;
 import loginSystem.CSVreader;
 import loginSystem.CSVwriter;
 import menuView.PanelTransitionManager;
+
 /**
  * @author Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>
  * @version 1.7 (current version number of program)
@@ -16,105 +17,100 @@ import menuView.PanelTransitionManager;
  */
 public class NewAccountPanelLogic {
 
-	private PanelTransitionManager manager = PanelTransitionManager
-			.getInstance();
-	/**
-	 * This calls the Logic method. It goes from a astatic action listenre to a non static void
-	 * @param Name
-	 * @param User
-	 * @param Pass
-	 */
-	public static void NewAccountLogic(String Name, String User, String Pass){
-		NewAccountPanelLogic NAPL = new NewAccountPanelLogic();
-		NAPL.newAccountLogic(Name, User, Pass, 0);
+    private PanelTransitionManager manager = PanelTransitionManager.getInstance();
+
+    /**
+     * This calls the Logic method. It goes from a astatic action listenre to a
+     * non static void
+     * 
+     * @param Name
+     * @param User
+     * @param Pass
+     */
+    public static void NewAccountLogic(String Name, String User, String Pass) {
+	NewAccountPanelLogic NAPL = new NewAccountPanelLogic();
+	NAPL.newAccountLogic(Name, User, Pass, 0);
+    }
+
+    /**
+     * This void creates the new account from the information it is sent. It
+     * also checks that the details are with specs for usernames/passwords/etc
+     * 
+     * @param Name
+     * @param User
+     * @param Pass
+     * @param i
+     */
+    public void newAccountLogic(String Name, String User, String Pass, int i) {
+	String csvAccountsFile = "UserPass.csv";
+	AccountManager accountManager = new AccountManager();
+	CSVreader reader = new CSVreader();
+	try {
+	    accountManager.setAccounts(reader.CSVreaderAccounts(csvAccountsFile));
+	} catch (IOException e1) {
+	    // TODO Auto-generated catch block
+	    e1.printStackTrace();
 	}
-	/**
-	 * This void creates the new account from the information it is sent. 
-	 * It also checks that the details are with specs for usernames/passwords/etc
-	 * @param Name
-	 * @param User
-	 * @param Pass
-	 * @param i
-	 */
-	public void newAccountLogic(String Name, String User, String Pass, int i){
-		String csvAccountsFile = "UserPass.csv";
-		AccountManager accountManager = new AccountManager();
-		CSVreader reader = new CSVreader();
-    	try {
-    		accountManager.setAccounts(reader.CSVreaderAccounts(csvAccountsFile));
-    	} catch (IOException e1) {
-    		// TODO Auto-generated catch block
-    		e1.printStackTrace();
-    	}
-		
-		// This checks that all paramiters have been met 
-		try {
-			
-			// These write to the Database, making a new account for the user
-		
-			CSVwriter writer = new CSVwriter();
-			writer.CSVwriterAccounts(csvAccountsFile, Name, User, Pass, 0);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-		System.out.println("Entered user is " + User + " and pass is " + Pass);
-		//This makes a new gamestate for the new account It then disposes the frame and goes to the playgameMenu
-		 
-		GameState gameState = new GameState(User, Name);
-		GameStateManager gManager = GameStateManager.getInstance();
-		gManager.setCurrentGameState(gameState);
-		
-		manager.displayPlayGameMenu();
-		
+	// This checks that all paramiters have been met
+	try {
+
+	    // These write to the Database, making a new account for the user
+
+	    CSVwriter writer = new CSVwriter();
+	    writer.CSVwriterAccounts(csvAccountsFile, Name, User, Pass, 0);
+	} catch (IOException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
 	}
-	/*
-	 * package userProfile;
 
-import gameplay.statemanagers.GameState;
-import gameplay.statemanagers.GameStateManager;
+	System.out.println("Entered user is " + User + " and pass is " + Pass);
+	// This makes a new gamestate for the new account It then disposes the
+	// frame and goes to the playgameMenu
 
-import java.io.IOException;
+	GameState gameState = new GameState(User, Name);
+	GameStateManager gManager = GameStateManager.getInstance();
+	gManager.setCurrentGameState(gameState);
 
-import loginSystem.AccountManager;
-import loginSystem.CSVreader;
-import loginSystem.CSVwriter;
-import loginSystem.PlayGameView;
+	manager.displayPlayGameMenu();
 
-public class NewAccountViewLogic {
-
-	public static void newAccountLogic(String Name, String User, String Pass, int i){
-		String csvAccountsFile = "UserPass.csv";
-		AccountManager accountManager = new AccountManager();
-		CSVreader reader = new CSVreader();
-    	try {
-    		accountManager.setAccounts(reader.CSVreaderAccounts(csvAccountsFile));
-    	} catch (IOException e1) {
-    		// TODO Auto-generated catch block
-    		e1.printStackTrace();
-    	}
-		
-		// This checks that all paramiters have been met 
-		try {
-			
-			// These write to the Database, making a new account for the user
-		
-			CSVwriter writer = new CSVwriter();
-			writer.CSVwriterAccounts(csvAccountsFile, Name, User, Pass, 0);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		System.out.println("Entered user is " + User + " and pass is " + Pass);
-		//This makes a new gamestate for the new account It then disposes the frame and goes to the playgameMenu
-		 
-		GameState gameState = new GameState(User, Name);
-		GameStateManager manager = GameStateManager.getInstance();
-		manager.setCurrentGameState(gameState);
-		PlayGameView.main(null);
-	}
-}
-	 */
+    }
+    /*
+     * package userProfile;
+     * 
+     * import gameplay.statemanagers.GameState; import
+     * gameplay.statemanagers.GameStateManager;
+     * 
+     * import java.io.IOException;
+     * 
+     * import loginSystem.AccountManager; import loginSystem.CSVreader; import
+     * loginSystem.CSVwriter; import loginSystem.PlayGameView;
+     * 
+     * public class NewAccountViewLogic {
+     * 
+     * public static void newAccountLogic(String Name, String User, String Pass,
+     * int i){ String csvAccountsFile = "UserPass.csv"; AccountManager
+     * accountManager = new AccountManager(); CSVreader reader = new
+     * CSVreader(); try {
+     * accountManager.setAccounts(reader.CSVreaderAccounts(csvAccountsFile)); }
+     * catch (IOException e1) { // TODO Auto-generated catch block
+     * e1.printStackTrace(); }
+     * 
+     * // This checks that all paramiters have been met try {
+     * 
+     * // These write to the Database, making a new account for the user
+     * 
+     * CSVwriter writer = new CSVwriter();
+     * writer.CSVwriterAccounts(csvAccountsFile, Name, User, Pass, 0); } catch
+     * (IOException e) { // TODO Auto-generated catch block e.printStackTrace();
+     * }
+     * 
+     * System.out.println("Entered user is " + User + " and pass is " + Pass);
+     * //This makes a new gamestate for the new account It then disposes the
+     * frame and goes to the playgameMenu
+     * 
+     * GameState gameState = new GameState(User, Name); GameStateManager manager
+     * = GameStateManager.getInstance(); manager.setCurrentGameState(gameState);
+     * PlayGameView.main(null); } }
+     */
 }

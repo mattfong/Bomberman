@@ -21,127 +21,113 @@ import userProfile.UserProfile;
  */
 public class HighScoreManager {
 
-  
-    
-    //Constructor
-    public HighScoreManager(){
-	
+    // Constructor
+    public HighScoreManager() {
+
     }
-    
-  //Getting the lists of accounts
-    private List<Account> listOfAccounts(){
-	
+
+    // Getting the lists of accounts
+    private List<Account> listOfAccounts() {
+
 	List<Account> listOfAccounts = UserProfile.getInstance().getAccountManager().getAccounts();
 	return listOfAccounts;
     }
-    
 
     /**
-     * This method gets the number of Accounts from the listOfAccounts method above.
+     * This method gets the number of Accounts from the listOfAccounts method
+     * above.
      * 
-     * @return 
-     * 		returns the size of the list of Accounts List.
+     * @return returns the size of the list of Accounts List.
      */
     private int numberOfAccounts() {
 
 	return listOfAccounts().size();
     }
-    
-    
-    
-    
-   
-    
+
     /**
-     * This method gets a list of all the usernames in a list of Account objects.
+     * This method gets a list of all the usernames in a list of Account
+     * objects.
      * 
      * @return returns a list of String objects (usernames)
      */
-    private List<String> getListOfUsernames(){
-	
+    private List<String> getListOfUsernames() {
+
 	String userName = "";
 	int sizeOfList = numberOfAccounts();
-	
-	//add to this and return it
+
+	// add to this and return it
 	List<String> userNameList = new LinkedList<String>();
-	
-	
-	//get usernames from this
+
+	// get usernames from this
 	List<Account> listOfAccountsToIterateOver = listOfAccounts();
-	
-	for(int i = 0; i < sizeOfList; i++){
+
+	for (int i = 0; i < sizeOfList; i++) {
 	    Account acc = listOfAccountsToIterateOver.get(i);
 	    userName = acc.getUserName();
 	    userNameList.add(userName);
 	}
-	
+
 	return userNameList;
     }
-    
-    
+
     /**
      * This method gets a list of scores that are saved on the csv file
      * 
      * @return returns a list scores
      */
-    private List<Integer> getListOfScores(){
-	
+    private List<Integer> getListOfScores() {
+
 	int totalScore = 0;
 	int sizeOfList = numberOfAccounts();
-	
-	//add to this and return it
+
+	// add to this and return it
 	List<Integer> totalScoresList = new LinkedList<Integer>();
-	
-	//get usernames from this
+
+	// get usernames from this
 	List<Account> listOfAccountsToIterateOver = listOfAccounts();
-	
-	for(int i = 0; i < sizeOfList; i++){
+
+	for (int i = 0; i < sizeOfList; i++) {
 	    Account acc = listOfAccountsToIterateOver.get(i);
 	    totalScore = acc.getTotalScore();
 	    totalScoresList.add(totalScore);
-	    
+
 	}
-	
+
 	return totalScoresList;
     }
- 
-    
-    
- 
-
 
     /**
      * This method gets the topTen players and their scores
      * 
-     * @return returns a Players object containing the top 10 scores along with their user names;
+     * @return returns a Players object containing the top 10 scores along with
+     *         their user names;
      */
     public Players showTopTen() {
-	
+
 	List<String> names = getListOfUsernames();
 	List<Integer> scores = getListOfScores();
-	
-	
+
 	Players newPlayer = new Players(names, scores);
-	
+
 	HighScoreDatabase database = new HighScoreDatabase(newPlayer);
 
 	Players temp = database.sortByScore();
 
 	database.sortedForm(temp);
-	
+
 	//
-	//The lists are sorted now, gotta get the top 10 users/scores now
+	// The lists are sorted now, gotta get the top 10 users/scores now
 	//
-	
-	//Build a player with sorted lists
+
+	// Build a player with sorted lists
 	Players temp2 = database.getListOfPlayers();
 
-	//Extract the top ten players and store them in a Players object
+	// Extract the top ten players and store them in a Players object
 	Players finalplayer = database.topTen(temp2);
-	
-	
-	//The view will extract both the name and the score. It will return something else
-	//if the result from it is null [implement it that way]
+
+	// The view will extract both the name and the score. It will return
+	// something else
+	// if the result from it is null [implement it that way]
 
 	return finalplayer;
 

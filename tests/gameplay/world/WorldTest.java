@@ -29,12 +29,9 @@ public class WorldTest {
 
     }
 
-
-
-
     // Tests if we can cache information about level changes when they occur.
     @Test
-    public void testLoadNextLevel(){
+    public void testLoadNextLevel() {
 	world.loadNextLevel();
 	assertEquals(Level.L2, GameStateManager.getInstance().getCurrentGameState().getLevel());
     }

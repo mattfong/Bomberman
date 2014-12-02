@@ -13,17 +13,17 @@ import savingSystem.SavedGameManager;
 
 public class SavedGameManagerTest {
 
-	SavedGameManager testSavedGameManager;
-	
-	@Before
-	public void setup(){
-		testSavedGameManager = new SavedGameManager();
-	}
-	
-	@Test
-	public void test() {
-		String savedGame = "Game1";
-		SavedGame sg = new SavedGame();
-	}
+    SavedGameManager testSavedGameManager;
+
+    @Before
+    public void setup() {
+	testSavedGameManager = new SavedGameManager();
+    }
+
+    @Test
+    public void test() {
+	String savedGame = "Game1";
+	SavedGame sg = new SavedGame();
+    }
 
 }

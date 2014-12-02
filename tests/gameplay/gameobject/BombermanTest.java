@@ -26,7 +26,7 @@ public class BombermanTest {
 
     @Before
     public void setUp() throws Exception {
-	world = new World(31, 15,Level.L1);
+	world = new World(31, 15, Level.L1);
 	bomberman = new Bomberman(new Rectangle(32, 32, 32, 32), world);
 	GameStateManager manager = GameStateManager.getInstance();
 	manager.setCurrentGameState(new GameState(100));
