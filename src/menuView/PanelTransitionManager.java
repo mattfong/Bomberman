@@ -7,18 +7,12 @@ package menuView;
  * @author Kirththiga Murugupillai
  */
 
-import java.io.IOException;
+import gameplay.engine.GamePanel;
+import gameplay.gameobject.Level;
 
 import javax.swing.JFrame;
 
 import userProfile.UserProfile;
-
-
-import gameplay.engine.GameFrame;
-import gameplay.engine.GamePanel;
-import gameplay.gameobject.Level;
-import gameplay.statemanagers.GameState;
-import gameplay.statemanagers.GameStateManager;
 
 public class PanelTransitionManager {
 
@@ -64,8 +58,10 @@ public class PanelTransitionManager {
 	public void displayGamePanel(int level){
 		Level lvl = Level.getLevelByNumber(level);
 		GamePanel gamePanel= new GamePanel(lvl);
+
+	frame.setContentPane(gamePanel);
 		gamePanel.setFocusable(true);
-		frame.setContentPane(gamePanel);
+	gamePanel.requestFocusInWindow();
 		frame.invalidate();
 		frame.validate();
 	}
