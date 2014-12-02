@@ -6,21 +6,21 @@ import java.awt.HeadlessException;
 import java.io.IOException;
 import java.util.Random;
 
-import junk.UsernameAndPasswordValid;
+import menuView.menuLogic.LoginMenuPanelLogic;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class UsernameAndPasswordVaildTest {
-	private UsernameAndPasswordValid system;
+public class LoginMenuPanelLogicTest {
+	private LoginMenuPanelLogic system = new LoginMenuPanelLogic();
 
 	@Before
 	public void setUp() throws Exception {
-		system = new UsernameAndPasswordValid();
+		system = new LoginMenuPanelLogic();
 	}
 
 	/**
-	 * pass must be 8 charicers long with 1 upper, one lower 1 numeber and one
+	 * pass must be 8 characters long with 1 upper, one lower 1 number and one
 	 * special user must be 6 long and only numbers or letters
 	 * 
 	 * 
