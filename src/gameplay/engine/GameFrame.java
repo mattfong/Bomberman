@@ -1,8 +1,8 @@
 package gameplay.engine;
 
-import gameplay.gameobject.Level;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
+import gameplay.world.Level;
 import gameplay.world.World;
 
 import javax.swing.JFrame;

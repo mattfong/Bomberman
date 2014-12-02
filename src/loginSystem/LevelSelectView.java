@@ -1,9 +1,9 @@
 package loginSystem;
 
 import gameplay.engine.GameFrame;
-import gameplay.gameobject.Level;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
+import gameplay.world.Level;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;

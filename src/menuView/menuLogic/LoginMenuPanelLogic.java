@@ -1,21 +1,18 @@
 package menuView.menuLogic;
 
-import gameplay.gameobject.Level;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
+import gameplay.world.Level;
 import gameplay.world.World;
 
 import java.awt.HeadlessException;
 import java.io.IOException;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import junk.PlayGameView;
-import userProfile.UserProfile;
 import loginSystem.Account;
 import loginSystem.AccountManager;
 import loginSystem.CSVreader;

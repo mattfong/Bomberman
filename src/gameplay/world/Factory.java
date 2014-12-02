@@ -1,5 +1,6 @@
-package gameplay.gameobject;
+package gameplay.world;
 
+import gameplay.gameobject.GameActor;
 import gameplay.gameobject.enemies.Balloon;
 import gameplay.gameobject.enemies.Doll;
 import gameplay.gameobject.enemies.Kondoria;
@@ -16,7 +17,6 @@ import gameplay.gameobject.powerups.FlamePowerup;
 import gameplay.gameobject.powerups.Powerup;
 import gameplay.gameobject.powerups.SpeedPowerup;
 import gameplay.gameobject.powerups.WallPassPowerup;
-import gameplay.world.World;
 
 import java.awt.Rectangle;
 import java.io.Serializable;

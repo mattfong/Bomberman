@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import gameplay.gameobject.blocks.Bomb;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
+import gameplay.world.Level;
 import gameplay.world.World;
 
 import java.awt.Rectangle;

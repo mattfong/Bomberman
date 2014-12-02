@@ -2,12 +2,14 @@ package gameplay.gameobject;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import gameplay.gameobject.GameObject;
 import gameplay.gameobject.blocks.Bomb;
 import gameplay.gameobject.blocks.Explosion;
 import gameplay.gameobject.bomberman.Bomberman;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
 import gameplay.world.Direction;
+import gameplay.world.Level;
 import gameplay.world.World;
 
 import java.awt.Rectangle;
