@@ -9,6 +9,7 @@ package menuView;
 
 import gameplay.engine.GamePanel;
 import gameplay.gameobject.Level;
+import gameplay.world.World;
 
 import javax.swing.JFrame;
 
@@ -19,7 +20,8 @@ public class PanelTransitionManager {
 	private static PanelTransitionManager singleton = null;
 	private JFrame frame;
 	private UserProfile user = UserProfile.getInstance();
-
+	private World cachedWorld;
+	
 	/**
 	 * This creates the frame and goes to the initUI
 	 */
@@ -165,6 +167,24 @@ public class PanelTransitionManager {
 		frame.invalidate();
 		frame.validate();
 	}
+
+    public void displayPauseMenu(World world) {
+	cachedWorld=world;
+	PauseMenuPanel pauseMenuView = new PauseMenuPanel();
+	frame.setContentPane(pauseMenuView);
+	frame.invalidate();
+	frame.validate();
+    }
+    
+    public void displayResumedGame() {
+	GamePanel gamePanel = new GamePanel(cachedWorld);
+
+	frame.setContentPane(gamePanel);
+	gamePanel.setFocusable(true);
+	gamePanel.requestFocusInWindow();
+	frame.invalidate();
+	frame.validate();
+    }
 
 	/**
 	 * The main method which starts the game.

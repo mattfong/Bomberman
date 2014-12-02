@@ -1,7 +1,6 @@
-package gameplay.overlays.pauseMenu;
+package menuView;
 
 import gameplay.engine.GamePanel;
-import highscore.HighScoreView;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -12,30 +11,26 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
-import savingSystem.SaveLoadController;
-
 /**
  * Class containing the JPanel of the pause menu.
  * 
  * @author MF
  */
-public class PauseMenuView extends JPanel {
+public class PauseMenuPanel extends JPanel {
 
+    private PanelTransitionManager panelTransitionManager = PanelTransitionManager.getInstance();
     private GamePanel parentPanel;
-    private SaveLoadController saveLoadController = new SaveLoadController();
-    private PanelManager manager = PanelManager.getInstance();
 
-    public PauseMenuView(GamePanel panel) {
+    public PauseMenuPanel() {
 
-	this.parentPanel = panel;
 	initUI();
-	setFocusable(true);
-	requestFocus();
 
-	manager.setParentPanel(panel);
     }
 
     private void initUI() {
+	setFocusable(true);
+	requestFocus();
+	setVisible(true);
 	JLabel pauseMenuLabel = new JLabel("Pause Menu");
 	pauseMenuLabel.setBounds(70, 30, 163, 40);
 	pauseMenuLabel.setFont(new Font("Miriam", Font.BOLD, 28));
@@ -44,7 +39,7 @@ public class PauseMenuView extends JPanel {
 	JButton saveGameButton = new JButton("Save Game");
 	saveGameButton.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent arg0) {
-		saveLoadController.displaySaveGameMenu();
+		panelTransitionManager.displaySaveMenu();
 	    }
 	});
 	saveGameButton.setBounds(85, 180, 134, 25);
@@ -53,7 +48,7 @@ public class PauseMenuView extends JPanel {
 	JButton returnToGameButton = new JButton("Return to game");
 	returnToGameButton.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent arg0) {
-		parentPanel.closePauseMenu();
+		panelTransitionManager.displayResumedGame();
 	    }
 	});
 	returnToGameButton.setBounds(85, 88, 134, 25);
@@ -62,7 +57,8 @@ public class PauseMenuView extends JPanel {
 	JButton highScoreButton = new JButton("View Highscore");
 	highScoreButton.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
-		new HighScoreView();
+		panelTransitionManager.displayHighscoreMenu();
+		;
 	    }
 	});
 	highScoreButton.setBounds(85, 134, 134, 25);
@@ -80,7 +76,7 @@ public class PauseMenuView extends JPanel {
 	JButton loadGameButton = new JButton("Load Game");
 	loadGameButton.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent arg0) {
-		saveLoadController.displayLoadGameMenu();
+		panelTransitionManager.displayLoadMenu();
 	    }
 	});
 	loadGameButton.setBounds(85, 226, 134, 25);
