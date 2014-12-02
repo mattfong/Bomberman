@@ -200,6 +200,10 @@ public class LoginMenuPanelLogic {
 	public boolean newAccountLogic(String name, String username, String password, String confirmPassword, int score){
 		boolean check = false;
 		boolean validate = false;
+		
+		if(password.equals(confirmPassword)){
+			
+		
 		AccountManager accountManager = new AccountManager();
 		CSVreader reader = new CSVreader();
     	try {
@@ -234,6 +238,12 @@ public class LoginMenuPanelLogic {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		}
+		
+		else{
+			JOptionPane.showMessageDialog(controllingFrame,
+	                "Password and confirm Password do not match");
 		}
 		return check;
 		
