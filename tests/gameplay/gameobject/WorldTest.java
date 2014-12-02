@@ -1,12 +1,12 @@
 package gameplay.gameobject;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
 import gameplay.gameobject.blocks.Background;
+import gameplay.statemanagers.GameStateManager;
 import gameplay.world.World;
 
 import java.util.Stack;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,18 +28,14 @@ public class WorldTest {
 
     }
 
-    @After
-    public void tearDown() throws Exception {
-    }
 
+
+
+    // Tests if we can cache information about level changes when they occur.
     @Test
-    public void testDestroyingWalls() {
-
-    }
-
-    @Test
-    public void testCheckForCollision() {
-	fail("Not yet implemented"); // TODO
+    public void testLoadNextLevel(){
+	world.loadNextLevel();
+	assertEquals(Level.L2, GameStateManager.getInstance().getCurrentGameState().getLevel());
     }
 
 }
