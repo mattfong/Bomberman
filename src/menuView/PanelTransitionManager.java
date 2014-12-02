@@ -21,6 +21,7 @@ import menuView.panels.LoadGameMenuPanel;
 import menuView.panels.LoginMenuPanel;
 import menuView.panels.ModifyAccountPanel;
 import menuView.panels.NewAccountPanel;
+import menuView.panels.NewHighScorePanel;
 import menuView.panels.PauseMenuPanel;
 import menuView.panels.PlayGamePanel;
 import menuView.panels.SaveGameMenuPanel;
@@ -174,14 +175,13 @@ public class PanelTransitionManager {
 	 * This methods displays the highscore panel and adds it to the main frame.
 	 */
 	public void displayHighscoreMenu() {
-		HighScorePanel highScoreMenu = new HighScorePanel();
+		NewHighScorePanel highScoreMenu = new NewHighScorePanel();
 		frame.setContentPane(highScoreMenu);
 		frame.invalidate();
 		frame.validate();
 	}
 
     public void displayPauseMenu(World world) {
-	System.out.println("Hi There");
 	cachedWorld=world;
 	PauseMenuPanel pauseMenuView = new PauseMenuPanel();
 	frame.setContentPane(pauseMenuView);
