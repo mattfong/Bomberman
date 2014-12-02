@@ -251,6 +251,7 @@ public class World implements Serializable {
      * @return true if the object has collided with another GameObject, false if
      *         it has not.
      */
+    @Deprecated
     public boolean checkForCollision(GameObject object) {
 	for (int i = 0; i < gridWidth; i++) {
 	    for (int j = 0; j < gridHeight; j++) {
@@ -332,11 +333,11 @@ public class World implements Serializable {
      */
     public void loadNextLevel() {
 	int levelNo = currentLevel.getLevelNumber();
-
-	currentLevel = Level.getLevelByNumber(levelNo + 1);
+	Level nextLevel;
+	nextLevel = Level.getLevelByNumber(levelNo + 1);
 	worldGenerator.generateLevel(currentLevel);
 	grid = worldGenerator.getGrid();
-	GameStateManager.getInstance().getCurrentGameState().setLevel(currentLevel);
+	GameStateManager.getInstance().getCurrentGameState().setLevel(nextLevel);
 
 	actorList = worldGenerator.getActorList();
 

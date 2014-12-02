@@ -158,19 +158,4 @@ public class GameActor extends GameObject implements Serializable {
 	return world.isIntersection(this.getLocation());
     }
 
-    // /**
-    // * @return int value for distance to Bomberman
-    // */
-    // public int distanceToBomberman() {
-    // return world.distanceToBomberman(this);
-    // }
-
-    // /**
-    // * @param range range to bomberan to check
-    // * @return true if bomberman is within the range inclusively
-    // */
-    // public boolean bombermanWithinRange(int range) {
-    // return world.bombermanWithin(this, range);
-    // }
-
 }

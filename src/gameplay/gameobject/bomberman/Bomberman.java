@@ -6,8 +6,8 @@ import gameplay.gameobject.blocks.Bomb;
 import gameplay.gameobject.blocks.Brick;
 import gameplay.gameobject.powerups.Door;
 import gameplay.gameobject.powerups.Powerup;
-import gameplay.input.InputListener;
 import gameplay.input.CommandManager;
+import gameplay.input.InputListener;
 import gameplay.statemanagers.GameStateManager;
 import gameplay.world.World;
 
@@ -226,7 +226,7 @@ public class Bomberman extends GameActor implements BombermanInterface {
 
     @Override
     public void moveToNextLevel() {
-	Bomb.resetBombList();
+	Bomb.resetBombList(); // reset bomb list to avoid 'leaving; bombs behind
 	gridLocation.x = 32;
 	gridLocation.y = 32;
 	world.loadNextLevel();
