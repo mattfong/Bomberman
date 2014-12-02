@@ -181,6 +181,7 @@ public class PanelTransitionManager {
 	}
 
     public void displayPauseMenu(World world) {
+	System.out.println("Hi There");
 	cachedWorld=world;
 	PauseMenuPanel pauseMenuView = new PauseMenuPanel();
 	frame.setContentPane(pauseMenuView);
@@ -188,6 +189,15 @@ public class PanelTransitionManager {
 	frame.validate();
     }
     
+    public void displayGamePanel(World world) {
+	GamePanel gamePanel = new GamePanel(world);
+	frame.setContentPane(gamePanel);
+	gamePanel.setFocusable(true);
+	gamePanel.requestFocusInWindow();
+	frame.invalidate();
+	frame.validate();
+    }
+
     public void displayResumedGame() {
 	GamePanel gamePanel = new GamePanel(cachedWorld);
 

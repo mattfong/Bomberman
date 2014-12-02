@@ -1,6 +1,5 @@
 package savingSystem;
 
-import gameplay.engine.GameFrame;
 import gameplay.statemanagers.GameState;
 import gameplay.statemanagers.GameStateManager;
 import gameplay.world.Level;
@@ -12,6 +11,7 @@ import java.util.List;
 
 import loginSystem.Account;
 import loginSystem.CSVwriter;
+import menuView.PanelTransitionManager;
 import userProfile.UserProfile;
 
 /**
@@ -92,8 +92,8 @@ public class SaveLoadController {
 					game = allSavedGames.get(i);
 	
 					World world = game.getGameState().getWorld();
-					GameFrame gameplay = new GameFrame(world);
-					gameplay.setVisible(true);
+		    PanelTransitionManager.getInstance().displayGamePanel(world);
+
 				}
 			}
 		} catch (IOException e) {
