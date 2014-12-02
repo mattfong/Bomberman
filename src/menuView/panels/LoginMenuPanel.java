@@ -47,7 +47,6 @@ public class LoginMenuPanel extends JPanel {
 		final JPasswordField passwordField = new JPasswordField(30);
 		userNameField.setText(null);
 		passwordField.setText(null);
-		// String userName;
 
 		JLabel enterUserName = new JLabel("Enter Username: ");
 		JLabel enterPassword = new JLabel("Enter Password:");

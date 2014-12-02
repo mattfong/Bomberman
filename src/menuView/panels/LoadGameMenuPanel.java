@@ -38,8 +38,6 @@ public class LoadGameMenuPanel extends JPanel{
 	
 	private void initUI() {
 		setLayout(new GridLayout(8,1,5,10));
-		JLabel loadMenuLabel = new JLabel("Load Menu");
-		loadMenuLabel.setFont(new Font("Miriam", Font.BOLD, 28));
 		
 		JLabel loadGameLabel = new JLabel("Load Game");
 		JLabel empty = new JLabel("");
@@ -66,7 +64,6 @@ public class LoadGameMenuPanel extends JPanel{
 				// Obtaining the index of the selected element on the list.
 				if(e.getActionCommand().equals("Load Game")){
 					int index = list.getSelectedIndex();
-					System.out.println("Index: " + index);
 					saveLoadController.loadGame(index);
 				}
 			}
@@ -93,7 +90,6 @@ public class LoadGameMenuPanel extends JPanel{
 			}
 		});	
 		
-//		add(loadMenuLabel);
 		add(loadGameLabel);
 	    add(new JScrollPane(list));
 	    add(loadGameButton);

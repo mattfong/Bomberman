@@ -24,6 +24,14 @@ import menuView.PanelTransitionManager;
  * @version 1.7 (current version number of program)
  * @since 2014-12-1 (the version of the package this class was first added to)
  */
+/**
+ * @author HP
+ *
+ */
+/**
+ * @author HP
+ *
+ */
 public class LoginMenuPanelLogic {
 
 	private JFrame controllingFrame;
@@ -56,7 +64,6 @@ public class LoginMenuPanelLogic {
 			accountManager.setAccounts(reader
 					.CSVreaderAccounts(csvAccountsFile));
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -194,6 +201,16 @@ public class LoginMenuPanelLogic {
 		}
 	}
 	
+	/**
+	 * Added logic for new account and integrated the validation.
+	 * @author Kirththiga Murugupillai
+	 * @param name
+	 * @param username
+	 * @param password
+	 * @param confirmPassword
+	 * @param score
+	 * @return
+	 */
 	public boolean newAccountLogic(String name, String username, String password, String confirmPassword, int score){
 		boolean check = false;
 		boolean validate = false;
@@ -230,10 +247,8 @@ public class LoginMenuPanelLogic {
 				check = password.equals(confirmPassword); 
 			}
 		} catch (HeadlessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		}

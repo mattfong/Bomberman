@@ -61,19 +61,11 @@ public class DeleteAccountPanelLogic {
 				// The account messanger trys to find an account matching the
 				// entered detailes
 
-				accountManager.setAccounts(reader
-						.CSVreaderAccounts(csvAccountsFile));
-				System.out.println("AM in try:"
-						+ accountManager.numberOfAccounts() + ","
-						+ accountManager.getAccounts());
+				accountManager.setAccounts(reader.CSVreaderAccounts(csvAccountsFile));
 
 				accountManager.deleteAccount(User); // and if one is found it
 													// deletes it
-
-				System.out.println("AM:" + accountManager.numberOfAccounts()
-						+ "," + accountManager.getAccounts());
-				writer.CSVwriterAccountsList(csvAccountsFile,
-						accountManager.getAccounts());
+				writer.CSVwriterAccountsList(csvAccountsFile,accountManager.getAccounts());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

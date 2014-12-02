@@ -26,7 +26,7 @@ public class SaveGameMenuPanel extends JPanel{
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
 	private final JTextField saveGameNameField;
 	private SaveLoadController saveLoadController = new SaveLoadController();
-	private UserProfile user = user = UserProfile.getInstance();
+	private UserProfile user = UserProfile.getInstance();
 	/**
 	 * This makes a text field and calls the initUI
 	 */

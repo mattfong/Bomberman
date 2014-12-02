@@ -61,8 +61,6 @@ public class LevelSelectPanel extends JPanel {
 				
 				buttons[counter].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						//System.out.println("it's good");
-						// NEED TO FIX THIS
 						LSPL.play(realLevel);
 					}
 				});
@@ -83,7 +81,6 @@ public class LevelSelectPanel extends JPanel {
 		JButton goBack = new JButton("Go back");
 		goBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String username = "if you see this there is a serious error.";
 				manager.displayPlayGameMenu();
 			}
 		});

@@ -40,25 +40,11 @@ public class LevelSelectPanelLogic {
 	 */
 	public void play(int level) {
 		System.out.println(level);
-		
-		//Level lvl = Level.getLevelByNumber(level);
-		
 		manager.displayGamePanel(level);
-		//String lvl = "L" + level;
-		//System.out.println(lvl);
-		
-		//JFrame frame = new GameFrame(lvl);
-		//new GameFrame(lvl);
-		/*
-		 * levelSelected = intoInt(toInt); if (levelSelected == 11) {
-		 * GameStateManager manager = GameStateManager.getInstance(); GameState
-		 * state = manager.getCurrentGameState(); state.setLevel(Level.L11); }
-		 * GameFrame gameplay = new GameFrame(); gameplay.setVisible(true);
-		 */
 	}
 
 	/**
-	 * This displays a conrolling frame to tell the user that the level is
+	 * This displays a controlling frame to tell the user that the level is
 	 * locked
 	 */
 	public void locked() {

@@ -35,8 +35,7 @@ public class DeathPanel extends JPanel{
 		gameOverLabel.setFont(new Font("Miriam", Font.BOLD, 28));
 
 		JButton gameOverButton = new JButton("Game Over Go Back to Login Menu");
-		gameOverButton.setBackground(java.awt.Color.RED);
-		JButton closeMenuButton = new JButton("Close Menu");
+		JButton closeMenuButton = new JButton("Close Game");
 		
 		gameOverButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

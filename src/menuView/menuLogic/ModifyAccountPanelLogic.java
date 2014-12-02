@@ -34,15 +34,15 @@ public class ModifyAccountPanelLogic {
 		user.getAccountManager().deleteAccount(currentUserName);
 		
 		if(newName.length() != 0 && (newName.equals(currentName) == false)) {
-			System.out.println("entered first if");
 			user.getAccountManager().addAccount(new Account(newName, currentUserName, currentPassword, currentTotalScore));
-		} else if (newPassword.length() !=0  && (newPassword.equals(currentPassword) == false)) {
-			System.out.println("second if");
+		} 
+		else if (newPassword.length() !=0  && (newPassword.equals(currentPassword) == false)) {
 			user.getAccountManager().addAccount(new Account(currentName, currentUserName, newPassword, currentTotalScore));
-		} else if(newName.length() != 0 && (newName.equals(currentName) == false) && newPassword.length() !=0  && (newPassword.equals(currentPassword) == false)){
-			System.out.println("else");
+		} 
+		else if(newName.length() != 0 && (newName.equals(currentName) == false) && newPassword.length() !=0  && (newPassword.equals(currentPassword) == false)){
 			user.getAccountManager().addAccount(new Account(newName, currentUserName, newPassword, currentTotalScore));
-		} else {
+		} 
+		else {
 			user.getAccountManager().addAccount(new Account(currentName, currentUserName, currentPassword, currentTotalScore));
 		}
 		
