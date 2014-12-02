@@ -12,6 +12,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import menuView.PanelTransitionManager;
+import menuView.menuLogic.LoginMenuPanelLogic;
 import userProfile.NewAccountPanelLogic;
 
 /**
@@ -23,9 +24,10 @@ import userProfile.NewAccountPanelLogic;
 public class NewAccountPanel extends JPanel {
 
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
-	private final JTextField NameTF = new JTextField(30);
-	private final JTextField UserTF = new JTextField(30);
-	private final JPasswordField PassPF = new JPasswordField(30);
+	private final JTextField nameField = new JTextField(30);
+	private final JTextField userNameField = new JTextField(30);
+	private final JPasswordField passwordField = new JPasswordField(30);
+	private final JPasswordField confirmPasswordField = new JPasswordField(30);
 
 	/**
 	 * This calls the initUI for the NewAccountPanel
@@ -44,10 +46,9 @@ public class NewAccountPanel extends JPanel {
 	private void initUI() {
 		setLayout(new GridLayout(6, 1, 5, 10));
 
-		JPasswordField ConfirmPassPF = new JPasswordField(30);
-		NameTF.setText(null);
-		PassPF.setText(null);
-		ConfirmPassPF = new JPasswordField(30);
+		nameField.setText(null);
+		passwordField.setText(null);
+		confirmPasswordField.setText(null);
 		
 		JLabel newAccountLabel = new JLabel("Create New Account");
 		newAccountLabel.setFont(new Font("Miriam", Font.BOLD, 18));
@@ -61,7 +62,18 @@ public class NewAccountPanel extends JPanel {
 		JButton makeUser = new JButton("Click here to create your account");
 		makeUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				NewAccountPanelLogic.NewAccountLogic(NameTF.getText(), UserTF.getText(), PassPF.getText());
+				LoginMenuPanelLogic loginLogic = new LoginMenuPanelLogic();
+				String password = passwordField.getText();
+				String confirmPassowrd = confirmPasswordField.getText();
+				boolean check = loginLogic.newAccountLogic(nameField.getText(), userNameField.getText(), passwordField.getText(), confirmPasswordField.getText(), 0);
+				if(check == true) {
+					manager.displayPlayGameMenu();
+				} else {
+					nameField.setText(null);
+					userNameField.setText(null);
+					passwordField.setText(null);
+					confirmPasswordField.setText(null);
+				}
 			}
 		});
 
@@ -75,13 +87,13 @@ public class NewAccountPanel extends JPanel {
 		add(newAccountLabel);
 		add(empty);
 		add(enterName);
-		add(NameTF);
+		add(nameField);
 		add(enterUser);
-		add(UserTF);
+		add(userNameField);
 		add(enterPass);
-		add(PassPF);
+		add(passwordField);
 		add(enterConfirmPass);
-		add(ConfirmPassPF);
+		add(confirmPasswordField);
 		add(makeUser);
 		add(goBack);
 
