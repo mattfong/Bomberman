@@ -54,19 +54,6 @@ public class DeleteAccountPanel extends JPanel {
 
 				DeleteAccountPanelLogic.DeleteAccount(UserTF.getText(),
 						PassPF.getText());
-				/*
-				 * String User = UserTF.getText(); String Pass =
-				 * PassPF.getText();
-				 * 
-				 * if (User.equals(null) || Pass.equals(null)) {
-				 * 
-				 * // If there is nothing entered the an error message will pop
-				 * // up for the user
-				 * 
-				 * JOptionPane.showMessageDialog(controllingFrame,
-				 * "Username or Password is empty"); } else { //Deleteaccout
-				 * panel logic }
-				 */
 			}
 		});
 

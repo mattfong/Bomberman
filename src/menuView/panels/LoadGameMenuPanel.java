@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
 import menuView.PanelTransitionManager;
+import menuView.menuLogic.LoginMenuPanelLogic;
 import savingSystem.SaveLoadController;
 import userProfile.UserProfile;
 
@@ -41,7 +42,7 @@ public class LoadGameMenuPanel extends JPanel{
 		loadMenuLabel.setFont(new Font("Miriam", Font.BOLD, 28));
 		
 		JLabel loadGameLabel = new JLabel("Load Game");
-		
+		JLabel empty = new JLabel("");
 		// Storing the list of saved games in an array in order to use JList for display purposes.
 		String[] saveList = new String[user.getSaveManager().numberOfSavedGames()];
 		for(int i=0; i<user.getSaveManager().numberOfSavedGames(); i++) {
@@ -92,9 +93,10 @@ public class LoadGameMenuPanel extends JPanel{
 			}
 		});	
 		
-		add(loadMenuLabel);
+//		add(loadMenuLabel);
 		add(loadGameLabel);
 	    add(new JScrollPane(list));
+	    add(loadGameButton);
 	    add(deleteGameLabel);
 	    add(deleteGame);
 	    add(deleteSavedGameButton);

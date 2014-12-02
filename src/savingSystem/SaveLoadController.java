@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import userProfile.UserProfile;
+import loginSystem.Account;
 import loginSystem.CSVwriter;
 
 /**
@@ -49,7 +50,7 @@ public class SaveLoadController {
 			e.printStackTrace();
 		}
 		
-		savedGame = saveManager.addSavedGameName(savedGameName);
+		savedGame = user.getSaveManager().addSavedGameName(savedGameName);
 		savedGame.setGameState(currentGame);
 		savedGame.setSavedGameName(savedGameName);
 		savedGame.setUserName(currentGame.getUserName());
@@ -62,9 +63,11 @@ public class SaveLoadController {
 		
 		CSVwriter writer = new CSVwriter();
 		user.getAccountManager().deleteAccount(user.getUserName());
+		Account acc = user.getAccountManager().getAccount(user.getUserName());
 		
 		try {
-			writer.CSVwriterAccountsList(csvAccountsFile, user.getAccountManager().getAccounts());
+			writer.CSVwriterAccounts(csvAccountsFile, acc.getName(), user.getUserName(), acc.getPassword(), getCumulativeScore());
+			//writer.CSVwriterAccountsList(csvAccountsFile, user.getAccountManager().getAccounts());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -165,7 +168,7 @@ public class SaveLoadController {
 		try {
 			fileName = saveManager.getSaveGameFile(currentGame.getUserName());
 			List<SavedGame> allSavedGames = serializeGame.deserializeSaveGameName(fileName);
-			saveManager.setSavedGamesList(allSavedGames);
+			user.getSaveManager().setSavedGamesList(allSavedGames);
 	
 			/* Looping through the list of saved games, and get all the scores of the saved games.
 			 * Then, adds all the scores of the game and stores in the variable totalScore. 
