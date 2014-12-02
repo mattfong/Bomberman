@@ -22,95 +22,95 @@ import menuView.PanelTransitionManager;
 import menuView.menuLogic.LoginMenuPanelLogic;
 
 /**
- * This is the login panel, and it has been redesigned. 
- * Phil designed the previous login panel.
+ * This is the login panel, and it has been redesigned. Phil designed the
+ * previous login panel.
+ * 
  * @author Kirththiga Murugupillai
  */
 public class LoginMenuPanel extends JPanel {
 
-	private PanelTransitionManager manager = PanelTransitionManager
-			.getInstance();
-	private AccountManager accountManager = new AccountManager();
-	private LoginMenuPanelLogic loginMenuPanelLogic = new LoginMenuPanelLogic();
+    private PanelTransitionManager manager = PanelTransitionManager.getInstance();
+    private AccountManager accountManager = new AccountManager();
+    private LoginMenuPanelLogic loginMenuPanelLogic = new LoginMenuPanelLogic();
 
-	public LoginMenuPanel() {
-		initUI();
-	}
+    public LoginMenuPanel() {
+	initUI();
+    }
 
-	private void initUI() {
-		setLayout(new GridLayout(5, 2, 5, 10));
-		JLabel loginMenuLabel = new JLabel("Login Menu");
-		loginMenuLabel.setFont(new Font("Miriam", Font.BOLD, 28));
-		JLabel empty = new JLabel("");
+    private void initUI() {
+	setLayout(new GridLayout(5, 2, 5, 10));
+	JLabel loginMenuLabel = new JLabel("Login Menu");
+	loginMenuLabel.setFont(new Font("Miriam", Font.BOLD, 28));
+	JLabel empty = new JLabel("");
 
-		final JTextField userNameField = new JTextField(30);
-		final JPasswordField passwordField = new JPasswordField(30);
-		userNameField.setText(null);
-		passwordField.setText(null);
+	final JTextField userNameField = new JTextField(30);
+	final JPasswordField passwordField = new JPasswordField(30);
+	userNameField.setText(null);
+	passwordField.setText(null);
 
-		JLabel enterUserName = new JLabel("Enter Username: ");
-		JLabel enterPassword = new JLabel("Enter Password:");
+	JLabel enterUserName = new JLabel("Enter Username: ");
+	JLabel enterPassword = new JLabel("Enter Password:");
 
-		JButton loginButton = new JButton("Login ");
-		JButton newAccountButton = new JButton("Create new account");
-		JButton deleteAccountButton = new JButton("Delete Account");
-		JButton supriseButton = new JButton("Click here for a suprise");
+	JButton loginButton = new JButton("Login ");
+	JButton newAccountButton = new JButton("Create new account");
+	JButton deleteAccountButton = new JButton("Delete Account");
+	JButton supriseButton = new JButton("Click here for a suprise");
 
-		loginButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			    Boolean isCorrectID = loginMenuPanelLogic.loginCheck(userNameField, passwordField);
-			    if(isCorrectID){
-			    	try {
-			    		UserProfile.getInstance().setUserProfile(userNameField.getText());
-						manager.displayPlayGameMenu();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-		});
+	loginButton.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent arg0) {
+		Boolean isCorrectID = loginMenuPanelLogic.loginCheck(userNameField, passwordField);
+		if (isCorrectID) {
+		    try {
+			UserProfile.getInstance().setUserProfile(userNameField.getText());
+			manager.displayPlayGameMenu();
+		    } catch (IOException e) {
+			e.printStackTrace();
+		    }
+		}
+	    }
+	});
 
-		newAccountButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				manager.displayNewAccountMenu();
-			}
-		});
+	newAccountButton.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent arg0) {
+		manager.displayNewAccountMenu();
+	    }
+	});
 
-		deleteAccountButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				manager.displayDeleteAccountMenu();
-			}
-		});
+	deleteAccountButton.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent arg0) {
+		manager.displayDeleteAccountMenu();
+	    }
+	});
 
-		supriseButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				String url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-				Desktop d = Desktop.getDesktop();
-				/*
-				 * When pressed it opens the URL for the youtube video in the
-				 * default browser. Due to a possibility of failure with
-				 * browsers it is surrounded with try caches
-				 */
-				try {
-					d.browse(new URI(url));
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (URISyntaxException e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	supriseButton.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent arg0) {
+		String url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+		Desktop d = Desktop.getDesktop();
+		/*
+		 * When pressed it opens the URL for the youtube video in the
+		 * default browser. Due to a possibility of failure with
+		 * browsers it is surrounded with try caches
+		 */
+		try {
+		    d.browse(new URI(url));
+		} catch (IOException e) {
+		    e.printStackTrace();
+		} catch (URISyntaxException e) {
+		    e.printStackTrace();
+		}
+	    }
+	});
 
-		add(loginMenuLabel);
-		add(empty);
-		add(enterUserName);
-		add(userNameField);
-		add(enterPassword);
-		add(passwordField);
-		add(loginButton);
-		add(deleteAccountButton);
-		add(newAccountButton);
-		add(supriseButton);
-	}
+	add(loginMenuLabel);
+	add(empty);
+	add(enterUserName);
+	add(userNameField);
+	add(enterPassword);
+	add(passwordField);
+	add(loginButton);
+	add(deleteAccountButton);
+	add(newAccountButton);
+	add(supriseButton);
+    }
 
 }

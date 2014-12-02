@@ -29,166 +29,169 @@ import userProfile.UserProfile;
 
 public class PanelTransitionManager {
 
-	private static PanelTransitionManager singleton = null;
-	private JFrame frame;
-	private UserProfile user = UserProfile.getInstance();
-	private World cachedWorld;
-	
-	/**
-	 * This creates the frame and goes to the initUI
-	 */
-	private PanelTransitionManager() {
-		frame = new JFrame();
-		initUI();
-	}
+    private static PanelTransitionManager singleton = null;
+    private JFrame frame;
+    private UserProfile user = UserProfile.getInstance();
+    private World cachedWorld;
 
-	/**
-	 * This gets the game instance and returns the singleton
-	 * 
-	 * @return
-	 */
-	public static PanelTransitionManager getInstance() {
-		if (singleton == null) {
-			singleton = new PanelTransitionManager();
-		}
-		return singleton;
+    /**
+     * This creates the frame and goes to the initUI
+     */
+    private PanelTransitionManager() {
+	frame = new JFrame();
+	initUI();
+    }
+
+    /**
+     * This gets the game instance and returns the singleton
+     * 
+     * @return
+     */
+    public static PanelTransitionManager getInstance() {
+	if (singleton == null) {
+	    singleton = new PanelTransitionManager();
 	}
-	
-	/**
-	 * This method sets the general frame attributes for the game.
-	 */
-	private void initUI(){
-		frame.setSize(480, 440);
-		frame.setTitle("Bomberman");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLocationRelativeTo(null);
-		frame.setResizable(false);
-		frame.setVisible(true);
-		frame.repaint();
-		frame.revalidate();
-	}
-	
-	
-	public void displayGamePanel(int level){
-		Level lvl = Level.getLevelByNumber(level);
-		GamePanel gamePanel= new GamePanel(lvl);
+	return singleton;
+    }
+
+    /**
+     * This method sets the general frame attributes for the game.
+     */
+    private void initUI() {
+	frame.setSize(480, 440);
+	frame.setTitle("Bomberman");
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	frame.setLocationRelativeTo(null);
+	frame.setResizable(false);
+	frame.setVisible(true);
+	frame.repaint();
+	frame.revalidate();
+    }
+
+    public void displayGamePanel(int level) {
+	Level lvl = Level.getLevelByNumber(level);
+	GamePanel gamePanel = new GamePanel(lvl);
 
 	frame.setContentPane(gamePanel);
-		gamePanel.setFocusable(true);
+	gamePanel.setFocusable(true);
 	gamePanel.requestFocusInWindow();
-		frame.invalidate();
-		frame.validate();
-	}
-	/**
-	 * This methods displays the login panel and adds it to the main frame.
-	 */
-	public void displayLoginMenu(){
-		LoginMenuPanel loginMenu = new LoginMenuPanel();
-		frame.setContentPane(loginMenu);
-		frame.invalidate();
-		frame.validate();
-	}
-	
-	/**
-	 * This methods displays the new account panel and adds it to the main frame.
-	 */
-	public void displayNewAccountMenu() {
-		NewAccountPanel accountMenu = new NewAccountPanel();
-		frame.setContentPane(accountMenu);
-		frame.invalidate();
-		frame.validate();
-	}
+	frame.invalidate();
+	frame.validate();
+    }
 
-	/**
-	 * This methods displays the delete account panel and adds it to the main frame.
-	 */
-	public void displayDeleteAccountMenu() {
-		DeleteAccountPanel deleteMenu = new DeleteAccountPanel();
-		frame.setContentPane(deleteMenu);
-		frame.invalidate();
-		frame.validate();
-	}
-	
-	/**
-	 * This methods displays the modify account panel and adds it to the main frame.
-	 */
-	public void displayModifyAccount() {
-		ModifyAccountPanel modifyAccount = new ModifyAccountPanel();
-		frame.setContentPane(modifyAccount);
-		frame.invalidate();
-		frame.validate();
-	}
-	
-	/**
-	 * This methods displays the play game panel and adds it to the main frame.
-	 */
-	public void displayPlayGameMenu() {
-		PlayGamePanel playMenu = new PlayGamePanel();
-		frame.setContentPane(playMenu);
-		frame.invalidate();
-		frame.validate();
-	}
-	
-	/**
-	 * This methods displays the level panel and adds it to the main frame.
-	 * The level panel consists of the levels the user has unlocked.
-	 */
-	public void displayLevels() {
-		LevelSelectPanel levelMenu = new LevelSelectPanel();
-		frame.setContentPane(levelMenu);
-		frame.invalidate();
-		frame.validate();
-	}
+    /**
+     * This methods displays the login panel and adds it to the main frame.
+     */
+    public void displayLoginMenu() {
+	LoginMenuPanel loginMenu = new LoginMenuPanel();
+	frame.setContentPane(loginMenu);
+	frame.invalidate();
+	frame.validate();
+    }
 
-	/**
-	 * This methods displays the save load panel and adds it to the main frame.
-	 */
-	public void displaySaveLoad() {
-		SaveLoadPanel saveLoadMenu = new SaveLoadPanel();
-		frame.setContentPane(saveLoadMenu);
-		frame.invalidate();
-		frame.validate();
-	}
-	
-	/**
-	 * This methods displays the save panel and adds it to the main frame.
-	 */
-	public void displaySaveMenu() {
-		SaveGameMenuPanel saveMenu = new SaveGameMenuPanel();
-		frame.setContentPane(saveMenu);
-		frame.invalidate();
-		frame.validate();
-	}
-	
-	/**
-	 * This methods displays the load panel and adds it to the main frame.
-	 */
-	public void displayLoadMenu() {
-		LoadGameMenuPanel loadMenu = new LoadGameMenuPanel();
-		frame.setContentPane(loadMenu);
-		frame.invalidate();
-		frame.validate();
-	}
-	
-	/**
-	 * This methods displays the highscore panel and adds it to the main frame.
-	 */
-	public void displayHighscoreMenu() {
-		HighScorePanel highScoreMenu = new HighScorePanel();
-		frame.setContentPane(highScoreMenu);
-		frame.invalidate();
-		frame.validate();
-	}
+    /**
+     * This methods displays the new account panel and adds it to the main
+     * frame.
+     */
+    public void displayNewAccountMenu() {
+	NewAccountPanel accountMenu = new NewAccountPanel();
+	frame.setContentPane(accountMenu);
+	frame.invalidate();
+	frame.validate();
+    }
+
+    /**
+     * This methods displays the delete account panel and adds it to the main
+     * frame.
+     */
+    public void displayDeleteAccountMenu() {
+	DeleteAccountPanel deleteMenu = new DeleteAccountPanel();
+	frame.setContentPane(deleteMenu);
+	frame.invalidate();
+	frame.validate();
+    }
+
+    /**
+     * This methods displays the modify account panel and adds it to the main
+     * frame.
+     */
+    public void displayModifyAccount() {
+	ModifyAccountPanel modifyAccount = new ModifyAccountPanel();
+	frame.setContentPane(modifyAccount);
+	frame.invalidate();
+	frame.validate();
+    }
+
+    /**
+     * This methods displays the play game panel and adds it to the main frame.
+     */
+    public void displayPlayGameMenu() {
+	PlayGamePanel playMenu = new PlayGamePanel();
+	frame.setContentPane(playMenu);
+	frame.invalidate();
+	frame.validate();
+    }
+
+    /**
+     * This methods displays the level panel and adds it to the main frame. The
+     * level panel consists of the levels the user has unlocked.
+     */
+    public void displayLevels() {
+	LevelSelectPanel levelMenu = new LevelSelectPanel();
+	frame.setContentPane(levelMenu);
+	frame.invalidate();
+	frame.validate();
+    }
+
+    /**
+     * This methods displays the save load panel and adds it to the main frame.
+     */
+    public void displaySaveLoad() {
+	SaveLoadPanel saveLoadMenu = new SaveLoadPanel();
+	frame.setContentPane(saveLoadMenu);
+	frame.invalidate();
+	frame.validate();
+    }
+
+    /**
+     * This methods displays the save panel and adds it to the main frame.
+     */
+    public void displaySaveMenu() {
+	SaveGameMenuPanel saveMenu = new SaveGameMenuPanel();
+	frame.setContentPane(saveMenu);
+	frame.invalidate();
+	frame.validate();
+    }
+
+    /**
+     * This methods displays the load panel and adds it to the main frame.
+     */
+    public void displayLoadMenu() {
+	LoadGameMenuPanel loadMenu = new LoadGameMenuPanel();
+	frame.setContentPane(loadMenu);
+	frame.invalidate();
+	frame.validate();
+    }
+
+    /**
+     * This methods displays the highscore panel and adds it to the main frame.
+     */
+    public void displayHighscoreMenu() {
+	HighScorePanel highScoreMenu = new HighScorePanel();
+	frame.setContentPane(highScoreMenu);
+	frame.invalidate();
+	frame.validate();
+    }
 
     public void displayPauseMenu(World world) {
 	System.out.println("Hi There");
-	cachedWorld=world;
+	cachedWorld = world;
 	PauseMenuPanel pauseMenuView = new PauseMenuPanel();
 	frame.setContentPane(pauseMenuView);
 	frame.invalidate();
 	frame.validate();
     }
-    
+
     public void displayGamePanel(World world) {
 	GamePanel gamePanel = new GamePanel(world);
 	frame.setContentPane(gamePanel);
@@ -208,29 +211,30 @@ public class PanelTransitionManager {
 	frame.validate();
     }
 
-	
-	/**
-	 * This methods displays the death panel when Bomberman dies.
-	 */
-	public void displayDeathMenu() {
-		DeathPanel deathMenu = new DeathPanel();
-		frame.setContentPane(deathMenu);
-		frame.invalidate();
-		frame.validate();
-	}
-	/**
-	 * When the panel calls this method, the frame closes.
-	 */
-	public void closeMenu() {
-		System.exit(0);
-	}
+    /**
+     * This methods displays the death panel when Bomberman dies.
+     */
+    public void displayDeathMenu() {
+	DeathPanel deathMenu = new DeathPanel();
+	frame.setContentPane(deathMenu);
+	frame.invalidate();
+	frame.validate();
+    }
 
-	/**
-	 * The main method which starts the game.
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		PanelTransitionManager manager = PanelTransitionManager.getInstance();
-		manager.displayLoginMenu();
-	}
+    /**
+     * When the panel calls this method, the frame closes.
+     */
+    public void closeMenu() {
+	System.exit(0);
+    }
+
+    /**
+     * The main method which starts the game.
+     * 
+     * @param args
+     */
+    public static void main(String[] args) {
+	PanelTransitionManager manager = PanelTransitionManager.getInstance();
+	manager.displayLoginMenu();
+    }
 }

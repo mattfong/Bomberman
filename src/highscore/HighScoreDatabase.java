@@ -118,7 +118,6 @@ public class HighScoreDatabase {
 
     }
 
-
     /**
      * This method is responsible for extracting the ten best high scores along
      * with the associated user names from a given Players object that has them
@@ -172,7 +171,5 @@ public class HighScoreDatabase {
 	return newPlayer;
 
     }
-
-   
 
 }

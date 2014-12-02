@@ -89,30 +89,22 @@ public class SmartAI extends AI {
 	    leftRight = true;
 	}
 
-	if ((creepX + 32 == bombermanX)
-		&& actor.canMove(Direction.RIGHT)
-		&& ((creepY + 32 == bombermanY) || (creepY - 32 == bombermanY) || (creepY == bombermanY))) {
+	if ((creepX + 32 == bombermanX) && actor.canMove(Direction.RIGHT) && ((creepY + 32 == bombermanY) || (creepY - 32 == bombermanY) || (creepY == bombermanY))) {
 
 	    return right();
 	}
 
-	else if ((creepX - 32 == bombermanX)
-		&& actor.canMove(Direction.LEFT)
-		&& ((creepY + 32 == bombermanY) || (creepY - 32 == bombermanY) || (creepY == bombermanY))) {
+	else if ((creepX - 32 == bombermanX) && actor.canMove(Direction.LEFT) && ((creepY + 32 == bombermanY) || (creepY - 32 == bombermanY) || (creepY == bombermanY))) {
 
 	    return left();
 	}
 
-	else if ((creepY + 32 == bombermanY)
-		&& actor.canMove(Direction.DOWN)
-		&& ((creepX + 32 == bombermanX) || (creepX - 32 == bombermanX) || (creepX == bombermanX))) {
+	else if ((creepY + 32 == bombermanY) && actor.canMove(Direction.DOWN) && ((creepX + 32 == bombermanX) || (creepX - 32 == bombermanX) || (creepX == bombermanX))) {
 
 	    return down();
 	}
 
-	else if ((creepY - 32 == bombermanY)
-		&& actor.canMove(Direction.UP)
-		&& ((creepX + 32 == bombermanX) || (creepX - 32 == bombermanX) || (creepX == bombermanX))) {
+	else if ((creepY - 32 == bombermanY) && actor.canMove(Direction.UP) && ((creepX + 32 == bombermanX) || (creepX - 32 == bombermanX) || (creepX == bombermanX))) {
 
 	    return up();
 	}
@@ -202,7 +194,7 @@ public class SmartAI extends AI {
      * 
      * @return returns left or right depending on whether the GameActor can move
      *         left or right
-     *         
+     * 
      */
     public Command leftAndRight() {
 

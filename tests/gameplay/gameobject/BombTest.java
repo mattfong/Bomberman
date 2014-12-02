@@ -18,7 +18,7 @@ public class BombTest {
 
     @Before
     public void setUp() {
-	world = new World(31, 15,Level.L1);
+	world = new World(31, 15, Level.L1);
 	manager = GameStateManager.getInstance();
 	manager = GameStateManager.getInstance();
 	manager.setCurrentGameState(new GameState(0));

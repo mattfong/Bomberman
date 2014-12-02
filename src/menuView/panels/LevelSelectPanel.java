@@ -22,69 +22,68 @@ import savingSystem.SaveLoadController;
  */
 public class LevelSelectPanel extends JPanel {
 
-	LevelSelectPanelLogic LSPL = new LevelSelectPanelLogic();
+    LevelSelectPanelLogic LSPL = new LevelSelectPanelLogic();
 
-	private PanelTransitionManager manager = PanelTransitionManager
-			.getInstance();
-	SaveLoadController SLC = new SaveLoadController();
+    private PanelTransitionManager manager = PanelTransitionManager.getInstance();
+    SaveLoadController SLC = new SaveLoadController();
 
-	/**
-	 * This calls the initUI method
-	 */
-	public LevelSelectPanel() {
-		initUI();
-	}
+    /**
+     * This calls the initUI method
+     */
+    public LevelSelectPanel() {
+	initUI();
+    }
 
-	/**
-	 * This creates the panel for the select level menu
-	 */
-	private void initUI() {
-		setLayout(new GridLayout(5, 1, 5, 10));
+    /**
+     * This creates the panel for the select level menu
+     */
+    private void initUI() {
+	setLayout(new GridLayout(5, 1, 5, 10));
 
-		int i = 3;
+	int i = 3;
 
-		i = SLC.maxLevelReachedByUser();
-		// THIS LINES GIVES ERRORS!
+	i = SLC.maxLevelReachedByUser();
+	// THIS LINES GIVES ERRORS!
 
-		int counter, counterPlusOne;
-		JButton[] buttons = new JButton[25];
-		for (counter = 0; counter < (buttons.length); counter++) {
-			
-			counterPlusOne = (counter + 1);
-			final int realLevel = counterPlusOne;
-			
-			buttons[counter] = new JButton("Lvl " + (counterPlusOne));
-			
-			if (LSPL.visable(i, counterPlusOne)) {
-				
-				buttons[counter].setContentAreaFilled(true);
-				
-				buttons[counter].addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						LSPL.play(realLevel);
-					}
-				});
+	int counter, counterPlusOne;
+	JButton[] buttons = new JButton[25];
+	for (counter = 0; counter < (buttons.length); counter++) {
 
-			} else {
-				buttons[counter].setContentAreaFilled(false);
-				buttons[counter].addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						LSPL.locked();
-					}
-				});
-			}
+	    counterPlusOne = (counter + 1);
+	    final int realLevel = counterPlusOne;
 
-			add(buttons[counter]);
+	    buttons[counter] = new JButton("Lvl " + (counterPlusOne));
 
-		}
+	    if (LSPL.visable(i, counterPlusOne)) {
 
-		JButton goBack = new JButton("Go back");
-		goBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				manager.displayPlayGameMenu();
-			}
+		buttons[counter].setContentAreaFilled(true);
+
+		buttons[counter].addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent arg0) {
+			LSPL.play(realLevel);
+		    }
 		});
-		add(goBack);
+
+	    } else {
+		buttons[counter].setContentAreaFilled(false);
+		buttons[counter].addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent arg0) {
+			LSPL.locked();
+		    }
+		});
+	    }
+
+	    add(buttons[counter]);
 
 	}
+
+	JButton goBack = new JButton("Go back");
+	goBack.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent arg0) {
+		manager.displayPlayGameMenu();
+	    }
+	});
+	add(goBack);
+
+    }
 }

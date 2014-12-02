@@ -15,15 +15,13 @@ import java.util.Random;
  */
 public class AverageAI extends AI {
 
-    
     private Boolean justMovedLeft = false;
     private Boolean justMovedUp = false;
 
     private Boolean leftRight = true;
     private Boolean isAtIntersection;
-    
 
-    public AverageAI(GameActor actor,Speed speed) {
+    public AverageAI(GameActor actor, Speed speed) {
 	super(actor, speed);
 
     }
@@ -34,23 +32,20 @@ public class AverageAI extends AI {
 	counter++;
 
 	Boolean tenPercent = isTenPercent();
-	
-	
+
 	if (counter > speed) {
-	    
+
 	    counter = 0;
-	    
+
 	    return chdirAndChaseBomberman(tenPercent);
-	    
+
 	}
 
 	return null;
     }
-    
 
-    
     // HELPER METHODS
-   
+
     /**
      * This method encompasses the change direction method but it also makes the
      * GameActor (enemy) an enemy
@@ -59,8 +54,8 @@ public class AverageAI extends AI {
      * @return up, down, right, left depending on what direction it was going
      *         before and depending on if bomberman is around
      */
-    public Command chdirAndChaseBomberman(Boolean percentChance){
-	
+    public Command chdirAndChaseBomberman(Boolean percentChance) {
+
 	Boolean canMoveRight = actor.canMove(Direction.RIGHT);
 	Boolean canMoveLeft = actor.canMove(Direction.LEFT);
 
@@ -73,7 +68,7 @@ public class AverageAI extends AI {
 
 	Boolean cantMoveUp = !canMoveUp;
 	Boolean cantMoveDown = !canMoveDown;
-	
+
 	Integer creepX = actor.getLocation().x;
 	Integer creepY = actor.getLocation().y;
 
@@ -87,45 +82,35 @@ public class AverageAI extends AI {
 	if (cantMoveUp && cantMoveDown) {
 	    leftRight = true;
 	}
-	
-	
-	if ((creepX + 32 == bombermanX)
-		&& actor.canMove(Direction.RIGHT)
-		&& ((creepY + 32 == bombermanY) || (creepY - 32 == bombermanY) || (creepY == bombermanY))) {
+
+	if ((creepX + 32 == bombermanX) && actor.canMove(Direction.RIGHT) && ((creepY + 32 == bombermanY) || (creepY - 32 == bombermanY) || (creepY == bombermanY))) {
 
 	    return right();
 	}
 
-	else if ((creepX - 32 == bombermanX)
-		&& actor.canMove(Direction.LEFT)
-		&& ((creepY + 32 == bombermanY) || (creepY - 32 == bombermanY) || (creepY == bombermanY))) {
+	else if ((creepX - 32 == bombermanX) && actor.canMove(Direction.LEFT) && ((creepY + 32 == bombermanY) || (creepY - 32 == bombermanY) || (creepY == bombermanY))) {
 
 	    return left();
 	}
 
-	else if ((creepY + 32 == bombermanY)
-		&& actor.canMove(Direction.DOWN)
-		&& ((creepX + 32 == bombermanX) || (creepX - 32 == bombermanX) || (creepX == bombermanX))) {
+	else if ((creepY + 32 == bombermanY) && actor.canMove(Direction.DOWN) && ((creepX + 32 == bombermanX) || (creepX - 32 == bombermanX) || (creepX == bombermanX))) {
 
 	    return down();
 	}
 
-	else if ((creepY - 32 == bombermanY)
-		&& actor.canMove(Direction.UP)
-		&& ((creepX + 32 == bombermanX) || (creepX - 32 == bombermanX) || (creepX == bombermanX))) {
+	else if ((creepY - 32 == bombermanY) && actor.canMove(Direction.UP) && ((creepX + 32 == bombermanX) || (creepX - 32 == bombermanX) || (creepX == bombermanX))) {
 
 	    return up();
 	}
-	
+
 	else {
 
 	    return changeDirection(percentChance);
 
 	}
-	
+
     }
-    
-    
+
     /**
      * This method makes the GameActor change directions.
      * 
@@ -148,7 +133,7 @@ public class AverageAI extends AI {
 	    return leftAndRight();
 	}
 
-	else if(!leftRight) {
+	else if (!leftRight) {
 
 	    isAtIntersection = actor.isAtIntersection();
 
@@ -160,11 +145,11 @@ public class AverageAI extends AI {
 
 	    return upAndDown();
 	}
-	
-	else{
+
+	else {
 	    return null;
 	}
-	
+
     }
 
     /**
@@ -186,15 +171,14 @@ public class AverageAI extends AI {
 	}
 
 	if (canMoveDown && (justMovedUp == false)) {
-	    
+
 	    return down();
 
 	}
 
 	else {
 	    justMovedUp = true;
-	    
-	   
+
 	    return up();
 	}
     }
@@ -216,17 +200,14 @@ public class AverageAI extends AI {
 	}
 
 	if (canMoveRight && (justMovedLeft == false)) {
-	    
-	    
+
 	    return right();
 
 	}
 
 	else {
 	    justMovedLeft = true;
-	    
-	    
-	    
+
 	    return left();
 	}
 
@@ -235,7 +216,8 @@ public class AverageAI extends AI {
     /**
      * This method tells you if the output of a randomizer is 10%
      * 
-     * @return returns true if the number outputted by a randomizer corresponds to 10%
+     * @return returns true if the number outputted by a randomizer corresponds
+     *         to 10%
      * 
      */
     public Boolean isTenPercent() {
@@ -250,7 +232,8 @@ public class AverageAI extends AI {
     /**
      * This method says if an integer is zero.
      * 
-     * @param integer integer is any integer given by the randomizer
+     * @param integer
+     *            integer is any integer given by the randomizer
      * @return returns true if the integer is zero
      */
     public Boolean isZero(int integer) {
