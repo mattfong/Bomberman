@@ -1,4 +1,4 @@
-package menuView;
+package menuView.panels;
 
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
+import menuView.PanelTransitionManager;
 import userProfile.UserProfile;
 
 public class SaveLoadPanel extends JPanel {

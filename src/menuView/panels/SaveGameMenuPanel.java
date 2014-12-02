@@ -1,4 +1,4 @@
-package menuView;
+package menuView.panels;
 
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import menuView.PanelTransitionManager;
 import savingSystem.SaveLoadController;
 
 /**

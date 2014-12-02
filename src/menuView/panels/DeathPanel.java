@@ -1,4 +1,4 @@
-package menuView;
+package menuView.panels;
 
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -14,8 +14,15 @@ import java.awt.Component;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
-import java.awt.Rectangle;
+import menuView.PanelTransitionManager;
 
+import java.awt.Rectangle;
+/**
+ * This class displays the panel after the user has lost all their lives
+ * when playing the game.
+ * @author Kirththiga Murugupillai
+ *
+ */
 public class DeathPanel extends JPanel{
 	
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();

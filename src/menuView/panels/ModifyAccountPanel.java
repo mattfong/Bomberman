@@ -1,4 +1,4 @@
-package menuView;
+package menuView.panels;
 
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import menuView.PanelTransitionManager;
 import menuView.menuLogic.ModifyAccountPanelLogic;
 /**
  * This class displays the modify account panel, where the user can change 

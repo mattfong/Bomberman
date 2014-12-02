@@ -1,4 +1,4 @@
-package menuView;
+package menuView.panels;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -11,6 +11,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import menuView.DeleteAccountPanelLogic;
+import menuView.PanelTransitionManager;
 
 /**
  * @author Philip Hoddinott, inital upload by [kirth was this you?]

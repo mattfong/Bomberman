@@ -1,4 +1,4 @@
-package menuView;
+package menuView.panels;
 
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
+import menuView.PanelTransitionManager;
 import savingSystem.SaveLoadController;
 import userProfile.UserProfile;
 

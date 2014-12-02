@@ -1,4 +1,4 @@
-package menuView;
+package menuView.panels;
 
 import java.awt.ComponentOrientation;
 import java.awt.GridLayout;
@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import menuView.PanelTransitionManager;
 
 /**
  * @author Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>

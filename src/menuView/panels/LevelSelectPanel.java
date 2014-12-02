@@ -1,4 +1,4 @@
-package menuView;
+package menuView.panels;
 
 //import gameplay.Level;
 import gameplay.statemanagers.GameState;
@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import menuView.LevelSelectPanelLogic;
+import menuView.PanelTransitionManager;
 import savingSystem.SaveLoadController;
 
 /**
