@@ -24,12 +24,9 @@ import menuView.PanelTransitionManager;
 import menuView.panels.PauseMenuPanel;
 
 /**
- * GamePanel acts as the game engine. A Java thread throws an event every 40ms
- * which is caught by the run method. The run method then runs the gameUpdate
- * method which updates all the game elements and then runs the gameRender
- * method which gets all the gameObjects to draw themselves on a graphics object
- * and finally the paintScreen method displays the screens to the user.
- * 
+ * GamePanel acts as the game engine. A Java thread throws an event every 40ms which is caught by the run method. The run method then runs the gameUpdate method which updates all the game elements and
+ * then runs the gameRender method which gets all the gameObjects to draw themselves on a graphics object and finally the paintScreen method displays the screens to the user.
+ *
  * @author MF
  *
  */
@@ -64,7 +61,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     /**
      * Open the game at the level specified.
-     * 
+     *
      * @param level
      *            level that is to be loaded.
      */
@@ -144,6 +141,8 @@ public class GamePanel extends JPanel implements Runnable {
 	if (running && (game != null)) {
 	    gameStateManager.openScorePoll();
 
+	    actorList = world.getActorList();
+
 	    for (GameActor actor : actorList) {
 		actor.update();
 	    }
@@ -162,11 +161,11 @@ public class GamePanel extends JPanel implements Runnable {
 		if (actorList.get(i) instanceof Bomberman) {
 		    stopGame();
 		    panelTransitionManager.displayDeathMenu(); // if bomberman
-							       // was the one
-							       // killed, stop
-							       // the game and
-							       // display the
-							       // death menu
+		    // was the one
+		    // killed, stop
+		    // the game and
+		    // display the
+		    // death menu
 
 		}
 		actorList.remove(i);
