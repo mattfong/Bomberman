@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,6 +15,7 @@ import javax.swing.JTextField;
 import menuView.PanelTransitionManager;
 import menuView.menuLogic.LoginMenuPanelLogic;
 import userProfile.NewAccountPanelLogic;
+import userProfile.UserProfile;
 
 /**
  * @author Philip Hoddinott, inital upload by [kirth was this you?]
@@ -67,7 +69,12 @@ public class NewAccountPanel extends JPanel {
 				String confirmPassowrd = confirmPasswordField.getText();
 				boolean check = loginLogic.newAccountLogic(nameField.getText(), userNameField.getText(), passwordField.getText(), confirmPasswordField.getText(), 0);
 				if(check == true) {
-					manager.displayPlayGameMenu();
+					try {
+						UserProfile.getInstance().setUserProfile(userNameField.getText());
+						manager.displayPlayGameMenu();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				} else {
 					nameField.setText(null);
 					userNameField.setText(null);

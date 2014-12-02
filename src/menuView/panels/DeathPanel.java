@@ -9,9 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import java.awt.Component;
-
-import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
 import menuView.PanelTransitionManager;
