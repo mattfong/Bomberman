@@ -356,6 +356,19 @@ public class World implements Serializable {
     }
 
     public void spawnEnemies(ArrayList<GameActor> newActorList) {
-	actorList.addAll(newActorList);
+	GameActor cachedBomberman = null;
+
+	for (GameActor actor : actorList) {
+	    if (actor instanceof Bomberman) {
+		cachedBomberman = actor;
+	    }
+	}
+
+	    actorList.clear();
+	    actorList.addAll(newActorList);
+
+	if (!(cachedBomberman == null)) {
+	    actorList.add(cachedBomberman);
+	}
     }
 }
