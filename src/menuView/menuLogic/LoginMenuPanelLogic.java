@@ -1,4 +1,4 @@
-package menuView;
+package menuView.menuLogic;
 
 import gameplay.gameobject.Level;
 import gameplay.statemanagers.GameState;

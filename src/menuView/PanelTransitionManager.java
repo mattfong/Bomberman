@@ -12,6 +12,9 @@ import gameplay.gameobject.Level;
 
 import javax.swing.JFrame;
 
+import com.sun.prism.paint.Color;
+
+import menuView.panels.DeathPanel;
 import menuView.panels.DeleteAccountPanel;
 import menuView.panels.HighScorePanel;
 import menuView.panels.LevelSelectPanel;
@@ -177,10 +180,19 @@ public class PanelTransitionManager {
 	}
 	
 	/**
+	 * This methods displays the death panel when Bomberman dies.
+	 */
+	public void displayDeathMenu() {
+		DeathPanel deathMenu = new DeathPanel();
+		frame.setContentPane(deathMenu);
+		frame.invalidate();
+		frame.validate();
+	}
+	/**
 	 * When the panel calls this method, the frame closes.
 	 */
 	public void closeMenu() {
-		frame.dispose();
+		System.exit(0);
 	}
 	/**
 	 * The main method which starts the game.

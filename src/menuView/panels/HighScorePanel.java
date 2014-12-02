@@ -20,15 +20,9 @@ import menuView.PanelTransitionManager;
 import junk.PlayGameView;
 
 public class HighScorePanel extends JPanel{
-    	
-    	JFrame f;
 	
-    	HighScoreManager highScoreManager = new HighScoreManager();
-    	
-    	//PanelTransitionManager manager = PanelTransitionManager.getInstance();
-    	
-    	
-	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
+    HighScoreManager highScoreManager = new HighScoreManager();
+    private PanelTransitionManager manager = PanelTransitionManager.getInstance();
 	
 	public HighScorePanel() {
 		initUI();
@@ -36,12 +30,9 @@ public class HighScorePanel extends JPanel{
 	
 	private void initUI() {
 	    
-	    	Players listOfPlayers = highScoreManager.showTopTen();
-	    
-	    	f = new JFrame("Bomberman - High Score");
-		f.setLayout(new FlowLayout());
-		f.setSize(496, 448);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    Players listOfPlayers = highScoreManager.showTopTen();
+		setLayout(new FlowLayout());
+//		setSize(496, 448);
 
 		JLabel label = new JLabel("highScoreLabel");
 		Border border = BorderFactory.createLineBorder(Color.BLUE);
@@ -200,40 +191,27 @@ public class HighScorePanel extends JPanel{
 		goBack.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent arg0) {
-			f.dispose();
-			// notYet();
-
-			// Won't work if called from the pause menu.
-			//PanelTransitionManager manager = PanelTransitionManager.getInstance();
-
-			if (manager.getInstance() == null) {
-			    PlayGameView playGameView = new PlayGameView();
-			    playGameView.playMenu();
-			}
-
+		    	manager.displayPlayGameMenu();
 		    }
 		});
 		// The following will be used to execute any commands related to the
 		// button
 		// goBack.addActionListener(this.actionPerformed(arg0););
 
-		f.add(label);
-		f.add(goBack);
-		f.add(highScoreOne);
-		f.add(highScoreTwo);
-		f.add(highScoreThree);
-		f.add(highScoreFour);
-		f.add(highScoreFive);
-		f.add(highScoreSix);
-		f.add(highScoreSeven);
-		f.add(highScoreEight);
-		f.add(highScoreNine);
-		f.add(highScoreTen);
-		f.add(highScoreEleven);
-
-		f.setVisible(true);
+		add(label);
+		add(goBack);
+		add(highScoreOne);
+		add(highScoreTwo);
+		add(highScoreThree);
+		add(highScoreFour);
+		add(highScoreFive);
+		add(highScoreSix);
+		add(highScoreSeven);
+		add(highScoreEight);
+		add(highScoreNine);
+		add(highScoreTen);
+		add(highScoreEleven);
 
 	    }
-		
 	
 }

@@ -11,8 +11,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import menuView.LevelSelectPanelLogic;
 import menuView.PanelTransitionManager;
+import menuView.menuLogic.LevelSelectPanelLogic;
 import savingSystem.SaveLoadController;
 
 /**

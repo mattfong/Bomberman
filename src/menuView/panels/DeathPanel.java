@@ -14,9 +14,12 @@ import java.awt.Component;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
+import com.sun.prism.paint.Color;
+
 import menuView.PanelTransitionManager;
 
 import java.awt.Rectangle;
+import javax.swing.UIManager;
 /**
  * This class displays the panel after the user has lost all their lives
  * when playing the game.
@@ -28,8 +31,7 @@ public class DeathPanel extends JPanel{
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
 	
 	public DeathPanel() {
-		setBounds(new Rectangle(300, 0, 0, 0));
-		setAlignmentX(Component.RIGHT_ALIGNMENT);
+		setBackground(java.awt.Color.RED);
 		initUI();
 	}
 	
@@ -39,8 +41,9 @@ public class DeathPanel extends JPanel{
 		JLabel gameOverLabel = new JLabel("Game over!");
 		diedLabel.setFont(new Font("Miriam", Font.BOLD, 28));
 		gameOverLabel.setFont(new Font("Miriam", Font.BOLD, 28));
-		diedLabel.setBounds(100, 100, 100, 100);
+
 		JButton gameOverButton = new JButton("Game Over Go Back to Login Menu");
+		gameOverButton.setBackground(java.awt.Color.RED);
 		JButton closeMenuButton = new JButton("Close Menu");
 		
 		gameOverButton.addActionListener(new ActionListener() {
@@ -54,6 +57,8 @@ public class DeathPanel extends JPanel{
 				manager.closeMenu();
 			}
 		});
+		
+		
 		add(diedLabel);
 		add(gameOverLabel);
 		add(gameOverButton);

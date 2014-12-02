@@ -1,5 +1,6 @@
 package menuView.panels;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,8 +22,10 @@ import userProfile.NewAccountPanelLogic;
  */
 public class NewAccountPanel extends JPanel {
 
-	private PanelTransitionManager manager = PanelTransitionManager
-			.getInstance();
+	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
+	private final JTextField NameTF = new JTextField(30);
+	private final JTextField UserTF = new JTextField(30);
+	private final JPasswordField PassPF = new JPasswordField(30);
 
 	/**
 	 * This calls the initUI for the NewAccountPanel
@@ -39,33 +42,26 @@ public class NewAccountPanel extends JPanel {
 	 * four lablels to tell the user what to put in each textfield
 	 */
 	private void initUI() {
-		setLayout(new GridLayout(10, 1, 5, 10));
+		setLayout(new GridLayout(6, 1, 5, 10));
 
-		final JTextField NameTF = new JTextField(30);
-		final JTextField UserTF = new JTextField(30);
-		final JPasswordField PassPF = new JPasswordField(30);
 		JPasswordField ConfirmPassPF = new JPasswordField(30);
 		NameTF.setText(null);
 		PassPF.setText(null);
 		ConfirmPassPF = new JPasswordField(30);
-
-		JLabel loginInfo = new JLabel(
-				"Enter the Account details for the account that you want to make");
-		JLabel enterName = new JLabel("          Enter your name");
-		JLabel enterUser = new JLabel("			Enter your desired username");
-		JLabel enterPass = new JLabel("			Enter your desired Password");
-		JLabel enterConfirmPass = new JLabel("			Confirm your desired Password");
+		
+		JLabel newAccountLabel = new JLabel("Create New Account");
+		newAccountLabel.setFont(new Font("Miriam", Font.BOLD, 18));
+		JLabel empty = new JLabel("");
+		
+		JLabel enterName = new JLabel("Enter your name");
+		JLabel enterUser = new JLabel("Enter your desired username");
+		JLabel enterPass = new JLabel("Enter your desired Password");
+		JLabel enterConfirmPass = new JLabel("Confirm your desired Password");
 
 		JButton makeUser = new JButton("Click here to create your account");
 		makeUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				/*
-				 * String Name = NameTF.getText(); String User =
-				 * UserTF.getText(); String Pass = PassPF.getText(); String
-				 * confirmPass = ConfirmPassPF.getText();
-				 */
-				NewAccountPanelLogic.NewAccountLogic(NameTF.getText(),
-						UserTF.getText(), PassPF.getText());
+				NewAccountPanelLogic.NewAccountLogic(NameTF.getText(), UserTF.getText(), PassPF.getText());
 			}
 		});
 
@@ -75,7 +71,9 @@ public class NewAccountPanel extends JPanel {
 				manager.displayLoginMenu();
 			}
 		});
-
+		
+		add(newAccountLabel);
+		add(empty);
 		add(enterName);
 		add(NameTF);
 		add(enterUser);

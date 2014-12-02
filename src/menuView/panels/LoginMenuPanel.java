@@ -18,8 +18,8 @@ import javax.swing.JTextField;
 import userProfile.UserProfile;
 import loginSystem.AccountManager;
 import loginSystem.CSVreader;
-import menuView.LoginMenuPanelLogic;
 import menuView.PanelTransitionManager;
+import menuView.menuLogic.LoginMenuPanelLogic;
 
 /**
  * This is the login panel, and it has been redesigned. 

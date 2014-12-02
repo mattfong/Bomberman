@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import menuView.DeleteAccountPanelLogic;
 import menuView.PanelTransitionManager;
+import menuView.menuLogic.DeleteAccountPanelLogic;
 
 /**
  * @author Philip Hoddinott, inital upload by [kirth was this you?]

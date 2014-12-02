@@ -1,4 +1,4 @@
-package menuView;
+package menuView.menuLogic;
 
 import gameplay.engine.GameFrame;
 import gameplay.gameobject.Level;
@@ -7,6 +7,8 @@ import gameplay.statemanagers.GameStateManager;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import menuView.PanelTransitionManager;
 
 /**
  * @author Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>

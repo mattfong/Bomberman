@@ -1,4 +1,4 @@
-package menuView;
+package menuView.menuLogic;
 
 import java.io.IOException;
 
@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import loginSystem.AccountManager;
 import loginSystem.CSVreader;
 import loginSystem.CSVwriter;
+import menuView.PanelTransitionManager;
 
 /**
  * @author Philip Hoddinott, inital upload by <philip.hoddinott@mail.mcgill.ca>
