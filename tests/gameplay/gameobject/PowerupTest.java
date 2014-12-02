@@ -86,4 +86,12 @@ public class PowerupTest {
 
     }
 
+    @Test
+    public void testHaveBeenBombed() {
+	world = new World(31, 13, Level.L1);
+	world.addGameObject(new DetonatorPowerup(new Rectangle(32, 32, 32, 32), world));
+	world.detonateLocation(new Rectangle(64, 32, 32, 32), 1);
+	assertEquals(6, world.getActorList().size());
+
+    }
 }
