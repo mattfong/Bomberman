@@ -13,16 +13,24 @@ import javax.swing.border.EtchedBorder;
 
 import menuView.PanelTransitionManager;
 import userProfile.UserProfile;
-
+/**
+ * This class displays the save Load panel, where the user can enter the saved system.
+ * @author Kirththiga Murugupillai
+ *
+ */
 public class SaveLoadPanel extends JPanel {
 
 	private PanelTransitionManager manager = PanelTransitionManager.getInstance();
 	private UserProfile user = UserProfile.getInstance();
-	
+	/**
+	 * This makes the initUI
+	 */
 	public SaveLoadPanel() {
 		initUI();
 	}
-	
+	/**
+	 * THis makes the panel
+	 */
 	private void initUI() {
 		setLayout(new GridLayout(4,1,5,10));
 		JLabel saveLoadMenuLabel = new JLabel("Save Load Menu");

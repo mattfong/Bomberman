@@ -27,12 +27,16 @@ public class SaveGameMenuPanel extends JPanel{
 	private final JTextField saveGameNameField;
 	private SaveLoadController saveLoadController = new SaveLoadController();
 	private UserProfile user = user = UserProfile.getInstance();
-	
+	/**
+	 * This makes a text field and calls the initUI
+	 */
 	public SaveGameMenuPanel() {
 		saveGameNameField= new JTextField(30);
 		initUI();
 	}
-	
+	/**
+	 * This method makes the panel
+	 */
 	private void initUI() {
 		setLayout(new GridLayout(5,1,5,10));
 		JLabel saveMenuLabel = new JLabel("Save Game Menu");
