@@ -8,12 +8,10 @@ package menuView;
  */
 
 import gameplay.engine.GamePanel;
-import gameplay.gameobject.Level;
+import gameplay.world.Level;
 import gameplay.world.World;
 
 import javax.swing.JFrame;
-
-import com.sun.prism.paint.Color;
 
 import menuView.panels.DeathPanel;
 import menuView.panels.DeleteAccountPanel;

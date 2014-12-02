@@ -1,12 +1,13 @@
 package userProfile;
 
+import gameplay.statemanagers.GameState;
+import gameplay.statemanagers.GameStateManager;
+import gameplay.world.Level;
+import gameplay.world.World;
+
 import java.io.IOException;
 
 import junk.PlayGameView;
-import gameplay.gameobject.Level;
-import gameplay.statemanagers.GameState;
-import gameplay.statemanagers.GameStateManager;
-import gameplay.world.World;
 import loginSystem.Account;
 import loginSystem.AccountManager;
 import loginSystem.CSVreader;
