@@ -10,11 +10,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-<<<<<<< HEAD
-import userProfile.UserProfile;
-import loginSystem.Account;
-=======
->>>>>>> 20940cc67382a8c8d5af1eaa1f58e74ae7662aec
 import loginSystem.CSVwriter;
 import userProfile.UserProfile;
 
