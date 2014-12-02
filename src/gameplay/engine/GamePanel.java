@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 import menuView.PanelTransitionManager;
-import menuView.PauseMenuPanel;
+import menuView.panels.PauseMenuPanel;
 
 /**
  * GamePanel acts as the game engine. A Java thread throws an event every 40ms

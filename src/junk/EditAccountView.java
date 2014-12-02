@@ -9,8 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import loginSystem.PlayGameView;
-
 /**
  * @author Philip Hoddinott <philip.hoddinott@mail.mcgill.ca>
  * @version 1.6 (current version number of program)

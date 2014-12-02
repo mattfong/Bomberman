@@ -11,8 +11,11 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import userProfile.UserProfile;
 import junk.LoadGameMenuView;
 import junk.SaveGameMenuView;
+import loginSystem.Account;
+import loginSystem.CSVwriter;
 
 /**
  * This class deals with loading, saving, and deleting a game from a serialized file.
@@ -20,17 +23,20 @@ import junk.SaveGameMenuView;
  *
  */
 public class SaveLoadController {
-
+	
 	private SavedGameSerialization serializeGame;
 	private SavedGameManager saveManager;
 	private GameState currentGame;
 	private String fileName;
+	private UserProfile user;
+	private final String csvAccountsFile = "UserPass.csv";
 	
 	public SaveLoadController() {
 		serializeGame = new SavedGameSerialization();
 		saveManager = new SavedGameManager();
 		currentGame = GameStateManager.getInstance().getCurrentGameState();
 		fileName = "";
+		user = UserProfile.getInstance();
 	}
 
 	/**
@@ -56,6 +62,15 @@ public class SaveLoadController {
 			serializeGame.serializeSaveGameName(savedGame, fileName);
 		} catch (IOException e1) {
 			e1.printStackTrace();
+		}
+		
+		CSVwriter writer = new CSVwriter();
+		user.getAccountManager().deleteAccount(user.getUserName());
+		
+		try {
+			writer.CSVwriterAccountsList(csvAccountsFile, user.getAccountManager().getAccounts());
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		
 	}
@@ -140,6 +155,35 @@ public class SaveLoadController {
 				e.printStackTrace();
 			}
 		return maxLevel;
+	}
+	
+	/**
+	 * This method calculates the cumulative score of the user.
+	 * @return cumulative score of the user
+	 */
+	public int getCumulativeScore(){
+		SavedGame game = null;
+		//If there are no saved games, then the user has a score of zero.
+		int totalScore = 0;
+		
+		try {
+			fileName = saveManager.getSaveGameFile(currentGame.getUserName());
+			List<SavedGame> allSavedGames = serializeGame.deserializeSaveGameName(fileName);
+			saveManager.setSavedGamesList(allSavedGames);
+	
+			/* Looping through the list of saved games, and get all the scores of the saved games.
+			 * Then, adds all the scores of the game and stores in the variable totalScore. 
+			*/
+			for (int i = 0; i < allSavedGames.size(); i++) {
+				game = allSavedGames.get(i);
+				int currentScore = game.getGameState().getScore();
+				totalScore += currentScore;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return totalScore;
 	}
 
 }

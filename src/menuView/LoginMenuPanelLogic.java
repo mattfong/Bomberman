@@ -13,12 +13,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import junk.PlayGameView;
 import userProfile.UserProfile;
 import loginSystem.Account;
 import loginSystem.AccountManager;
 import loginSystem.CSVreader;
 import loginSystem.CSVwriter;
-import loginSystem.PlayGameView;
 
 /**
  * @author Philip Hoddinott<philip.hoddinott@mail.mcgill.ca>

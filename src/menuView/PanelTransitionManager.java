@@ -13,6 +13,17 @@ import gameplay.world.World;
 
 import javax.swing.JFrame;
 
+import menuView.panels.DeleteAccountPanel;
+import menuView.panels.HighScorePanel;
+import menuView.panels.LevelSelectPanel;
+import menuView.panels.LoadGameMenuPanel;
+import menuView.panels.LoginMenuPanel;
+import menuView.panels.ModifyAccountPanel;
+import menuView.panels.NewAccountPanel;
+import menuView.panels.PauseMenuPanel;
+import menuView.panels.PlayGamePanel;
+import menuView.panels.SaveGameMenuPanel;
+import menuView.panels.SaveLoadPanel;
 import userProfile.UserProfile;
 
 public class PanelTransitionManager {
@@ -185,6 +196,14 @@ public class PanelTransitionManager {
 	frame.invalidate();
 	frame.validate();
     }
+
+	
+	/**
+	 * When the panel calls this method, the frame closes.
+	 */
+	public void closeMenu() {
+		frame.dispose();
+	}
 
 	/**
 	 * The main method which starts the game.
