@@ -1,13 +1,13 @@
 package gameplay.engine;
 
 import gameplay.gameobject.GameActor;
-import gameplay.gameobject.Level;
 import gameplay.gameobject.bomberman.Bomberman;
 import gameplay.input.InputListener;
 import gameplay.overlays.Camera;
 import gameplay.overlays.CountdownTimer;
 import gameplay.overlays.HUD;
 import gameplay.statemanagers.GameStateManager;
+import gameplay.world.Level;
 import gameplay.world.World;
 
 import java.awt.Color;

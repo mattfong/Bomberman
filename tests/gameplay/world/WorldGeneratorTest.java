@@ -1,4 +1,4 @@
-package gameplay.gameobject;
+package gameplay.world;
 
 import static org.junit.Assert.assertNotNull;
 import gameplay.gameobject.GameActor;
