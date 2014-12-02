@@ -2,6 +2,7 @@ package gameplay.engine;
 
 import gameplay.gameobject.GameActor;
 import gameplay.gameobject.Level;
+import gameplay.gameobject.bomberman.Bomberman;
 import gameplay.input.InputListener;
 import gameplay.overlays.Camera;
 import gameplay.overlays.CountdownTimer;
@@ -158,6 +159,16 @@ public class GamePanel extends JPanel implements Runnable {
     private void removeDeadActors(ArrayList<GameActor> actorList) {
 	for (int i = 0; i < actorList.size(); i++) {
 	    if (actorList.get(i).isDead()) {
+		if (actorList.get(i) instanceof Bomberman) {
+		    stopGame();
+		    panelTransitionManager.displayDeathMenu(); // if bomberman
+							       // was the one
+							       // killed, stop
+							       // the game and
+							       // display the
+							       // death menu
+
+		}
 		actorList.remove(i);
 	    }
 	}
@@ -233,26 +244,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     }
 
-    private void resumeGame() {
-	startGame();
-	requestFocus();
-    }
-
-    public void closePauseMenu() {
-	remove(pauseMenu);
-	this.revalidate();
-	this.repaint();
-	this.resumeGame();
-
-    }
-
     public void openPauseMenu() {
 	stopGame();
 	panelTransitionManager.displayPauseMenu(world);
-	// this.add(pauseMenu);
-
-	// this.revalidate();
-	// this.repaint();
 
     }
 
