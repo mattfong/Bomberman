@@ -6,7 +6,6 @@ import gameplay.input.InputListener;
 import gameplay.overlays.Camera;
 import gameplay.overlays.CountdownTimer;
 import gameplay.overlays.HUD;
-import gameplay.overlays.pauseMenu.PauseMenuView;
 import gameplay.statemanagers.GameStateManager;
 import gameplay.world.World;
 
@@ -20,6 +19,9 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import menuView.PanelTransitionManager;
+import menuView.panels.PauseMenuPanel;
+
 /**
  * GamePanel acts as the game engine. A Java thread throws an event every 40ms
  * which is caught by the run method. The run method then runs the gameUpdate
@@ -31,10 +33,10 @@ import javax.swing.JPanel;
  *
  */
 public class GamePanel extends JPanel implements Runnable {
-
+    private PanelTransitionManager panelTransitionManager = PanelTransitionManager.getInstance();
     int xCoord;
     int yCoord;
-    PauseMenuView pauseMenu;
+    PauseMenuPanel pauseMenu;
 
     CountdownTimer timer;
 
@@ -246,12 +248,11 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void openPauseMenu() {
 	stopGame();
-	pauseMenu = new PauseMenuView(this);
-	this.add(pauseMenu);
-	pauseMenu.setBounds((GWIDTH / 7) / 2, 30, 311, 358);
+	panelTransitionManager.displayPauseMenu(world);
+	// this.add(pauseMenu);
 
-	this.revalidate();
-	this.repaint();
+	// this.revalidate();
+	// this.repaint();
 
     }
 
