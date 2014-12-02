@@ -18,12 +18,24 @@ public class NewAccountPanelLogic {
 
 	private PanelTransitionManager manager = PanelTransitionManager
 			.getInstance();
-	
+	/**
+	 * This calls the Logic method. It goes from a astatic action listenre to a non static void
+	 * @param Name
+	 * @param User
+	 * @param Pass
+	 */
 	public static void NewAccountLogic(String Name, String User, String Pass){
 		NewAccountPanelLogic NAPL = new NewAccountPanelLogic();
 		NAPL.newAccountLogic(Name, User, Pass, 0);
 	}
-	
+	/**
+	 * This void creates the new account from the information it is sent. 
+	 * It also checks that the details are with specs for usernames/passwords/etc
+	 * @param Name
+	 * @param User
+	 * @param Pass
+	 * @param i
+	 */
 	public void newAccountLogic(String Name, String User, String Pass, int i){
 		String csvAccountsFile = "UserPass.csv";
 		AccountManager accountManager = new AccountManager();
